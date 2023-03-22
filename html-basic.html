@@ -7,10 +7,7 @@
     p {
       font-size: 12px;
       background: linear-gradient(to right,red, green,blue);
-      background-clip: text;
-      -o-background-clip: text;
-      -ms-background-clip: text;
-      -moz-background-clip: text;
+ 
       -webkit-background-clip: text;    
       color: transparent;
       }
@@ -26,7 +23,6 @@
     <h2>Lorem,ipsum.</h2>
 
     <h3>Lorem, ipsum dolor.</h3>
-
   <body >
       <div style="color:green">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam porro adipisci unde optio sit maxime nihil mollitia consequuntur, enim dolorem explicabo accusantium? Optio nulla atque, ducimus illo aliquam a vitae?</div>
 
@@ -104,7 +100,7 @@
         
 
         <form action="">
-          <p>个人信息调查表</p>
+          <dt>个人信息调查表</dt>
         <dl>
           <dt>性别</dt>
         </dl>
@@ -113,7 +109,7 @@
           <label><input type="radio" valua="male" name="gender"> 男</label>
           <label><input type="radio" valua="female" name="gender"> 女</label>
         </dd> 
-          <p>年龄</p>
+          <dt>年龄</dt>
           <dd>
             <select name="年龄">
               <option>请选择</option>
@@ -131,7 +127,7 @@
               </optgroup>
            </select>
           </dd>
-           <p>生日</p>
+           <dt>生日</dt>
           <dd>
            <input type="date" value="2023/3/21" name="生日">
           </dd>    
@@ -144,7 +140,7 @@
            
          </select>
          
-         <p>照片</p>
+         <dt>照片</dt>
          <dd>
            <label ><input type="file" hidden >点我上传照片，我比上传按钮更好看</label>
 
