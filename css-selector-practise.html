@@ -31,6 +31,13 @@
       .b li:nth-child(-n+25){color: red;}
       .b li:nth-child(n+65){color: green;}
       .b li:nth-child(n+35):not(.b li:nth-child(n+51)){color:blue;}
+      .prime ul li{
+      color: yellowgreen;
+     }
+      .prime ul li:not(:first-child):not(:nth-child(2n+4)):not(:nth-child(3n+9)):not(:nth-child(5n+25)):not(:nth-child(7n+49)){
+        color:red;
+      }
+     
      
 
 
