@@ -45,6 +45,8 @@
 
     .dd div {
       margin-bottom: 15px;
+      padding: 5px;
+      text-align: center;
     }
 
 
@@ -89,11 +91,39 @@
     }
 
 
-    main{
+    main {
       background-color: violet;
       text-align: center;
     }
 
+    span:hover {
+      background-color: lightcyan;
+    }
+
+    .ab {
+      font-size: 0;
+    }
+
+    span {
+
+      background-color: lightcoral;
+      display: inline-block;
+      border: 3px solid;
+      width: 180px;
+      height: 40px;
+      margin-right: 30px;
+      margin-bottom: 15px;
+      margin-left: 0;
+      box-sizing: border-box;
+      font-size: 16px;
+      padding: 5px;
+      text-align: center;
+
+    }
+
+    span:nth-child(3n+3) {
+      margin-right: 0;
+    }
 
   </style>
 
@@ -124,6 +154,26 @@
       <div>产品</div>
       <div>产品</div>
     </div>
+    <br>
+    <div class="ab">
+
+      <span>宽180高40px</span>
+      <span>水平间隙30px</span>
+      <span>垂直间隙15px</span>
+      <span>边框宽度3px</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+      <span>产品</span>
+
+    </div>
+
+
+    <br>
     <ul>
       <ol>1</ol>
       <ol>2</ol>
@@ -132,11 +182,11 @@
       <ol>5</ol>
     </ul>
   </div>
-    <main>
-         &copy;版权所有
-         <br>
-        本页所有布局均使用块元素
-      </main>
+  <main>
+    &copy;版权所有
+    <br>
+    本页所有布局均使用块元素
+  </main>
 
 </body>
 
