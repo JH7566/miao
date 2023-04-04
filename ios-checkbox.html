@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
-<style>
+<style type="text/less">
   input+label {
     border: 3px solid #cbcbcb;
     width: 270px;
@@ -16,9 +16,7 @@
     display: inline-block;
     box-sizing: border-box;
     transition: 0.8s;
-  }
-
-  input+label::before {
+    &::before {
     content: '';
     width: 143px;
     height: 143px;
@@ -30,17 +28,14 @@
     margin-top: 3px;
     margin-left: 3px;
   }
-
+  }
   input:checked+label {
     border-color: #30f349;
     box-shadow: inset 0 0 0 78px #30f349;
-  }
-
-
-  input:checked+label::before {
+    &::before {
     margin-left: 119px;
   }
-
+  }
   input {
     display: none;
   }
@@ -56,5 +51,6 @@
 
   </div>
 </body>
+<script src="https://cdn.jsdelivr.net/npm/less@4"></script>
 
 </html>
