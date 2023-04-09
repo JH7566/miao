@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<style>
+  /* * {
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 1px red;
+  } */
+
+  html,
+  body {
+    height: 100%;
+  }
+
+  .mitu {
+    position: fixed;
+    width: 1200px;
+    height: 600px;
+    border: 2px solid;
+    overflow: hidden;
+    margin: auto;
+  }
+
+  input:checked+*+*+*+* {
+    right: 0;
+    z-index: 1;
+  }
+
+  input {
+    display: none;
+  }
+
+  img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    right: 100%;
+  }
+
+  .anniu {
+    position: absolute;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+  }
+
+  .anniu label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    border-radius: 333px;
+    text-indent: -1111px;
+    cursor: pointer;
+  }
+
+  .anniu label:hover {
+    background-color: lightslategrey;
+  }
+
+  input:nth-child(1):checked~.anniu label:nth-child(1),
+  input:nth-child(2):checked~.anniu label:nth-child(2),
+  input:nth-child(3):checked~.anniu label:nth-child(3),
+  input:nth-child(4):checked~.anniu label:nth-child(4) {
+    background-color: lightslategray;
+  }
+
+  .a {
+    position: relative;
+    font-size: 2em;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    top: 250px;
+  }
+
+  .left {
+    position: relative;
+    float: left;
+    display: none;
+  }
+
+  .right {
+    position: relative;
+    float: right;
+    display: none;
+  }
+
+  input:nth-child(2):checked~.a .bb>label,
+  input:nth-child(3):checked~.a .cc>label,
+  input:nth-child(4):checked~.a .dd>label,
+  input:nth-child(1):checked~.a .aa>label {
+    display: block;
+  }
+
+</style>
+
+<body>
+  <div class="mitu">
+    <input type="radio" name="mitu1" id="a1" checked>
+    <input type="radio" name="mitu1" id="a2">
+    <input type="radio" name="mitu1" id="a3">
+    <input type="radio" name="mitu1" id="a4">
+    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920" alt="">
+    <img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+      alt="">
+    <img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+      alt="">
+    <img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+      alt="">
+    <div class="anniu">
+      <label for="a1"></label>
+      <label for="a2"></label>
+      <label for="a3"></label>
+      <label for="a4"></label>
+    </div>
+    <div class="a">
+      <div class="aa">
+        <label for="a2" class="right">⊳</label>
+        <label for="a4" class="left">⊲</label>
+      </div>
+      <div class="bb">
+        <label for="a3" class="right">⊳</label>
+        <label for="a1" class="left">⊲</label>
+      </div>
+      <div class="cc">
+        <label for="a4" class="right">⊳</label>
+        <label for="a2" class="left">⊲</label>
+      </div>
+      <div class="dd">
+        <label for="a1" class="right">⊳</label>
+        <label for="a3" class="left">⊲</label>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
