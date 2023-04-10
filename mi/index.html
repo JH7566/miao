@@ -19,393 +19,404 @@
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    padding: 100px;
-    padding-top: 0;
+    width: 100%;
+    min-width: 1200px;
+  }
+
+  .lefttop,
+  .righttop,
+  .meun .li,
+  .seo button {
+    cursor: pointer;
   }
 
   /* 顶部导航栏 */
-  main {
-    background-color: bisque;
-    height: 50px;
+  .all {
+    display: flex;
     width: 100%;
-    word-wrap: nowrap;
+    flex-direction: column;
+    white-space: nowrap;
+  }
 
+  a:link {
+    color: lightgray;
+  }
+
+  a:visited {
+    color: lightgray;
   }
 
   .top {
-    position: relative;
-    width: 100%;
-    margin: auto;
+    background-color: black;
+    padding: 0 200px;
+    display: flex;
+    justify-content: space-between;
     line-height: 50px;
-    word-spacing: 20px;
+    overflow: hidden;
   }
-
-  .lefttop {
-    d
-    position: relative;
-    left: 0;
-  }
-
-  .righttop {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-
-  .righttop .a {
-    width: 50px;
-    height: 20px;
-
-  }
-
 
   /* 次级导航菜单 */
   .menu {
-    width: 100%;
-    height: 100px;
     display: flex;
-    min-width: 600px;
+    height: 100px;
+    width: 100%;
+    align-items: center;
   }
 
   .menu ul {
-    margin: auto;
-    word-spacing: 10px;
-    font-size: 20px;
-    min-width: 600px;
+    display: flex;
+    line-height: 60px;
+    flex-grow: 1;
+    width: 80%;
+    justify-content: space-evenly;
   }
 
   .menu li {
-    display: inline-block;
-
+    display: flex;
   }
 
   .seo {
-    width: 400px;
-    height: 100px;
-    line-height: 100px;
-    text-align: center;
+    display: flex;
+    height: 50px;
+
   }
 
-  .seo input {
-    font-size: 20px;
-    width: 300px;
+  input,
+  button {
+    display: flex;
+    align-items: center;
     height: 50px;
   }
 
-  .seo button {
-    position: relative;
-    width: 50px;
+  input {
+    width: 200px;
+  }
+
+  button {
     height: 50px;
-    top: 3px;
+  }
+
+  .pad {
+    padding: 0 200px;
+  }
+
+  .menu .a {
+    display: flex;
+    width: 60px;
   }
 
 </style>
 
 <body>
-  <main>
-    <div class="top">
-      <div class="lefttop">
-        <a href="https://www.mi.com/" target="_blank">小米官网</a>
-        <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
-        <a href="https://www.miui.com/" target="_blank">MUI</a>
-        <a href="https://iot.mi.com/" target="_blank">loT</a>
-        <a href="https://i.mi.com/" target="_blank">云服务</a>
-        <a href="https://airstar.com/home" target="_blank">天星教科</a>
-        <a href="https://youpin.mi.com/" target="_blank">有品</a>
-        <a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
-        <a href="https://qiye.mi.com/" target="_blank">企业团购</a>
-        <a href="https://www.mi.com/aptitude/list/?id=88" target="_blank">资质证照</a>
-        <a href="https://www.mi.com/aptitude/list/" target="_blank">协议规则</a>
-        <a href="https://www.mi.com/appdownload/" target="_blank">下载app</a>
-        <a href="javascript:;" target="_blank"> Select Location</a>
+  <div class="all">
+    <main>
+      <div class="top">
+        <div class="lefttop">
+          <a href="https://www.mi.com/" target="_blank">小米官网</a>
+          <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
+          <a href="https://www.miui.com/" target="_blank">MUI</a>
+          <a href="https://iot.mi.com/" target="_blank">loT</a>
+          <a href="https://i.mi.com/" target="_blank">云服务</a>
+          <a href="https://airstar.com/home" target="_blank">天星教科</a>
+          <a href="https://youpin.mi.com/" target="_blank">有品</a>
+          <a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
+          <a href="https://qiye.mi.com/" target="_blank">企业团购</a>
+          <a href="https://www.mi.com/aptitude/list/?id=88" target="_blank">资质证照</a>
+          <a href="https://www.mi.com/aptitude/list/" target="_blank">协议规则</a>
+          <a href="https://www.mi.com/appdownload/" target="_blank">下载app</a>
+          <a href="javascript:;" target="_blank"> Select Location</a>
+        </div>
+
+        <div class="righttop">
+          <a href="javascript:void(0);">登录</a>
+          <a href="javascript:void(0);">注册</a>
+          <a href="javascript:void(0);">消息通知</a>
+          <a href="https://www.mi.com/shop/buy/cart" class="a" target="_blank">购物车</a>
+        </div>
+
       </div>
-      <div class="righttop">
-        <a href="javascript:void(0);">登录</a>
-        <a href="javascript:void(0);">注册</a>
-        <a href="javascript:void(0);">消息通知</a>
-        <a href="https://www.mi.com/shop/buy/cart" class="a" target="_blank">购物车</a>
+    </main>
+
+
+    <div class="pad">
+      <div class="menu">
+        <img src="mi.png" class="a" alt="">
+        <ul>
+          <li>Xiaomi手机
+
+          </li>
+          <li>Redmi手机</li>
+          <li>电视</li>
+          <li>笔记本</li>
+          <li>平板</li>
+          <li>家电</li>
+          <li>路由器</li>
+          <li>服务中心</li>
+          <li>社区</li>
+        </ul>
+        <div class="seo">
+          <form target="_blank" action="https://www.google.com.hk/search?q=aaa&ie=UTF-8&sourceid=UTF">
+            <input typy="text" name="q">
+            <button><img src="搜索符号.png" alt=""></button>
+        </div>
       </div>
 
+
+
+      <div class="sort">
+        <ul>
+          <li>手机
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>电视
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>家电
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>笔记本 平板
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>出行 穿戴
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>耳机 音箱
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>健康 儿童
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>生活 箱包
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>智能 路由器
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>电源 配件
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+        </ul>
+      </div>
     </div>
-  </main>
 
-
-
-  <div class="menu">
-    <img src="mi.png" alt="">
-    <ul>
-      <li>Xiaomi手机</li>
-      <li>Redmi手机</li>
-      <li>电视</li>
-      <li>笔记本</li>
-      <li>平板</li>
-      <li>家电</li>
-      <li>路由器</li>
-      <li>服务中心</li>
-      <li>社区</li>
-    </ul>
-    <div class="seo">
-      <input type="text">
-      <button><img src="搜索符号.png" alt=""></button>
-    </div>
-  </div>
-
-
-
-  <div class="sort">
-    <ul>
-      <li>手机
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>电视
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>家电
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>笔记本 平板
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>出行 穿戴
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>耳机 音箱
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>健康 儿童
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>生活 箱包
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>智能 路由器
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-      <li>电源 配件
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </li>
-
-
-    </ul>
-  </div>
-
-
-  <div class="img">
+    <!-- <div class="img">
     <input type="radio" name="mitu1" id="a1" checked>
     <input type="radio" name="mitu1" id="a2">
     <input type="radio" name="mitu1" id="a3">
@@ -414,13 +425,13 @@
       width="1500px" alt="">
     <img
       src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      alt="">
+      width="1500px" alt="">
     <img
       src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      alt="">
+      width="1500px" alt="">
     <img
       src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      alt="">
+      width="1500px" alt="">
     <div class="anniu">
       <label for="a1"></label>
       <label for="a2"></label>
@@ -444,7 +455,8 @@
         <label for="a1" class="right">⊳</label>
         <label for="a3" class="left">⊲</label>
       </div>
-    </div>
+    </div> -->
+  </div>
 </body>
 
 </html>
