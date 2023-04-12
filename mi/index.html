@@ -9,15 +9,15 @@
   <title>Document</title>
 </head>
 <style>
-  * {
+  /* * {
     background-color: rgba(0, 0, 0, 0.08);
     box-shadow: inset 0 0 1px red;
-  }
+  } */
 
   html,
   body {
     box-sizing: border-box;
-    height: 100%;
+    height: 100%; 
     width: 100%;
     width: 100%;
     min-width: 1200px;
@@ -36,6 +36,7 @@
     width: 100%;
     flex-direction: column;
     white-space: nowrap;
+    min-width: 1200px;
   }
 
   a:link {
@@ -46,6 +47,29 @@
     color: lightgray;
   }
 
+  .foo {
+    background-color: steelblue;
+    padding: 10px;
+    margin: 0;
+    transition: 2s;
+  }
+
+  .foo1 {
+    display: none;
+  }
+
+  .foo:hover>.foo1 {
+    position: absolute;
+    display: block;
+    border: 2px solid lightgray;
+    background-color: white;
+    width: 300px;
+    height: 200px;
+    right: 190px;
+    z-index: 99999;
+
+  }
+
   .top {
     background-color: black;
     padding: 0 200px;
@@ -53,6 +77,16 @@
     justify-content: space-between;
     line-height: 50px;
     overflow: hidden;
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .top a::after {
+    content: ' |';
+    color: gray;
   }
 
   /* 次级导航菜单 */
@@ -61,39 +95,25 @@
     height: 100px;
     width: 100%;
     align-items: center;
+    min-width: 800px;
   }
 
   .menu ul {
     display: flex;
     line-height: 60px;
     flex-grow: 1;
-    width: 80%;
-    justify-content: space-evenly;
+    width: 60%;
+    justify-content: center;
   }
 
   .menu li {
     display: flex;
+    padding: 15px;
+
   }
 
   .seo {
-    display: flex;
-    height: 50px;
-
-  }
-
-  input,
-  button {
-    display: flex;
-    align-items: center;
-    height: 50px;
-  }
-
-  input {
-    width: 200px;
-  }
-
-  button {
-    height: 50px;
+    min-width: 200px;
   }
 
   .pad {
@@ -102,7 +122,134 @@
 
   .menu .a {
     display: flex;
-    width: 60px;
+    width: 50px;
+  }
+
+
+
+  /* 轮播图 */
+
+
+  .img {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    overflow: hidden;
+    left: 140px;
+    top: 0px;
+    bottom: 0;
+    min-width: 1000px;
+  }
+
+  .img input:checked+*+*+*+* {
+    right: 0;
+    z-index: 1;
+  }
+
+  .img input {
+    display: none;
+  }
+
+  .img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    right: 100%;
+  }
+
+  .img .anniu {
+    position: absolute;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+  }
+
+  .img .anniu label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    border-radius: 333px;
+    text-indent: -1111px;
+    cursor: pointer;
+  }
+
+  .img .anniu label:hover {
+    background-color: lightslategrey;
+  }
+
+  .img input:nth-child(1):checked~.anniu label:nth-child(1),
+  .img input:nth-child(2):checked~.anniu label:nth-child(2),
+  .img input:nth-child(3):checked~.anniu label:nth-child(3),
+  .img input:nth-child(4):checked~.anniu label:nth-child(4) {
+    background-color: lightslategray;
+  }
+
+  .a {
+    position: relative;
+    font-size: 2em;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    top: 250px;
+  }
+
+  .left {
+    position: relative;
+    float: left;
+    display: none;
+  }
+
+  .right {
+    position: relative;
+    float: right;
+    display: none;
+  }
+
+  .img input:nth-child(2):checked~.a .bb>label,
+  .img input:nth-child(3):checked~.a .cc>label,
+  .img input:nth-child(4):checked~.a .dd>label,
+  .img input:nth-child(1):checked~.a .aa>label {
+    display: block;
+  }
+
+
+
+  .sort {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sort ul {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+  }
+
+  .sort ul li {
+    display: flex;
+    line-height: 40px;
+    margin-left: -40px;
+    padding: 10px;
+  }
+
+  .sort ul ul {}
+
+  .sort li:hover>ul {
+    display: block;
+    width: 500px;
+    background-color: lightblue;
+  }
+
+  .sort ul ul {
+    position: absolute;
+    left: 10%;
+
   }
 
 </style>
@@ -131,7 +278,9 @@
           <a href="javascript:void(0);">登录</a>
           <a href="javascript:void(0);">注册</a>
           <a href="javascript:void(0);">消息通知</a>
-          <a href="https://www.mi.com/shop/buy/cart" class="a" target="_blank">购物车</a>
+          <a href="https://www.mi.com/shop/buy/cart" class="foo" target="_blank">购物车(0)
+            <div class="foo1"></div>
+          </a>
         </div>
 
       </div>
@@ -140,7 +289,7 @@
 
     <div class="pad">
       <div class="menu">
-        <img src="mi.png" class="a" alt="">
+        <img src="mi.png" width="50px" alt="">
         <ul>
           <li>Xiaomi手机
 
@@ -155,9 +304,9 @@
           <li>社区</li>
         </ul>
         <div class="seo">
-          <form target="_blank" action="https://www.google.com.hk/search?q=aaa&ie=UTF-8&sourceid=UTF">
+          <form target="" action="">
             <input typy="text" name="q">
-            <button><img src="搜索符号.png" alt=""></button>
+            <button><img src="" alt="">搜索</button>
         </div>
       </div>
 
@@ -167,13 +316,13 @@
         <ul>
           <li>手机
             <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
+              <li class="dddd">111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
             </ul>
           </li>
 
@@ -413,50 +562,52 @@
 
 
         </ul>
-      </div>
-    </div>
 
-    <!-- <div class="img">
-    <input type="radio" name="mitu1" id="a1" checked>
-    <input type="radio" name="mitu1" id="a2">
-    <input type="radio" name="mitu1" id="a3">
-    <input type="radio" name="mitu1" id="a4">
-    <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920"
-      width="1500px" alt="">
-    <img
-      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      width="1500px" alt="">
-    <img
-      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      width="1500px" alt="">
-    <img
-      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-      width="1500px" alt="">
-    <div class="anniu">
-      <label for="a1"></label>
-      <label for="a2"></label>
-      <label for="a3"></label>
-      <label for="a4"></label>
+
+
+        <div class="img">
+          <input type="radio" name="mitu1" id="a1" checked>
+          <input type="radio" name="mitu1" id="a2">
+          <input type="radio" name="mitu1" id="a3">
+          <input type="radio" name="mitu1" id="a4">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <div class="anniu">
+            <label for="a1"></label>
+            <label for="a2"></label>
+            <label for="a3"></label>
+            <label for="a4"></label>
+          </div>
+          <div class="a">
+            <div class="aa">
+              <label for="a2" class="right">&gt;</label>
+              <label for="a4" class="left">&lt;</label>
+            </div>
+            <div class="bb">
+              <label for="a3" class="right">&gt;</label>
+              <label for="a1" class="left">&lt;</label>
+            </div>
+            <div class="cc">
+              <label for="a4" class="right">&gt;</label>
+              <label for="a2" class="left">&lt;</label>
+            </div>
+            <div class="dd">
+              <label for="a1" class="right">&gt;</label>
+              <label for="a3" class="left">&lt;</label>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="a">
-      <div class="aa">
-        <label for="a2" class="right">⊳</label>
-        <label for="a4" class="left">⊲</label>
-      </div>
-      <div class="bb">
-        <label for="a3" class="right">⊳</label>
-        <label for="a1" class="left">⊲</label>
-      </div>
-      <div class="cc">
-        <label for="a4" class="right">⊳</label>
-        <label for="a2" class="left">⊲</label>
-      </div>
-      <div class="dd">
-        <label for="a1" class="right">⊳</label>
-        <label for="a3" class="left">⊲</label>
-      </div>
-    </div> -->
-  </div>
 </body>
 
 </html>
