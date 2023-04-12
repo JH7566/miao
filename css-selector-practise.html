@@ -8,15 +8,15 @@
     <style>
       /* 只能在这个style标签里写css，不能改变html结构 */
       body  >  :first-child{color: red;}
-   
+
       p[tabindex]:hover{color: red;}
-    
+
       p[tabindex]:focus{color: blue;}
-    
+
       p[tabindex]:active{color: green;}
-    
+
       p.c>span:first-child{color: red;}
-    
+
       span:nth-of-type(1){ color:green;}
 
       span:nth-of-type(2){color:blue;}
@@ -27,20 +27,20 @@
       a[href^="tel"]{color: yellow;}
       a[href^="aaa."]{font-size:30px;}
       .a li:nth-child(n+4):not(.a li:nth-child(n+8)){color: red;}
-    
+
       .b li:nth-child(-n+25){color: red;}
       .b li:nth-child(n+65){color: green;}
       .b li:nth-child(n+35):not(.b li:nth-child(n+51)){color:blue;}
       .prime ul li{
       color: yellowgreen;
      }
-     
+
       .prime ul li:not(:first-child):not(:nth-child(2n+4)):not(:nth-child(3n+9)):not(:nth-child(5n+25)):not(:nth-child(7n+49)){
         color:red;
       }
       .prime ul li:first-child{color: blue;}
-     
-     
+
+
 
 
 
@@ -350,6 +350,6 @@
 
 
 
-  
+
 </body>
 </html>
