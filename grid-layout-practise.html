@@ -17,32 +17,53 @@
   div{
     margin: 100px;
     display: grid;
+    gap: 5px;
     grid-template-columns: 100px repeat(2, 100px );
     grid-template-rows: 100px repeat(9, 100px );
   }
-  span{
+  div span{
     border: 1px solid;
     background-color: lightgoldenrodyellow;
     display: flex;
     justify-content: center;
     align-items: center;
+
   }
-  span:nth-child(4){
+  div span:nth-child(12n+4){
     background-color: lightcyan;
-    grid-row: 2 / span 2;
-    grid-column: 1 / span 2;
+    grid-row:span 2;
+    grid-column:span 2;
   }
 
-  span:nth-child(11){
+  div span:nth-child(12n+11){
     background-color: lightcyan;
-    grid-row: 5 / span 2;
-    grid-column: 2/ span 2;
+    grid-row: span 2;
+    grid-column: span 2;
   }
 
-  span:nth-child(16){
-    background-color: lightcyan;
-    grid-row: 8 / span 2;
-    grid-column: 1 / span 2;
+  section{
+    width: 1000px;
+    display: grid;
+    gap: 5px;
+    grid-template-columns: 1fr repeat(4, 1fr );
+    grid-template-rows:1fr repeat(3, 1fr );
+
+    span{
+      border: 1px solid;
+      display:flex;
+      img{
+        margin:auto;
+      }
+    }
+    span:nth-child(1){
+      grid-row: 1 / 5;
+    }
+    span:nth-child(n+2){
+      grid-row: span 2;
+    }
+    span:nth-child(n+9){
+      grid-row: span 1;
+    }
   }
 
 
@@ -74,7 +95,39 @@
   <span>1</span>
   <span>1</span>
 
+
 </div>
+<section>
+
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
+      alt=""></span>
+  <span><img
+      src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
+      alt=""></span>
+  <span><img src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
+</section>
 <br>
 <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
 
