@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  /* * {
+    background-color: rgba(0, 0, 0, 0.08);
+    box-shadow: inset 0 0 1px red;
+  } */
+
+  html,
+  body {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    width: 100%;
+    min-width: 1200px;
+  }
+
+  .lefttop,
+  .righttop,
+  .meun .li,
+  .seo button {
+    cursor: pointer;
+  }
+
+  /* 顶部导航栏 */
+  .all {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    white-space: nowrap;
+    min-width: 1200px;
+  }
+
+  a:link {
+    color: lightgray;
+  }
+
+  a:visited {
+    color: lightgray;
+  }
+
+  .foo {
+    background-color: steelblue;
+    padding: 10px;
+    margin: 0;
+    transition: 2s;
+  }
+
+  .foo1 {
+    display: none;
+  }
+
+  .foo:hover>.foo1 {
+    position: absolute;
+    display: block;
+    border: 2px solid lightgray;
+    background-color: white;
+    width: 300px;
+    height: 200px;
+    right: 190px;
+    z-index: 99999;
+
+  }
+
+  .top {
+    background-color: black;
+    padding: 0 200px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 50px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .top a::after {
+    content: ' |';
+    color: gray;
+  }
+
+  /* 次级导航菜单 */
+  .menu {
+    display: flex;
+    height: 100px;`
+    width: 100%;
+    align-items: center;
+    min-width: 800px;
+  }
+
+  .menu img {min-width: 50px;}
+
+  .menu ul {
+    display: flex;
+    line-height: 60px;
+    flex-grow: 1;
+    width: 60%;
+    min-width: 400px;
+    justify-content: center;
+  }
+
+  .menu li {
+    display: flex;
+    padding: 15px;
+
+  }
+
+  .seo {
+    min-width: 200px;
+  }
+
+  .pad {
+    padding: 0 200px;
+  }
+
+  .menu .a {
+    display: flex;
+    width: 50px;
+  }
+
+
+
+  /* 轮播图 */
+
+
+  .img {
+    position: absolute;
+    width: 90%;
+    height: 600px;
+    overflow: hidden;
+    left: 140px;
+    top: 0px;
+    bottom: 0;
+    min-width: 1000px;
+  }
+
+  .img input:checked+*+*+*+* {
+    right: 0;
+    z-index: 1;
+  }
+
+  .img input {
+    display: none;
+  }
+
+  .img img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: 1s;
+    right: 100%;
+  }
+
+  .img .anniu {
+    position: absolute;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+  }
+
+  .img .anniu label {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border: 3px solid;
+    border-radius: 333px;
+    text-indent: -1111px;
+    cursor: pointer;
+  }
+
+  .img .anniu label:hover {
+    background-color: lightslategrey;
+  }
+
+  .img input:nth-child(1):checked~.anniu label:nth-child(1),
+  .img input:nth-child(2):checked~.anniu label:nth-child(2),
+  .img input:nth-child(3):checked~.anniu label:nth-child(3),
+  .img input:nth-child(4):checked~.anniu label:nth-child(4) {
+    background-color: lightslategray;
+  }
+
+  .a {
+    position: relative;
+    font-size: 2em;
+    white-space: nowrap;
+    z-index: 2;
+    right: 0;
+    bottom: 0;
+    top: 250px;
+  }
+
+  .aa,.bb,.cc,.dd{
+    position: absolute;
+    height: 200px;
+  }
+
+
+  .img input:nth-child(2):checked~.a .bb>label,
+  .img input:nth-child(3):checked~.a .cc>label,
+  .img input:nth-child(4):checked~.a .dd>label,
+  .img input:nth-child(1):checked~.a .aa>label {
+    display: block;
+  }
+
+
+
+  .sort {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .sort ul {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+  }
+
+  .sort ul li {
+    display: flex;
+    line-height: 40px;
+    margin-left: -40px;
+    padding: 10px;
+  }
+
+  .sort ul ul {}
+
+  .sort li:hover>ul {
+    display: block;
+    width: 500px;
+    background-color: lightblue;
+  }
+
+  .sort ul ul {
+    position: absolute;
+    left: 10%;
+
+  }
+
+</style>
+
+<body>
+  <div class="all">
+    <main>
+      <div class="top">
+        <div class="lefttop">
+          <a href="https://www.mi.com/" target="_blank">小米官网</a>
+          <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
+          <a href="https://www.miui.com/" target="_blank">MUI</a>
+          <a href="https://iot.mi.com/" target="_blank">loT</a>
+          <a href="https://i.mi.com/" target="_blank">云服务</a>
+          <a href="https://airstar.com/home" target="_blank">天星教科</a>
+          <a href="https://youpin.mi.com/" target="_blank">有品</a>
+          <a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
+          <a href="https://qiye.mi.com/" target="_blank">企业团购</a>
+          <a href="https://www.mi.com/aptitude/list/?id=88" target="_blank">资质证照</a>
+          <a href="https://www.mi.com/aptitude/list/" target="_blank">协议规则</a>
+          <a href="https://www.mi.com/appdownload/" target="_blank">下载app</a>
+          <a href="javascript:;" target="_blank"> Select Location</a>
+        </div>
+
+        <div class="righttop">
+          <a href="javascript:void(0);">登录</a>
+          <a href="javascript:void(0);">注册</a>
+          <a href="javascript:void(0);">消息通知</a>
+          <a href="https://www.mi.com/shop/buy/cart" class="foo" target="_blank">购物车(0)
+            <div class="foo1"></div>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+
+    <div class="pad">
+      <div class="menu">
+        <img src="mi.png" width="50px" alt="">
+        <ul>
+          <li>Xiaomi手机
+
+          </li>
+          <li>Redmi手机</li>
+          <li>电视</li>
+          <li>笔记本</li>
+          <li>平板</li>
+          <li>家电</li>
+          <li>路由器</li>
+          <li>服务中心</li>
+          <li>社区</li>
+        </ul>
+        <div class="seo">
+          <form target="" action="">
+            <input typy="text" name="q">
+            <button><img src="" alt="">搜索</button>
+        </div>
+      </div>
+
+
+
+      <div class="sort">
+        <ul>
+          <li>手机
+            <ul>
+              <li class="dddd">111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+              <li>111</li>
+            </ul>
+          </li>
+
+
+          <li>电视
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>家电
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>笔记本 平板
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>出行 穿戴
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>耳机 音箱
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>健康 儿童
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>生活 箱包
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>智能 路由器
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+          <li>电源 配件
+            <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </li>
+
+
+        </ul>
+
+
+
+        <div class="img">
+          <input type="radio" name="mitu1" id="a1" checked>
+          <input type="radio" name="mitu1" id="a2">
+          <input type="radio" name="mitu1" id="a3">
+          <input type="radio" name="mitu1" id="a4">
+          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <img
+            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+            alt="">
+          <div class="anniu">
+            <label for="a1"></label>
+            <label for="a2"></label>
+            <label for="a3"></label>
+            <label for="a4"></label>
+          </div>
+          <div class="a">
+            <div class="aa">
+              <label for="a2" class="right">&gt;</label>
+              <label for="a4" class="left">&lt;</label>
+            </div>
+            <div class="bb">
+              <label for="a3" class="right">&gt;</label>
+              <label for="a1" class="left">&lt;</label>
+            </div>
+            <div class="cc">
+              <label for="a4" class="right">&gt;</label>
+              <label for="a2" class="left">&lt;</label>
+            </div>
+            <div class="dd">
+              <label for="a1" class="right">&gt;</label>
+              <label for="a3" class="left">&lt;</label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
