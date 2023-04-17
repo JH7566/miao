@@ -15,7 +15,28 @@
     margin: 0;
     padding: 0;
   }
+  @font-face {
+    font-family: "iconfont";
+    src: url("iconfont.eot"); /* IE9 */
+    src: url("iconfont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("iconfont.woff2") format("woff2"), /* chrome、firefox、opera、Safari, Android, iOS */
+    url("iconfont.woff") format("woff"), /* chrome、firefox */
+    url("iconfont.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+    url("iconfont.svg#uxfonteditor") format("svg"); /* iOS 4.1- */
+}
 
+
+.foo , button,a,.end{
+    font-family: "iconfont" !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
   html,body{
     height: 100%;
     width: 100%;
@@ -36,7 +57,7 @@
     cursor: pointer;
     min-width: 1200px;
     height: 50px;
-    font-size: 0.9em;
+    font-size: 12px;
     a{
       text-decoration: none;
     }
@@ -47,15 +68,38 @@
       line-height: 50px;
       justify-content: space-between;
       white-space: nowrap;
+      word-spacing: 4px;
+      .righttop{
+        height: 50px;
+        margin: 0;
+      }
       :not(:first-child):before{
         content: ' | ';
       }
       .foo{
+        position: relative;
+        padding: 15px;
+        margin: 0;
+        &::before{
+          content: "\e60c";
+        }
+        .foo1{
 
+          font-size: 0;
 
+        }
       &:hover{
-        background-color: black;
         color: coral;
+        .foo1{
+          font-size: 16px;
+          position: relative;
+          width: 200px;
+          height: 120px;
+          float: right;
+          z-index: 999;
+          box-shadow: 0 0 3px black;
+          background-color: rgb(255, 255, 255);
+        }
       }
 
     }
@@ -88,22 +132,22 @@
           line-height: 40px;
           width: 200px;
           margin-left: 45px;
-          border: 1px solid ;
+          border: 1px solid rgba(0, 0, 0, 0.3);
         }
         button{
           line-height: 40px;
           float: right;
           width: 40px;
+          border: 1px solid rgba(0, 0, 0, 0.3);
+          &::before{
+            content: '\e616';
+          }
         }
       }
 
       ul{
-
-
         z-index: 10;
         float: left;
-        width: 1100px;
-        xheight: 100px;
         margin: 0;
         padding: 12px 0 0 180px;
         padding-top: 30px;
@@ -114,32 +158,50 @@
           color: red;
         }
         .h1:hover > .p1{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
 
         }
         .h2:hover > .p2{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h3:hover > .p3{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h4:hover > .p4{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h5:hover > .p5{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h6:hover > .p6{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h7:hover > .p7{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h8:hover > .p8{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h9:hover > .p9{
-          display: block;
+          display: flex;
+          right: 0;
+          justify-content: center;
         }
         .h1:hover > ul,
         .h2:hover > ul,
@@ -150,10 +212,11 @@
         .h7:hover > ul,
         .h8:hover > ul,
         .h9:hover > ul{
-          display: block;
           height: 200px;
-          transition: 0.5s;
-          box-shadow: 0 0px 2px gray;
+          transition: .5s;
+          border-top: 1px solid rgba(22, 22, 21, 0.2);
+          box-shadow: 0 1px 3px rgb(196, 191, 191);
+
         }
 
         li{
@@ -163,17 +226,16 @@
           float: left;
           ul{
             position: absolute;
-            width:99vw;
             height: 0px;
-            left: 0;
             overflow: hidden;
             padding: 0;
             z-index: 888;
             margin-top: 10px;
-            padding: 0 200px;
-            xdisplay: none;
             background-color: white;
-            transition: 1s;
+            transition: 0.5s;
+            display: flex;
+            right: 0;
+            justify-content: center;
              li{
                position: relative;
                padding-right: 30px;
@@ -190,6 +252,7 @@
               width: 160px;
               height: 110px;
               }
+
             }
           }
         }
@@ -316,6 +379,10 @@
           line-height: 51px;
           width: 204px;
           padding-inline-start: 30px;
+          &::after{
+            content: '>';
+            float: right;
+          }
           &:hover{
             background-color: lightsalmon;
           }
@@ -361,18 +428,79 @@
     grid-template-columns: repeat(3, 78px);
     grid-template-rows:85px 85px;
     background-color: gray;
-    align-items:center;
 
-   span{
+   a:nth-child(1)::before{
+    content: '\e606';
+    col font-size: 3em;
+    display: block;
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+  a:nth-child(2)::before{
+    content: '\e60a';
+    col font-size: 3em;
+    display: block;
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+  a:nth-child(4)::before{
+    content: '\e906';
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+  a:nth-child(3)::before{
+    content: '\e63f';
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+
+  }
+  a:nth-child(5)::before{
+    content: '\e62a';
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+  a:nth-child(6)::before{
+    content: '\e900';
+    color: white;
+    font-size: 3em;
+    display: block;
+    text-align: center;
+    margin: 10px;
+  }
+   a{
+    color: white;
     width: 78px;
     height: 85px;
-    border-right: 1px solid lightgrey;
+    border-right: 1px solid rgb(211, 206, 202);
     border-spacing: 0;
-    line-height: 85px;
+    xline-height: 85px;
+    font-size: 10px;
+    display: block;
     text-align: center;
+    text-decoration: none;
+
+    img{
+      width: 30px;
+      height: 30px;
+    }
    }
-   span:nth-child(n+4){
-      border-top: 1px solid lightgrey;
+   a:nth-child(n+4){
+      border-top: 1px solid rgb(228, 223, 219);
     }
 }
   img{
@@ -412,11 +540,14 @@ section{
       background-color: white;
       display:flex;
       line-height: auto;
+      transition: 0.5s;
       img{
         margin:auto;
       }
       &:hover{
+        transform: translate(0, -5px);
           box-shadow:  1px 5px 30px lightgrey;
+          transition: 0.5s;
         }
     }
     span:nth-child(1){
@@ -461,7 +592,7 @@ section{
         <a href="javascript:void(0);">注册</a>
         <a href="javascript:void(0);">消息通知</a>
         <a href="https://www.mi.com/shop/buy/cart" class="foo" target="_blank">购物车(0)
-          <div class="foo1"></div>
+          <div class="foo1">aaa</div>
         </a>
       </div>
     </div>
@@ -469,9 +600,6 @@ section{
   <div class="all">
 
     <div class="all1">
-
-
-
       <div class="pad">
         <div class="menu">
           <a href="https://www.mi.com/" target="_blank">
@@ -736,8 +864,8 @@ section{
           </div>
           <div class="seo">
             <form target="" action="">
-              <button><img src="" alt="">搜索</button>
-              <input typy="text" name="q">
+              <button><img src="" alt=""></button>
+              <input type="" class="iconfont iconfont-search2" value="手机">
 
           </div>
         </div>
@@ -1063,12 +1191,13 @@ section{
 
         <div class="home">
           <div class="head1">
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
-            <span>1</span>
+            <a href="">保障服务
+            </a>
+            <a href="">企业团购</a>
+            <a href="">F码通道</a>
+            <a href="">米粉卡</a>
+            <a href="">以旧换新</a>
+            <a href="">话费充值</a>
           </div>
 
           <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cf5e958bc88727b50c5c5fba7a8f47a.jpg?w=632&h=340"
@@ -1087,7 +1216,9 @@ section{
             src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8034ed2ad4b10f7f117ac2529b06cfca.jpg?thumb=1&w=1839&h=180&f=webp&q=90"
             alt="">
         </div>
+
         <p>手机</p>
+
         <section>
 
           <span><img
@@ -1122,7 +1253,6 @@ section{
       </section>
       <p>智能穿戴</p>
       <section>
-
         <span><img
             src="
               https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
@@ -1192,6 +1322,115 @@ section{
     </div>
     </div>
   </div>
+
+<div class=" end">
+            <span>预约维修服务  |</span>
+            <span>7天无理由退货 |</span>
+            <span>15天免费换货 |</span>
+            <span>满69元包邮 |</span>
+            <span>1100余家售后网点 </span>
+      </div>
+      <div class="end1">
+        <ul>
+          <p>选购指南</p>
+          <li><a href="">手机</a></li>
+          <li><a href="">电视</a></li>
+          <li><a href="">笔记本</a></li>
+          <li><a href="">平板</a></li>
+          <li><a href="">穿戴</a></li>
+          <li><a href="">耳机</a></li>
+          <li><a href="">家电</a></li>
+          <li><a href="">路由器</a></li>
+          <li><a href="">音箱</a></li>
+          <li><a href="">配件</a></li>
+        </ul>
+        <ul>
+          <p>服务中心</p>
+          <li><a href=""></a></li>
+          <li><a href="">申请售后</a></li>
+          <li><a href="">售后政策</a></li>
+          <li><a href="">维修服务价格</a></li>
+          <li><a href="">订单查询</a></li>
+          <li><a href="">以旧换新</a></li>
+          <li><a href="">保障服务</a></li>
+          <li><a href="">防伪查询</a></li>
+          <li><a href="">F码通道</a></li>
+        </ul>
+        <ul>
+          <p>线下门店</p>
+          <li><a href="">线下门店</a></li>
+          <li><a href="">小米之家</a></li>
+          <li><a href="">服务网点</a></li>
+          <li><a href="">授权体验店/专区</a></li>
+        </ul>
+        <ul>
+          <p>关于小米</p>
+          <li><a href="">了解小米</a></li>
+          <li><a href="">加入小米</a></li>
+          <li><a href="">投资者关系</a></li>
+          <li><a href="">环境，社会及管治</a></li>
+          <li><a href="">廉洁举报</a></li>
+        </ul>
+        <ul>
+          <p>关注我们</p>
+          <li><a href="">新浪微博</a></li>
+          <li><a href="">官方微信</a></li>
+          <li><a href="">联系我们</a></li>
+          <li><a href="">公益基金会</a></li>
+        </ul>
+        <a href="" class="call"></a>
+      </div>
+      <div class="end2">
+        <p>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+        <p>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+        <p>
+          <a href=""></a>
+          京ICP证110507号
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+        <p>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+          <a href=""></a>
+        </p>
+        <p>
+          <a href=""></a>
+          网络食品经营备案
+          京食药网食备202010048
+          <a href=""></a>
+        </p>
+        <p>违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+
+        <a href=""><img src="https://i1.mifile.cn/f/i/17/site/truste.png" alt=""></a>
+        <a href=""><img src="https://s01.mifile.cn/i/v-logo-2.png" alt=""></a>
+        <a href=""><img src="https://xyt.xinchacha.com/img/icon/icon3.png" alt=""></a>
+        <a href=""><img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png" alt=""></a>
+        <a href=""><img src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/5ddbb6aa0c233fad4eb9dcf33d1f977b.png" alt=""></a>
+      </div>
 </body>
 <script src=" https://cdn.jsdelivr.net/npm/less@4"></script>
 
