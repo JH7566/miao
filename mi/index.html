@@ -14,6 +14,7 @@
     xbox-shadow: inset 0 0 1px red;
     margin: 0;
     padding: 0;
+
   }
   @font-face {
     font-family: "iconfont";
@@ -47,6 +48,9 @@
       align-items: center;
 
   }
+    .all{
+      background-color: rgba(243, 240, 240, 0.8);
+    }
   }
   a:link,a:visited{
     color: gray;
@@ -521,6 +525,7 @@
   }
 }
 .one{
+  min-width: 1200px;
   padding-top: 50px;
   background-color: rgba(243, 240, 240, 0.8);
   p{
@@ -565,871 +570,1139 @@ section{
       grid-row: span 1;
     }
   }
+  .cor {
+    background-color: rgba(243, 240, 240, 0.8);
+  }
+  .two{
+    display: block;
+    width: 1200px;
+    margin: auto;
+    padding: 30px;
+  }
+  .endall{
+    a{
+      text-decoration: none;
+    }
+  .end{
+    display: block;
+    width: 1200px;
+    height: 100px;
+    margin: auto;
+    text-align: center;
+    line-height: 100px;
+    word-spacing: 40px;
+    padding: 30px 0 10px 0;
+    border-bottom: 1px solid;
+    a{
+
+      &:before{
+        vertical-align: middle;
+        padding-right: 5px;
+      }
+
+      &:nth-child(1):before{
+        content: ' \e634';
+        font-size: 1.5em;
+      }
+      &:nth-child(2):before{
+        content: ' \e635';
+        font-size: 1.5em;
+      }
+      &:nth-child(3):before{
+        content: ' \e636';
+        font-size: 1.5em;
+      }
+      &:nth-child(4):before{
+        content: '\e638';
+        font-size: 1.5em;
+      }
+      &:nth-child(5):before{
+        content: ' \e637';
+        font-size: 1.5em;
+      }
+    }
+    a:link{
+    color: gray;
+  }
+    a:visited{
+    color: gray;
+  }
+  a{
+    font-size: 18px;
+  }
+   a:nth-child(-n+4){
+
+    &::after{
+      content: ' | ';
+      color: lightgrey;
+    }
+    &:hover{
+      color: lightsalmon;
+    }
+   }
+  }
+  .end1{
+    display: flex;
+    width: 1200px;
+    margin: auto;
+    padding: 30px 0 30px 0;
+    a:hover{
+      color: lightsalmon;
+    }
+    p{
+      padding: 20px 0 20px 0;
+    }
+    ul{
+
+    li{
+      list-style: none;
+      width: 160px;
+      line-height: 30px;
+      font-size: 12px;
+    }
+   }
+   ul:nth-child(6){
+    margin-right: 0px;
+   }
+  }
+  .phone{
+    height: 80px;
+    border-left: 1px solid #e0e0e0;
+    text-align: center;
+    padding-left: 50px;
+    li:nth-child(1){
+      font-size: 20px;
+      color: #ff6700;
+    }
+    li{
+      height: 30px;
+    }
+    li:last-child{
+      border: 1px solid #ff6700;
+      &:hover{
+        background-color: #ff6700;
+        a{
+          color: white;
+        }
+      }
+     a{
+      color: #ff6700;
+     }
+    }
+  }
+  .finis{
+    background-color: rgba(243, 240, 240, 0.8);
+    font-size: 12px;
+    padding: 50px 0 50px 0;
+  .end2{
+    display: block;
+    width: 1200px;
+    margin: auto;
+    a{
+      &:hover{
+        color: #ff6700;
+      }
+      img{
+       width: 83px;
+       height: 23px;
+      }
+    }
+   }
+  }
+}
+  .miend{
+    background-color: rgba(243, 240, 240, 0.8);
+    .aaa{
+      display: block;
+      width: 1200px;
+      margin: auto;
+      text-align: center;
+      padding: 50px;
+      color: gray;
+    }
+
+
+  }
+  .side{
+    position: absolute;
+    right: 0;
+    li{
+      list-style: none;
+    }
+  }
+
+.side{
+  position: fixed;
+  bottom: 70px;
+  right: 0;
+  z-index: 9;
+  a{
+    position: relative;
+    display: block;
+    width: 82px;
+    height: 90px;
+    margin-top: -1px;
+    background-color: #fff;
+    border: 1px solid #f5f5f5;
+    text-align: center;
+    text-decoration: none;
+    &:hover{
+      color: #ff6700;
+    }
+}
+  a:nth-child(1)::before{
+    content: ' \e902';
+    font-size: 3em;
+    display: block;
+  }
+  a:nth-child(2)::before{
+    content: ' \e60e';
+    font-size: 2.5em;
+    display: block;
+  }
+  a:nth-child(3)::before{
+    content: ' \e634';
+    font-size: 2.5em;
+    display: block;
+  }
+  a:nth-child(4)::before{
+    content: ' \e608';
+    font-size: 2.5em;
+    display: block;
+  }
+  a:nth-child(5)::before{
+    content: ' \e60c';
+    font-size: 2.5em;
+    display: block;
+  }
+  a:nth-child(6){
+    height: 10px;
+    background-color: rgba(243, 240, 240, 0.8);
+
+  }
+
+  a:nth-child(7)::before{
+    content: ' \e612';
+    font-size: 2.5em;
+    display: block;
+  }
+  a:nth-child(7):active{
+
+  }
+}
+
 
 </style>
 
+
 <body>
-  <main>
-    <div class="top">
-      <div class="lefttop">
-        <a href="https://www.mi.com/" target="_blank">小米官网</a>
-        <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
-        <a href="https://www.miui.com/" target="_blank">MUI</a>
-        <a href="https://iot.mi.com/" target="_blank">loT</a>
-        <a href="https://i.mi.com/" target="_blank">云服务</a>
-        <a href="https://airstar.com/home" target="_blank">天星教科</a>
-        <a href="https://youpin.mi.com/" target="_blank">有品</a>
-        <a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
-        <a href="https://qiye.mi.com/" target="_blank">企业团购</a>
-        <a href="https://www.mi.com/aptitude/list/?id=88" target="_blank">资质证照</a>
-        <a href="https://www.mi.com/aptitude/list/" target="_blank">协议规则</a>
-        <a href="https://www.mi.com/appdownload/" target="_blank">下载app</a>
-        <a href="javascript:;" target="_blank"> Select Location</a>
-      </div>
+  <div class="eva">
+    <main>
+      <div class="top" id="go">
+        <div class="lefttop">
+          <a href="https://www.mi.com/" target="_blank">小米官网</a>
+          <a href="https://www.mi.com/shop" target="_blank">小米商城</a>
+          <a href="https://www.miui.com/" target="_blank">MUI</a>
+          <a href="https://iot.mi.com/" target="_blank">loT</a>
+          <a href="https://i.mi.com/" target="_blank">云服务</a>
+          <a href="https://airstar.com/home" target="_blank">天星教科</a>
+          <a href="https://youpin.mi.com/" target="_blank">有品</a>
+          <a href="https://xiaoai.mi.com/" target="_blank">小爱开放平台</a>
+          <a href="https://qiye.mi.com/" target="_blank">企业团购</a>
+          <a href="https://www.mi.com/aptitude/list/?id=88" target="_blank">资质证照</a>
+          <a href="https://www.mi.com/aptitude/list/" target="_blank">协议规则</a>
+          <a href="https://www.mi.com/appdownload/" target="_blank">下载app</a>
+          <a href="javascript:;" target="_blank"> Select Location</a>
+        </div>
 
-      <div class="righttop">
-        <a href="javascript:void(0);">登录</a>
-        <a href="javascript:void(0);">注册</a>
-        <a href="javascript:void(0);">消息通知</a>
-        <a href="https://www.mi.com/shop/buy/cart" class="foo" target="_blank">购物车(0)
-          <div class="foo1">aaa</div>
-        </a>
-      </div>
-    </div>
-  </main>
-  <div class="all">
-
-    <div class="all1">
-      <div class="pad">
-        <div class="menu">
-          <a href="https://www.mi.com/" target="_blank">
-            <img src="mi.png" width="50px" alt="">
-
+        <div class="righttop">
+          <a href="javascript:void(0);">登录</a>
+          <a href="javascript:void(0);">注册</a>
+          <a href="javascript:void(0);">消息通知</a>
+          <a href="https://www.mi.com/shop/buy/cart" class="foo" target="_blank">购物车(0)
+            <div class="foo1">aaa</div>
           </a>
-          <div class="header">
-            <ul>
-              <li class="h1">Xiaomi手机
-                <ul class="p1">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h2">Redmi手机
-                <ul class="p2">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h3">电视
-                <ul class="p3">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h4">笔记本
-                <ul class="p4">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h5">平板
-                <ul class="p5">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h6">家电
-                <ul class="p6">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h7">路由器
-                <ul class="p7">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h8">服务中心
-                <ul class="p8">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-              <li class="h9">社区
-                <ul class="p9">
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                  <li><img
-                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
-                      alt="">Xiaomi 13 <div class="price">3999元起</div>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="seo">
-            <form target="" action="">
-              <button><img src="" alt=""></button>
-              <input type="" class="iconfont iconfont-search2" value="手机">
-
-          </div>
         </div>
-
-        <div class="sort">
-          <div class="tal">
-            <ul>
-
-              <li>手机
-
-                <ul>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                  <li>111</li>
-                </ul>
-              </li>
-
-
-
-              <li>电视
-
-                <ul>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                  <li>222</li>
-                </ul>
-
-              </li>
-
-
-              <li>家电
-                <ul>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                  <li>333</li>
-                </ul>
-              </li>
-
-
-
-              <li>笔记本 平板
-                <ul>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                  <li>444</li>
-                </ul>
-              </li>
-
-
-              <li>出行 穿戴
-
-
-                <ul>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                  <li>555</li>
-                </ul>
-
-              </li>
-
-
-
-              <li>耳机 音箱
-
-                <ul>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                  <li>666</li>
-                </ul>
-
-              </li>
-
-
-
-              <li>健康 儿童
-
-                <ul>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                  <li>777</li>
-                </ul>
-
-              </li>
-
-
-              <li>生活 箱包
-
-                <ul>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                  <li>888</li>
-                </ul>
-
-              </li>
-
-              <li>电源 配件
-
-                <ul>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                  <li>999</li>
-                </ul>
-
-              </li>
-            </ul>
-          </div>
-          <div class="img">
-            <input type="radio" name="mitu1" id="a1" checked>
-            <input type="radio" name="mitu1" id="a2">
-            <input type="radio" name="mitu1" id="a3">
-            <input type="radio" name="mitu1" id="a4">
-            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920"
-              width="100%" height="100%" alt="">
-            <img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-              width="100%" height="100%" alt="">
-            <img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-              width="100%" height="100%" alt="">
-            <img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
-              width="100%" height="100%" alt="">
-            <div class="anniu">
-              <label for="a1"></label>
-              <label for="a2"></label>
-              <label for="a3"></label>
-              <label for="a4"></label>
-            </div>
-            <div class="a">
-              <div class="aa">
-                <label for="a2" class="right">&gt;</label>
-                <label for="a4" class="left">&lt;</label>
-              </div>
-              <div class="bb">
-                <label for="a3" class="right">&gt;</label>
-                <label for="a1" class="left">&lt;</label>
-              </div>
-              <div class="cc">
-                <label for="a4" class="right">&gt;</label>
-                <label for="a2" class="left">&lt;</label>
-              </div>
-              <div class="dd">
-                <label for="a1" class="right">&gt;</label>
-                <label for="a3" class="left">&lt;</label>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="home">
-          <div class="head1">
-            <a href="">保障服务
-            </a>
-            <a href="">企业团购</a>
-            <a href="">F码通道</a>
-            <a href="">米粉卡</a>
-            <a href="">以旧换新</a>
-            <a href="">话费充值</a>
-          </div>
-
-          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cf5e958bc88727b50c5c5fba7a8f47a.jpg?w=632&h=340"
-            alt="">
-          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6dd2f3e0de4e6cbba98fd3799cfa5bf7.jpg?w=632&h=340"
-            alt="">
-          <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7d4be1a9e701e16de498f89b1865867.jpg?w=632&h=340"
-            alt="">
-        </div>
-
       </div>
+    </main>
+    <div class="all">
 
-      <div class="one">
-        <div class="img1">
-          <img
-            src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8034ed2ad4b10f7f117ac2529b06cfca.jpg?thumb=1&w=1839&h=180&f=webp&q=90"
-            alt="">
+      <div class="all1">
+        <div class="pad">
+          <div class="menu">
+            <a href="https://www.mi.com/" target="_blank">
+              <img src="mi.png" width="50px" alt="">
+
+            </a>
+            <div class="header">
+              <ul>
+                <li class="h1">Xiaomi手机
+                  <ul class="p1">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h2">Redmi手机
+                  <ul class="p2">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h3">电视
+                  <ul class="p3">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h4">笔记本
+                  <ul class="p4">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h5">平板
+                  <ul class="p5">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h6">家电
+                  <ul class="p6">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h7">路由器
+                  <ul class="p7">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h8">服务中心
+                  <ul class="p8">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+                <li class="h9">社区
+                  <ul class="p9">
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        width="100px" alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                    <li><img
+                        src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c758eb7e0dce4307c62c47155519bc80.png?thumb=1&w=240&h=165&f=webp&q=90"
+                        alt="">Xiaomi 13 <div class="price">3999元起</div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <div class="seo">
+              <form target="" action="">
+                <button><img src="" alt=""></button>
+                <input type="" class="iconfont iconfont-search2" value="手机">
+
+            </div>
+          </div>
+
+          <div class="sort">
+            <div class="tal">
+              <ul>
+
+                <li>手机
+
+                  <ul>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                    <li>111</li>
+                  </ul>
+                </li>
+
+
+
+                <li>电视
+
+                  <ul>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                    <li>222</li>
+                  </ul>
+
+                </li>
+
+
+                <li>家电
+                  <ul>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                    <li>333</li>
+                  </ul>
+                </li>
+
+
+
+                <li>笔记本 平板
+                  <ul>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                    <li>444</li>
+                  </ul>
+                </li>
+
+
+                <li>出行 穿戴
+
+
+                  <ul>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                    <li>555</li>
+                  </ul>
+
+                </li>
+
+
+
+                <li>耳机 音箱
+
+                  <ul>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                    <li>666</li>
+                  </ul>
+
+                </li>
+
+
+
+                <li>健康 儿童
+
+                  <ul>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                    <li>777</li>
+                  </ul>
+
+                </li>
+
+
+                <li>生活 箱包
+
+                  <ul>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                    <li>888</li>
+                  </ul>
+
+                </li>
+
+                <li>电源 配件
+
+                  <ul>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                    <li>999</li>
+                  </ul>
+
+                </li>
+              </ul>
+            </div>
+            <div class="img">
+              <input type="radio" name="mitu1" id="a1" checked>
+              <input type="radio" name="mitu1" id="a2">
+              <input type="radio" name="mitu1" id="a3">
+              <input type="radio" name="mitu1" id="a4">
+              <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0d03df40a5e8ef760731a8f4f3f61172.jpg?w=2452&h=920"
+                width="100%" height="100%" alt="">
+              <img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6494adc68900269b551de5ba96bd10a9.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+                width="100%" height="100%" alt="">
+              <img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7c21d01bbe93eafc7d07d3796a3c59c.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+                width="100%" height="100%" alt="">
+              <img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/08a9d7eec7b055bac247b5068f817b1d.jpg?thumb=1&w=1839&h=690&f=webp&q=90"
+                width="100%" height="100%" alt="">
+              <div class="anniu">
+                <label for="a1"></label>
+                <label for="a2"></label>
+                <label for="a3"></label>
+                <label for="a4"></label>
+              </div>
+              <div class="a">
+                <div class="aa">
+                  <label for="a2" class="right">&gt;</label>
+                  <label for="a4" class="left">&lt;</label>
+                </div>
+                <div class="bb">
+                  <label for="a3" class="right">&gt;</label>
+                  <label for="a1" class="left">&lt;</label>
+                </div>
+                <div class="cc">
+                  <label for="a4" class="right">&gt;</label>
+                  <label for="a2" class="left">&lt;</label>
+                </div>
+                <div class="dd">
+                  <label for="a1" class="right">&gt;</label>
+                  <label for="a3" class="left">&lt;</label>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="home">
+            <div class="head1">
+              <a href="">保障服务
+              </a>
+              <a href="">企业团购</a>
+              <a href="">F码通道</a>
+              <a href="">米粉卡</a>
+              <a href="">以旧换新</a>
+              <a href="">话费充值</a>
+            </div>
+
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cf5e958bc88727b50c5c5fba7a8f47a.jpg?w=632&h=340"
+              alt="">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/6dd2f3e0de4e6cbba98fd3799cfa5bf7.jpg?w=632&h=340"
+              alt="">
+            <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/d7d4be1a9e701e16de498f89b1865867.jpg?w=632&h=340"
+              alt="">
+          </div>
+
         </div>
 
-        <p>手机</p>
-
-        <section>
-
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
+        <div class="one">
+          <div class="img1">
+            <img
+              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/8034ed2ad4b10f7f117ac2529b06cfca.jpg?thumb=1&w=1839&h=180&f=webp&q=90"
+              alt="">
+          </div>
+          <p>手机</p>
+          <section>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
       </section>
       <p>智能穿戴</p>
       <section>
         <span><img
             src="
-              https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
+                https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
       </section>
       <p>笔记本 | 平板</p>
       <section>
 
         <span><img
             src="
-              https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
-              alt=""></span>
-          <span><img
-              src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
+                https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/c9550c95ee33a22dc8db677dada00f09.jpg?thumb=1&w=234&h=614&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202208111200_c1016839eae2c1f5bb79d5afde498e81.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202204211422_ce41ed00fe7fb79df35101222880121d.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202205241527_fb27e27e6587254da27de5ba9c889512.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202111052007_e8e92e67988ebaff6e075412a54c3c66.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202210191430_3ad0e4809ce06a126dea9755adbb2a1b.png?thumb=1&w=200&h=200&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"
+                alt=""></span>
+            <span><img
+                src="https://cdn.cnbj1.fds.api.mi-img.com/nr-pub/202209261427_67cd5fddb341f0e0fb0a2295e643b0d8.png?thumb=1&w=100&h=100&f=webp&q=90"" alt=""></span>
       </section>
-
     </div>
     </div>
-  </div>
 
-<div class=" end">
-            <span>预约维修服务  |</span>
-            <span>7天无理由退货 |</span>
-            <span>15天免费换货 |</span>
-            <span>满69元包邮 |</span>
-            <span>1100余家售后网点 </span>
-      </div>
-      <div class="end1">
-        <ul>
-          <p>选购指南</p>
-          <li><a href="">手机</a></li>
-          <li><a href="">电视</a></li>
-          <li><a href="">笔记本</a></li>
-          <li><a href="">平板</a></li>
-          <li><a href="">穿戴</a></li>
-          <li><a href="">耳机</a></li>
-          <li><a href="">家电</a></li>
-          <li><a href="">路由器</a></li>
-          <li><a href="">音箱</a></li>
-          <li><a href="">配件</a></li>
-        </ul>
-        <ul>
-          <p>服务中心</p>
-          <li><a href=""></a></li>
-          <li><a href="">申请售后</a></li>
-          <li><a href="">售后政策</a></li>
-          <li><a href="">维修服务价格</a></li>
-          <li><a href="">订单查询</a></li>
-          <li><a href="">以旧换新</a></li>
-          <li><a href="">保障服务</a></li>
-          <li><a href="">防伪查询</a></li>
-          <li><a href="">F码通道</a></li>
-        </ul>
-        <ul>
-          <p>线下门店</p>
-          <li><a href="">线下门店</a></li>
-          <li><a href="">小米之家</a></li>
-          <li><a href="">服务网点</a></li>
-          <li><a href="">授权体验店/专区</a></li>
-        </ul>
-        <ul>
-          <p>关于小米</p>
-          <li><a href="">了解小米</a></li>
-          <li><a href="">加入小米</a></li>
-          <li><a href="">投资者关系</a></li>
-          <li><a href="">环境，社会及管治</a></li>
-          <li><a href="">廉洁举报</a></li>
-        </ul>
-        <ul>
-          <p>关注我们</p>
-          <li><a href="">新浪微博</a></li>
-          <li><a href="">官方微信</a></li>
-          <li><a href="">联系我们</a></li>
-          <li><a href="">公益基金会</a></li>
-        </ul>
-        <a href="" class="call"></a>
-      </div>
-      <div class="end2">
-        <p>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-        </p>
-        <p>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-        </p>
-        <p>
-          <a href=""></a>
-          京ICP证110507号
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-        </p>
-        <p>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-          <a href=""></a>
-        </p>
-        <p>
-          <a href=""></a>
-          网络食品经营备案
-          京食药网食备202010048
-          <a href=""></a>
-        </p>
-        <p>违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+    </div>
 
-        <a href=""><img src="https://i1.mifile.cn/f/i/17/site/truste.png" alt=""></a>
-        <a href=""><img src="https://s01.mifile.cn/i/v-logo-2.png" alt=""></a>
-        <a href=""><img src="https://xyt.xinchacha.com/img/icon/icon3.png" alt=""></a>
-        <a href=""><img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png" alt=""></a>
-        <a href=""><img src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/5ddbb6aa0c233fad4eb9dcf33d1f977b.png" alt=""></a>
+      <div class=" endall">
+              <div class="cor">
+                <div class=" two"><a href="">
+                    <img
+                      src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/88e35cffc82cd98cd53172460067af17.jpg?thumb=1&w=1839&h=180&f=webp&q=90"
+                      width="1200" alt=""></a>
+                </div>
+              </div>
+
+              <div class=" end">
+                <a href="">预约维修服务</a>
+                <a href="">7天无理由退货</a>
+                <a href="">15天免费换货</a>
+                <a href="">满69元包邮</a>
+                <a href="">1100余家售后网点</a>
+              </div>
+              <div class="end1">
+                <ul>
+                  <li></li>
+                </ul>
+                <ul>
+                  <p>选购指南</p>
+                  <li><a href="">手机</a></li>
+                  <li><a href="">电视</a></li>
+                  <li><a href="">笔记本</a></li>
+                  <li><a href="">平板</a></li>
+                  <li><a href="">穿戴</a></li>
+                  <li><a href="">耳机</a></li>
+                  <li><a href="">家电</a></li>
+                  <li><a href="">路由器</a></li>
+                  <li><a href="">音箱</a></li>
+                  <li><a href="">配件</a></li>
+                </ul>
+                <ul>
+                  <p>服务中心</p>
+                  <li><a href=""></a></li>
+                  <li><a href="">申请售后</a></li>
+                  <li><a href="">售后政策</a></li>
+                  <li><a href="">维修服务价格</a></li>
+                  <li><a href="">订单查询</a></li>
+                  <li><a href="">以旧换新</a></li>
+                  <li><a href="">保障服务</a></li>
+                  <li><a href="">防伪查询</a></li>
+                  <li><a href="">F码通道</a></li>
+                </ul>
+                <ul>
+                  <p>线下门店</p>
+                  <li><a href="">线下门店</a></li>
+                  <li><a href="">小米之家</a></li>
+                  <li><a href="">服务网点</a></li>
+                  <li><a href="">授权体验店/专区</a></li>
+                </ul>
+                <ul>
+                  <p>关于小米</p>
+                  <li><a href="">了解小米</a></li>
+                  <li><a href="">加入小米</a></li>
+                  <li><a href="">投资者关系</a></li>
+                  <li><a href="">环境，社会及管治</a></li>
+                  <li><a href="">廉洁举报</a></li>
+                </ul>
+                <ul>
+                  <p>关注我们</p>
+                  <li><a href="">新浪微博</a></li>
+                  <li><a href="">官方微信</a></li>
+                  <li><a href="">联系我们</a></li>
+                  <li><a href="">公益基金会</a></li>
+                </ul>
+                <ul class="phone">
+                  <li>400-100-5678</li>
+                  <li>8:00-18:00（仅收市话费）</li>
+                  <li>
+                    <a href="" class="call"> 人工客服</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="finis">
+                <div class="end2">
+                  <p>
+                    <a href=""> 小米商城 |</a>
+                    <a href="">MIUI |</a>
+                    <a href="">米家 |</a>
+                    <a href="">米聊 |</a>
+                    <a href="">多看 |</a>
+                    <a href="">游戏 |</a>
+                    <a href="">音乐 |</a>
+                    <a href="">政企服务 |</a>
+                    <a href="">小米天猫店 |</a>
+                    <a href="">小米集团隐私政策 |</a>
+                    <a href="">小米公司儿童信息保护规则 |</a>
+                    <a href="">小米商城隐私政策 |</a>
+                    <a href="">小米商城用户协议 |</a>
+                    <a href="">问题反馈 |</a>
+                    <a href="">Select Location</a>
+                  </p>
+
+                  <p>
+                    <a href="">北京互联网法院法律服务工作站 |</a>
+                    <a href="">中国消费者协会 |</a>
+                    <a href="">北京市消费者协会</a>
+                  </p>
+
+
+
+
+                  <p>
+                    <a href="">© mi.com</a>
+                    京ICP证110507号
+                    <a href="">京ICP备10046444号</a>
+                    <a href="">京公网安备11010802020134号</a>
+                    <a href="">京网文[2023]0169-004号</a>
+                  </p>
+
+                  <p>
+                    <a href="">（京）网械平台备字（2018）第00005号</a>
+                    <a href="">互联网药品信息服务资格证(京)-非经营性-2014-0090</a>
+                    <a href="">营业执照</a>
+                    <a href="">医疗器械质量公告</a>
+                  </p>
+                  <p>
+
+
+                    <a href=""> 增值电信业务许可证</a>
+                    网络食品经营备案
+                    京食药网食备202010048
+                    <a href="">食品经营许可证</a>
+                  </p>
+                  <p>违法和不良信息举报电话：171-5104-4404 知识产权侵权投诉 本网站所列数据，除特殊说明，所有数据均出自我司实验室测试</p>
+
+                  <a href=""><img src="https://i1.mifile.cn/f/i/17/site/truste.png" alt=""></a>
+                  <a href=""><img src="https://s01.mifile.cn/i/v-logo-2.png" alt=""></a>
+                  <a href=""><img src="https://xyt.xinchacha.com/img/icon/icon3.png" alt=""></a>
+                  <a href=""><img src="https://i8.mifile.cn/b2c-mimall-media/ba10428a4f9495ac310fd0b5e0cf8370.png"
+                      alt=""></a>
+                  <a href=""><img
+                      src="https://cnbj1.fds.api.xiaomi.com/b2c-misite-activity/5ddbb6aa0c233fad4eb9dcf33d1f977b.png"
+                      alt=""></a>
+                </div>
+              </div>
+        </div>
+        <div class="miend">
+          <div class="aaa">
+            让全球每个人都能享受科技带来的美好生活
+          </div>
+        </div>
+        <div class="side">
+
+            <a href="">手机APP</a>
+            <a href="">个人中心</a>
+            <a href="">售后服务</a>
+            <a href="">人工客服</a>
+            <a href="">购物车</a>
+            <a href="#oo" id="oo"></a>
+            <a href="#go">回顶部</a>
+        </div>
+
       </div>
 </body>
 <script src=" https://cdn.jsdelivr.net/npm/less@4"></script>
