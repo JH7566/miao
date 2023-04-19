@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style type="text/less">
+
+  html,body{
+  width: 100%;
+}
+
+
+  .cube{
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border: 1px solid;
+    margin: auto;
+    transform-style: preserve-3d;
+    margin-top: 200px;
+    transition: 3s;
+    transform: rotatey(30deg) rotatex(30deg);
+    div{
+
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      line-height: 300px;
+      text-align: center;
+      top: 0;
+      left: 0;
+      transform-style: preserve-3d;
+      border: 1px solid rgba(0,0,0,0.5);
+      opacity: 0.5;
+
+    }
+    .top{
+      transform-origin: top;
+      background-color: aliceblue;
+      transform: rotatex(90deg);
+
+    }
+    .bottom{
+      transform-origin: bottom;
+      background-color: rgb(218, 184, 187);
+      transform: rotatex(90deg) translatey(300px);
+
+    }
+    .left{
+      transform-origin: left;
+      background-color: rgb(228, 227, 179);
+      transform: rotatey(-90deg);
+    }
+    .right{
+      transform-origin: right;
+      background-color: rgb(153, 198, 201);
+      transform: rotatey(90deg);
+    }
+    .ahead{
+      background-color: rgb(122, 147, 156);
+      transform: rotate(0deg) translatez(300px);
+    }
+    .behind{
+      background-color: lightgreen;
+      transform: rotato(0);
+    }
+
+    &:hover{
+      color: red;
+      transform: rotatex(1800deg) rotatey(1000deg) rotatez(880deg);
+      transition: 3s;
+    }
+  }
+
+
+
+
+
+
+
+
+
+  </style>
+
+<body>
+  <div class="cube">
+    <div class="top">1</div>
+    <div class="bottom">2</div>
+    <div class="left">3</div>
+    <div class="right">4</div>
+    <div class="ahead">5</div>
+    <div class="behind">6</div>
+  </div>
+</body>
+<script src=" https://cdn.jsdelivr.net/npm/less@4"></script>
+
+</html>
