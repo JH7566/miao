@@ -1,0 +1,91 @@
+ <!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style type="text/less">
+
+    .cube {
+      width: 200px;
+      height: 200px;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: all 5s linear;
+      margin: 300px;
+      transform: rotatey(290deg) rotatex(390deg) rotatez(350deg);
+      animation-iteration-count: 88;
+
+      div {
+
+      height: 200px;
+      width: 200px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform-style: preserve-3d;
+      x-webkit-transform-style: preserve-3d;
+      border: 2px solid rgba(0,0,0,0.5);
+      opacity: 0.5;
+
+      }
+      .one {
+      transform: rotatey(0deg) translatez(100px);
+      background-color: rgb(221, 180, 69);
+      }
+      .two {
+        transform: rotatey(180deg) translatez(100px) ;
+        background-color: lightblue;
+      }
+      .three {
+        transform: rotatex(90deg) translatez(100px);
+        background-color: rgb(160, 158, 125);
+      }
+      .four {
+        transform: rotatex(-90deg) translatez(100px);
+        background-color: rgb(70, 191, 231);
+      }
+      .five{
+        transform: rotatey(90deg) translatez(100px);
+        background-color: rgb(109, 68, 163);
+      }
+
+      .six {
+        transform: rotatey(-90deg) translatez(100px);
+        background-color: rgb(197, 223, 181);
+      }
+
+    &:hover {
+        transform: rotatex(3660deg) rotatey(3660deg) rotatez(9000deg);
+        transition: 5s;
+
+      }
+  }
+
+
+
+
+
+
+
+
+
+
+  </style>
+
+<body>
+  <div class="cube">
+    <div class="one"></div>
+    <div class="two"></div>
+    <div class="three"></div>
+    <div class="four"></div>
+    <div class="five"></div>
+    <div class="six"></div>
+  </div>
+</body>
+<script src=" https://cdn.jsdelivr.net/npm/less@4"></script>
+
+</html>
