@@ -464,12 +464,25 @@
 </script>
 
 
-<script id="ch0104/20" type="">
+<script id="ch0104/20" type="20">
   var a = +prompt()
   var b = +prompt()
   var c = +prompt()
 
-  
+  if(b ** 2 == 4 * a * c){
+   var x1 = (-b + Math.sqrt(b*b-4*a*c))/(2*a)
+   var x2 = (-b - Math.sqrt(b*b-4*a*c))/(2*a)
+    console.log('x1' + '=' + 'x2' + '=' + x1);
+  }
+  if(b ** 2 > 4 * a * c){
+   var x1 = (-b + Math.sqrt(b*b-4*a*c))/(2*a)
+   var x2 = (-b - Math.sqrt(b*b-4*a*c))/(2*a)
+    console.log('x1' + '=' + x1,'x2' + '=' + x2);
+  }else{
+   var x1 = (-b / (2*a)).toFixed(5) + '+' + (Math.sqrt(4*a*c-b*b) / (2*a)).toFixed(5) + 'i'
+   var x2 = (-b / (2*a)).toFixed(5) + '-' + (Math.sqrt(4*a*c-b*b) / (2*a)).toFixed(5) + 'i'
+    console.log('x1' + '=' + x1,'x2' + '=' + x2);
+  }
 
 
 </script>
