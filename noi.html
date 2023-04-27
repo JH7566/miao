@@ -102,8 +102,8 @@
 </script>
 
 <script id="ch0103/12" type="ok">
-  var r = +prompt(r, 4)
-  var π = +prompt(π,3.14)
+  var r = +prompt(r,4)
+  var π = 3.14
 
   var V = 4/3*π*r**3
   console.log(V.toFixed(2))
@@ -112,16 +112,16 @@
 <script id="ch0103/13" type="ok">
   var n = +prompt(n,100)
 
-  console.log(n%10, n%100 , (n - (n % 100)) / 100 % 10)
+  console.log('' + n%10 + n%100 + (n - (n % 100)) / 100 % 10)
 
 </script>
 
 <script id="ch0103/14" type="ok">
   var h = +prompt(h,23)
   var r = +prompt(r,11)
-  var pi = +prompt(pi,3.14159)
+  var pi = 3.14159
 
-  console.log(Math.ceil(20/((pi*r*r*h)/1000)))
+  console.log(Math.ceil(20/(pi*r*r*h)/1000))
 </script>
 
 <script id="ch0103/15" type="ok">
@@ -158,7 +158,7 @@
 
 
 
-  console.log(s)
+  console.log(s.toFixed(2))
 </script>
 
 <script id="ch0103/18" type="ok">
@@ -383,13 +383,16 @@
  var b = +prompt()
  var c = +prompt()
 
- if (a > b && a > c){
-  console.log(a);
- }else if(b < c){
-  console.log(c);
- }else{
-  console.log(b);
+ var max = a
+ if (b > a){
+  max = b
  }
+ if(c > a){
+  max = c
+ }
+ console.log(max)
+
+
 
 
 </script>
@@ -411,7 +414,7 @@
 <script id="ch0104/17" type="17">
   var a = +prompt()
 
-  if(a % 4 == 0 && a % 100 !== 0 || a % 400 == 0){
+  if(a % 4 == 0 && a % 100 !== 0 || a % 400 == 0 && a % 3200 !== 0){
     console.log('Y');
   }else{
     console.log('N');
@@ -450,18 +453,21 @@
   }
 
   if(c == '/'){
-    console.log(a / b);
+    if(b == 0){
+      console.log('Divided by zero!');
+    }else{
+      console.log(a / b);
+    }
   }
 
-  if(b == 0){
-    console.log('Divided by zero!');
-  }else if(c !== '+' && c !== '-' && c !== '*' && c !== '/'){
+  if(c !== '+' && c !== '-' && c !== '*' && c !== '/'){
     console.log('Invalid operator!');
   }
 
 
 
 </script>
+
 
 
 <script id="ch0104/20" type="20">
@@ -492,8 +498,145 @@
   var x = +prompt()
   var y = +prompt()
 
-  var apple = n - y / x
+  var apple = n - Math.ceil(y / x)
 
-  console.log(Math.trunc(apple));
+  console.log(apple);
+
+</script>
+
+
+
+<script type="1">
+  var secret = Math.round(Math.random()) * 100
+
+
+  do{
+    var n = +prompt('猜数字')
+    if(n > secret){
+      alert('大了')
+    }else if(n < secret){
+      alert('小了')
+    }
+  }while(secret != n)
+
+  alert('恭喜你，答对了！')
+
+
+</script>
+
+<!-- 1.5编程基础之循环控制(45题) -->
+
+
+<script id="ch0105/01" type="1">
+
+  var n = +prompt('学生人数')
+  var sum = 0
+  var counter = 0
+
+  while (counter  < n){
+    var age = +prompt('学生年龄')
+    sum = sum + age
+    counter = counter + 1
+  }
+  average = sum / n
+
+console.log(average.toFixed(2));
+</script>
+
+<script id="ch0105/02" type="2">
+
+  var month = 0 //有几个月
+  var sum = 0 //每月工资总和
+
+  while(month < 12){
+    var wages = +prompt('每月工资')
+    sum = sum + wages
+    month = month + 1
+  }
+
+  average = sum / 12
+
+  console.log('$' + average);
+
+</script>
+
+<script id="ch0105/03" type="3">
+
+  var n = +prompt('样本容量')
+  var result = 0 //样本数据总和
+  var counter = 0 //样本输入次数
+
+  while(counter < n){
+    var data = +prompt('样本数据')
+    result = result + data
+    counter = counter + 1
+
+  }
+
+  var end = result / counter
+
+  console.log(end.toFixed(4));
+
+
+
+</script>
+
+<script id="ch0105/04" type="4">
+
+  var n = +prompt('有几个整数')
+  var counter = 0 // 输出次数
+  var sum = 0 //输出总和
+
+  while(counter < n){
+    var num = +prompt('整数')
+    var counter = counter + 1
+    var sum = sum + num
+  }
+
+  var  mean = sum / counter
+
+  console.log(sum , mean.toFixed(5));
+
+
+
+</script>
+
+<script id="ch0105/05" type="5">
+
+  var n = +prompt('学生人数')
+  var max = 0 //最大的分数
+  var counter = 0 // 计数器
+
+  while(counter < n){
+    var score = +prompt('分数')
+    if (score > max){
+      max = score
+    }
+    counter = counter + 1
+  }
+  console.log(max);
+
+</script>
+
+<script id="ch0105/06" type="">
+
+  var n = +prompt()
+  var counter = 0 // 计数器
+  max = -Infinity
+  min = Infinity
+
+  while(counter < n){
+    var score = +prompt()
+    if(score > max){
+      max = score
+    }
+    if(score < min){
+      min = score
+    }
+    counter = counter +1
+
+  }
+  console.log(max - min);
+
 
 </script>
