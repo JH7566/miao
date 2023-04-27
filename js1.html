@@ -1,52 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
 
 
-  <script>
+<!-- <script>
 
-    x = 2022
-    console.log(x) // 输出x
-    console.log(x * 2) // 输出x的两倍
-    console.log(x ** 2) // 输出x的平方
+  // 解一元二次方程
+  debugger
+  var a = +prompt('请输入a的值')
+  var b = +prompt('请输入b的值')
+  var c = +prompt('请输入c的值')
 
-    +
-    console.log(x ** 3) // 输出x的三次方
-    console.log(x ** 5) // 输出x的五次平方/*  */
-    console.log('x') // 输出x的字符串形式
-    console.log(50 <= x && x <= 100) // 输出x是否在50到100以内，是输出true，不是输出false
-    console.log(x % 2 !== 0) // 输出x是否为奇数，是输出true，不是输出false
-    console.log(x % 2 == 0) // 输出x是否为偶数，是输出true，不是输出false
-    console.log(x > 10 ? 'foo' : x < 10 ? 'bar' : 'baz') // x大于10输出foo,小于10输出bar,等于10输出baz
-    console.log(x % 10) // 输出x的个位数
-    console.log((x - (x % 100)) / 100 % 10) // 输出x的百位数
-    console.log(x % 100) // 输出x百位数以下的部分，对于2021，即输出21，对于2035，即输出35
-    console.log(x > 200 || x % 3 == 0 ? '是' : x % 7 == 0 ? '是' : '否') // 输出x是否大于200且为3的倍数但不是7的倍数。
-    console.log((x - (x % 100)) / 100 + 1) // 输出x做为年份时，所在的世纪，对于2022即输出21，对于1864即输出19
-    console.log((x - 1896) % 4 == 0 ? 'yes' : 'no') // 输出x做为年份时，当年是否会举办奥运会
-    console.log((x - 1930) % 4 == 0 ? 'yes' : 'no') // 输出x做为年份时，当年是否会举办世界杯
-    console.log((x % 4 == 0 && x % 100 !== 0) || (x % 400 == 0)) // 输出x做为年份时，是否为闰年，是输出true，不是输出false，闰年的定义请自行查询
-    console.log(!(x % 2 === 0 || x % 3 === 0 || x % 5 === 0 || x % 7 === 0 || x % 11 === 0) || (x == 2 || x == 3 || x == 5 || x == 7 || x == 11)) // 输出x是否为素数（此时x范围为100以内）
+  var delta = b * b - 4 * a * c
+
+  if (delta > 0) {
+    var 根号delta = Math.sqrt(delta) // square root
+
+    var x1 = (-b + 根号delta) / (2 * a)
+    var x2 = (-b - 根号delta) / (2 * a)
+
+    console.log('x1=' + x1, 'x2=' + x2)
+  } else if (delta == 0) {
+    var x = (-b) / (2 * a)
+    console.log('x1=x2=' + x)
+  } else {
+    console.log('无解')
+  }
+</script> -->
+
+<script id="ch0104/05" type="">
+
+  var x = +prompt(x)
+  var y = +prompt(y)
+
+  if (x > y){
+    console.log(">")
+  }else if(x == y){
+    console.log("=")
+  } else{
+    console.log("<")
+  }
 
 
-
-
-
-    x = 180 //和尚1身高
-    y = 175 //和尚2身高
-    z = 193//和尚3身高
-    console.log(x > y && x > z ? 'x' : y > z ? 'y' : 'z')//三个和尚中最高的身高为多少
-  </script>
-</head>
-
-<body>
-
-
-</body>
-
-</html>
+</script>

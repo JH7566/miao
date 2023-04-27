@@ -79,7 +79,7 @@
 
 <script id="ch0103/09" type="ok">
   var r = +prompt(r,3.0)
-  var pi = +prompt(p,3.14159)
+  var pi = 3.14159
 
   console.log((2*r).toFixed(4),(2*pi*r).toFixed(4),(pi*r*r).toFixed(4))
 </script>
@@ -116,12 +116,13 @@
 
 </script>
 
-<script id="ch0103/14" type="ok">
+<script id="ch0103/14" type="14">
   var h = +prompt(h,23)
   var r = +prompt(r,11)
   var pi = 3.14159
 
-  console.log(Math.ceil(20/(pi*r*r*h)/1000))
+  var end = Math.ceil(20/((pi*r*r*h)/1000))
+  console.log(end)
 </script>
 
 <script id="ch0103/15" type="ok">
@@ -138,8 +139,8 @@
   var Ya = +prompt(Ya,1)
   var Yb = +prompt(Yb,2)
 
-  var AB = Math.sqrt((Xa-Xb)*(Xa-Xb) + (Ya-Yb)*(Ya-Yb))
-  console.log(AB.toFixed(3))
+  var end = Math.sqrt((Xa-Xb)*(Xa-Xb) + (Ya-Yb)*(Ya-Yb))
+  console.log(end.toFixed(3))
 </script>
 
 <script id="ch0103/17" type="17">
@@ -222,7 +223,6 @@
 </script>
 
 <script id="ch0104/04" type="4">
-  debugger
   var n = prompt("")
       n = n.charCodeAt(0)
 
@@ -435,28 +435,28 @@
 
 </script>
 
-<script id="ch0104/19" type="19">
+<script id="ch0104/19" type="">
   var a = +prompt()
   var b = +prompt()
   var c = prompt()
 
-  if(c == '+'){
+  if(c === '+'){
     console.log(a + b);
   }
 
-  if(c == '-'){
+  if(c === '-'){
     console.log(a - b);
   }
 
-  if(c == '*'){
+  if(c === '*'){
     console.log(a * b);
   }
 
-  if(c == '/'){
+  if(c === '/'){
     if(b == 0){
       console.log('Divided by zero!');
     }else{
-
+      console.log(a / b);
     }
   }
 
