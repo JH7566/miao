@@ -906,7 +906,7 @@ for(i = 1; i < n ;i++){
 </script>
 
 
-<script  id="ch0105/22" type="22">
+<script id="ch0105/22" type="22">
 
   var money = 0 //手上的钱
   var s = 0 //存的总数
@@ -1059,7 +1059,7 @@ for(i = 1; i < n ;i++){
 }
 
  if(n < 0){
-  n = -n
+    n = -n
      do{
       var a = n % 10
       n = (n - a) / 10
@@ -1071,12 +1071,18 @@ for(i = 1; i < n ;i++){
 
 </script>
 
-<script id="ch0105/30" type="">
+<script id="ch0105/30" type="30">
 
   var m = +prompt()
   var k = +prompt()
 
   for(var c = 0;c < k;){
+    var x = m % 10
+    m = (m - x) / 10
+
+    if(x == k){
+      c++
+    }
 
     if(m % 19 == 0){
     console.log('YES')
@@ -1085,11 +1091,7 @@ for(i = 1; i < n ;i++){
     console.log('NO')
     break
     }
-    var x = m % 10
-    m = (m - x) / 10
-    if(x == k){
-      c++
-    }
+
     console.log('YES');
 
   }
@@ -1098,3 +1100,154 @@ for(i = 1; i < n ;i++){
 
 </script>
 
+<script id="ch0105/31" type="31">
+
+  var n = +prompt('几盏灯')
+  var m = +prompt('几个人')
+
+  for(var c = 2;c < n;c++){
+
+
+
+  }
+
+
+
+</script>
+
+
+<script id="ch0105/32" type="32">
+
+  var n = +prompt()
+  var x = 2
+  var y = 1
+  var a = x / y
+
+  for(var c = 1;c < n;c++){
+
+    a += (x + y) / x
+
+  }
+  console.log(a.toFixed(4))
+
+</script>
+
+
+<script id="ch0105/33" type="33">
+
+  var n = +prompt()
+  var y = 1
+  var sum = 0
+
+  for(var c = 0;c < n;c++){
+    sum += 1 / y
+    if(y > 0){
+      y++
+      y = -y
+    }else{
+      y--
+      y = -y
+    }
+  }
+
+  console.log(sum.toFixed(4))
+
+</script>
+
+
+<script id="ch0105/34" type="34">
+
+  var n = +prompt()
+  var sum = 0
+  var x = 1
+
+  for(var i = 1;i <= n;i++){
+    x = x * i
+    sum += x
+  }
+
+    console.log(sum)
+</script>
+
+
+<script id="ch0105/35" type="35">
+  var n = +prompt()
+  var y = 1
+  var e = 1
+
+  for(var i = 1;i <= n;i++){
+    y = y * i
+    e += 1 / y //此时的y已经变成了y * i
+
+  }
+  console.log(e.toFixed(10))
+
+
+</script>
+
+<script id="ch0105/36" type="36">
+  var x = +prompt()
+  var n = +prompt()
+  var a
+  var sum = 0
+
+  for(var i = 0;i <= n;i++){
+    a = x ** i
+    sum += a
+  }
+  console.log(sum)
+
+</script>
+
+<script id="ch0105/37" type="37">
+  var m = +prompt('体力max')
+  var n = +prompt('战斗力')
+  var x = +prompt('能量元素')
+  var y = 0 //初始体力值
+  for(var i = 0;i <= n;i++){
+
+  }
+
+
+</script>
+
+
+<script id="ch0105/38" type="38">
+
+
+
+</script>
+
+<script id="ch0105/39" type="39">
+
+  var n = +prompt()
+  var sum = 0
+  for(var i = 1;i <= n;i++){
+    if(i % 7 != 0 && Math.trunc(i / 10) != 7 && i % 10 != 7){
+      sum += i ** 2
+    }
+
+  }
+  console.log(sum)
+</script>
+
+<script id="ch0105/40" type="">
+
+  var n = +prompt()
+  var sum = 1
+
+  for(var i = 1;i < n;i++){
+    var x = i
+    do{
+      var a = x % 10
+      x = (x - a) / 10 % 10
+    if(a == 1 ){
+      sum++
+    }
+
+    }while(x > 0)
+
+  }
+  console.log(sum)
+
+</script>
