@@ -1068,30 +1068,26 @@ for(i = 1; i < n ;i++){
 
 </script>
 
-<script id="ch0105/30" type="30">
+<script id="ch0105/30" type="">
 
   var m = +prompt()
   var k = +prompt()
-
-  for(var c = 0;c < k;){
-    var x = m % 10
-    m = (m - x) / 10
-
-    if(x == k){
-      c++
-    }
-
+  var c = 0
     if(m % 19 == 0){
-    console.log('YES')
-    break
-    }else{
-    console.log('NO')
-    break
+     do{
+      var x = m % 10
+      m = (m - x) / 10
+      if(x == 3){
+        c++
+      }
+     }while(m > 0)
     }
+    if(c == k){
+        console.log('YES')
+      }else{
+        console.log('NO')
+      }
 
-    console.log('YES');
-
-  }
 
 
 
