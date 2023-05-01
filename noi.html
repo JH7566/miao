@@ -983,8 +983,9 @@ for(i = 1; i < n ;i++){
     var z = (n % 729 - n % 81) / 81//百位数
     if(a == z && b == y && c == x){
     console.log(n);
-    console.log(a,b,c);
-    console.log(x,y,z);
+    console.log('' + x + y + z);
+    console.log('' + a + b + c);
+
   }
   }
 
@@ -1011,16 +1012,65 @@ for(i = 1; i < n ;i++){
 
 </script>
 
-<script id="ch0105/26" type="">
+<script id="ch0105/27" type="27">
 
   var k = +prompt()
 
   var n = 1
-  var sn = 1
-  for(;sn <= k;n++){
+
+  for(var sn = 1;sn <= k;n++){
     sn += 1 / n
   }
   console.log(n);
 
+</script>
+
+<script id="ch0105/28" type="28">
+
+  var n = +prompt()
+
+
+  do{
+    var x = n % 10
+    n = (n - x) / 10
+    console.log(x)
+
+  }
+  while(n > 0){
+  }
+
+
 
 </script>
+
+<script id="ch0105/29" type="">
+
+  var n = +prompt()
+
+
+
+
+
+
+
+</script>
+
+<script id="ch0105/30" type="">
+
+  var m = +prompt()
+  var k = +prompt()
+
+  for(var i = m;i < )
+    var x = num % 10 //个位数
+    var y = (num % 100 - x) / 10 //十位数
+    var z = (num % 1000 - n % 100) / 100  //百位数
+    var s = (num % 10000 - n % 1000) / 1000  //千位数
+    var a = (num % 100000 - n % 10000) / 10000  //万位数
+    var b = (num % 1000000 - n % 100000) / 100000  //十万位数
+
+
+
+
+
+</script>
+
