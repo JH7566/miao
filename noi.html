@@ -1260,3 +1260,178 @@ console.log(sum)
   console.log(sum)
 
 </script>
+
+
+<script id="ch0105/40" type="40">
+
+  var count1 = function (n) {
+    var c = 0
+    while(n > 0){
+      var x = n % 10
+      if(x == 1){
+        c++
+      }
+      n = (n - x) / 10
+    }
+
+    return c
+}
+  var n = +prompt()
+  var sum = 0
+  for(var i = 1;i <= n;i++){
+    sum += count1(i)
+  }
+  console.log(sum)
+</script>
+
+
+
+<script id="ch0105/41" type="41">
+
+  var count2 = function (n) {
+    var c = 0
+    while(n > 0){
+      var x = n % 10
+      if(x == 2){
+        c++
+      }
+      n = (n - x) / 10
+    }
+
+    return c
+}
+  var l = +prompt()
+  var r = +prompt()
+
+  var sum = 0
+  for(var i = l;i <= r;i++){
+    sum += count2(i)
+  }
+  console.log(sum)
+</script>
+</script>
+
+
+<script id="ch0105/42" type="42">
+
+  var h = +prompt()
+  var w = +prompt()
+  var x = +prompt()
+  var y = +prompt()
+
+  var sum = ''
+
+  for(var i = 0;i < h;i++){
+    for(var j = 0;j < w;j++){
+      if(j == 0 || j == w - 1 || i == 0 || i == h - 1 ){
+        sum += x
+      }else{
+        sum += ''
+      }
+    }
+    sum += '\n'
+  }
+
+  console.log(sum)
+
+
+
+</script>
+
+
+<script id="ch0105/43" type="43">
+
+  var n = +prompt()
+
+  for(var i = n - 1;i >= 2;i--){
+    if(n % i == 0){
+      console.log(i)
+      break
+    }
+  }
+
+
+</script>
+
+
+<script id="ch0105/43" type="">
+
+  var n = +prompt()
+
+  function 素数(n) {
+    var sqrt_n = Math.sqrt(n)
+    for(i = 2;i <= sqrt_n;i++){
+      if(n % i == 0){
+        return false
+      }
+
+    }
+    return true
+  }
+
+  var count = 0
+
+  for(var i = 2; ;i++){
+    if(素数(i)){
+      count++
+    }
+  }
+  console.log(count)
+
+
+</script>
+
+
+<script id="ch0105/43" type="">
+
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script>
+
+var sum = 0
+  function factorial(n){
+    var result = 1
+    for(var i = 2;i <= n;i++){
+      result *= i
+    }
+    return result
+  }
+  for(var i = 1;i <= n;i++){
+      sum += factorial(i)
+    }
+
+    console.log(sum)
+</script>
+
+
+<script>
+  function 与7有关(n){
+
+    if(n % 7 == 0){
+      return true
+    }
+    while(n > 0){
+      var g = n % 0
+      if(g == 7){
+        return true
+      }
+      n = (n - g) / 10
+    }
+    return false
+  }
+console.log(与7有关(prompt()))
+
+
+</script> -->
