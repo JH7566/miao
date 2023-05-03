@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +16,7 @@
 </head>
 
 <body>
-  <canvas width="500" height="400"></canvas>
+  <canvas width="1000" height="1000"></canvas>
 </body>
 <script>
   var canvas = document.querySelector('canvas')
@@ -73,13 +74,13 @@
 
 
   //* 画一条水平实线，粗细为一个像素
-  for (var x = 0; x < 500; x++) {
-    dot(x, 200, 'black')
+  for (var x = 0; x < 1000; x++) {
+    dot(x, 500, 'black')
   }
 
   // * 画一条垂直实线，粗细为一个像素
-  for (var y = 0; y < 500; y++) {
-    dot(250, y, 'black')
+  for (var y = 0; y < 1000; y++) {
+    dot(500, y, 'black')
   }
 
   //* 画一条一个实点一个空点的虚线
@@ -92,27 +93,22 @@
   //* 画一条两个实点两个空点的虚线
   for (var x = 0; x < 200; x += 4) {
     dot(x, 105, 'black')
-  }
-  for (var x = 1; x < 200; x += 4) {
-    dot(x, 105, 'black')
+    dot(x + 1, 105, 'black')
   }
 
   //* 画一条三个实点两个空点的虚线
   for (var x = 0; x < 200; x += 6) {
     dot(x, 110, 'black')
+    dot(x + 1, 110, 'black')
+    dot(x + 2, 110, 'black')
   }
-  for (var x = 1; x < 200; x += 6) {
-    dot(x, 110, 'black')
-  }
-  for (var x = 2; x < 200; x += 6) {
-    dot(x, 110, 'black')
-  }
+
 
 
   //* 画一条45度的斜线
   var y = 0
-  for (var x = 0; x < 200; x++) {
-    if (x % 2 == 0) {
+  for (var x = 0; x < 500; x++) {
+    if (x % 2 == 1) {
       y = x
       dot(x, y, 'pink')
     }
@@ -120,8 +116,8 @@
 
   //* 画一条30度的斜线（与x轴的夹角呈30度）
   var y = 0
-  for (var x = 0; x < 200; x++) {
-    if (x % 2 == 0) {
+  for (var x = 0; x < 500; x++) {
+    if (x % 2 == 1) {
       y = Math.sqrt(3) / 3 * x
       dot(x, y, 'red')
     }
@@ -129,7 +125,7 @@
 
   //* 画一条60度的斜线（与x轴的夹角呈60度）
   var y = 0
-  for (var x = 0; x < 200; x++) {
+  for (var x = 0; x < 500; x++) {
     if (x % 2 == 0) {
       y = Math.sqrt(3) * x
       dot(x, y, 'blue')
@@ -138,12 +134,14 @@
 
   // * 画一条跨越画布左上角和右下角的对角线
   var y = 0
-  for (var x = 0; x < 500; x++) {
+  for (var x = 0; x < 1000; x++) {
     if (x % 2 == 0) {
-      y = 400 / 500 * x
+      y = 1000 / 1000 * x
       dot(x, y, 'black')
     }
-  }
+  } dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red') dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
 
   //* 画一个空心矩形
   for (var x = 20; x < 60; x++) {
@@ -162,11 +160,49 @@
   //* 画一个实心矩形
 
   for(x = 80;x <= 120; x++){
-    for(i = 130; i <= 160;i++){
-      dot(x,i,'lightblue')
+    for(y = 130; y <= 160;y++){
+      dot(x,y,'lightblue')
     }
   }
   //* 画两个空心的圆，圆心在画布中心：
+  for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(50 * 50 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(40 * 40 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(30 * 30 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(20 * 20 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(10 * 10 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(5 * 5 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+    for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(1. * 1 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+
+
 
 
   //  * 一个半径为50像素
@@ -179,9 +215,23 @@
 
 
   //* 画一个【大小位置都合适】的sin(x)的图像
-
+    for(var x = 0; x < 500;x++){
+      y = Math.sin(x/30) * 30
+      dot(x,y+50,'lime')
+    }
 
   //* 画出rgb色彩空间的某一面（尺寸要大于100x100）
+
+    for(var x = 0; x < 256;x++){
+      for(var y = 0; y < 256;y++){
+        var x1 = 0.6 * x - 0.87 * y
+        var y1 = 0.87 * x + 0.6 * y
+        dot(x1+300,y1+600,'rgb(' + x + ',' + y + ',255)')
+
+    }
+    }
+
+
 
 </script>
 
