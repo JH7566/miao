@@ -84,24 +84,24 @@
   }
 
   //* 画一条一个实点一个空点的虚线
-  for (var x = 0; x < 200; x++) {
+  for (var x = 0; x < 400; x++) {
     if (x % 2 == 0) {
-      dot(x, 100, 'black')
+      dot(x, 400, 'black')
     }
   }
 
   //* 画一条两个实点两个空点的虚线
-  for (var x = 0; x < 200; x += 4) {
-    dot(x, 105, 'black')
-    dot(x + 1, 105, 'black')
+  for (var x = 0; x < 400; x += 4) {
+    dot(x, 405, 'black')
+    dot(x + 1, 405, 'black')
   }
 
   //* 画一条三个实点两个空点的虚线
-  for (var x = 0; x < 200; x += 6) {
-    dot(x, 110, 'black')
-    dot(x + 1, 110, 'black')
-    dot(x + 2, 110, 'black')
-  }
+  for (var x = 0; x < 400; x += 6) {
+    dot(x, 410, 'black')
+    dot(x + 1, 410, 'black')
+    dot(x + 2, 410, 'black')
+  }410
 
 
 
@@ -139,80 +139,49 @@
       y = 1000 / 1000 * x
       dot(x, y, 'black')
     }
-  } dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red') dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
+  }
 
   //* 画一个空心矩形
-  for (var x = 20; x < 60; x++) {
-    dot(x, 130, 'red')
+  for (var x = 80; x < 280; x++) {
+    dot(x + 20, 100, 'black')
+    dot(x + 20 , 300, 'black')
   }
-  for (var y = 130; y < 160; y++) {
-    dot(60, y, 'red')
+  for (var y = 100; y < 300; y++) {
+    dot(100, y, 'black')
+    dot(300, y, 'black')
   }
-  for (var y = 130; y < 160; y++) {
-    dot(20, y, 'red')
-  }
-  for (var x = 20; x < 61; x++) {
-    dot(x, 160, 'red')
-  }
+
 
   //* 画一个实心矩形
 
-  for(x = 80;x <= 120; x++){
-    for(y = 130; y <= 160;y++){
-      dot(x,y,'lightblue')
+  for(x = 80;x <= 280; x++){
+    for(y = 100; y <= 300;y++){
+      dot(x + 620,y + 600,'lightblue')
     }
   }
   //* 画两个空心的圆，圆心在画布中心：
-  for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(50 * 50 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(40 * 40 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(30 * 30 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(20 * 20 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(10 * 10 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(5 * 5 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-    for(var x = -50;x <= 50;x++){
-      var y = Math.sqrt(1. * 1 - x * x)
-      dot(x + 500,y + 500,'red')
-      dot(x + 500,-y + 500,'red')
-    }
-
-
-
-
   //  * 一个半径为50像素
-
-
+  for(var x = -50;x <= 50;x++){
+      var y = Math.sqrt(50* 50 - x * x)
+      dot(x + 500,y + 500,'lightpink')
+      dot(x + 500,-y + 500,'lightpink')
+    }
   //  * 一个半径为200像素
+  for(var x = -200;x <= 200;x++){
+      var y = Math.sqrt(200 * 200 - x * x)
+      dot(x + 500,y + 500,'red')
+      dot(x + 500,-y + 500,'red')
+    }
+
 
 
   //* 画一个实心的圆，半径至少为100像素
-
+    for(x = -500;x <= 500;x++){
+      var y = Math.sqrt(20000 * 2 - x * x)
+      for(i = -y;i <= y;i++){
+        dot(x + 790,i + 210,'rgb(' + x + ',' + y + ',306)')
+      }
+    }
 
   //* 画一个【大小位置都合适】的sin(x)的图像
     for(var x = 0; x < 500;x++){
@@ -222,11 +191,11 @@
 
   //* 画出rgb色彩空间的某一面（尺寸要大于100x100）
 
-    for(var x = 0; x < 256;x++){
-      for(var y = 0; y < 256;y++){
+    for(var x = 0; x < 286;x++){
+      for(var y = 0; y < 286;y++){
         var x1 = 0.6 * x - 0.87 * y
         var y1 = 0.87 * x + 0.6 * y
-        dot(x1+300,y1+600,'rgb(' + x + ',' + y + ',255)')
+        dot(x1 + 250,y1 + 550,'rgb(' + x + ',' + y + ',205)')
 
     }
     }
