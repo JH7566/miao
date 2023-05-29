@@ -6,11 +6,11 @@ class Vector {
     this.y = y
   }
 
-  plus(other) {
+  plus(Vector) {
     return new Vector(this.x + other.x, this.y + other.y)
   }
 
-  minus(other) {
+  minus(Vector) {
     return new Vector(this.x - other.x, this.y - other.y)
   }
 
@@ -21,14 +21,13 @@ class Vector {
 
 
 
-
 class Queue {
   constructor() {
     this.items = [] // 初始化一个空数组用于存储队列元素
   }
 
-  add(element) {
-    this.items.push(element) // 在队列尾部添加一个元素
+  add(val) {
+    this.items.push(val) // 在队列尾部添加一个元素
   }
 
   pop() {
@@ -57,8 +56,8 @@ class MyMap{
     this.count = 0
   }
 
-  set(key,vals){
-    this.collection[key] = vals
+  set(key,val){
+    this.collection[key] = val
     this.count++
   }
 
