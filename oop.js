@@ -1,7 +1,4 @@
 
-
-
-
 Class MyMap{
 
   constructor(){
@@ -9,8 +6,10 @@ Class MyMap{
     this.count = 0
   }
   setInterval(key,vals){
-
+    this.keys[key] = vals
+    this.count++
   }
+
 }
 
 
