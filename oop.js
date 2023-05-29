@@ -1,20 +1,4 @@
 
-Class MyMap{
-
-  constructor(){
-    this.keys = {}
-    this.count = 0
-  }
-  setInterval(key,vals){
-    this.keys[key] = vals
-    this.count++
-  }
-
-}
-
-
-
-
 class Vector {
 
   constructor(x, y) {
@@ -60,3 +44,53 @@ class Queue {
     return this.items.length === 0 // 判断队列是否为空
   }
 }
+
+
+
+
+
+
+class MyMap{
+
+  constructor(){
+    this.collection = {}
+    this.count = 0
+  }
+
+  set(key,vals){
+    this.collection[key] = vals
+    this.count++
+  }
+
+  get(key){
+    return (key in this.collection) ? this.collection[key] : null
+  }
+
+  has(key){
+    return (key in this.collection)
+  }
+
+  delete(key){
+    if(key in this.collection){
+      delete this.collection[key]
+      this.count--
+    }
+  }
+
+  values() {
+    let result = []
+    for (let key of Object.keys(this.collection)) {
+      result.push(this.collection[key])
+    }
+    return (result.length > 0) ? result : null
+  }
+
+  clear() {
+    this.collection = {}
+    this.count = 0
+  }
+}
+
+
+
+
