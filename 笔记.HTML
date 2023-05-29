@@ -1,0 +1,4280 @@
+function zhuanhuanCsv(csvString) {
+  var lines = csvString.trim().split('\n')
+  var result = []
+
+  lines.forEach(line => {
+    result.push( line.split(',') )
+  })
+
+  var [head, ...rest] = result
+
+  var objs = []
+
+  for (var item of rest) {
+    var obj = {}
+    for (var i = 0; i < head.length; i++) {
+      obj[  head[i]  ]   =   item[i]
+    }
+    objs.push(obj)
+  }
+
+  return objs
+}
+14:46:31.778
+cursor: pointer;鼠标手
+
+
+
+# 学习内容
+## 3.15
+* 命令行基础
+* # powershell # dir
+* ls 显示文件夹里的文件
+* GUI VS CLI
+* GUI-GRaphael User
+* Interface,图形化**用户**界面/接口
+* GLI-Commad Line Interface,
+* cat ***.txt(显示文件内容)
+* 不同的操作系统命令行都有区别
+* Subsystem 子系统
+* 命令行最重要的两个概念
+* 当前工作目录（）
+* ~ 代表当前工作主目录 (.我的文档)
+* *pwd 看当前工作目录完全打开
+* 命令行按回车键显示的是提示行
+* 路径 （列表），Path
+* 运行 echo ＄PATH 显示路径列表
+* prompt 命令 提示符
+* 命令的基础
+* 命令名 参数1.2.3.4
+* 参数是可选的
+* 一般命令，裸命令
+* cd change Directory 改变工作目录
+* # command not found # 命令未找到
+* pwd, clear,ls,cd,exit
+* 带选项/参数的命令
+* # npm --help # 看说明书
+* ls -h -a
+* ls -help 帮助
+* ls -l -h
+* 不同的顺序效果不同
+* -h # human readable# 人类可读的
+* -a all所有
+* 不同软件符号代表含义不同
+* ls -a -h -l可以等于ls -ahl
+* babel a.js -o=a.compilde.js 更改这个文件并输出到新的文件里
+* 将命令的输出追加到文件
+* echo def >> foo.txt
+* 将命令输出到文件
+* echo
+* 快捷键
+* Tap 自动补全命令
+* ctrl+C 强行停止当前运行
+* ctrl+A 将光标移动到最前
+* ctrl+E 将光标移到最后
+* ctrl+L 清屏
+* ctrl+R 搜索命令历史
+
+* 常用命令
+* cat
+* cat file1.txt. file2.txt file3.txt
+* 将文件拼接到文件 files.txt
+* echo 回显
+* change Directory改变工作目录
+* cd 绝对路径
+* cd 相对路径（相对于当前文件夹）
+* ..代表上一级目录
+* .代表当前目录
+* 从左往右读遇到..将它和左边的路径片段一起删除，遇到.只删除它本身
+* rm 删除文件
+* cp copy 复制
+* mv ole new 移动重命名
+* touch a.txt 创建空文件 修改文件时间
+htop文件管理器
+* time
+
+* 有趣的命令
+* sl 火车
+* nudoku 数独
+* fortune名言
+* cowsay hello
+* lolcat 把输出变成彩色
+* 同时用间隔需要|
+* termux 安卓下载软件可用
+* ## vi
+* 基础使用
+* 达到可以在vps上编辑文本文件即可
+* esc 从编辑模式返回常规模式
+* i 常规模式下进入编辑模式
+* ：wp常规模式下输入，保存并退出
+* ：q！不保存且强制退出
+* Jkhl 在常规模式下相当于上下左右
+## 文本文件与二进制文件
+* 文本文件
+* txt/ini/cfg/html/css/.gitignore
+* 可以被文本编辑器直接编辑
+
+**二进制文件**
+* 区别在于不能用文本编辑器打开，打开是乱码
+## markdown 用来写简易文档
+* markdown语言
+* 轻量
+* 是一种基本的**标记语言**（不是编程语言没有逻辑只能表达信息）
+* 纯文本
+* 带格式
+* 语法
+*
+
+# 记笔记软件
+* onenote
+* notaion
+* word
+
+
+
+# 3.16笔记
+- 程序中的空格是无效的
+- Markdow 每一行前面的>可以同时引用
+
+## GIT(git)
+
+git init 创建初始化仓库
+
+git add ***.txt 把文件放到暂存区
+
+git commit -m 'initial commit'提交
+
+git status 查看文件状态 function quickSort7(array, start = 0, end = array.length - 1) {
+  //end和start相等的时候返回上一层
+  if (end - start < 1) {
+    return array
+  }
+  var 哨兵元素的下标 = Math.floor((end - start) * Math.random() + start)
+  var 哨兵元素 = array[哨兵元素的下标]
+  //i指向小于哨兵元素的最后一个
+  //k指向大于哨兵元素的第一个
+  var i = start - 1
+  var k = end
+  for (var j = start; j <= k; j++) {
+    if (array[j] < 哨兵元素) {
+      i++
+      swap(array, i, j)
+    }
+    //大于哨兵元素的放在后面
+    if (array[j] > 哨兵元素) {
+      swap(array, j, k)
+      k--
+      j--
+    }
+  }
+  //当结束后,哨兵元素的前半截为start, i,后半截为,k+1,end
+  quickSort5(array, start, i)
+  quickSort5(array, k + 1, end)
+  return array
+}
+
+
+git diff 查看更改
+
+git add .把当前文件夹所有文件添加到暂存区
+
+git log 日志
+
+
+CRLF 回车字符win系统
+
+
+
+## commit 一个提交
+## fatal 严重错误
+# ssh-keygen 生成公私钥吗，找到公钥添加到GitHub账户里，之后这台电脑
+
+
+
+
+
+
+
+git remote add github git@github.com:xieranmaya/learn-git10.git
+添加远程创建并起名字
+
+
+git remote 查看添加过哪些远程仓库
+
+git remote remove name 删除远程仓库
+
+git remote set-url name url 修改某个名字对应的仓库地址
+
+git remote --verbose 查看添加过哪些远程仓库及其地址
+
+git push repo_name branch_name
+将分支推送到远程同名分支，远程如果没有会创建
+
+git push -u repo_name branch_name
+将分支推送到远程同名分支并建立绑定关系
+
+git push
+将当前分支推送到其绑定的远程分支上去
+
+git clone 克隆远程地址文件夹
+
+ssh-keygen 生成公私钥对
+找到公钥添加到github账户里
+后续这台电脑与github服务器的通信都会通过公私钥,不再需要输入密码了
+
+# 3.17
+# 浏览器
+* 自主内核浏览器 自主研发的内核 目前只有Chrome谷歌和Firefox火狐
+* TE->EDGE/Chrome/Firefox/Safari/Opers
+* 壳浏览器 套壳别人的内核
+
+# HTML
+* 引入
+* 与Markdown一样都是标记语言
+* 嵌套规则
+* 与数学公式基本一模一样
+*
+
+
+
+
+
+* <p></p>paragraph 段落
+* 成对出现，开始标签和结束标签<></>
+* <kdb></kdb> 用键盘等宽字体
+
+
+
+# 3.20
+**HTML属性**
+'<div xxx="yyY">'属性'xxx'不区分大小写,属性值'yyy'区分大小写
+  * 属性值一般用双引号，也可以用单引号，不用也可以，一般用双引号
+  ## HTML
+  ### 标签介绍
+  * <html>
+
+  </html>一个网页只能出现一个，出现在外层
+  *
+  <!DOCTYPE HTML>文档类型标明，出现在最前面
+  *
+
+  <head>
+    放页面标题, <title>公司首页</title>只能放文字
+    <link rel="icon" href="图标网址">标题的小图标href=src(source)
+    作者
+    *
+
+  <body>
+    <h1>一级标题</h1>
+    页面显示的文字放在这里
+    <p>表示段落</p>
+  </body>
+
+  *编码方式-uft-8
+  <mate charset="UTF-8">
+
+
+    </head> 头部标签
+    * 样式表
+    <style>
+      /<link rel="stylesheet" href="a.ss"
+      ## viewport 视口可以调整 < !DOCTYPE HTML>不会自动生成 <html><head></head>标题 <body>页面内容 <div></div></body><p></p>段落 <script></script></html><div></div>标题 <h1></h1><h2></h2>.. .. .. <h6></h6>一到六级标题 <strong>加粗强调标签</strong>### SEO 搜索排名优化Search Engine Optimisim * 如何布置页面让其在搜索结果中靠前 * 比如关键字 * 页面被引用的次数（反向链接数量） * 交换链接 * 使用https: //    s=seceye 安全
+      * 使页面的html更符合语义 * HTML5中新增了hgroup(hearder group)标签 ...html <hgroup><h1>主标题</h1>主标题包裹副标题 <h2>副标题</h2></hgroup>... # p标签 * p标签表示段落 <p></p>里面不能出现另一个<p></p><p id="#p5">从a标签的#p5跳转到此 * a标签表示锚 <a href="链接地址">文字</a>* <a href="#p5">直接跳转到p5段落 页面内 # a标签 * <a href="../../../a/b/index.html"></a>* <a href="http://a.com/a/b/index.html"></a>* 相对路径将路径与网址直接拼接为http: //a.com/a/b/../../../a/b/index.html再相约为http://a.com/a/b/index.html
+
+      * <a href="/a/b/index.html"></a>* <a href="http://a.com/1/2/index.html"></a>* 绝对路径直接从网址第一个单斜杠后直接拼接http: //a.com/a/b/index.html
+
+      * href空的="" 指向当前页面自己而不是文件夹 * target="新窗口打开_blank" 如果没有_<a href="http://a.com/1/2/index.html" target="333">则会寻找或者创建一个333的界面打开网址<a href="http://a.com/1/2/index.html" target="333>不会打开多个页面，而是在固定的333网页打开
+
+      * <a href="http://www.mi.com/1/2/index.html" 加上一个download <a href="http://www.mi.com/1/2/index.html" download="小米.pdf">则会下载自家网站的文件：小米.pdf # img标签 * 图片标签 * <img src（source）="图片地址" alt（alternative替代品，另外选项）="图片未加载成功用这里的文字替代">* <img src="" alt="">* <img src="" alt="" width="" height="">设置宽高固定图片位置尺寸width="" height=""
+
+      * id="fool" 页面内跳转，fool不能重复 * id="" 一般是单一的词，不以数字开头，没有空格 * title属性，鼠标指向显示tooltip * <img alt="" title="" src="xxx.jpg">alt="" 是图片加载不出来替换图片，title="" 是描述文本鼠标移动到图片显示信息，以及更多用处 * <p class=""></p>更改样式 * <span style="xxx xxx xxx"></span>CSS更改样式格式等 * <a href="" tabindex="跳转顺序123" target="_blank">文本</a>* <p contenteditable>contenteditable页面内内容可编辑 <p data-xxx（=后面信息的含义）="你想表达的信息">自己想加标签的属性的话必须加上date- <div isbn="123456">书籍详情</div># span 标签 * <span class="sprce">100.00</span>没有明确的语义 * <div class="">也没有明确的语义 * <br/>自闭和标签，换行作用，/可以不加 * <hr>结束标签 * <base target="_blank" />在<head></head>里使用，只出现一次 * <font color="颜色" size="字号" face="字体">文字</font><marquee behavior="左右" direction="上下"></marquee>字体滚动 * em 强调 * strong 更重的强调 * b bold 加粗 * u underline 下划线 * i itliic 默认为斜体，区分文本 多数网站用来做图标 < !-- 文字 -->html注释 * 小于号&lt;
+      span>&gt;
+      大于号 ## &name ## &#number;
+      十进制 ## &#xHHHH;
+      十六进制 ## &nbsp;
+
+      160号空格 ## &copy 复制 ## &quot "
+ ## &apos '
+ ## &amp &符号 # 3.21 <pre><code class="">a a a a aaefde </code>行内显示代码，不能嵌套 </pre>预留等宽字体 * ol（Ordered List）有序列表,
+      ul(Unordered List)，无序列表 * li <ol><li>aaa <ul><li>a1</li><li>a2</li><li>a3</li></ul></li><li>bbb</li><li>ccc</li><li>ddd</li></ol>* dl <dl><dt>导演</dt><dd>张艺谋</dd><dt>主演</dt><dd>张三</dd><dd>李四</dd><dd>王二麻</dd></dl># 表单标签 ## input标签 * 可以交互 <form action="表单提交地址" target="_blank" 本页跳转><input typy="text">文本 <input typy="password">密码 <input typy="checkbox" name="张三">checkbox复选框，默认选中，以name相同分组 <input typy="color">选择颜色 <input typy="radio" name="张三">单选 <input typy="file" accept="jpg,.png>自动选择相应文件格式
+ <input typy="file" multiple(可以选多个文件) accept="imamg/png>媒体类型/对应格式
+ <input typy="image" 提交按钮 src="xxx.jpg按钮图片>
+ <input typy="reset" value="更改按钮的文字">重置按钮 <input typy="subim" value="提交表单">表单提交 <input typy="number">可以输入数字 <input typy="email" name="email">输入邮箱 <input typy="datetime-local">选择时间 <input typy="ual">输入网址 <input typy="range" min="最小值" max="最大值">滑动条 <input placeholder="name" typy="" value="">框内显示输入内容 <input autofucos typy="" name="">有autofucos光标聚焦在此 <input typy="password" name="password">告诉程序是密码 <input typy="text" name="name">告诉程序是名字 <input required typy="email" name="email">有required是必填项否则不能提交 后面加上一个name="" 作为提示信息 自闭和标签input br hr img link meta base button按钮（需要程序配合）可以图片等 input是纯文字 ## label标签 * 扩大文本选择范围 <label><input typy="radio" valua="male男性" name="gender">male <input typy="radio" valua="female女性" name="gender">female </label><form action="表单提交地址" target="_blank" 本页跳转><input typy="subim" value="提交表单"></form>hideen隐藏 * <select name="msjor" multiple(单选是下拉，多选是点击) size="" 增加选项数量><option vaule="数学" hidden（隐藏）>数学</option><option vaule="文学" disabled（无法选择此项）>文学</option><option vaule="CS" selected(自动选择此项)>CS</option><option>数学</option>不写vaule="数学" ，默认文字为选项 </select><fidldest>将此部分框起来 <legend>详细信息</legend><select name="hometown地区"><optgroup label="华中">分组 <option vaule="武汉">武汉</option></optgroup></fidldest></select><table border(边框)="1">表格 <caption>标题</caption><thead><tr><th colspan单元格跨行="2" rowspan单元格跨列="2"></th><td>25</td>换成 <th>25</th>文字加粗 <td>20</td><td>20</td><td>20</td><td>20</td><td>20</td></tr></thead></table><thead>表头 <tfoot>表尾 <tr>标体 <th>1</th><th>2</th><th>3</th><th>4</th></tr></tfoot></thead><th colspan="" rowspan=""></th><thead></thead>只能有一个 <tbody></tbody>可以有多个 <td header=""></td>可以是某个值的ID <th bgcolor="颜色"></th>某一格颜色 <tr bgcolor="颜色"></tr>某一行颜色 在<caption>之后 <colgroup bgcolor="颜色"><col>代表表格第1列 <col>代表表格第2列 <colcolgroup bgcolor="颜色">* map 映射标签 <img src="图片地址" alt="" usemap="#aaaa"><map name="aaaa"><area shape="形状" coords="坐标" href="需要跳转的链接" target="_blank" alt="">rect矩形 circle圆形 polygon多边形 </map>* <iframe src="地址" frameborder="0边框大小"></iframe>一个页面套另一个页面，内联窗口 非自闭和标签 <iframe src="" frameborder="0"><p>你的浏览器不支持frame</p>不支持iframe的网页则显示此文字，备用 </iframe><a href="地址" target="foo5">0000</a>点击foo5在内嵌窗口打开 <iframe src="" name="foo5" frameborder="0"><a href="地址" target="xxx">p5 in xxx</a>xxx=_top顶层窗口 xxx=_self本窗口 xxx=_parten _blank”、“_self”、“_parent”、“_top <frameset rows="尺寸">窗口尺寸 <frame></frameset>< !DOCTYPE html><html><head><meta charset="utf-8"><title>JS Bin</title></head><body><img src="https://travel.12306.cn/imgs/resources/uploadfiles/images/d9ae79de-2f3f-4e9f-ad6e-bdc291dda92a_product_W572_H370.jpg" alt="" usemap="#xibu"><map name="xibu"><area shape="rect" coords="20,17,201,134" href="https://www.jd.com/" target="_blank" alt=""><area shape="circle" coords="286,255,60" href="" alt="" target="_blank"><area shape="polygon" coords="262,29,368,115,570,105,483,17" href="" alt=""><area shape="circle" coords="" href="" alt=""><area shape="polygon" coords="" href="" alt=""><area shape="polygon" coords="" href="" alt=""></map></body></html>## 3.22 <article></article><footer></footer>页面底部 <nav></nav>导航栏 <main></main>主体区域 <template>模板 <p>Lorem <sub>2</sub>ipsum dolor sit,
+      amet consectetur adipisicing elit. Ab,
+      non.</p><script>此处写代码运行</script><script src="xxx.js"></script>引用其他的代码 <video src="xxx.mp4"></video><video autoplay(自动播放) loop（循环播放） preload（预加载） controls（是否显示进度条）><source src="xxx.mp4">播放相应的格式 <source src="xxx.webm"><source src="xxx.mkv"></video><input type="password">***** <object data="地址" type="媒体类型"></object>可以嵌套网页等 <canvas></canvas>画布需要配合JS <progress value="75"></progress>进度条标签 *** 语义化 合理的嵌套 HTML5 * 是目前为止，所有前端技术集合 * es6,
+      css3,
+      html * 可访问性accessibility 简称a11y * internationalizition 简写为110n 国际化 * 在各个设备上访问 * <style>p {
+        font-size: 12px;
+        background: linear-gradient(to right, red, green, blue);
+        background-clip: text;
+        -o-background-clip: text;
+        -ms-background-clip: text;
+        -moz-background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+      }
+
+    </style>
+    改变文字为透明色，使用背景做渐变色
+    <p>这里的文字渐变</p>
+
+
+
+
+    <style>
+      p {
+        font-size: 12px;
+        字体大小 background: linear-gradient(to right, red, green, blue);
+
+        -webkit-background-clip: text;
+        color: transparent;
+        透明色
+      }
+
+    </style>更改<p></p>里面的文字颜色
+
+
+    ## CSS
+    * 层叠 样式 表
+    * 写在<style></style>里
+    <style>
+      * <link rel="stylesheet" href="css文件" media="print打印">@import " xxx.css" 在引用文件里引用
+
+    </style>
+
+
+
+    @import
+    必须出现在文件头/顶部
+    @import " xxx.css"在引用文件里引用
+
+
+
+    内联样式
+
+
+
+    选择器
+
+    1.标签选择器
+    直接在{前面写标签名
+    2.类选择器与id选择器
+
+    .aaa选择对应单词的部分
+    #single选择对应id的部分
+
+
+    .aaa {
+
+    }
+
+    <a href="" class="aaa"></a>
+
+    #single{
+
+    }
+
+    <a href="" class="single"></a>
+
+
+    3.属性选择器
+    [href="a.html"]选中href属性的值为a.html的元素
+    [href]选中有href属性的元素
+    [href^="abc"]选中href属性的值以abc开始的元素
+    [href$="abc"]选中href属性的值以abc结尾的元素
+    [href*="abc"]选中href属性的值有abc的元素
+    [href~="abc"]选中href属性中有abc这个独立单词的元素，基本等价于.aaa选择器
+    [class~="abc"]，基本等价于.aaa选择器
+    [href|="abc"]选中href属性的值为abc或以abc-开头的元素
+
+
+    4.伪类选择器，根据元素的隐含信息做出选择
+    使用顺序如下：
+    :link 未被访问过的链接
+    :visited 已被访问过的链接，该选择器内只能选择color属性
+    :focus 选中被聚焦的元素（光标所在位置）
+    :hover 选中被鼠标悬浮的元素
+    :active 选中被鼠标按中的元素
+
+
+
+    :link{
+
+    }
+
+    :visited{
+
+    color:red
+
+    }
+
+    :hover{
+
+    border:3px solid red;
+
+    }
+
+    :active{
+
+    .a li:nth-child(n+4):nth-child(-n+7){color: red;}
+
+    }
+
+    5.位置伪类
+    :first-child 选中任何元素的第一个子元素
+    :last-child 选中任何元素的最后一个子元素
+    :nth-child(数字)或(2n+-1奇数高亮)或（even偶数） 选中任何元素的第几个子元素
+    :nth-last-child(数字)或(2n+-1奇数高亮)或（odd奇数） 倒着选中任何元素的第几个子元素
+    :first-of-type 选中某个元素的子元素中某种类型(此类型指标签名)的第一个
+    :nth-of-type(2) 选中某种类型的第2个(此类型指标签名)
+
+    p.foo.bar 三个选择器选中的元素取交集，必须同时满足，选中结果集合
+    p.link:hover 复合选择器
+    div p div div元素后代代码中的p元素，有div作为祖先的p元素，div里面的p元素
+    div main span a img 选中div里面的main标签里面的a里面的img
+    div>p 选中div子元素中的p
+    div> p a >span 选中div子元素中的p里面的a，a子元素中的span标签，可以继续增加
+    div:first-child 选中作为其父元素的第一个子元素的div元素
+    div :first-child div后代中的大儿子
+    div > :first-child div的第一个子元素
+    div~p 选中div后面兄弟元素的p标签，有div作为其前续兄弟元素的p标签
+    div+p 选中div后面毗邻的p标签，要求div与p一前一后挨着出现，选中后一个
+    , 可以继续写多个选择器
+    如
+    div h1,h2
+    :empty 选中空标签
+
+
+    :not(a) 取反选择器，选择括号内以外的所有元素
+
+    border:8px solid red;
+
+    }
+
+
+
+    * {
+    background-color: rgba(0,0,0,0.08);
+    box-shadow: inset 0 0 1px red;元素阴影
+    }
+    html {
+    zoom: 2;function zhuanhuanCsv(csvString) {
+  var lines = csvString.trim().split('\n')
+  var result = []
+
+  lines.forEach(line => {
+    result.push( line.split(',') )
+  })
+
+  var [head, ...rest] = result
+
+  var objs = []
+
+  for (var item of rest) {
+    var obj = {}
+    for (var i = 0; i < head.length; i++) {
+      obj[  head[i]  ]   =   item[i]
+    }
+    objs.push(obj)
+  }
+
+  return objs
+}
+14:46:31.778
+
+    }
+
+
+    在多个选择器选中标签时，
+    (类，属性，标签)
+
+
+    c:\Users\18715\Documents\Tencent Files\1192755230\FileRecv\MobileFile\Image\WH[22`58UWBORGP6}0F134F.png
+
+
+
+    700 颜色
+    * rgb(r,g,b)
+    * rgba(r,g,b,透明度a 0.5)百分比
+    * hsl(色相hue,saturate色域,light亮度)
+    * hsla(色相hue,saturate色域,light亮度，透明度)
+
+
+    * 角度 degree 45deg 45°
+    -randia弧度 3.14rad=180deg
+    -turn 圈
+    {
+    transform:rotate(180deg)180°(0.25turn)0.25圈
+    }
+
+    * url
+    *@import url("aaa.css")
+
+    * css 关键字
+    * width:300px
+    * display: block
+    * font-size
+    *
+
+    ** 字符串
+    * content: 'ffoo\6655'
+
+    *** 长度单位
+    * width:20cm/20in英寸/1pt是七十二分之一in/1pc是六分之一in
+
+    *** 相对长度单位
+    *px css像素（设计中，大多数认为是绝对长度）
+    *
+    * em
+    * 用在字号上的时候取父元素的字号大小为基础
+    * rem 根据根元素上的字号大小改变
+    * ch 0字符的宽度
+    * ex x字符的高度
+    * vw/vh 视口宽高
+    div{
+    font-size:5px
+    background:red;整体字体背景颜色
+    width:50vw/vh
+
+    }
+    *百分比
+    - withd: cala计算(2 * 30em - 40%) / (10px * a0 - 5%/) / (500px - 2em) / (10px * 10px / 10px)运算符两边必须加空格
+    -
+
+
+
+
+
+
+    *** 字体族
+    * font-family:幼圆,宋体,
+    * 衬线字体 serif
+    * 非衬线字体 sans-serif
+
+    * 字重
+    * font-weight:900 字体粗细 100-900之间
+    * font-weight:bolder/lighter 比自己父元素粗/细
+    * font-weight:normal/bold
+
+    * 字号
+    * font-size:5px 字体大小
+    * font-style:normal 常规
+    * font-style:oblique/italic 正斜体/假斜体
+    * font-variant:small-caps 小写字母（改变表现形式，不改变大小）
+    * text-transform:; 改变字体大小 capitalize用大写字母,none无改变,
+
+
+    * 线
+
+    * text-decoration: underline下划线/line-through中划线/overline上划线;
+    * text-decoration: underline red(颜色) 10px(粗细) dashed(虚线) solid()
+
+    * text-decoration-thickness(粗细): 10px;
+    * text-decoration-color(颜色): blue;
+    * text-decoration-style: ;
+    * text-decoration-line: ;
+
+    * 阴影
+
+    * text-shadow: 5px(水平偏移) 10px(垂直偏移) 3px(模糊半径) red(颜色);
+    * box-shadow:0px(水平偏移) 0px(垂直偏移) 2px(模糊半径) 2px(扩散) red(颜色);
+
+    * white-space: nowrap不换行; 控制空格和空白
+    * word-break: keep-all(保留所有单词不折断); 折断
+
+
+    /* * white-space:pre; 保留代码内原本的格式 */
+
+
+
+
+    * direction: ltr左右/rtl右左; 改变文字书写方向
+
+
+
+
+
+    *line-height: 80px 行高，一般写无单位的纯数字
+
+    font:[<font-style> || <font-vsrisnt> || <font-weight>] <font-size>[<line-height>] <>;
+
+                p{
+                font-size:2em;
+                text-indent:2em;(段落缩进)
+                }
+
+                text-indent: -99999em; 可以将文字隐藏起来
+                text-align: center/justify; 居中/对齐
+                text-align-last: right; 最后一行靠右对齐
+                vertical-align: ;垂直对齐
+
+                word-spacing: 5px; 字体间隔
+                letter-spacing: 20px; 字母之间的间隔
+
+                normal 常规
+
+
+                * 边距
+
+                * div{
+                border: 10px dasged red;
+                padding: 15xp; 内边距
+                margin: 35px;
+                }
+                content-box 内容盒子
+                padding-box 内边盒子
+                border-box 可视盒子
+                margin-box 外边距
+
+                content/border/margin/padding- top 上/right 右/bottom 下/left 左:5px
+                padding:15px 自动取对边
+
+                p{
+                border-top-width:20px;
+                border-top-color:blue;
+                border-top-style: groove山脊色;
+
+                border-style:solid dotted double dashed;直接确定四边
+                border-color: 颜色 颜色 颜色 颜色;
+                border-width: 1px 1px 1px 1px;
+                所有的都是按照上右下左顺序
+
+                width: 100px; 宽
+                height: 150px; 高
+                默认设置内容盒子
+
+                box-sizing: content-box/border-box; 可以确定想控制哪个盒子的宽高
+                width: 100px; 宽
+                height: 150px; 高
+
+
+
+
+                块元素的水平布局：
+                水平方向上的七大属性之和要等于其包含块的宽度
+                如果有一个为auto：
+                则通过包含块的宽度减去其它六个属性计算出这个auto的值
+                如果没有auto：
+                则将margin-right重置为auto
+                如果有两个auto：
+                两个auto在margin-left/right上
+                则两个auto计算为相同的值，元素相当于定宽居中
+                如果有一个auto在width上，则将另一个auto重置为0
+                相当于额外的宽度都给到width属性用于显示内容
+                如果有三个auto：
+                两个margin的auto都被重置为0
+                对于从左往右的语言，任何时候，margin-left和width都不能自动被计算为负值
+                如果要计算出的时候，用0，多余的负值给到margin-right
+                margin-left被指定为负值时，元素会向左往包含块外拉
+                margin-right被指定为负值时（未被重置时），元素会向右往包含块外拉
+
+                块元素常见水平布局：
+                定宽居中：
+                定宽，左右margin为auto
+                固定的左右留白，宽度占据额外的空间
+                左右margin为指定的留白值，width为auto
+                元素居左：
+                margin-right为auto
+                元素居右：
+                margin-left为auto
+
+
+
+
+
+
+
+
+
+
+
+
+
+                * 盒模型，box model
+                - 盒模型是什么
+                - margin外边距
+                + 可以为负值
+                + 垂直margin会合并
+                + 垂直margin在有些情况下会超出到父元素之外
+                + 值的复制
+                * margin: a; -> a a a a
+                * margin: a b; -> a b a b
+                * margin: a b c; -> a b c b
+                * margin: a b c d; -> a b c d
+                * padding同理
+                + margin-left/right/top/bottom
+                - border
+                + border-width: 3px 5px 2px ;
+                * 边框宽度
+                + border-color: red green;
+                * 默认为color的值
+                + border-style: solid dotted dashed double;
+                * solid
+                * dotted
+                * 其它
+                + 所有边框可以写在一个属性里面
+                * border: style color width;顺序任意
+                * border: none
+                + 也可以单独设置某一边的边框
+                * border-left/top/bottom/right: style color width;
+                + 甚至可以完全分开设置任意一边的任意一个属性
+                * border-left-width/color/style
+                + 画三角形
+                * http://jsbin.com/nasolud/1/edit?css,output
+                - padding
+                + 内边距，不能为负值
+                + 背景颜色会显示在padding上面
+                - content
+                + 内容区域
+                - width
+                + block类型的元素会占满父元素的水平内容区域
+                + 更严格的说，是 margin-left,border-left-width,padding-left,width,padding-right,border-right-width,marign-right
+                加起来正好等于父元素内容水平宽度
+                * http://jsbin.com/pakege/1/edit?html,css,output
+                - box-sizing
+                + 宽度的计算方式
+                * border-box
+                * content-box
+                * 没有margin/padding-box
+                * 但另一个属性支持这两个选项
+                + doctype
+                * 在ie低版本下，如果不声明doctype的话，默认为border-box模型
+
+
+                }
+
+                overflow: auto;超出部分自动
+
+                display:flow-root; 触发BFC
+
+                BFC Block Formatting Context
+                块级格式化上下文
+                就是一个元素它建立了小宇宙
+                手段：3
+                overflow: hidden超出部分隐藏/auto/scroll超出部分滚动;
+                只要不是visible
+                display: flow-root;
+                让元素浮动
+                让元素定位
+                让元素成为行内块
+                让元素成为表单元格
+                行为：
+                封闭了。
+                内部元素的margin跑不到外面去
+                内部的浮动元素跑不到外面去
+                外面的浮动元素跑不到里面来
+
+
+                list-style:none; 列表样式
+
+                ol>li*20>Lorem30
+
+                a{word$}*60
+
+                width:min/max-content 最小最大宽度
+
+
+                行内块元素
+                从外面看考虑自己的位置时，它就是个行内元素
+                从里面看考虑其内容的布局时，或者说它里面的元素，会认为自己处于一个块级元素里
+
+                行内布局：
+                确定每行元素的行内框（布局框）
+                包裹所有行内框最高点到高低的最小框即为行框
+                行框从上往到依次堆叠
+
+                如何确定每种元素的行内框（布局框）
+                行内元素包裹的文本，或匿名文本，display: inline;
+                看行高值，行高的值决定了它的布局框大小
+                还要看其基线，在字号比行高大的情况下，基本可以处于布局框的外面
+                行内替换元素,img,input
+                布局框为其margin-box
+                非要有一个基线的话，margin-box的底部做为其基线
+                行内块元素 display:inline-block;
+                布局框为其margin-box
+                以其内容的最后一行的基线为自己的基线
+                当设置了bfc时，则以margin-box的底部为基线
+                确定每个元素的垂直偏移
+                通过vertical-align属性确定
+                top,bottom,middle,baseline
+                百分比，基于当前元素行高
+                长度值
+                确定完相互的偏移，才能确定行框的范围
+                如何去掉行内块元素之间的空白
+                零字号，但要在后代元素中还原字号
+                将这个空白从html代码中去掉
+                负margin
+                word-spacing为负
+                行内元素(display:inline)的content-box的高度是当前字体以及字号的默认行高的高度
+                不能通过height属性或才是line-height属性改变它的高度
+                只能通过改变字号或字体的方式来改变它的高度
+
+
+
+                * 定位布局
+                可以直接指定一个元素的位置/坐标
+                定位使用position属性触发
+                position:fixed/static
+                * static 不定位 之前所有看到position的值都是它
+                * fixed 固定定位，相对于窗口定位，元素会脱离常规流，即其父元素，后面的兄弟元素感知不到他，当他不存在
+                * absolute 绝对定位 会脱离常规流，相对于最近的定了位的祖先的padding-box定位，就是该祖先的padding-box为其包含块
+                即position属性不为static
+                * ralative 相对定位，不脱离常规流，原来的位置为其保留，相对于自身原来的位置定位
+                * sticky 黏粘定位，结合以上三种定位
+
+                ** z-index 设置一个层叠顺序，类型相同后盖前，类型不同定位元素盖住常规流元素
+                有z-index时，z-index越大，元素越往上，目前只能用在定位元素上，
+                当父子元素都定位时，父元素无法通过z-index覆盖子元素
+
+
+                定位位置通过 top bottom left right 来指定,不指定的话则在他原本的地方
+
+                伪元素
+                <div>
+                  aabbaabb(在文字内容前后显示)
+                </div>
+
+                div::before{
+                content:'foo';
+                }前
+                div::after{
+                content:'foo';
+                }后
+                在aabbaabb前后显示
+
+                如此显示"foo aabbaabb foo"
+
+                div::before{
+                content:attr(属性值);取父元素的属性值
+                }
+
+
+                每个非自闭合元素都有一前一后两个伪元素，相当于该元素的第一个和最后一个子元素
+                div:first-child 最终一定选中一个满足特定条件的div
+                div::before 选中div的before伪元素
+
+                通过伪元素选择器选中伪元素后必须要设置content属性伪元素才会出现。
+
+                伪元素里面不能再有伪元素了
+                伪元素不能被hover
+                div::after:hover {无效}
+                div:hover::after {有效,当div被hover时，其伪元素如何}
+                又由于伪元素不能有后代，所以伪元素如果出现在选择器里，一定是最后一项
+
+                伪元素可以实现的效果几乎都可以通过在html中增加相应的真实元素来实现
+
+                伪元素的内容无法被选中或复制
+
+                伪元素一般用于没有单独交互效果的统一装饰性元素
+
+                伪类与伪元素的区别：
+                伪类是真实存在的元素隐含的信息
+                伪元素是没在html代码中书写的元素凭空出现
+
+
+                # 选择器
+                * enabled 被启用的可交互元素
+                disabled 被禁用的可交互元素
+
+                :enabled 不等价于 :not(:disabled)
+
+                :read-only 匹配内容只能读的元素，包括普通元素
+                :read-write 匹配内容可以读写（修改）的元素
+
+                ** :checked 匹配被选中的元素（主要是radio和 checkbox）
+
+                :indeterminate 匹配處於中間狀態的checkbox
+                ** :valid 填寫正確的文本框
+                ** :invalid 填寫錯誤的文本框
+
+                :required 必填项
+                :optional 选填项
+
+                :any-link 匹配任意链接（即有href的a标签）
+
+                :target 目标元素：即id的值为地址栏#后面的内容的元素，或是页面内跳转到的元素
+                :target-with 匹配内部有目标的元素
+                :focus-within 匹配光标所在元素的祖先们
+
+                :is(div,section,.foo) :is(i,span,em) {
+
+                }
+                基本等价于：
+                div i,
+                div span,
+                div em,
+                section i,
+                section span,
+                secion em {
+
+                }
+
+                div:has(>:hover) {
+                选中有子元素被hover的div
+                }
+                div:has(:hover) {
+                选中有后代元素被hover的div
+                }
+                div:has(+:hover) {
+                选中后面一个元素被hover的div
+                }
+                div:has(~:hover) {
+                选中后续有兄弟元素被hover的div
+                }
+
+
+                div{
+                transiition: 10s; 被属性选择时缓慢变化
+                }
+                transiition: width 3s, height 10s;
+
+                transiition-porperty:width , height;
+                transiition-duration: 3s, 10s; 3s内变宽，10s秒内变宽
+                transiition-delay: 2s; 5s;宽等2s变，高等5s变化
+                transiition-timing-function: ease缓慢;/linear匀速/ease-in加速/ease-out减速;
+                transiition-timing-function:steps (7); 用七个步骤
+                transiition-timing-function:cubic-bezier(0.1,0.1,0.1,0.1;)
+
+
+
+                input :focus/:valid/:checked
+                /*
+                transition属性可以设定元素在样式发生变化时，不是突然变到目标状态，而是缓动到目标状态
+                transition-property 设定哪些属性要缓动
+                transition-duration 设定每个属性缓动的时间长度
+                transition-delay 设定每个属性在执行缓前等待的时间，为负值，缓动动画从已经执行了那么久的位置开始播放
+
+                transition-timing-function 设定缓动的距离时间函数图像，默认值为ease，自带ease ease-in ease-out
+                ease-in-out,还可以通过cubic-bezier(p1x,p1y,p2x,p2y)的方式指定一条贝塞尔曲线做为其运动曲线，还有steps(n)进行步进式变化
+
+                简写形式为
+                transition: width 2s -1s linear, height 5s 2s;
+                */
+                /* reset.css */
+                将常用元素的样式重置为网站所需要的样式
+
+                /* normalize.css */
+                将不同浏览器的默认样式差异抹平
+
+
+                border-radius: 120px; 边框圆角
+                aspect-reato:16/9; 比例设置
+                cursor: pointer; 鼠标手
+
+                Less
+                <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
+                写到<style type="text/less"></style>后面
+
+                4.4号
+                颜色和背景
+                currentColor 取前景色
+                background-imga:url(图片链接 )
+
+                background-origin:盒子content-box;选择背景盒子
+
+                background-size: 100px/100% 100px/100%;背景尺寸
+                background-size: cover/contain; 等比例放大图片/等比例缩小图片 根据盒子
+
+                background-repeat:no-repeat;让图片不重复
+                background-repeat-x: repeat;
+                background-repeat-y: repeat;
+                object-fit: cover/contain; 根据宽高调整
+                background-position: right 5px bottom 5px; 调整图片位置，只能调整角落
+                background-clip: content-box; 裁剪图片
+                -webkit-background-clip: text; 文字处镂空
+
+
+
+
+
+
+
+
+
+
+
+                /*
+                css变量，又称css自定义属性
+                即双中划线开头的属性
+                目的是为了不跟css自带属性冲突/重叠/重复
+                所有的css自定义属性都是自动继承的
+                变量的声明就是通过双中划线开头的属性
+                变量的使用/引用就是通过var(--variable-name)
+                var函数可以有第二个参数，当这个变量不存在时，其将会使用第二个参数
+                var函数可以放进calc里参与calc支持的运算
+
+                与sass less变量的区别：
+                sass/less的变量会预处理阶段就运算完成，浏览器看到的时候已经没有变量了，已经是计算完成的内容了。所以不能混合单位使用，因为sass/less在处理时根本不知道有些单位的具体值是多少。
+                css的变量是浏览器直接支持的，是在运行过程中执行运算的，可以混合单位使用
+
+                */
+
+                * 第九章：颜色与背景
+                - color
+                + 颜色 前景色（与之对应的则是背景色）
+                * 一般画图工具中都有类似对应的图标
+                + 默认为黑色
+                + 会被子元素继承
+                * 所以设定一个元素的颜色，其子元素都将是这个颜色
+                - 这是很明显的(#333)
+                + 会做为border，text/box-shadow的默认值
+                * text-shadow: 2px 3px 3px;
+                * box-shadow: 5px 10px 5px ;
+                * border: 10px solid;
+
+                + css3的currentColor
+                * 用在其它属性上比如bgc上，或者linear-gradient等
+                - background
+                + background-color
+                * 背景色
+                - 默认值为 transparent ，即透明
+                * 不继承
+                - 否则会有奇怪的效果，比如如果设置了semi透明颜色，而且又继承的话。。
+                + background-image
+                * url()
+                * 默认从padding box开始渲染（画）的
+                * 背景图片无法从网页上直接复制
+                + background-size
+                * https://developer.mozilla.org/en-US/docs/Web/CSS/background-size#Browser_compatibility
+                * cover 图片由无穷大缩小到正好覆盖元素
+                * contain 图片由无穷小放大到正好被元素包围
+                - object-fit 用在图片/视频元素上的css属性
+                + img
+                + video等
+                * 如果attachment为fixed，背景区为浏览器可视区（即视口），不包括滚动条。不能为负值。
+                + background-repeat
+                * background-repeat
+                - repeat
+                - repeat-x/y
+                - no-repeat
+                + background-origin css3
+                * content-box
+                * padding-box
+                * border-box
+                * 与box-sizing的关键字是对应的
+                + backgorund-attachment
+                * scroll 相对于元素自身不动
+                * local 相对于元素的内容不动
+                * 为此值时bg-size的百分比以元素内容的大小来计算
+                * fixed 相对于视口不动
+                - 为此值时bg-size的百分比以浏览器窗口的大小来计算
+                - 可以用来做视差滚动
+                - http://www.mi.com/xiaoyi/?cfrom=list
+                + background-position
+                * background-position-x/y
+                * 雪碧图，css sprite
+                * 0 0
+                * center 200px
+                * 100px
+                * 0px 10px 相对于左上角
+                * 50% 30% 相对于左上角
+                * top left /// right bottom 让图片处于某个角落
+                * top 20px right 50px 相对于右上角，往元素中心水平偏50px，垂直偏移20px
+                * calc(100% - 50px) 从最右往多偏移50px
+                + background-clip
+                * xx-box
+                * 平铺以后再裁剪
+                + -webkit-background-clip
+                * text
+                + css3 多背景
+                * 分开写，合并写
+                + background: <bg-img> <bg-repeat> <bg-origin> <bg-size> / <bt-pos> , <bg-img> <bg-repeat> <bg-origin>
+                                <bg-clip>, <bg-img> <bg-repeat> <bg-origin> <bg-clip> bg-color;
+  + 应用
+  * 伪元素里的图片，
+  * css sprite
+  * 动画，菜单，小米网首页logo动画
+  * 视差滚动：小蚁摄像机页面效果，Nike活动页面效果
+  * 多背景做花纹
+
+
+
+
+
+
+
+  color: transparent; 文字透明
+
+
+
+
+
+
+
+
+
+
+
+
+  text-indent: 20px;段落缩进
+
+
+
+  4.6号
+  浮动和定位
+  书本289页
+  css
+  float:left/right
+  opacity: 0.5; 透明50%
+
+  html
+  <img src="" algin="left/right">
+
+  块级元素会当浮动元素不存在
+  行内元素会绕着浮动元素渲染
+
+  不同情况下的包含块
+  常规流:离其最近的块级祖先
+  定位:是其相对定位的祖先块
+  浮动:同常规流
+
+  浮动和定位一起用，只有position: relative;时会起作用,其他情况是浮动
+
+
+  清除浮动:某个块框通过向下移动，使其两边没有浮动元素
+  闭合浮动:某个块框通过增加自己的高度使其能够包含其浮动的后代元素(通过自己变大，使所有后代浮动元素被自己包起来)
+  】
+
+  清除浮动的元素的border-box避开浮动元素的margin-box
+
+
+  ** BFC元素:
+  行为:
+  对于行内块,是让元素的最底部成为基线
+  对于受浮动元素的影响的元素,水平方向收缩以避开浮动元素
+  当它是定宽时且空间不够时就是下移
+  可以利用这个特点实现元素的宽度占据包含块的剩余水平空间
+  对于常规流块元素,是margin不跑到自己的外面去
+  不管是哪一种,最终都是让内外的布局元素不相互影响
+  类似于让元素的边缘成为一个结界,让元素内部成为一个小宇宙/独立的布局空间/布局上下文
+  如何触发:
+  display: flow-root;
+  overflow: scroll/hidden/auto;
+  float: left/right;
+  position: absolute/fixed;
+  表单元格
+
+
+  闭合浮动的办法:
+  触发包含块的BFC
+  直接给包含块设定高度
+  在元素的最后放一个块元素并清除这个块元素两边的浮动元素
+  于是该元素就会下移,顺便把包含块撑高了
+  由于总是使用最后一个元素,所以可以伪元素
+
+
+
+
+
+  * {
+  background-color: rgba(0,0,0,0,08);
+  box-shadow: inset 0 0 1px red;
+  }
+
+  https://jsbin.com/rurafuhafa/2/edit?html,css,output
+  导航栏与不同页面区域颜色不同但能随着滚动改变颜色
+
+  clip-path: ; 不限制元素的定位类型，不能裁剪不以当前元素为包含块的元素
+  clip-path: polygon(10% 10% 10% 10% 10% 10%);百分比取自身的尺寸，而非包含块的尺寸
+
+
+
+
+
+  ## flex布局
+  大号的行内布局
+  flex是内部布局
+
+  普通块元素里的flex元素的外在表现就像一个块一样
+  flex-grow: 1;收缩
+  flex-skrink: 1;扩张
+  flex-wrap: wrap;收缩扩张在折行
+  justify-content: start开始方向/end结束方向/content居中/space-between/space-around;
+  align-content: flex-start每一行的内容分配在交叉轴上/space-around设定主轴方向上/space-between;
+  align-items: ;
+  flex-direction: column-reverse;列
+  flex-wrap: wrap-reverse;行
+  flex-flow: column;
+  flex-basis
+
+  <section>
+    <div class="a1"></div>
+    <div class="a2"></div>
+    <div class="a3"></div>
+  </section>
+
+  section{
+  display: flex;
+  margin: auto;
+  width: ;
+  height: ;
+  justify-content: start开始方向/end结束方向/center居中/space-between/space-around;
+  align-content: flex-start每一行的内容分配在交叉轴上/space-around设定主轴方向上/space-between;
+  flex-grow: 1;占满剩下的空间
+  flex-skrink: 1;
+  }
+
+
+
+  /*
+
+  overflow行为的冒泡
+  在特定情况下，给body或html元素设置overflow属性，相当于给视口设置
+  所以此时给body设置overflow hidden相当于让视口不出现滚动条，即使有内容在视口以外
+  背景颜色同
+  给html元素设置bgc或ov就相当于给视口
+  而在html元素未设定这两个属性时，给body设置就相当于给html元素设置
+
+  */
+  /* Flex布局
+
+  “大号的行内布局”
+  flex布局是内部布局
+
+  普通块元素里的flex元素的外在表现就像一个块一样
+
+  扩张与收缩是发生在折行之后
+  所以无论如何设定grow与shrink,都不会改变元素在不同行之间的分配
+  折行之后不会发生收缩,因为空间不够就折行了,除非一行的唯一一个元素比包含块宽
+
+
+  justify-content: space-between|space-around|start|end|center;
+  设定主轴方向上额外空间的分配,当额外空间没被元素扩张占满时才有效,在在grow之后才生效
+
+  align-content: space-between|space-around|stretch|start|end|center;
+  设定交叉轴方向上额外空间如何分配给flex"行"
+
+  align-items: stretch|start|end|center;
+  设定每个flex子元素在"行"中的垂直摆放
+
+  1
+  设定给flex子元素,单独调整这个元素在flex"行"中的垂直摆放,取值跟align-items一样
+
+  flex-basis: ;
+  当主轴水平时,它代表宽度,如果此时也设定了元素的宽度,那只要flex-basis不是auto就是flex-basis生效,否则就是高度生效
+  当主轴垂直时,它代表高度,如果此时也设定了元素的高度,那只要flex-basis不是auto就是flex-basis生效,否则就是高度生效
+
+  flex-flow: ;一次性设定flex-direction和flex-wrap;
+  flex: ;一次性设定flex-grow, flex-shrink, flex-basis;
+  flex: auto|1|500px|none;
+  gap: ; 设定flex子元素之间的间隙
+  row-gap: ;
+  column-gap: ;
+
+  order: number; 设定flex子元素的布局顺序
+
+
+  flex子元素可以直接使用z-index,在负margin让它们重叠的时候
+
+  flex子元素不能浮动,因为浮动需要发生在普通块/行内上下文里
+  flex父元素可以认为触发了bfc,会水平方向避开浮动元素
+
+  主轴垂直时,想要让元素折行,需要给flex父元素定高
+
+  flex子元素auto的margin会被计算为相同的,即便是垂直方向上,但是左和上还是不能计算为负值
+
+  flex父元素中的匿名文本,可以想象成被标签包起来,成为一整个flex子元素
+
+
+  额外空间的分配:
+  首先分给flex-grow的元素,然后分给相应方向上auto的margin,再然后才是留白
+
+
+  */
+
+
+
+  div{accent-color: red;} 更改CheckBox的颜色
+  0.0
+
+  :empty 隐藏
+  empty-cells: hide隐藏/show显示;
+  border-collapse: collapse合并单元格/separate拆分;
+
+  1
+  table:has(:is(td,th):nth-child(1):hover) :is(td,th):nth-child(1),
+  table:has(:is(td,th):nth-child(2):hover) :is(td,th):nth-child(2),
+  table:has(:is(td,th):nth-child(3):hover) :is(td,th):nth-child(3),
+  table:has(:is(td,th):nth-child(4):hover) :is(td,th):nth-child(4),
+  table:has(:is(td,th):nth-child(5):hover) :is(td,th):nth-child(5),
+  table:has(:is(td,th):nth-child(6):hover) :is(td,th):nth-child(6),
+  table:has(:is(td,th):nth-child(7):hover) :is(td,th):nth-child(7) {
+  background-color: yellow;
+  color: red;
+  }
+  表格列高亮
+
+  方案2
+  td:hover::before {
+  content: 'aaa';
+  position: absolute;
+  width: 100%;
+  height: 9999px;
+  top: -888px;
+  background-color: yellow;
+  z-index: -5;
+  }
+
+
+  /*
+  caption-side: top/bottom;
+  设定表格标题的位置，是表格的上方还是下方
+  border-spacing: 10px 5px;
+  empty-cells: hide;
+  border-collapse: collapse/separate;
+
+  table-layout: auto/fixed;
+  设定表的尺寸计算模式
+
+
+  */
+
+
+
+
+  li::first-letter{
+  更改首个单词
+  }
+  li::first-line{
+  更改第一行
+  }
+
+  input::placeholder{
+
+  }
+
+  <input type="range">
+  input[type="range"]::-webkit-slider-runnable-traack{
+  滑动按钮形状
+  }
+  ::-webkit-scrollbar 滚动条滑轨
+  ::-webkit-scrollbar-thumb 滚动条滑块
+  ::-webkit-scrollbar-button 滚动条上下左右的按钮
+
+
+  *::selection{
+  选中部分的背景字体颜色
+  }
+
+  html{
+  quotes:'<' '>' '《' '》' ;伪元素的引号 } <span>
+
+    </span><span></span><span></span><span></span><span></span>
+
+
+    <span></span>
+    <em></em>
+    <span></span>
+    <em></em>
+    <span></span>
+    <em></em>
+
+    span{
+    counter-increment: x y;
+    }
+    em{
+      counter-increment: y;
+    }
+    span::before{
+      content: counter(x) '.' content: counter(y);
+    }
+
+
+    body{
+      counter-reset: number 0; 遇到这个标签重置计数器
+    }
+
+
+    p {
+ overflow: hidden;
+ text-overflow: ellipsis;
+ white-space: nowrap;
+}单行文本超出省略...
+
+
+-webkit-line-clamp: 3;
+多行文本最后一行显示为省略号
+https://developer.mozilla.org/zh-CN/docs/Web/CSS/-webkit-line-clamp
+
+text-align-last: keyword;最后一行的文字方式
+
+
+grid
+grid-template-columns列/rows行: 20% 60% 20% 1fr 2fr剩下空间的几份;设定grid的分区
+grid-row/column: 2 / span 2;
+grid-area: row-start column-start /row-end column-end;简写
+grid-template-columns: 1fr repeat(11, 10px 1fr);重复11次
+grid-template-columns: 1fr repeat(auto-fill/fit, 50px;)每列50px,自动适配列的数量
+grid-template-columns: 1fr repeat(auto-fill, minmax(50px 1fr) );每列最少50px,自动均分剩下的空间
+grid-template-columns: 1fr repeat(auto-fit, minmax(50px 1fr) );每列最少50px,但是没有元素的列宽折叠发错为0
+
+/*
+grid布局
+设置display:grid;的元素就称为grid容器
+grid容器的子元素自动就成为了grid元素
+grid上下文的元素不能浮动, 浮动元素只能存在于块级上下文中
+
+grid布局是二维布局
+其它的布局都是一维布局
+
+grid子元素也可以直接使用z-index
+grid子元素的包含块不是父元素自身，而是其所在cell
+grid子元素也可以使用order来调整自己的布局顺序
+
+grid-column-start: 2; 设置子元素列的开始
+grid-column-end: span 2;设置子元素列的结束,span n表示跨越多少列
+grid-column: 2 / -2; 以上两个属性的简写
+
+grid-row-start: 2;
+grid-row-end: span 3;
+grid-row: 2 / span 3;
+
+
+grid-template-columns: repeat(auto-fit, 50px);
+每列50px,自动适配列的数量
+
+grid-template-columns: repeat(auto-fit,  minmax(50px, 1fr)  );
+每列至少50px,均分剩下的空间
+
+repeat(auto-fill,  minmax(50px, 1fr)  );
+每列至少50px
+即如果容器宽800,这几乎等价于:
+1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr
+
+repeat(auto-fit,  minmax(50px, 1fr)  );
+即如果容器宽800,这几乎等价于(当后三列没有元素时):
+1fr 1fr 1fr 1fr 1fr 0fr 0fr 0fr
+
+
+每列至少50px,但是没有元素的列宽度将会被折叠为0,这些宽度给到其他列.
+
+grid-auto-rows: 100px;
+由于元素过多造成增加的行的高度
+当grid-auto-flow为row时生效
+
+grid-auto-columns: 80px;
+由于元素过多造成增加的列的宽度
+当grid-auto-flow为column时生效
+
+grid-auto-flow: column/row [dense];
+设定元素的流向是“从左往右再从上到下”还是“从上到下再
+从左往右”
+增加一个dense的效果是，后续的元素可以排到前面元素太大而空出的位置
+
+
+align-items: ;
+控制每个item在cell中的垂直位置
+justify-items: ;
+控制每个item在cell中的水平位置
+简单属性：place-items:;
+
+justify-content:
+统一控制子元素的justify-self
+align-content:
+控制垂直方向额外空间如何分配的
+简单属性：place-content:;
+
+align-self: ;
+单独设定item在cell中的垂直摆放
+justify-self: end;
+单独设定item在cell中的水平摆放
+简单属性：place-self:;
+
+*/
+
+span{a$}.a$*10
+
+https://kekee000.github.io/fonteditor/在线字体编辑器
+
+字体图标的优缺点
+    优点：
+      矢量图，放大不会有锯齿效果
+      颜色可以随意改变（但是图标整体只能是一个颜色）
+      体积小（比css sprite图片体积小）
+    缺点：
+      图标整体只能是一个颜色
+      没有动画
+
+
+      画图
+
+       <circle cx="30" cy="40" r="20" fill="lightpink" stroke="black" stroke-width="1"></circle>
+  <rect x="110" y="80" width="100" height="50" fill="lightblue" stroke="black" stroke-width="1" rx="20"></rect>
+   <polygon points="100,10 110, 10 130,50 150,10"></polygon>
+
+  <path d="m10,20l50,80l60,20v60h50a30 10 46 1 1 250 100 60c280 100 280 130 150 150 s20 130 40 120z x20 200l250 250" stroke="red"></path>
+
+      <path d="M10,20 L50,80 L60,20 V80 H70" stroke="black"></path>
+
+
+      svg图标的用法：
+  使用svg的use标签直接引用处于统一的svg标签内的一个symbol对应的图形
+    <svg>
+      <use xlink:href="#foo"></use>
+    </svg>+
+  引用来源是当前页面的另一个svg的后代元素
+  用法可以参考阿里巴巴图标库网站下载的素材代码
+  也可以改颜色
+  可以各种特效动画
+
+优点：
+  彩色，动画 矢量图，放大不失真，无锯齿效果
+  体积小，容量大
+缺点：
+    不太好用
+    因为用的地方要重新把svg标签和里面的use再写一遍
+      不过这个问题可以通过一些库等方案解决
+        最好让我们书写时只写 <Icon name="cog"/>
+    为了兼容性，要在需要用到这些图标的页面内都直接嵌入相应svg文件的源代码
+    由于每个页面都分别嵌入，所以会有浪费流量的情况
+
+
+    div {
+       transform: rotate(1dge角度/弧度);
+      }
+
+      scale水平翻转
+      h2.transform-1 { transform: scale(0.5); }
+      h2.transform-2 { transform: scaleX(0.5); }
+      h2.transform-3 { transform: scale(1,-1); }
+
+
+      skew倾斜
+      h2.transform-1 { transform: skewX(15deg); }
+      h2.transform-2 { transform: skewY(5deg); }
+      h2.transform-3 { transform: skewX(15deg) skewY(-15deg); }
+
+      https://jsbin.com/sorozerefe/edit?html,css,output
+
+
+
+      column-count: 2;两列
+      column-width: 130px;每列最少130
+      column-rule: 3px solid red ;设置每列分割线的样式
+
+
+
+
+
+
+      border-radius: 50px;边框圆角·
+
+      opacity: 0.5; 透明度
+
+
+      background-repeat: no-repeat;背景不重复
+      background-image: linear-gradient(black 20px/20%, white)矩形背景渐变色
+      background-image: linear-gradient(black 20px/20%, white ,transparent 50% 透明)
+      background-image: radial-gradient(black, white, red)圆形渐变
+      radial-gradient(circle to 0% 0%,black, white, red)控制圆心的变化
+
+      conic-gradient: ;圆心旋转的过程中渐变
+
+
+
+
+
+
+
+
+      background-color: rgba(243, 240, 240, 0.8);
+
+
+
+
+
+
+
+pc端布局：
+  由于电脑屏幕很大，而且一般也不考虑用户把窗口缩小的情况
+  页面一般只使用很大屏幕中间一部分，如1226px宽（小米），1192px宽（淘宝），1500px/1200px（alibaba.com）
+  开发这种网站的时候，不用考虑太多，直接把主体宽度在窗口居中即可，开发时一般使用像素单位
+    不同大小的屏幕会有不同的留白，一般来说屏幕越大留白越多
+    一些网站也会使用一些media query来让页面在不同大小的屏幕上适配，但一般只适配两到三种情况
+  一般都使用像素单位（即代码中使用px）来开发，而像素单位往往是从设计图中测量得到的
+
+移动端布局：
+  由于手机屏幕相对于电脑显示器都很小，所以不能只使用屏幕中间一部分，而往往是占满手机屏幕宽度
+  不同的手机有不同分辨率和物理尺寸
+  手机（任何浏览器）浏览器在显示一网页的时候，总得有一个初始窗口大小（初始包含块的大小）
+    另一个问题是手机上浏览器的窗口大小是不同调节的，双指捏合时的放大并不涉及页面的重新布局
+  那么当手机浏览器显示一个页面时，初始包含块宽度是多少？？？？？？？
+    是不是手机屏幕的水平分辨率？？？不是。
+    通过使用一张图片做为标尺，可以很容易的知道手机浏览器初始包含块的宽度
+      最常见的值为980px。也有1024px，960px，1000px。
+        手机屏幕那么小，为什么要使用980px的初始包含块呢？？？
+          因为用这个宽度做为初始包含块能够正确显示99%已经存在的网站。
+            因为在手机浏览器刚刚出来的时候，网站都是设计给pc的。
+              而那个时候的网站主体宽度都是950左右，在典型的pc显示器上都能正确显示
+  能否改变手机浏览器渲染页面时的初始包含块宽度呢？
+    可以。
+      通过在head标签中增加
+        <meta name="viewport" content="width=1200">
+        <meta name="viewport" content="width=device-width">
+      可以改变手机浏览器的初始包含块
+        该声明只会被手机浏览器识别并使用
+          在pc上，初始包含块由窗口大小确定，并且会随着窗口大小的变化而实时变化
+      这声明里的宽度可以写的比手机物理分辨率还要大
+        可以理解为手机分辨率为无穷大。
+      此声明在Android5.0以上是支持写成数值的，写多少就是多少。
+      但是在更旧的手机浏览器上，只能写为device-width，写为此值时，在不同的手机上分别对应不同的大小
+        常见值为
+          360，375，400，415
+        而且这个值在同品牌的手机上一般会随着屏幕物理尺寸的变大而变大
+  所以在不支持viewport直接写为数值的时候，手机网页面对的是各种大小不一的初始包含块，即浏览器窗口。
+    其实pc网页也一样，但是，pc上窗口足够大，我们只使用中间一部分。
+  然而由于手机屏幕太小，我们不能只使用中间的一部分，而是要占满其宽度，而这个宽度又各不相同
+    同时，每回的设计稿又各不相同（主要是指宽度）
+      有些设计师不懂上面这一坨，会用自己手机分辨率来出设计图。
+        就算他懂，也只能使用某一个特定的分辨率出设计图。
+  就带来了移动端布局的问题。
+    问题就是，设计稿宽度是x，浏览器窗口宽度为y，这两者大概率不相同
+      而我们还要让设计稿充满浏览器窗口。
+    比如，视口宽度为400，设计图为1080宽，
+
+  如果是在现代手机/浏览器上，可以直接通过viewport声明将视口调为1080宽。
+    则可以直接使用设计图中测量出来的像素，并加以px单位，即可写入代码中
+  但如果要兼容旧的手机/浏览器，viewport声明是无法指定窗口为某个宽度的
+    不可行方案一：
+      将设计图缩小或放大到正好跟视口宽度一样。
+        设计图被放大或缩小后，一些边缘会模糊，无法测量
+        不同手机视口宽度不一样
+    不可行方案二：
+      将设计图缩放为100的整数倍的宽度如1000
+        然后测量出400就用40vw写进代码，即可保证在不同设备上的还原
+          所有的长度单位都使用vw
+        但缩放之后一些地方的边缘会模糊，尺寸不好测量
+    方案三：
+      使用rem单位，假设设计图宽度为X，则Xrem需要等于窗口宽度，即100vw
+        Xrem = 100vw
+        1rem = 100vw / X
+        html { font-size: calc(100vw / X) }
+      通过这样的设置，即不用缩放设计图，也不用关心视口的宽度的像素单位
+      设计图中测量出来的试试直接加上rem单位即可用在代码中
+      存在的问题：
+        连设置viewport为数值都不支持的浏览器，甚至连calc都不支持
+          用js，读取视口的像素单位计算并设置到html元素上
+        该公式读出来的字号可能会很小（约3px左右）
+          而一些浏览器默认限制了能使用的最小字号为12px。
+            所以设置的太小就会被重置为12px。
+          所以往往是这样设置：
+            html { font-size: calc(100vw / X * 100) }
+          测量的出来的尺寸移动一两个小数点即可直接用在代码里。
+    方案四：
+      直接设置viewport为设计图的宽度，然后使用px单位来开发。
+
+    实际上上面的四种方案都不属于“设计上”的正确。
+      因为我们并不需要屏幕越大按钮越大字越大，而需要屏幕越大字越多
+      所以最“正确”的做法应该是使用device-width的viewport宽度，使用像素单位开发，页面中的内容都是“流式”的
+        但这样的设计有时不能或无法体现设计师的意图
+        另一方面是这种流式设计的页面比较难以实现
+
+
+
+
+
+          3D transform
+
+          transform: 景深perspective视角距离(80px) rotatex/y/z三个轴方向的旋转角度(30deg);
+          transform: rotatex(30deg) rotatey(30deg) rotatez(30deg);
+          transform: rotate3d( x, y, z,30deg)
+
+          transform:; translate(translateX/Y/Z);平移
+
+          transform: perspective-origin: 50% center;视角位置
+          transform-style: preserve-3d;显示3d
+          backface-visibility: hidden;背面能见度
+
+
+  section {
+    transform: perspective(var(--pers)) rotatex(0deg) rotatey(45deg);
+  }
+  .a1 {
+    --pers: 100px;
+  }
+  .a2 {
+    --pers: 500px;
+
+  }
+  .a3 {
+    --pers: 1000px;
+
+  }
+
+
+  &nbsp;
+
+
+  <div>
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Corporis, dignissimos.
+    </div>
+
+    @keyframes spin{
+
+        form{
+
+        }
+        to{
+
+        }
+        0%{
+
+        }
+        10%{
+
+        }
+        50%{
+
+        }
+
+    }
+    @keyframes expand {
+       from { border-width: 4px; }
+       50% { border-width: 12px; }
+       to {
+       border-width: 4px;
+       height: 100%;
+       width: 100%;
+ }
+}
+
+    div{
+      animation-name: spin ;动画名称
+      animation-duration: 5s;动画持续时间
+      animation-timing-function: linear 匀速/ease 缓慢;
+      animation-delay: 0s;动画延迟
+      animation-iteration-count: 8;动画重复次数,动画迭代次数
+      animation-direction: alternate-reverse 反向;动画方向
+      animation-fill-mode: forwards   backwards;动画填充模式
+      animation-play-state: paused; 动画播放状态：暂停；
+
+
+
+    集合  animation: name duration timing-function delay iteration-count direction fill-mode play-state;
+    }
+    /*
+animation-play-state:
+running 默认值，即播放状态
+paused 暂停状态
+
+animation-iteration-count: 2;
+动画播放次数，infinite表示无数次
+
+animation-direction: normal;
+动画播放方向
+normal 每次都正向播放
+reverse 每次都反向播放
+alternate 一正一反
+alternate-reverse 一反一正
+
+animation-fill-mode
+none 播放前和播放完成后都保持自己的样式而不动画的首帧状态
+backwards 动画播放之前元素就显示为动画第一帧的样子，所以需要跟延迟一起使用，动画已经加到元素上，但处于delay状态
+forwards 动画播放完成之后（所以动画不能播放无数次）元素保持最后一帧的样子
+both 以上两者的共同效果
+*/
+
+
+
+
+       ### 运动轨迹显示
+           var div = $0
+
+       setInterval(() => {
+
+         var pos = div.getBoundingClientRect()
+         var dot = document.createElement(4052347)
+         dot.style = `
+            position: fixed;
+            width: 2px;
+            height: 2px;
+            background: red;
+            top: ${pos.top}px;es
+            left: ${pos.left}px;
+         `
+         document.body.append(dot)
+
+       }, 100)
+
+
+
+       filter: blur(10px);模糊(10px)
+       filter: brightness(50%);亮度(50%)
+       filter: contrast(50%);对比度(50%)
+       filter: grayscale(100%);灰度(100%)
+       filter: sepia(100%);棕褐色(100%)
+       filter: saturate(200%);饱和(200%)
+       filter: hue-rotate(45deg);色调旋转(45度)
+       filter: opacity(25%);不透明度(25%)
+       filter: drop-shadow(5px 5px 3px gray);阴影
+       shape-outside: circle(100px at left top);外部形状：圆形
+
+
+
+       div {        width: 256px;
+        height: 256px;
+        background-blend-mode: screen;
+        background-image:
+         linear-gradient(to right,rgb(0,255,255),rgba(0,255,0)),
+
+         linear-gradient(to bottom,rgba(0,255,0),rgb(255,255,0));
+    }        使用混合模式叠加出rgb色彩空间的一个面
+
+    现代css里元素可以感知自己容器的大小来改变自己的布局
+
+    container query
+
+
+
+
+    user-select: none;让文字无法被鼠标选中
+    pointer-events: none; 让元素完全不可跟鼠标交互，可以用来做水印
+
+
+
+·
+JavaScript
+
+=== 严格相等
+!== 不严格相等
+
+x || y 如果x转换为boolean为true,则整个表达式求值结果为x,否则为y
+
+x && y 如果x转换为boolean为true,则整个表达式求值结果为y,否则为x
+
+
+A || B || C || D
+从左往右反回第一个为truthy的值,如果都没有,就返回D
+
+A && B && C && D
+从左往右返回第一个falsy的值,如果都没有,就返回D
+
+truthy: 转换为boolean后为true的值
+falsy: 转换为boolean后为false的值
+
+a ?? b  左边为空(null/undefined)返回右边
+
+non-null operator非空运算符
+
+
+
+
+当一行的第一个字符是
++，-，/，[，(，`这几
+个符号时，它前面一行
+必须加分号。
+更多的时候，人们直接
+把分号置于本行的首部
+（分号前置）：
+;(2+8)
+
+
+
+Math.sqrt(delta)
+
+token  词元
+  代码中不可再分割的单词或连续的符号,如
+  for  count   &&   >=   (     )
+
+
+Math.ceil 向上取整
+Math.floor 向下取整
+Math.sin/cos/tan
+Math.round 四舍五入
+Math.trunc 保留整数部分
+Math.pow(2, 5) 二的五次方
+Math.log(100) 以e为底,100的对数
+
+Math.sign 返回一个数的符号,正的返回1,负的返回-1,0返回0
+Math.random() 返回一个0到1之间的随机数
+
+sqrt
+
+x = 13 /* 以十进制表示一个数 */
+x = 0b1101 /* 以二进制表示一个数,前导0b */
+x = 0xd /* 以十六进制进制表示一个数,前导为0x   hexdecimal*/
+x = 0000015 /* 以八进制表示一个数,前导0 */
+x = 0o000015 /* 以八进制表示一个数,前导0o octet */
+
+
+
+
+
+
+函数
+
+函数看见的是自己定义位置周围的变量，叫词法作用域
+函数看见的是自己调用位置周围的变量，叫“动态作用域”
+
+定义位置只有一处，是确定的
+但调用位置可以是很多处
+
+var declaration hoist
+变量声明提前
+
+
+var f
+
+var foo = function () {
+  var a = 2
+  f = function () {
+    return a * a
+  }
+}
+
+foo()
+
+var bar = function() {
+  var a = 3
+
+  console.log( f()   )
+}
+
+bar()
+
+
+
+控制台为了让一份代码能够重复的在里面执行，允许不同次运行的代码用let重复声明变量，即以下代码：
+let a = 2
+console.log(a * a)
+可以在控制台重复运行，即使第一次已运行已经用let声明变量a
+
+目的是为了方便开发者在控制粘贴代码以调试或测试
+
+
+let的重复声明是在代码运行之前就检查的，称静态分析
+  对let声明变量的说是在代码运行的时候
+  let声明的变量在块级作用域内
+  let声明的变量在声明完成之前是不能访问的，称为TDZ，Temper Dead Zone，暂时性死区
+  即使外层作用域有同名变量，也访问不到外层的那个变量
+
+
+
+  /*
+  是一个变量声明及初始化
+  等号后面的function...是**表达式**，称函数表达式，并不会在函数体的结束花括号后面自动结束
+  函数表达式的function关键字的后面可以出现函数名也可以不出现
+  就算它出现了函数名，这个函数名也只能在该函数内部使用
+  没有提前的效果，在这行之前不能使用到这个函数
+*/
+
+
+var square = function () {}
+
+
+
+/*
+  当function关键字在一条**语句**的开头时，是一条语句，而不是表达式（在前面的语句都已经结束的情况下）
+  所以当它直接出现在控制台的时候，没有求值结果，因为它是一条语句，语句是没有求值结果的
+  它会在函数体的结束花括号的位置就结束这条语句，可以理解为函数声明的最后总有一个分号
+  所以不能在函数声明后面立刻用括号调用它
+  函数声明语句中，function关键字的后面必须要有函数的名字，而且此名字相当于声明了一个变量
+  函数声明会提前，提前到所在作用域的最前面，所以该作用域内的代码都可以调用该函数
+*/
+function square() {}
+
+调用栈的两个含义：
+  计算机中存储函数间调用关系及每个函数每次运行时要返回的位置 的 实际存储空间
+
+  函数间相互调用形成的等待关系
+  function itob(x, base = 10) {
+    var result = ''
+    do {
+      var g = x % base
+      result = digitToChar(g) + result
+      x = (x - g) / base
+    } while (x > 0)
+    return result
+  }
+function digitToChar(digit) {
+    if (digit < 10) {
+      return String.fromCharCode(digit + 48)
+    } else {
+      return String.fromCharCode(digit + 65 - 10)
+    }
+  }
+
+
+
+
+
+
+  输出数字的几进制模式
+
+
+  function itob(x, base = 10) {
+    var result = ''
+    do {
+      var g = x % base
+      result = digitToChar(g) + result
+      x = (x - g) / base
+    } while (x > 0)
+    return result
+  }
+
+
+  function digitToChar(digit) {
+    if (digit < 10) {
+      return String.fromCharCode(digit + 48)
+    } else {
+      return String.fromCharCode(digit + 65 - 10)
+    }
+  }
+
+
+
+
+辗转相除法
+
+<script>
+
+function icm(a,b){
+  var x
+  do  {
+    x = a % b
+    a = b
+    b = x
+}while(x !== 0)
+return a
+}
+
+
+</script>
+
+
+辗转相减法
+
+<script>
+
+function icm(a,b){
+  var x
+  do  {
+    x = a - b
+    a = b
+    b = x
+}while(a !== b)
+return a
+}
+
+
+</script>
+
+if (x==0 || x ==1) {
+            return x;
+        }
+      for (let i=0; i<=x;i++){
+          if (i*i<=x && (i+1)*(i+1)>x){
+              return i;
+
+
+
+var mySqrt = function (x) {
+    let left = 0
+    let right = x
+    while (left <= right) {
+        let mid = left + ((right - left) >> 1)//中间位置索引 x>>1 表示除以2并取整，缩小一下遍历的范围
+        if (mid * mid <= x) {
+            left = mid + 1
+        } else {
+            right = mid - 1
+        }
+    }
+    return right
+};
+
+
+二分法求根号n
+
+  <script>
+
+  function sqrt(n){
+    var l = 0
+    var r = n
+    while(r  - l > 0.0000000.1){根据结果的小数部位改变
+      var x = (l + r) / 2
+      if(x * x > n){
+        r = x
+      }else if(x * x < n){
+        l = x
+      }else{
+        return x
+      }
+    }
+    return (l + r) / 2
+  }
+
+
+</script>
+
+
+牛顿迭代法求根号n
+function sqrt(n) {
+  var x = n
+  var lastX = x
+
+  if (n < 0) {
+    return NaN
+  }
+  if (n == 0) {
+    return 0
+  }
+
+  while (true) {
+    x = (n / x + x) / 2
+    if (x === lastX) {
+      break
+    }
+    lastX = x
+  }
+
+  return x
+}
+
+
+
+作者：wi2ardly-margulisjw8
+链接：https://leetcode.cn/problems/base-7/solution/7jin-zhi-shu-by-wi2ardly-margulisjw8-x75w/
+来源：力扣（LeetCode）
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+narcissistic: 输入一个数，判断是否是水仙花数
+narcissistics: 输出10000以内的水仙花数
+
+palindrom: 输入一个数，判断它数是否是回文数，如1223221
+
+
+complete-number: 输入一个数，判断它是否是完全数（自行查相关概念）
+
+function isCompleteNumber(n) {
+  var factorSum = 0
+
+  var stop = Math.sqrt(n)
+
+  for (var i = 1; i < stop; i++) {
+    if (n % i == 0) { // 如果i是因子，那么n/i是其对应的因子
+      factorSum += i + n / i
+    }
+  }
+
+  if (Number.isInteger(stop)) {
+    factorSum += stop
+  }
+
+  return factorSum == n
+}
+
+complete - numbers: 输出1000以内的完全数
+
+for (var i = 1; i <= 1000; i++) {
+  if (isCompleteNumber(n)) {
+    console.log(i)
+  }
+}
+
+prime: 输入一个数，判断它是否是素数
+
+  function isPrime(n) {
+    var stop = Math.sqrt(n)
+    for (var i = 2; i <= stop; i++) {
+      if (n % i == 0) {
+        return false
+      }
+    }
+    return true
+  }
+primes: 输出100以内的素数
+
+
+itob: 给定一个整数，将其转换为字符串：不能使用String等现成函数，但可以使用非此功能的其它函数，也不能利用任意运算符的自动类型转换
+  function itob(x) {
+    var result = ''
+    do {
+      var g = x % 10
+      result = digitToChar(g) + result
+      x = (x - g) / 10
+    } while (x > 0)
+  }
+  function digitToChar(digit) {
+    if (digit < 10) {
+      return String.fromCharCode(digit + 48)
+    } else {
+      return String.fromCharCode(digit + 65)
+    }
+  }
+
+
+lcf & lcm: 输入两个数，输出它们的最大公约数和最小公倍数
+
+  function largestCommonFactor(a, b) {
+    var c
+    do {
+      c = a % b
+      a = b
+      b = c
+    } while (c !== 0)
+    return b
+  }
+
+  function largestCommonFactor(a, b) {
+    while (a !== b) {
+      if (a < b) {
+        var t = a
+        a = b
+        b = t
+      }
+      var c = a - b
+      a = b
+      b = c
+    }
+    return a
+  }
+
+  function GCD(a, b) {
+      while(a == b) {
+          if (a > b) a -= b;
+          else b -= a;
+      }
+      return a;
+  }
+
+sqrt: 输入一个数，求它的平方根，精确到小数点后3位，不能使用Math.sqrt
+
+function sqrt(n) {
+  for (var i = 1; i < n; i += 0.00001) {
+    if (Math.abs(i * i - n) < 0.001) {
+      return i
+    }
+  }
+}
+
+// 二分法
+function sqrt(n) {
+  var left = 0
+  var right = n
+
+  while (right - left > 0.00000000001) {
+    var mid = (left + right) / 2
+    if (mid * mid > n) {
+      right = mid
+    } else if (mid * mid < n) {
+      left = mid
+    } else {
+      return mid
+    }
+  }
+
+  return (left + right) / 2
+}
+
+function sqrt(n) {
+  var x = n
+  for (var i = 0; i < 30; i++) {
+    x = (n / x + x) / 2
+  }
+  return x
+}
+
+weekday: 输入年份与月份，输出这个月的第一天是周几（视具体设定，周一可以用1或0表示）
+
+function getMonth天数(y, month) {
+  if (month == 2) {
+    if (y % 400 == 0 || y % 100 !== 0 && y % 4 == 0) {
+      return 29
+    } else {
+      return 28
+    }
+  } else {
+    switch (month) {
+      case 1:
+      case 3:
+      case 5:
+      case 7:
+      case 8:
+      case 10:
+      case 12:
+        return 31
+      default:
+        return 30
+    }
+  }
+}
+function weekday(year, month) {
+  var daySum = 0
+  for (var i = 1; i < year; i++) {
+    if (i % 400 == 0 || i % 100 !== 0 && i % 4 == 0) {
+      daySum += 366
+    } else {
+      daySum += 365
+    }
+  }
+
+  for (var m = 1; m < month; m++) {
+    daySum += getMonth天数(year, m)
+  }
+
+  return (daySum + 1) % 7
+}
+
+function weekday2(year, month) {
+  var y = year - 1
+
+  var daySum = y * 365 + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400)
+
+  for (var m = 1; m < month; m++) {
+    daySum += getMonth天数(year, m)
+  }
+
+  return (daySum + 1) % 7
+}
+
+
+
+闭包
+
+函数与变量都“属于”某个作用域
+  函数声明语句在哪个作用域运行，声明出来的函数就属于哪个作用域
+  变量声明语句在哪个作用域运行，声明出来的变量就属性哪个作用域
+  函数运行时会创建作用域，函数自身在哪个作用域，其运行创建的作用域就在哪个作用域内部
+    函数的参数及内部声明的变量及创建的函数都是在它这一次运行产生的作用域内部
+    如果函数运行返回了其在内部创建的函数，则其这次运行产生的作用域可能不会销毁
+      有函数声明语句才叫“创建了函数”
+
+
+
+递归
+
+ 求阶乘
+<script>
+  function fact(n){
+    if(n == 1){
+      return  1
+    }else{
+      return n * fact(n - 1)
+    }
+  }
+</script>
+
+
+欧几里得算法求最大公约数
+
+***1.
+  function g(a,b){
+    if(a % b == 0){
+      return b
+    }else{
+     return g(b , a % b)
+    }
+  }
+
+
+***2.
+<script>
+  function g(a,b){
+    if(a == b){
+      return a
+    }else if(a > b){
+      return g(b,a - b)
+    }else{
+      return g(a ,b - a)
+    }
+  }
+
+</script>
+
+
+斐波那契数列
+
+<script>
+  function fibb(n){
+    if(n < 3){
+      return 1
+    }else{
+      return fibb(n-1) + fibb(n - 2)
+    }
+  }
+
+
+
+
+0
+1
+
+
+  调用栈
+  a函数在运行时调用b函数，b函数运行过程中又调用c函数
+  类似这种形成的等待关系，类似于查字典
+  一种概念，计算机中一个存储该信息的实际位置
+  所有语言都有的
+闭包
+  一个函数返回了其内部创建的函数
+  因这个被返回的函数还有机会运行，而这个函数在返回之前如果运行是可读到外层函数里的变量的
+  那么它稍后运行也应该能够读到这些变量
+  于是这些变量不能销毁，进而这些变量所在作用域（也是这个函数这一次运行时创建的作用域）也就不能销毁
+  js语言有，不少其它语言是没有此功能/概念的，因为它不能在一个函数内部创建一个函数并返回
+  一个作用域，一个维持变量存在的“域”
+递归
+  一个函数直接或间接调用自身
+  递归过程会形成调用栈，正常来说不会形成闭包
+  所有有语言都有
+  是调用关系的一种特殊情况
+
+
+
+
+
+数组 Array
+数组是值的有序集合
+数组本身也是一个值
+var array = [] // 创建一个空数组
+var array = [2, 3, 5, -8, 7, 6, 9, 0] // 创建一个非空数组
+array.length可以得到数组的长度
+值在数组内是有序存放的，每个值被指定了一个编号/下标/索引，是从0开始编号的
+所以第一个值的编号为0，最后一个值的编号为array.length - 1
+array.push(5) // 向数组末尾增加元素
+array.push(4, 1, 8) // 可以一次性增加多个
+push返回的是数组新的长度
+array.pop() // 是将数组最后一个元素从数组中删除并返回
+array.unshift() // 同push，只是从开头向数组增加元素
+array.shift() // 同pop，只是从开头删除并返回一个元素
+
+数组元素的计取
+array[用于计算出索引的表达式]
+array[5] 读取到数组下标为5的元素，即第六项
+array[x + 3] 读取到数组下标为5的元素，即第六项
+array[Math.max(1, 2, 3)] 读取到数组下标为3的元素
+如果数组没有那么长，则读到undefined
+array.at(index) 返回数组的第index项
+array.at(-1) 返回倒数第一项
+array.at(-array.length) 返回第一项
+array[i] 的形式不能倒着访问
+
+数组元素的修改
+array[5] = 32423 // 将数组的第5项修改为某个值
+array.at(5) = 2 // 语法错误
+
+
+嵌套数组：
+array = [[1, 2, 3], [4, 5, 6]]
+array[0] 得到[1, 2, 3]这个数组
+array[1] 得到[4, 5, 6]这个数组
+
+array[1][1] = 8
+array[1]
+
+array = [2, 3, 5, 7, 1, 0, 9]
+
+array[ array[2] ]  将得到0，先计算array[2]，为5，再取array[5] 得到0
+
+数组的长度length
+修改数组的长度将会将超出长度以外的元素全部抛弃
+
+array.splice(i, amount, replacement1, replacement2, ...)
+从数组的第i项开始，删除amount项，替换为后续的参数，返回被删除的项组成的数组
+
+array.slice(start = 0, end = array.length)用数组start（包含）到end（不包含end）之间的元素创建一个新的数组并返回
+不修改原数组，而是返回创建的新的子数组
+
+
+array.fill(5) 将数组的所有位置上都填为5，返回的是数组本身
+array.fill(5, 6, 10) 将数组第6（包含）到10（不包含）项都填为5
+
+a = []
+a.length = 8
+a.fill(0)
+
+a = Array(8).fill(0)
+
+
+value.x 总是访问value的名为‘x’的属性
+value[x] 是将[]内的表达计算出来，将计算结果做为要访问的属性名
+此时[]内的x是表达式
+
+
+数组是值的有序集合，在数组里，我们对值进行编号
+对象是值的具名集合，在对象里，我们对值进行命名
+
+
+
+// 逗号表达式,即在表达式上下文中，由逗号连接多个表达式,形成一个表达式
+// 逗号表达式的求值结果为最后一个表达式的值
+(1,2,3,4,5) + 5
+
+
+console.log(  (1,2,3,4,5), 2 )
+
+
+
+属性访问运算符放在等号左边是改变它自身箭头的指向位置
+放在等号右边或是用在其它表达式中是取到它的箭头指向的目标
+
+
+
+很多语言里，基本数据类型如数值，字符串和布尔是不能读取属性的
+在这样的语言里，只有真正的“对象”才可以读取出属性
+所以在很多语言里，能读出属性，就肯定是对象，或者说，只有对象能读出属性
+
+而在js里面，原始数据类型（primitive values）也可以读出属性以及调用方法
+  所以从这个角度讲，js中的一切（除underined，null）皆对象
+  但是原始数据类型在js中也不是真正的对象，所以并不能像真正的对象一样使用，如添加属性
+    对象本身占用和的空间是比较大的
+    而原始数据类型如number，实际上在js中只占8个字节，所以并没有空间来存储其它的属性信息
+      但为什么又能读出属性？因为
+        x = 2
+        x.toString()
+        被转换为这样的方式执行
+        Object(x).toString()
+      Object函数可以将原始数据类型转换为真正的对象
+        真正的对象当然可以读出属性，调用方法，添加属性
+“对象”，Object，东西，事物
+
+
+
+
+// 剩余参数必须在参数列表的最后
+// 剩余参数只能有一个
+// 剩余参数不能有默认值
+// 与arguments的区别：是个真正的数组，可以自行起名字而不必一定要叫arguments
+function foo(a, b = 3, ...c) { // rest parameter 剩余参数
+  c.push('x')
+  console.log(a, b, c)
+}
+
+
+
+function foo(a, b, ...c) { // rest parameter 剩余参数
+
+}
+
+var b = [1, 2, ...c, 3, ...d] // spread operator 展开运算符
+
+var [a, b, ...c] = [1,2,3,4,5,6] // rest element 剩余元素解构
+
+35. 搜索插入位置
+11111.
+
+  let l = 0, r = nums.length - 1, ans = nums.length;
+
+  while (l <= r) {
+    const mid = l + Math.floor((r - l) >> 1);
+
+    if (target > nums[mid]) {
+      l = mid + 1;
+    } else {
+      ans = mid;
+      r = mid - 1;
+    }
+  }
+
+  return ans;
+
+
+222220.25turnvar searchInsert = function(nums, target) {
+    const n = nums.length;
+    let left = 0, right = n - 1, ans = n;
+    while (left <= right) {
+        let mid = ((right - left) >> 1) + left;
+        if (target <= nums[mid]) {
+            ans = mid;
+            right = mid - 1;
+        } else {
+            left = mid + 1;
+        }
+    }
+    return ans;
+};
+35. 搜索插入位置
+
+
+
+
+var {a: A = 3, b = 5, ...c} = {a:1,b:2,c:3,d:4,e:5}  // 剩余元素解构
+
+var obj1 = {a:1,b:2,c:3}
+var obj2 = {x:1,y:2,z:3}
+var obj3 = {
+  foo: 1,
+  bar: 2,
+  ...obj1, // object spread
+  ...obj2, // object spread
+}
+
+
+
+
+
+
+
+
+var obj = {
+  foo: foo,
+  bar: bar,
+}
+// 等价于
+var obj = {
+  foo,
+  bar,
+}
+
+
+
+
+
+.
+
+
+
+var a = 23423423
+
+function random() {
+  var result = +String(a).slice(2, 6)
+
+  a = result * result
+
+  return result
+}
+
+平方取中法计算伪随机数
+
+
+
+
+
+
+
+var a = 1664525
+var c = 1013904223
+var m = 256
+var x = 100
+
+function random() {
+  return x = (a * x + c) % m
+}
+
+线性同余法计算伪随机数
+
+
+
+var random = function() {
+  var a = 1664525
+  var c = 1013904223
+  var m = 256
+  var x = 100
+
+  return function random() {
+    return x = (a * x + c) % m
+  }
+}()
+
+
+
+
+每个作用域其实是一个特殊对象，该作用域里的每个变量都是该对象的一个属性
+所以全局作用域当然也是个对象，每个全局变量也都是全局作用对象的一个属性
+
+
+
+由于最早的时候js只运行在浏览器中，
+所以全局作用域对象真名为window（因为以前整个页面是活一个窗口中的）
+而现在js可以运行在很多环境下，依然拿window做为全局作用域对象的名字就不太合适了，
+所以标准给了的新的名字，叫globalThis，所有能够运行js代码的环境都可以通过这个全局变量来访问到全局作用域对象
+
+
+
+求 x 的 n 次方
+
+**1.
+
+function myPow(x, n) {
+  if (n == 0) {
+    return 1
+  }
+  if (n < 0) {
+    return 1 / myPow(x, -n)
+  }
+
+  var result = 1
+  var xx = x
+  var e = 1
+
+  while (n > 0) {
+    if (e * 2 > n) { // 如果再自乘一次次方就大于我们需要的了
+      result *= xx
+      n = n - e // 已经将x的e次方累乘到结果中了，就从n次方中去掉e次方
+      xx = x // 重新变回x的1次方
+      e = 1 // e要同时发生变化
+      continue
+    }
+    xx = xx * xx // xx代表x的e次方
+    e = e * 2
+  }
+  return result
+}
+
+
+**2.
+
+ function myPow(x, n) {
+  if (n == 0) {
+    return 1
+  }
+  if (n < 0) {
+    return 1 / myPow(x, -n)
+  }
+
+  if (n == 1) {
+    return x
+  }
+
+  if (n % 2 == 0) {
+    var t = myPow(x, n / 2)
+    return t * t
+  } else {
+    var t = myPow(x, (n - 1) / 2)
+    return t * t * x
+  }
+}
+
+
+**3.
+
+
+var mySqrt = function(x) {
+    if (x < 2) {
+      return x
+    }
+    var l = 0
+    var h = x
+
+    while(h - l > 1) {
+        var mid = Math.floor((l + h) / 2)
+        if (mid * mid > x) {
+            h = mid
+        } else if (mid * mid < x) {
+            l = mid
+        } else if (mid * mid == x) {
+            return mid
+        }
+    }
+
+    return l
+};
+
+
+
+
+function foo(x, ary) {
+    var a = ''
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] == x) {
+        a += i
+      }
+    }
+    return a + ','
+  }
+
+
+
+
+
+
+
+
+function foo(x, ary) {
+    var a = ''
+    for (var i = 0; i < ary.length; i++) {
+      if (ary[i] == x) {
+        a += i + ','
+      }
+    }
+    return a
+  }
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+ var multiply = function(num1, num2) { // 32984723 , 23400234
+    var num1xn = []
+    var t = '0'
+    // 计算num1乘以0到9的每一个的结果，以方便后续查找
+    for (var i = 0; i < 10; i++) {
+        num1xn.push(t)
+        t = addStrings(t, num1)
+    }
+    var result = '0'
+    for (var j = num2.length - 1, zeros = 0; j >= 0; j--, zeros++) {
+        var p = num2[j] // 依次取出num2的最右边的每一位数
+        var product = num1xn[p] // 直接在num1xn数组里就能取到num1乘以p的值
+        // 如果p为'0',则无需
+        if (product !== '0') {
+            product = product + '0'.repeat(zeros)
+        }
+        result = addStrings(result, product)
+    }
+    return result
+};
+
+
+var addStrings = function(a, b) {
+    var carry = 0
+    var result = ''
+    for (var i = a.length - 1, j = b.length - 1; i >= 0 || j >= 0; i--, j--) {
+        var x = a[i] ? +a[i] : 0
+        var y = b[j] ? +b[j] : 0
+
+        var z = x + y + carry
+        var left = z % 10
+        carry = (z - left) / 10
+        result = left + result
+    }
+    if (carry) {
+        result = carry + result
+    }
+    return result
+};
+
+
+
+
+
+
+字符串相乘
+
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+ var multiply = function(num1, num2) { // 32984723 , 23400234
+    var num1xn = []
+    var t = '0'
+    // 计算num1乘以0到9的每一个的结果，以方便后续查找
+    for (var i = 0; i < 10; i++) {
+        num1xn.push(t)
+        t = addStrings(t, num1)
+    }
+    var result = '0'
+    for (var j = num2.length - 1, zeros = 0; j >= 0; j--, zeros++) {
+        var p = num2[j] // 依次取出num2的最右边的每一位数
+        var product = num1xn[p] // 直接在num1xn数组里就能取到num1乘以p的值
+        // 如果p为'0',则无需
+        if (product !== '0') {
+            product = product + '0'.repeat(zeros)
+        }
+        result = addStrings(result, product)
+    }
+    return result
+};
+
+字符串相加
+var addStrings = function(a, b) {
+    var carry = 0
+    var result = ''
+    for (var i = a.length - 1, j = b.length - 1; i >= 0 || j >= 0; i--, j--) {
+        var x = a[i] ? +a[i] : 0
+        var y = b[j] ? +b[j] : 0
+
+        var z = x + y + carry
+        var left = z % 10
+        carry = (z - left) / 10
+        result = left + result
+    }
+    if (carry) {
+        result = carry + result
+    }
+    return result
+};
+
+两数之和.1 题解
+
+
+
+var twoSum = function(nums, target) {
+    var map = {} // 记录我们已经见到的数在原数组的哪个位置
+
+    for (var i = 0; i < nums.length; i++) {
+        var see = nums[i]
+        var need = target - see
+        if (need in map) {
+            return [i,  map[need] ]
+        }
+        map[see] = i // 记录我们已经遍历的数的位置
+    }
+};
+
+
+
+两数之和.2 题解
+
+var twoSum = function(numbers, target) {
+    var i = 0
+    var j = numbers.length - 1
+    while (i < j) {
+        if (numbers[i] + numbers[j] > target) {
+            j--
+        } else if (numbers[i] + numbers[j] < target) {
+            i++
+        } else {
+            return [i + 1, j + 1]
+        }
+    }
+};
+
+
+
+
+
+BigInt
+  es2018开始支持的高精度整数运算
+  直接量写法：在一个整数后面加上一个n
+
+  非直接量写法：BigInt('982347928374929384729')
+  非直接量写法：BigInt(str)
+  注意不要这样写： BigInt(234234234244224243423242442342423423242324)
+
+  它是一个原始类型/基本类型
+    typeof 23094n === 'bigint'
+  BigInt只能跟BigInt运算，不能跟任何其它类型混合运算
+  Number(bigintnumber)可以将一个bigint类型转换为number
+  BigInt(number)则可以把普通整数转换为bigint类型
+  Math对象上的一各种函数并不能计算bigint
+
+
+
+  33Integer.reverse(nInteger.reverse(n8.
+/**
+ * @param {number} n
+ * @return {number[]}
+ */
+ var countBits = function(n) {
+    var result = [0]
+    var sub = 1
+    for (var i = 1; i <= n; i++) {
+        // i的最高位1被减去
+        result.push(   result[i - sub] + 1   )
+
+        if ((i + 1) == (sub << 1)) {
+            sub *= 2
+        }
+    }
+    return result
+};
+
+var countBits = function(n) {
+    var result = [0]
+    for (var i = 1; i <= n; i++) {
+        // result[i & (i - 1)] 在result中查询i中最低位1变0后那个数中1的个数
+        result.push(   result[i & (i - 1)]  + 1 )
+    }
+    return result
+};
+
+
+
+
+
+二进制里的1数量
+
+/**
+ * @param {number} n - a positive integer
+ * @return {number}
+ */
+ var hammingWeight = function(n) {
+    var c = 0
+    for (var i = 0; i < 32; i++) {
+        if (n & 1) {
+            c++
+        }
+        n = n >> 1
+    }
+    return c
+};
+
+var hammingWeight = function(n) {
+    var c = 0
+    while (n) {
+        n = n & (n - 1)
+        c++
+    }
+    return c
+};
+
+
+位运算
+
+
+&	与	两个位都为1时，结果才为1
+|	或	两个位都为0时，结果才为0
+^	异或	两个位相同为0，相异为1
+~	取反	0变1，1变0
+<<	左移	各二进位全部左移若干位，高位丢弃，低位补0
+>>	右移	各二进位全部右移若干位，对无符号数，高位补0，有符号数，各编译器处理方法不一样，有的补符号位（算术右移），有的补0（逻辑右移）
+
+
+
+n & (n - 1)将二进制最后一个1变成0
+
+
+
+
+var reverseBits = function(n) {
+    let res = 0;
+    for(let i=0;i<32;i++){
+        //res左移，然后取n的最低位，加到res的最低位
+        res = (res << 1) + (n & 1);
+        //n右移
+        n = n>>1;
+    }
+    //把符号位换成0
+    return res >>> 0;
+};
+
+
+
+
+var reverseBits = function (n) {
+  let res = 0;
+  for (let i = 0; i < 32; i++) {
+    res = (res << 1) + (n & 1);
+    n = n >>> 1;
+  }
+
+  return res >>> 0;
+};
+
+
+function reverseBits(n) {
+    let ret = 0;
+    for (let i = 0; i < 32; i++) {
+        ret <<= 1;
+        ret += (n & 1);
+        n >>= 1;
+    }
+    return ret>>>0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nums.length
+
+
+
+
+ ## 按位与的知识
+
+n&(n-1)作用：将n的二进制表示中的最低位为1的改为0，先看一个简单的例子：
+n = 10100(二进制），则(n-1) = 10011 ==》n&(n-1) = 10000
+可以看到原本最低位为1的那位变为0。
+弄明白了n&(n-1)的作用，那它有哪些应用？
+
+------------------------------------------------------------------------------------------------------
+
+
+1、 判断一个数是否是2的方幂
+n > 0 && ((n & (n - 1)) == 0 )
+
+解释((n & (n-1)) == 0)：
+
+如果A&B==0，表示A与B的二进制形式没有在同一个位置都为1的时候。
+
+那么本题到底啥意思？？
+
+不妨先看下n-1是什么意思。
+
+   令:n=1101011000(二进制,十进制也一样)，则
+
+    n-1=1101010111。
+
+n&(n-1)=1101010000
+
+由此可以得出，n和n-1的低位不一样，直到有个转折点，就是借位的那个点，从这个点开始的高位，n和n-1都一样，如果高位一样这就造成一个问题，就是n和n-1在相同的位上可能会有同一个1，从而使((n & (n-1)) != 0),如果想要
+
+((n & (n-1)) == 0)，则高位必须全为0，这样就没有相同的1。
+
+所以n是2的幂或0
+
+2. 求某一个数的二进制表示中1的个数
+while (n >0 ) {
+      count ++;
+      n &= (n-1);
+}
+
+3. 计算N!的质因数2的个数。
+容易得出N!质因数2的个数 = [N / 2] + [N / 4] + [N / 8] + ....
+下面通过一个简单的例子来推导一下过程：N = 10101(二进制表示）
+现在我们跟踪最高位的1，不考虑其他位假定为0，
+则在
+[N / 2]    01000
+[N / 4]    00100
+[N / 8]    00010
+[N / 8]    00001
+则所有相加等于01111 = 10000 - 1
+由此推及其他位可得：(10101)!的质因数2的个数为10000 - 1 + 00100 - 1 + 00001 - 1 = 10101 - 3(二进制表示中1的个数)
+
+推及一般N!的质因数2的个数为N-(N二进制表示中1的个数)
+
+.
+
+
+
+
+
+
+
+
+65..toString(2).padStart(8,0)转成二进制不足八位数自动左边补零
+
+
+
+
+# 浮点数的表示
+
+* 浮点数一般使用8字节即64bit存储，为双精度浮点数
+  * 也有用4字节即32bit存储的单精度浮点数
+  * [x|xxxxxxxx|xxxxxxxxxxxxxxxxxxxxxxx]
+* 最左边一位表示符号，0表示正，1表示负
+* 接下来的11bit表示指数
+* 剩余的表示科学记数法中的小数部分，不含整数部分，因为整数部分总是1
+
+> f.writeDoubleBE(NaN)
+8
+> f
+<Buffer 7f f8 00 00 00 00 00 00>
+> f.writeDoubleBE(Infinity)
+8
+> f
+<Buffer 7f f0 00 00 00 00 00 00>
+> f.writeDoubleBE(-Infinity)
+8
+> f
+<Buffer ff f0 00 00 00 00 00 00>
+> f.writeDoubleBE(0)
+8
+> f
+<Buffer 00 00 00 00 00 00 00 00>
+> f.writeDoubleBE(-0)
+8
+> f
+<Buffer 80 00 00 00 00 00 00 00>
+>
+
+
+* 为什么指数的范围是-1023到1024而非-1024到1023？
+  * 指数部分并没有使用补码进行存储
+  * 正1024次方表示无穷大
+  * -1023次方表示无穷小(无限接近0)
+* 为什么指数部分读出时要减1023，写入时要加1023？
+  * 指数部分使用原码，范围是0到2047
+  * 表示-1023到1024
+  * 所以0表示-1023
+  * 所以读出时/解码时减1023，写入时/编码时加1023
+* 为什么指数不用补码？
+  * 为了能够从左往右扫描即可确定两个浮点数的大小
+  * 即除符号位以外只看指数部分即可以确定大小
+    * 即指数部分谁先出现1谁更大
+    * 如果指数部分完全相同，那么底数部分谁先出现1谁更大
+* 为什么要如此在意浮点大小对比的效率？
+  * 因为浮点数更多时候是对比大小而非对比相等
+    * 因为浮点数表示的不精确
+      * 很难保证数学上相等的两个计算路径在程序中的计算结果也是完全相同的
+        * 在程序中 a * b / c 的结果跟 a / c * b 有可能不相同的
+        * 所以在程序中很少判断两个浮点数的相等
+          * 而是判断它们在数轴上的距离，即求其差的绝对值看是否小于某个精度
+            * Math.abs(a - b) < Number.EPLSION
+* 为什么不把底数的整数部分存储？
+  * 因为底数的整数部分总是1
+  * 效果就是二进制状态下的有效位数是53位
+* 正因为有效位数有53位，如果用这53位全部分表示整数
+  * 即2的53次方，可以保证在这个范围内的整数运算的精确
+  * 所以有一个常量Number.MAX_SAFE_INTEGER的值即为2的53减1
+  * 大于这个范围的数不是不能表示，只是不保证完全精确
+    * 大于这个范围无法表示浮点数，且整数也不是连续表示的
+* 因为总的有效数字只有53位
+  * 所以如果整数部分使用的越多，小数部分就越小，反之亦然
+  * 而数值越大，整数部分需要的有效位数就越多，而小数部分的有效位数就越少
+    * 即数值越大，小数部分的精度就越低
+  * 而数值越小，整数部分需要的有效位数就越少，而小数部分的有效位数就越多
+    * 即数值越小，小数部分的精度就越高
+* IEEE754
+  * 单精度浮点数 float   float32   f32
+    * 使用4字节表示，其指数部分8bit，底数23bit
+  * 双精度浮点数 double  float64   f64
+    * 使用8字节表示，指数部分11bit，底数52bit
+最大数,Number.MAX_VALUE：
+  1.797e308
+  并不表示这个数以内的数都是精确的
+  [0|11111111110|111111111111111111111111111111111111111111]
+最小数,
+  -1.797e308
+  [1|11111111110|111111111111111111111111111111111111111111]
+绝对值最小的数 Number.MIN_VALUE:
+  5e-324
+  [0|00000000000|000000000000000000000000000000000000000001]
+最大精确整数：
+  将底数部分全部用来表示整数，不留空间表示小数部分
+  9007199254740991   2 ** 53 - 1
+  [0|xxxxxxxxxxx|111111111111111111111111111111111111111111111111]
+18000000000000000000这个数是什么？
+  是64bit浮点样可以表示的不同数字的数量
+  它约等于2**64
+
+
+
+
+
+
+https://leetcode.cn/problems/majority-element/
+https://leetcode.cn/problems/isomorphic-strings/
+https://leetcode.cn/problems/first-unique-character-in-a-string/
+https://leetcode.cn/problems/group-anagrams
+https://leetcode.cn/problems/find-the-difference/
+https://leetcode.cn/problems/ransom-note/
+
+https://leetcode.cn/problems/binary-search/
+https://leetcode.cn/problems/guess-number-higher-or-lower/
+https://leetcode.cn/problems/self-dividing-numbers/
+
+
+https://leetcode.com/problems/max-consecutive-ones/
+
+
+for of 遍历数组
+
+for in 遍历对象
+
+
+
+
+
+var cache = {
+  1: 1,
+  2: 1,
+  3: 2,
+  4: 3,
+}
+
+function fibb(n) {
+  if (n in cache) {
+    return cache[n]
+  }
+  if (n < 2) {
+    return 1
+  } else {
+    return cache[n] = fibb(n - 1) + fibb(n - 2)
+  }
+}
+斐波那契数列
+
+
+
+function maxSubArray(array) {
+  var max = 0
+  var start = 0
+  var end = 0
+
+  var sum = 0
+  for (var i = 0; i < array.length; i++) {
+    sum += array[i]
+    if (sum > max) {
+      max = sum
+      end = i
+    }
+    if (sum < 0) {
+      sum = 0
+      start = i + 1
+    }
+  }
+  return [max, start, end]
+
+}arr.push(l)
+
+
+
+
+
+
+.split('')转换为字符串
+.sort()按字母顺序排序
+.join('')分割
+
+
+
+
+
+csv格式转换对象函数
+
+function zhuanhuanCsv(csvString) {
+  var lines = csvString.trim().split('\n')
+  var result = []
+
+  lines.forEach(line => {
+    result.push( line.split(',') )
+  })
+
+  var [head, ...rest] = result
+
+  var objs = []
+
+  for (var item of rest) {
+    var obj = {}
+    for (var i = 0; i < head.length; i++) {
+      obj[  head[i]  ]   =   item[i]
+    }
+    objs.push(obj)
+  }
+
+  return objs
+}
+
+
+
+
+function forEach(array, action) {
+  for (var i = 0; i < array.length; i++) {
+    if (action(array[i]) == false) {
+      break
+    }
+  }
+}
+支持break的forEach，通过让action返回false来停止迭代
+
+
+
+
+
+
+将数组对象转换成对应格式
+
+function stringify(value) {
+    if (typeof value === 'number') {
+      return String(value)
+    }
+    if (typeof value === 'string') {
+      return '"' + value + '"'
+    }
+    if (typeof value === 'boolean') {
+      return String(value)
+    }
+    if (value === null) {
+      return 'null'
+    }
+    if (Array.isArray(value)) {
+      var result = '['
+      for (var i = 0; i < value.length; i++) {
+        result += stringify(value[i]) + ','
+      }
+      return result.slice(0, -1) + ']'
+    }
+    if (typeof value === 'object') {
+      var result = '{'
+      for (var key in value) {
+        var val = value[key]
+        result += '"' + key + '":' + stringify(val) + ','
+      }
+      return result.slice(0, -1) + '}'
+    }
+  }
+
+
+
+
+
+
+  完全相等的JSON字符串
+
+  var isEqual = function(a, b) {
+    if (a === b){
+        return true
+    }
+
+   if(a && b && typeof a === 'object' && typeof b === 'object'){
+       if(Array.isArray(a) === Array.isArray(b)){
+           if(!Array.isArray(a)){
+               var size = 0
+               for(var key in a){
+                   size++
+               }
+               for(var key in b){
+                   size--
+               }
+               if(size !== 0){
+                   return false
+               }
+               }else{
+                   if(a.length !== b.length){
+                       return false
+                   }
+           }
+
+
+           for(var key in a){
+               if(!isEqual(a[key],b[key])){
+                   return false
+               }
+           }
+            return true
+       }else{
+               return false
+           }
+   }
+   return a === b
+};
+
+
+选择排序随机版
+1.
+function shuffle(array) {
+	var result = []
+	var l = array.length
+	for (i = 0; i < l; i++) {
+		var idx = Math.random() * array.length | 0
+		result.push(array[idx])
+		array.splice(idx, 1)
+	}
+	return result
+}
+2.
+
+function shuffle(array) {
+	for (var i = array.length - 1; i > 0; i--) {
+		var idx = Math.random() * (i + 1) | 0
+		swap(array, i, idx)
+	}
+	return array
+}
+
+
+
+var a = 8, b = 2 * 0xB + f(5)
+假想语法树:
+{
+  type: '变量声明',
+  声明关键词: 'var', // 'let',
+  声明的变量们: [
+    {
+      type: '变量',
+      变量名: 'a',
+      初始化的值: 8
+    },
+    {
+      type: '变量',
+      变量名: 'b',
+      初始化的值: {
+        type: 'BinaryExpression',
+        运算: '+',
+        left: {
+          type: 'BinaryExpression',
+          运算: '*',
+          left: {
+            type: '数值直接量',
+            value: 2,
+          },
+          right: {
+            type: '数值直接量',
+            value: 11,
+            source: '0xB',
+          }
+        },
+        right: {
+          type: '函数调用',
+          函数: {
+            type: '标识符',
+            name: 'f',
+          },
+          参数列表: [{
+            type: '数值直接量',
+            value: 5,
+            source: '5',
+          }]
+        }
+      }
+    }
+  ]
+}
+
+
+https://esprima.org/demo/parse.html#
+
+
+
+
+
+
+
+
+<script>
+
+/**
+ * 二叉树 binary  tree
+ * 为什么只研究二叉树？
+ * 因为把二叉树研究明白了，就能理解其它数量分支的树，本质都是一样的
+ * 为什么不研究一叉树？
+ *   一叉树就是链表
+ *
+ * 二叉树（多叉树）有哪些应用？
+ *   不管是现实中，还是编程中，有很多事物都是树结构
+ *      如书籍的目录，家谱，公司的组织架构
+ *         html，数学公式，js里面的对象与数组的嵌套
+ *          对象的嵌套实质上是树结构（没有环的情况下，就算有环，其中子结构也包含树结构）
+ *          程序里的表达式（表达式可以嵌套）
+ *          程序的语法，因为语句可以嵌套
+ *              事实上程序在运行之前会先被转换为一个树结构（称为语法树）
+ *                    https://esprima.org/demo/parse.html#
+ *          文件夹结构等等
+ *
+ *
+ *
+ * 二叉树的定义：
+ *   空  是一颗二叉树
+ *   一个根结点，其有一个左子树，是二叉树
+ *              其有一个右子树，是二叉树
+ *
+ *  满二叉树：除最后一层以外，每层的所有结点都有两个子结点
+ *  完全二叉树：当满二叉的最后一层的右边缺失一部分时，称完全二叉树
+ *
+ * 当一颗满二叉树有n层时，它有2**n-1个结点
+ * 当一颗满二叉树有x个结点时，它有  floor(log2(x)) + 1  层
+ * 如果为完全二叉树的结点从上到下从左右到从0开始进行编号时
+ *  编号为n的结点，其两个子结点的编号分别2n+1和2n+2
+ *                其父结点的编号为 (n - 1) >> 1
+ *
+ * 任何一颗使用二叉链表形式表示的二叉树
+ *  当它有n个结点时，都正好有n+1个空置指针
+ *
+ *
+ * 二叉树的表示：
+ *   二叉链表的形式，即每个结点用一个对象表示
+ *    该对象有val，left，right属性，left指向左子树，right指向右子树
+ *   a = {
+ *     val: 1,
+ *     left: {},
+ *     right: {}
+ *   }
+ *
+ *
+ *   数组表示法：将一颗完全二叉树表示到数组中，由于完全二叉的每个结点有着确定的编号，所以可以把编号做为下标保存在数组中
+ *     [1,2,3,4,null,5,6]
+ *        1
+ *      /   \
+ *     2     3
+ *    4     5 6
+ *
+ *
+ *
+ * 数组表示法，但是并不是把二叉树当完全二叉树，而是只把所有非空结点的子结点画出来
+ * 然后从上到正从左往右，把结点的值及空结点依次放入数组
+ *  很明显，这种方式，结点与其父子结点的位置没有确定的数学关系
+ *
+ *
+ */
+
+// 将根结点在数组rootPosition位置的树转换为一颗二叉链表表示的树
+function arrayToTree(array, rootPosition = 0) {
+  if (array[rootPosition] == null) {
+    return null
+  }
+
+  var root = {
+    val: array[rootPosition],
+    left: null,
+    right: null,
+  }
+
+  root.left = arrayToTree(array, rootPosition * 2 + 1)
+  root.right = arrayToTree(array, rootPosition * 2 + 2)
+
+  return root
+}
+
+// 将root表示的二叉树放入array中，根结点在idx位置，每个子结点在idx*2+1/2的位置
+function treeToArray(root, idx = 0, array = []) {
+  if (root == null) {
+    return array
+  }
+
+  array[idx] = root.val
+
+  treeToArray(root.left, idx * 2 + 1, array)
+  treeToArray(root.right, idx * 2 + 2, array)
+
+  // for (var i = 0 ; i < array.length; i++) {
+  //   if (!(i in array)) {
+  //     array[i] = null
+  //   }
+  // }
+  return array
+}
+
+// function tree2array(root) {
+//   var array = treeToArray(root)
+
+//   for (var i = 0 ; i < array.length; i++) {
+//     if (!(i in array)) {
+//       array[i] = null
+//     }
+//   }
+
+//   return array
+// }
+
+
+
+// 将紧凑的数组转换为树
+function arrayToTree2(array) {
+  if (array.length == 0 || array[0] == null) {
+    return null
+  }
+  var root = {
+    val: array[0],
+    left: null, right: null,
+  }
+
+  var nodes = [root]
+
+  for (var i = 1; i < array.length; i++) {
+    var currParent = nodes.shift()
+
+    var val = array[i]
+    if (val != null) { // val不是null，即要创建结点
+      var node = {
+        val: val,
+        left: null, right: null,
+      }
+      nodes.push(node)
+    } else {
+      node = null
+    }
+
+    currParent.left = node
+
+    i++
+
+    var val = array[i]
+    if (val != null) { // val不是null，即要创建结点
+      var node = {
+        val: val,
+        left: null, right: null,
+      }
+      nodes.push(node)
+    } else {
+      node = null
+    }
+
+    currParent.right = node
+  }
+  return root
+}
+
+function treeToArray2(root) {
+  if (root == null) {
+    return []
+  }
+  var array = []
+
+  var nodes = [root]
+
+  while (nodes.length > 0) {
+    var node = nodes.shift()
+    if (node == null) {
+      array.push(node)
+    } else {
+      array.push(node.val)
+      nodes.push(node.left)
+      nodes.push(node.right)
+    }
+  }
+
+  return array
+}
+
+
+
+
+
+
+
+
+
+<script>
+
+/**
+ * 二叉树 binary  tree
+ * 为什么只研究二叉树？
+ * 因为把二叉树研究明白了，就能理解其它数量分支的树，本质都是一样的
+ * 为什么不研究一叉树？
+ *   一叉树就是链表
+ *
+ * 二叉树（多叉树）有哪些应用？
+ *   不管是现实中，还是编程中，有很多事物都是树结构
+ *      如书籍的目录，家谱，公司的组织架构
+ *         html，数学公式，js里面的对象与数组的嵌套
+ *          对象的嵌套实质上是树结构（没有环的情况下，就算有环，其中子结构也包含树结构）
+ *          程序里的表达式（表达式可以嵌套）
+ *          程序的语法，因为语句可以嵌套
+ *              事实上程序在运行之前会先被转换为一个树结构（称为语法树）
+ *                    https://esprima.org/demo/parse.html#
+ *          文件夹结构等等
+ *
+ *
+ *
+ * 二叉树的定义：
+ *   空  是一颗二叉树
+ *   一个根结点，其有一个左子树，是二叉树
+ *              其有一个右子树，是二叉树
+ *
+ *  满二叉树：除最后一层以外，每层的所有结点都有两个子结点
+ *  完全二叉树：当满二叉的最后一层的右边缺失一部分时，称完全二叉树
+ *
+ * 当一颗满二叉树有n层时，它有2**n-1个结点
+ * 当一颗满二叉树有x个结点时，它有  floor(log2(x)) + 1  层
+ * 如果为完全二叉树的结点从上到下从左右到从0开始进行编号时
+ *  编号为n的结点，其两个子结点的编号分别2n+1和2n+2
+ *                其父结点的编号为 (n - 1) >> 1
+ *
+ * 任何一颗使用二叉链表形式表示的二叉树
+ *  当它有n个结点时，都正好有n+1个空置指针
+ *
+ *
+ * 二叉树的表示：
+ *   二叉链表的形式，即每个结点用一个对象表示
+ *    该对象有val，left，right属性，left指向左子树，right指向右子树
+ *   a = {
+ *     val: 1,
+ *     left: {},
+ *     right: {}
+ *   }
+ *
+ *
+ *   数组表示法：将一颗完全二叉树表示到数组中，由于完全二叉的每个结点有着确定的编号，所以可以把编号做为下标保存在数组中
+ *     [1,2,3,4,null,5,6]
+ *        1
+ *      /   \
+ *     2     3
+ *    4     5 6
+ *
+ *
+ *
+ * 数组表示法，但是并不是把二叉树当完全二叉树，而是只把所有非空结点的子结点画出来
+ * 然后从上到正从左往右，把结点的值及空结点依次放入数组
+ *  很明显，这种方式，结点与其父子结点的位置没有确定的数学关系
+ *
+ *
+ */
+
+// 将根结点在数组rootPosition位置的树转换为一颗二叉链表表示的树
+function arrayToTree(array, rootPosition = 0) {
+  if (array[rootPosition] == null) {
+    return null
+  }
+
+  var root = {
+    val: array[rootPosition],
+    left: null,
+    right: null,
+  }
+
+  root.left = arrayToTree(array, rootPosition * 2 + 1)
+  root.right = arrayToTree(array, rootPosition * 2 + 2)
+
+  return root
+}
+
+// 将root表示的二叉树放入array中，根结点在idx位置，每个子结点在idx*2+1/2的位置
+function treeToArray(root, idx = 0, array = []) {
+  if (root == null) {
+    return array
+  }
+
+  array[idx] = root.val
+
+  treeToArray(root.left, idx * 2 + 1, array)
+  treeToArray(root.right, idx * 2 + 2, array)
+
+  // for (var i = 0 ; i < array.length; i++) {
+  //   if (!(i in array)) {
+  //     array[i] = null
+  //   }
+  // }
+  return array
+}
+
+// function tree2array(root) {
+//   var array = treeToArray(root)
+
+//   for (var i = 0 ; i < array.length; i++) {
+//     if (!(i in array)) {
+//       array[i] = null
+//     }
+//   }
+
+//   return array
+// }
+
+
+
+// 将紧凑的数组转换为树
+function arrayToTree2(array) {
+  if (array.length == 0 || array[0] == null) {
+    return null
+  }
+  var root = {
+    val: array[0],
+    left: null, right: null,
+  }
+
+  var nodes = [root]
+
+  for (var i = 1; i < array.length; i++) {
+    var currParent = nodes.shift()
+
+    var val = array[i]
+    if (val != null) { // val不是null，即要创建结点
+      var node = {
+        val: val,
+        left: null, right: null,
+      }
+      nodes.push(node)
+    } else {
+      node = null
+    }
+
+    currParent.left = node
+
+    i++
+
+    var val = array[i]
+    if (val != null) { // val不是null，即要创建结点
+      var node = {
+        val: val,
+        left: null, right: null,
+      }
+      nodes.push(node)
+    } else {
+      node = null
+    }
+
+    currParent.right = node
+  }
+  return root
+}
+
+function treeToArray2(root) {
+  if (root == null) {
+    return []
+  }
+  var array = []
+
+  var nodes = [root]
+
+  while (nodes.length > 0) {
+    var node = nodes.shift()
+    if (node == null) {
+      array.push(node)
+    } else {
+      array.push(node.val)
+      nodes.push(node.left)
+      nodes.push(node.right)
+    }
+  }
+
+  return array
+}
+
+
+
+
+/** 二叉树的遍历(二叉链表形式)
+ *
+ * 先序遍历
+ *  先遍历根结点，再遍历左子树，再遍历右子树
+ *  对于子树的遍历同样是（根左右）的顺序递归进行
+ * 中序遍历 左中右
+ * 后序遍历 左右中
+ *
+ * 把遍历想成是读一本书有两章，每章有两节，每节有两小节，每小节有两个段。。
+ * 把每章、节、小节、段都称为一部分
+ * 先序遍历
+ *    “读过”每部分的顺序
+ * 中序遍历
+ *    对每部分按“读了一半”顺序排序，得到的就是中序遍历
+ * 后序遍历
+ *    “读完”每部分的顺序
+ *
+ *
+ */
+
+ var tree = arrayToTree2([1,2,3,4,5,,6,,7,8,9,,,,10,,11])
+
+先序遍历 根左右
+function preorderTraverse(root, action = console.log) {
+  if (root) {
+    action(root.val)
+    preorderTraverse(root.left, action)
+    preorderTraverse(root.right, action)
+  }
+}
+document .write( array[i])
+
+中序遍历 左中右
+function inorderTraverse(root) {
+  if (root) {
+    inorderTraverse(root.left)
+    console.log(root.val)
+    inorderTraverse(root.right)
+  }
+}
+
+
+后序遍历 左右中
+function postorderTraverse(root) {
+  if (root) {
+    postorderTraverse(root.left)
+    postorderTraverse(root.right)
+    console.log(root.val)
+  }
+}
+
+返回结果数组
+function preorderTraverse(root) {
+  if (root) {
+    return [root.val, ...preorderTraverse(root.left), ...preorderTraverse(root.right)]
+  }
+  return []
+}
+
+</script>
+
+
+// 按层遍历
+function levelOrderTraverse(root) {
+  if (!root) {
+    return []
+  }
+  var currRow = [root]
+  var nextRow = []
+  var result = []
+
+  while (currRow.length) {
+    var currRowVals = []
+    for (var i = 0; i < currRow.length; i++) {
+      var node = currRow[i]
+      currRowVals.push(node.val)
+      if (node.left) {
+        nextRow.push(node.left)
+      }
+      if (node.right) {
+        nextRow.push(node.right)
+      }
+    }
+
+    result.push(currRowVals)
+
+    currRow = nextRow
+    nextRow = []
+  }
+  return result
+}
+
+// 拼出一个html用于显示二叉树
+function showTree(root) {
+  if (root) {
+    var html = '<div style="display:flex;flex-wrap:wrap;">'
+    html += '<header style="width:100%;text-align:center;">' + root.val + '</header>'
+    html += '<aside style="flex:50% 0 0">' + showTree(root.left) + '</aside>'
+    html += '<aside style="flex:50% 0 0">' + showTree(root.right) + '</aside>'
+    html += '</div>'
+    return html
+  }
+  return ''
+}
+
+
+ /* node = {
+   val: xxxx,
+   left: null,
+   right: null,
+ }
+
+ leetcode创建二叉树结点的写法：
+ node = new TreeNode(1)
+ BST Binary Search Tree 二叉搜索树 排序二叉树
+ 任意结点的左子树上的结点的值都比该结点小
+ 任意结点右子树上的结点的值都大于等于该结点
+ 排序二叉树的中序遍历序列是有序的 */
+
+function insertIntoBST(root, val) {
+  if (root == null) {
+    return {
+      val: val,
+      left: null, right: null,
+    }
+  }
+  if (val < root.val) {
+    root.left = insertIntoBST(root.left, val)
+  } else {
+    root.right = insertIntoBST(root.right, val)
+  }
+  return root
+}
+
+function insertIntoBST2(root, val) {
+  if (root == null) {
+    return {
+      val: val,
+      left: null, right: null,
+    }
+  }
+  var p = root
+  while(true) {
+    if (val < p.val) {
+      if (p.left) {
+        p = p.left
+      } else {
+        p.left = {
+          val: val,
+          left: null, right: null,
+        }
+        break
+      }
+    } else {
+      if (p.right) {
+        p = p.right
+      } else {
+        p.right = {
+          val: val,
+          left: null, right: null,
+        }
+        break
+      }
+    }
+  }
+  return root
+}
+
+
+/**
+ *
+ * 通过构建bst来进行排序
+ * 时间复杂度：n*log(n)
+ * 空间复杂度：n
+ *
+ * 最差情况下的时间复杂度：n * n
+ * 因为最差情况下，当输入数组本就是有序的时，它将退化为一个链表
+ * 每一次添加元素，相当于把它添加到链表末尾
+ *
+ */
+function BSTSort(ary) {
+  var root = null
+
+  for (var x of ary) {
+    root = insertIntoBST2(root, x)
+  }
+
+  var result = []
+
+  inorderTraverse(root, val => {
+    result.push(val)
+  })
+
+  return result
+}
+
+
+
+
+</script>
+
+
+
+
+
+封装函数
+
+document .write把东西write到页面里，最好只有一次
+
+
+
+API应用程序编程接口
+API  Application Programming Interface
+
+GUI图形用户界面
+GUI  Graphic User Interface
+
+CLI命令行界面
+CLI  Command Line Interface
+
+
+
+this是一个隐藏参数
+它的值由调用形式/方式决定
+而不由这个函数的声明位置，或其调用位置决定
+函数内部使用的那些函数自身没有声明的变量，由函数的声明位置决定，此为词法作用域
+函数能够接收的参数，由调用位置决定，在哪里调用，可以传哪个作用域能够使用的变量
+this的值不取决于调用位置，也不取决于声明位置，而取决于其调用方式
+  obj.foo() // this in foo is obj
+  foo.call(xxx) // this in foo is xxx,  this in call is foo
+
+
+  this的值跟调用栈，闭包，都没有关系
+
+
+  Object.create(o) // 创建以o为原型的新的空对象
+Object.getPrototypeOf(obj) // 获取obj的原型
+以前等价于 obj.__proto__
+Object.setPrototypeOf(obj, target) // 设置obj对象的原型为target
+以前造价于 obj.__proto__ = target
+现在当obj最终以Object.prototype为原型时，也是等价的
+但当obj没有原型或并不最终以Object.prototype为原型时，则不等价
+
+几乎每个对象都有原型，原型也是一个普通的对象，当在一个对象上查找某个属性但找不到时，会到其原型对象上找，依次类推，一直找到最终原型
+最终原型是Object.prototype，几乎所有对象最终都以它为原型，所以它上面的属性和方法可以在几乎所有对象上访问到
+但并不是所有的对象都直接以它为原型，往往是以其它对象为原型，最终才以它为原型
+这就形成了原型链(prototype chain)
+所有的数值都以Number.prototype为原型
+所有的字符串都以String.prototype为原型
+所有的函数都以Function.prototype为原型
+所有的数组都以Array.prototype为原型
+实际上Number String Function Array都是构造函数
+每种类型都有自己的构造函数
+每个构造函数都有一个prototype属性，做为该类型的值的原型
+
+
+
+Object.keys(obj)返回obj的自有可枚举属性，顺序与forin一致
+
+
+
+
+
+
+
+箭头函数
+箭头函数总是表达式，没有声明式写法
+内部没有this，使用时相当于词法作用域，在外层作用域找
+内部没有arguments，使用时相当于词法作用域，在外层作用域找
+箭头函数不能被new，所以箭头函数不能做为构造函数
+箭头函数没有prototype属性
+
+
+
+function isArray(val) {
+  return Object.prototype.toString.call(val) === '[object Array]'
+}
+
+
+Object.prototype
+
+Object.defineProperty(obj2, 'eee', { // 属性描述符 property descryptor
+
+value: 888,
+是否可枚举: true/false,
+是否可修改: true/ false,
+是否可以重新定义: true/false // 即是否能重新通过defineProperty函数为这个对象定义这个属性以改变“修改性”和“枚举性”
+
+})
+
+
+{
+  "value": 888,
+  "writable": false,
+
+  "enumerable": false,
+  "configurable": false
+}
+
+
+
+
+prototype属性不是每个对象都有，而每个function都有，但只有做为构造函数的function的prototype才有意义
+构造函数的prototype是用来做为其创建的实例对象的原型的
+构造函数的prototype属性不是自己的原型，而是其实例的原型
+构造函数自己的原型为 F.__proto__ 或 Object.getPrototypeOf(F)
+一般对象没有prototype属性，不像“每个对象都有原型”
+只有构造函数需要prototype，但所有函数都有prototype
+
+
+
+一个构造函数代表一个新的数据类型
+这个数据类型能进行的操作通过其上的方法来表达
+这个数据类型的信息由其上的属性来表达
+
+
+
+
+
+
+this
+  this的值由调用方式决定：
+    obj.foo(1,2) // 当对象的方法调用,this为obj
+    foo(1,2) // 当函数调用（即从一个变量而非对象的属性上读到一个函数），this为全局作用域对象，在浏览器里就是window对象
+      // 在严格模式下，当函数调用时，this为undefined
+    foo.call(obj,1,2) // 通过call，apply调用，直接设定this为某个值，即它们的第一个参数
+    new foo() // 当构造函数调用，this为一个新的空对象，且其原型为foo.prototype
+    箭头函数，没有this，在箭头函数内使用this时，找其外面的this的指向，类似于在if语句块内使用this
+  函数不“属于”一个对象，将对象中的属性读出到一个变量中，再通过变量调用，this将不再是之前那个对象
+  而另一个对象的属性指向函数，通过第二个对象来调用这个函数，this将会是第二个对象
+
+原型
+  除了null与undefined，js里的每个对象都有原型
+  原型的作用是属性查找的后备来源，即在对象上读取某个属性时，如果对象自身没有，则到其原型上找
+  原型也只是一个普通的对象，所以它也可能有其它对象做为自己的原型
+  以此形成原型链
+  在原型链的最顶端，是Object.prototype这个对象，即所有的对象最终都以它为原型
+  所以它上面的方法可以在所有对象上存在
+  可通过obj.__proto__获取到一个对象的原型
+  或通过Object.getPrototypeOf(obj)获取
+  也可以通过Object.setPrototypeOf(obj, p)设定obj对象的原型
+  一般是会用共享同个原型的一系列来表达一个特定类型的事物
+    比如所有表示兔子的对象共用一个原型
+    所有表示链表的对象，共用一个原型
+  但由于用以上方式创建共享原型的对象比较麻烦，所以有了构造函数
+
+构造函数
+  可以方便的通过构造函数创建一系共享原型的对象
+  通过构造函数创建的对象都以构造函数的prototype属性为原型
+  注意这个prototype属性是构造函数特有的，不像“原型”是每个对象都有
+  构造函数运行时，其内的this为一个新的空对象，我们可以为其添加表示特定事物的属性
+  如果构造函数不主动返回一个真对象（非原型类型）则其this会被返回
+  一般来说我们想用这个this表达什么事物，构造函数将起这个事物的名称，且首字母大写以表达它是个构造函数
+  构造函数（实际上所有function声明的函数）自动有一个prototype属性，只不过不做为构造函数的函数这个属性就没什么用了
+  这个属性一开始指向一个几乎是空的对象，其有一个constructor属性，指向该构造函数自身
+  所以所有构造函数构造出来的实例，都可以通过constructor属性访问到其构造函数
+
+对象属性操作
+  对象的属性有是否可以枚举的行为，即有些属性不会自动出现在for/in循环里
+  只要一个属性是可枚举的，即使它出现其原型链中，也会在对象被遍历时出现
+  可以通过obj.hasOwnProperty(key)来判断对象是否有一个自有属性key
+  如果创建不可枚举属性？
+    Object.defineProperty(obj, key, {
+      value: 88,
+      enumerable: true/false,
+      writable: true/false,
+      configurable: true/false,
+    })
+  通过obj.foo = xxx的方式添加的属性这几个维度都是真
+  而通过defineProperty定义的属性这几个维度默认都为假
+  可以通过Object.create(null)创建无原型对象
+
+
+
+
+  class B {}
+  class A extends B {
+    
+  }

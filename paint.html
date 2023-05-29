@@ -205,3 +205,65 @@
 </script>
 
 </html>
+
+
+<script>
+
+  function icm(a,b){
+    var x
+    do  {
+      x = a % b
+      a = b
+      b = x
+  }while(x !== 0)
+  return a
+}
+
+
+</script>
+
+
+<script>
+
+  function icm(a,b){
+    var x
+    do  {
+      x = a - b
+      a = b
+      b = x
+  }while(a !== b)
+  return a
+}
+
+
+</script>
+
+
+
+
+
+二分法求根号n
+
+  <script>
+
+  function sqrt(n){
+    var l = 0
+    var r = n
+    while(r  - l > 0.0000000.1){根据结果的小数部位改变
+      var x = (l + r) / 2
+      if(x * x > n){
+        r = x
+      }else if(x * x < n){
+        l = x
+      }else{
+        return x
+      }
+    }
+    return (l + r) / 2
+  }
+
+
+</script>
+
+
+

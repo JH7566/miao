@@ -1,0 +1,244 @@
+<script>
+  // class Map2 {
+  //   constructor() {
+  //     this._map = {}
+  //     this.count = 0
+  //   }
+  //   set(key, val) {
+  //     this._map[key] = val
+  //   }
+  //   get(key) {
+  //     return this._map[key]
+  //   }
+  //   has(key) {
+  //     return key in this._map
+  //   }
+  //   delete(key) {
+  //     return delete this._map[key]
+  //   }
+  //   get size() {
+  //     return this.count
+  //   }
+  // }
+
+
+  /**
+   * 哈希表可以用平均O(1)的时间复杂度
+   * 对一组映射进行增删改查
+   *
+   * 其核心原理为
+   *   通过key（一个字符串）计算出一个下标，将该组映射存储在下标位置
+   *   而不用遍历整个存储空间（一般为数组）
+   *   由于key一般在30个字母以内，所以计算下标的过程可以认为是常数时间
+   *   一旦下标计算出来，几乎也就可以拿到映射目标了
+   *
+   * 但是无论什么哈希算法都一定有可能产生冲突：
+   *   即两个不同的key计算得出了相同的存储位置
+   *
+   * 冲突的一般解决办法：
+   * 开放地址法：将产生冲突的元素存在其本该存储的位置+f(1)处，即idx+f(1)，
+   *    如果idx+f(1)被占用，由存在idx+f(2)处
+   *      此处可以灵活选择f函数以尽量减少冲突
+   * 重新hash法
+   *   将产生冲突的元素使用另一个哈希函数计算其存储位置，并存在另一个位置
+   *   重新获取时，计算后要验证相应位置是否存储的是需要的key，如果不是，用第二个哈希函数，依次类推
+   *
+   * 链式存储法
+   *   将哈希结果在同一位置的所有映射对存于同一个链表中
+   *    更进一步可以存于平衡排序二叉树中（java中就是这么做的）
+   *
+   *
+   *
+   * 哈希一词现在代表一种指纹/摘要运算，输入内容只要不同，输出就不同
+   * 流行哈希算法有
+   * md5   sha1  sha224 sha256  sha384 sha512sum
+   * checksum
+   *
+   *
+   */
+  class HashMap2 {
+    constructor() {
+      this._keys = new Array(16)
+      this._vals = new Array(16)
+    }
+    hashKey(key) {
+      var seed = 13131
+      var hash = 0
+      for (var char of key) {
+        var code = char.charCodeAt(0)
+        hash = (hash * seed + code) >>> 0 // 溢出后只保留低32位
+      }
+      return hash % 16
+    }
+    // hashKey(string) {
+    //   var sum = 0
+    //   var i = 1
+    //   for (var char of string) {
+    //     var code = char.charCodeAt(0)
+    //     sum += code * code * i++
+    //   }
+    //   return sum % 16
+    // }
+    set(key, val) {
+      var index = this.hashKey(key)
+      this._keys[index] = key
+      this._vals[index] = val
+    }
+    get(key) {
+      var index = this.hashKey(key)
+      return this._vals[index]
+    }
+  }
+
+
+  class HashMap {
+    constructor() {
+      this._capacity = 16
+      this._lists = new Array(this._capacity).fill(null) // 存映射对的空间
+      this._size = 0 // 实际存储的映射对数量
+      this._maxLoadFactor = 0.98 // 最大装载因子，大于它时就扩容
+    }
+    hashKey(key) {
+      var seed = 13131
+      var hash = 0
+      for (var char of key) {
+        var code = char.charCodeAt(0)
+        hash = (hash * seed + code) >>> 0 // 溢出后只保留低32位
+      }
+      return hash % this._capacity
+    }
+    hashKey2(string) {
+      var sum = 0
+      var i = 1
+      for (var char of string) {
+        var code = char.charCodeAt(0)
+        sum = (sum + code * code * i++) >>> 0
+      }
+      return sum % this._capacity
+    }
+    set(key, val) {
+      var index = this.hashKey(key)
+      var list = this._lists[index]
+      var p = list
+      while(p) {
+        if (p.key === key) {
+          p.val = val
+          return this
+        }
+        p = p.next
+      }
+      var node = {
+        key, val, next: null,
+      }
+      node.next = list
+      this._lists[index] = node
+      this._size++
+      if (this._size / this._capacity > this._maxLoadFactor) {
+        this._扩容()
+      }
+      return this
+    }
+    get(key) {
+      var index = this.hashKey(key)
+      var p = this._lists[index]
+      while(p) {
+        if (p.key === key) {
+          return p.val
+        }
+        p = p.next
+      }
+    }
+    has(key) {
+      var index = this.hashKey(key)
+      var p = this._lists[index]
+      while(p) {
+        if (p.key === key) {
+          return true
+        }
+        p = p.next
+      }
+      return false
+    }
+    delete(key) {
+      var index = this.hashKey(key)
+      var dummy = {
+        key: '', val: 0,
+        next: this._lists[index]
+      }
+      var p = dummy
+      while(p.next) {
+        if (p.next.key === key) {
+          p.next = p.next.next
+          this._lists[index] = dummy.next
+          this._size--
+          if (this._size / this._capacity < this._maxLoadFactor / 4) {
+            this._缩容()
+          }
+          return true
+        }
+        p = p.next
+      }
+      return false
+    }
+    get size() {
+      return this._size
+    }
+    _缩容() {
+      // console.log('缩容')
+      if (this._capacity == 16) {
+        return
+      }
+      this._搬运(this._capacity / 2)
+    }
+    _扩容() {
+      // console.log('扩容')
+      this._搬运(this._capacity * 2)
+    }
+    _搬运(targetCapacity) {
+      var oldLists = this._lists
+      this._capacity = targetCapacity
+      this._lists = new Array(this._capacity).fill(null)
+      this._size = 0
+      for (var list of oldLists) {
+        var p = list
+        while(p) {
+          this.set(p.key, p.val)
+          p = p.next
+        }
+      }
+    }
+    forEach(action) {
+      outerLoop: for (var list of this._lists) {
+        while(list) {
+          if (action(list.val, list.key) === false) {
+            break outerLoop
+          }
+          list = list.next
+        }
+      }
+    }
+  }
+
+
+  class HashSet {
+    constructor(inits) {
+      this.hashMap = new HashMap()
+      for (var val of inits) {
+        this.hashMap.add(val)
+      }
+    }
+    add(val) {
+      this.hashMap.set(val, val)
+      return this
+    }
+    has(val) {
+      return this.hashMap.has(val)
+    }
+    delete(val) {
+      return this.hashMap.delete(val)
+    }
+    get size() {
+      return this.hashMap.size
+    }
+  }
+</script>

@@ -1,0 +1,933 @@
+<script>
+
+
+  function Vector(x, y) {
+    this.x = x
+    this.y = y
+  }
+  Vector.prototype.plus = function(vector) {
+    // 'this' is also a vector
+    var x = this.x + vector.x
+    var y = this.y + vector.y
+    return new Vector(x, y)
+  }
+  Vector.prototype.minus = function(vector) {
+    // 'this' is also a vector
+    var x = this.x - vector.x
+    var y = this.y - vector.y
+    return new Vector(x, y)
+  }
+  Object.defineProperty(Vector.prototype, 'length', {
+    get: function() {
+      return Math.sqrt(this.x * this.x + this.y * this.y)
+    }
+  })
+
+  var a = new Vector(2, 3)
+  var b = new Vector(3, -1)
+
+
+
+  function Complex(real, imag) {
+    this.real = real
+    this.imag = imag
+  }
+  Complex.prototype.plus = function(c) {
+    var real = this.real + c.real
+    var imag = this.imag + c.imag
+    return new Complex(real, imag)
+  }
+  Complex.prototype.minus = function(c) {
+    var real = this.real - c.real
+    var imag = this.imag - c.imag
+    return new Complex(real, imag)
+  }
+  Complex.prototype.mul = function(c) {
+    var real = this.real * c.real - this.imag * c.imag
+    var imag = this.real * c.imag + this.imag * c.real
+    return new Complex(real, imag)
+  }
+  Complex.prototype.div = function(c) {
+    var helper = new Complex(c.real, -c.imag)
+    var up = this.mul(helper)
+    var down = c.mul(helper) // down的虚部应该是0
+    var real = up.real / down.real
+    var imag = up.imag / down.real
+    return new Complex(real, imag)
+  }
+
+
+
+
+  function LinkedList(...initVals) {
+    this.head = null
+    this.tail = null
+
+    for (var item of initVals) {
+      this.append(item)
+    }
+  }
+
+  // 往链表的末尾增加一个元素
+  LinkedList.prototype.append = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+      return
+    } else {
+      this.tail.next = node
+      this.tail = node
+      return
+    }
+  }
+  // 往链表的头部增加一个元素
+  LinkedList.prototype.prepend = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+      return
+    } else {
+      node.next = this.head
+      this.head = node
+      return
+    }
+  }
+  // 返回链表第idx个元素
+  LinkedList.prototype.at = function(idx) {
+    var p = this.head
+    var count = 0
+    while (count < idx) {
+      p = p.next
+      count++
+    }
+    return p.val
+  }
+
+  Object.defineProperty(LinkedList.prototype, 'length', {
+    get: function() {
+      var p = this.head
+      var l = 0
+      while(p) {
+        l++
+        p = p.next
+      }
+      return l
+    }
+  })
+
+
+
+  // var l = new LinkedList(1,2,3,4)
+
+  // l.length // 返回链表的长度
+
+
+  // 表示一个队列
+  // 只有两个操作：
+  // 从一端添加元素，从另一端删除元素
+  // 先进先出
+  // 其每一个操作的时间复杂度都为O（1）
+  function Queue() {
+    this.head = null
+    this.tail = null
+    this.nodeCount = 0
+  }
+  // 添加一个元素到队列中
+  Queue.prototype.add = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+    }
+
+    this.tail.next = node
+    this.tail = node
+    this.nodeCount++
+  }
+  // 从队列中取出一个元素，先添加的是先被取出的
+  // 队列为空时返回undefined
+  Queue.prototype.pop = function() {
+    // 没有结点时
+    if (this.head == null) {
+      return
+    }
+    this.nodeCount--
+    // 只有一个结点时
+    if (this.head == this.tail) {
+      var result = this.head.val
+      this.head = this.tail = null
+      return result
+    }
+
+    var result = this.head.val
+    this.head = this.head.next
+    return result
+  }
+  // // 返回队列的长度
+  // Queue.prototype.size = function() {
+  //   return this.nodeCount
+  // }
+  Object.defineProperty(Queue.prototype, 'size', {
+    get: function() {
+      return this.nodeCount
+    }
+  })
+
+
+
+
+  function Queue2() {
+    this.vals = []
+  }
+  // 添加一个元素到队列中
+  Queue2.prototype.add = function(val) {
+    this.vals.push(val)
+  }
+  // 从队列中取出一个元素，先添加的是先被取出的
+  // 队列为空时返回undefined
+  Queue2.prototype.pop = function() {
+    return this.vals.shift()
+  }
+  // 返回队列的长度
+  Queue2.prototype.size = function() {
+    return this.vals.length
+  }
+
+
+  // 用链表实现一个栈
+  // 只有两个操作：
+  // 进栈，出栈
+  // 后进先出
+  // 其每一个操作的时间复杂度都为O（1）
+  function Stack() {
+    this.head = null
+    this.nodeCount = 0
+  }
+  // 添加一个元素到栈中
+  Stack.prototype.push = function(val) {
+    var node = {
+      val, next: null
+    }
+    this.nodeCount++
+    if (this.head == null) {
+      this.head = node
+    } else {
+      node.next = this.head
+      this.head = node
+    }
+  }
+  // 从栈中取出一个元素，先添加的是后被取出的
+  // 栈为空时返回undefined
+  Stack.prototype.pop = function() {
+    if (this.head == null) {
+      return undefined
+    }
+    this.nodeCount--
+    var result = this.head.val
+    this.head = this.head.next
+    return result
+  }
+  // 返回栈的长度
+  Stack.prototype.size = function() {
+    return this.nodeCount
+  }
+
+
+
+  /**
+   * 实现一个集合，表示若干值的集合
+   * [[[集合中的元素不能重复]]]
+   * 支持两个操作：
+   * 向集合里添加元素
+   * 从集合中删除元素
+   * 判断一个元素是否在集合里
+   * 清空集合中的所有元素
+   * 集合中元素的数量  getter
+   */
+  function Set() {
+    this._elements = [] // 用以存储集合里的元素们
+  }
+  Set.prototype.add = function(val) {
+    if (!this.has(val)) {
+      this._elements.push(val)
+    }
+  }
+  Set.prototype.remove = function(val) {
+    if (this.has(val)) {
+      var idx = this._elements.indexOf(val)
+      this._elements.splice(idx, 1)
+    }
+  }
+  Set.prototype.has = function(val) {
+    return this._elements.includes(val)
+  } // -> boolean
+  Set.prototype.size = function() {
+    return this._elements.length
+  } // number
+
+
+
+
+
+  /**
+   * 实现一个类似java语言中的ArrayList类型
+   * 实现过程中不能使用js中数组长度可变这个特性
+   * 即任何时候不能调用push，pop，shift，unshift，splice
+   * 也不能修改数组的length
+   * 创建数组使用 Array(length) 创建出来之后就再也不能修改其长度了
+   *
+   */
+  function ArrayList() {
+    this.vals = new Array(16)
+    this.count = 0
+  }
+  ArrayList.prototype.push = function(val) {
+    if (this.count == this.vals.length) {
+      var oldVals = this.vals
+      this.vals = new Array(this.count * 2)
+
+      for (var i = 0; i < oldVals.length; i++) {
+        this.vals[i] = oldVals[i]
+      }
+
+      this.vals[this.count] = val
+      this.count++
+      return this.count
+    } else {
+      this.vals[this.count] = val
+      this.count++
+      return this.count
+    }
+  }
+  ArrayList.prototype.pop = function() {
+    if (this.count == 0) {
+      return
+    } else {
+      var result = this.vals[this.count - 1]
+      this.vals[this.count - 1] = null // 删除这上位置上的值
+      this.count--
+      return result
+    }
+  }
+  ArrayList.prototype.shift = function() {
+    if (this.count == 0) {
+      return
+    } else {
+      var result = this.vals[0]
+      for (var i = 1; i < this.count; i++) {
+        this.vals[i - 1] = this.vals[i]
+      }
+      this.vals[i - 1] = null
+      this.count--
+      return result
+    }
+  }
+  ArrayList.prototype.unshift = function(val) {
+    if (this.count == this.vals.length) {
+      var oldVals = this.vals
+      this.vals = new Array(this.count * 2)
+      for (var i = 0; i < oldVals.length; i++) {
+        this.val[i + 1] = oldVals[i]
+      }
+      this.vals[0] = val
+      this.count++
+      return this.count
+    } else {
+      for (var i = this.count - 1; i >= 0; i--) {
+        this.vals[i + 1] = this.vals[i]
+      }
+      this.vals[0] = val
+      this.count++
+      return this.count
+    }
+  }
+  ArrayList.prototype.at = function(idx) {
+    if (idx < this.count && idx >= -this.count) {
+      if (idx < 0) {
+        idx = idx + this.count
+      }
+      return this.vals[idx]
+    } else {
+      return undefined
+    }
+  }
+  ArrayList.prototype.find = function(f) {
+    for (var i = 0; i < this.count; i++) {
+      if (f(this.vals[i])) {
+        return this.vals[i]
+      }
+    }
+  }
+  ArrayList.prototype.findIndex = function(f) {
+    for (var i = 0; i < this.count; i++) {
+      if (f(this.vals[i])) {
+        return i
+      }
+    }
+    return -1
+  }
+  Object.defineProperty(ArrayList.prototype, 'length', {
+    get: function() {
+      return this.count
+    },
+    set: function(l) {
+      if (l < this.count) {
+        // 删除l之后的元素
+        for (var i = l; i < this.count; i++) {
+          this.vals[i] = null
+        }
+        this.count = l
+        return
+      }
+      if (l > this.vals.length) {
+        // 扩容
+        var oldVals = this.vals
+        this.vals = new Array(this.count * 2)
+        for (var i = 0; i < oldVals.length; i++) {
+          this.vals[i] = oldVals[i]
+        }
+        this.count = l
+        return
+      }
+      this.count = l
+    }
+  })
+
+
+
+
+  /**
+   * 实现一个类型以表达映射
+   *
+   * 实现过程不能使用“将对象做为映射”这个功能
+   *
+   *
+   *
+   */
+
+  function Map(...args) {
+    this._keys = []
+    this._vals = []
+  }
+
+  // 设置key的映射目标，如果不存在，增加一组映射，如果存在就修改 obj[key] = val
+  Map.prototype.set = function(key, val) {
+    var keyIdx = this._keys.indexOf(key)
+    if (keyIdx >= 0) {
+      this._vals[keyIdx] = val
+    } else {
+      this._keys.push(key)
+      this._vals.push(val)
+    }
+    return this
+  }
+  // 获取key的映射目标 obj[key]
+  Map.prototype.get = function(key) {
+    var keyIdx = this._keys.indexOf(key)
+    if (keyIdx >= 0) {
+      return this._vals[keyIdx]
+    }
+  }
+  // 判断是否存在key这个映射   key in obj
+  Map.prototype.has = function(key) {
+    if (this._keys.includes(key)) {
+      return true
+    } else {
+      return false
+    }
+  }
+  // 删除key及key的映射  delete obj[key]
+  // 返回是否删除成功
+  Map.prototype.delete = function(key) {
+    var keyIdx = this._keys.indexOf(key)
+    if (keyIdx >= 0) {
+      this._keys.splice(keyIdx, 1)
+      this._vals.splice(keyIdx, 1)
+      return true
+    }
+    return false
+  }
+  Object.defineProperty(Map.prototype, 'size', {
+    get: function() {
+      return this._keys.length
+    }
+  })
+
+
+  /**
+   *
+   *
+   *
+   * 上面的写法存在的几个问题
+   * 1 不够“紧凑”， 所以有人这样写：
+   function Map() {
+     this._keys = []
+     this._vals = []
+     this.set = function(key, val) {
+       var keyIdx = this._keys.indexOf(key)
+       if (keyIdx >= 0) {
+         this._vals[keyIdx] = val
+       } else {
+         this._keys.push(key)
+         this._vals.push(val)
+       }
+       return this
+     }
+     this.get = function(key) {
+       var keyIdx = this._keys.indexOf(key)
+       if (keyIdx >= 0) {
+         return this._vals[keyIdx]
+       }
+     }
+     this.has = function(key) {
+       if (this._keys.includes(key)) {
+         return true
+       } else {
+         return false
+       }
+     }
+     this.delete = function(key) {
+       var keyIdx = this._keys.indexOf(key)
+       if (keyIdx >= 0) {
+         this._keys.splice(keyIdx, 1)
+         this._vals.splice(keyIdx, 1)
+         return true
+       }
+       return false
+     }
+     Object.defineProperty(this, 'size', {
+       get: function() {
+         return this._keys.length
+       }
+     })
+   }
+   * 2 对自定义类型对象的for in会遍历出原型上的方法与属性
+   *      不过此时这些对象往往不表达“映射”，而是表达固定的属性集合，所以一般不会遍历它们
+   *       可以全部都通过Object.defineProperty来定义属性
+   *
+   * 3 定义getter/setter时必须要调用defineProperty
+   * 4 在调用构造函数时忘记加new代码不会报错
+   *        不加new时函数函数里的this为全局作用域对象，构造函数内的代码会影响全局对象
+   *        构造函数将不会返回任何内容
+    *     function Map(...args) {
+              if (!(this instanceof Map)) {
+                return new Map(...args)
+              }
+              this._keys = []
+              this._vals = []
+            }
+
+            a = new Map()
+
+    *     function Map(...args) {
+              if (this == window) {
+                return new Map(...args)
+              }
+              this._keys = []
+              this._vals = []
+            }
+    *     function Map(...args) {
+              // 如果此次Map的调用用了new，则new.target就是Map
+              if (new.target !== Map) {
+                return new Map(...args)
+              }
+              this._keys = []
+              this._vals = []
+            }
+   *
+   * 5 不方便实现继承，因为样板代码比较多
+   * 6 不能实现对象的私有内部属性，只能通过约定让内部私有属性以_或其它约定好的符号开头
+   *
+   */
+
+  /**
+   *
+   * class语法，
+   * 1 必须用new调用
+   * 2 原型上方法全部默认不可枚举
+   * 3 紧凑，所有的东西写在一个{}内，是一整条语句
+   * 4 更接近其它语言中写class的方法
+   * 5 getter/setter也很方便写
+   * 6 继承也很好写，样板代码极少
+   * 7 私有内部属性，外部不能读到
+   *
+   * 继承时，子类的构造函数中必须先调用super函数
+   * super关键字，当它直接做为函数调用时，只能用在构造函数里
+   * super.method()可以用在方法以及构造函数里，访问的是从父类继承来的方法
+   * super也可以用在对象被简写的方法里，但对象的属性指向方法不简写时不能用
+   *    obj = { foo() { super } }  // 对
+   *    obj = { foo: function(){super}} // 错
+   *
+   * class 语法中，如果不写构造函数，则会自动生成以下构造函数
+   *   constructor(...args) {
+   *     super(...args)
+   *   }
+   *
+   *
+   * class A {
+   *   // class fields
+   *   #keys = []
+   *   #vals = []
+   *   size = 0
+   *   type = 'xxx type'
+   *   [a] = [1,2,3]
+   * }
+   *
+   *
+   *
+   * static field/method
+   * class Complex {
+   *   static ONE = new Complex(1,1) // Complex.ONE
+   *   static isComplex(c) {  // Complex.isComplex(a)
+   *     return c instanceof Complex
+   *   }
+   *   constructor() {}
+   *   plus(c) {}
+   *   minus(c) {}
+   * }
+   *
+   * typeof Complex === 'function'
+   *
+   */
+  class Map2 {
+    // 想要使用私有属性，必须在class内，constructor外先声明并可选的给出初始值
+    // 然后才能在构造函数和其它方法里使用
+    #keys = []
+    #vals = []
+    constructor() {
+      this.#keys = []
+      this.#vals = []
+    }
+    set(key, val) {
+      if (this.has(key)) {
+        this.#vals[keyIdx] = val
+      } else {
+        this.#keys.push(key)
+        this.#vals.push(val)
+      }
+      return this
+    }
+    get(key) {
+      var keyIdx = this.#keys.indexOf(key)
+      if (keyIdx >= 0) {
+        return this.#vals[keyIdx]
+      }
+    }
+    has(key) {
+      if (this.#keys.includes(key)) {
+        return true
+      } else {
+        return false
+      }
+    }
+    delete(key) {
+      var keyIdx = this.#keys.indexOf(key)
+      if (keyIdx >= 0) {
+        this.#keys.splice(keyIdx, 1)
+        this.#vals.splice(keyIdx, 1)
+        return true
+      }
+      return false
+    }
+    get size() {
+      return this.#keys
+    }
+  }
+
+
+
+
+  class B {}
+
+  class A extends B {
+    constructor() {
+      super()//继承时子类的构造函数中必须要先调用一下super()表示父类的构造函数
+      // 此时可以认为this已经有B类的所有属性
+      // 后续再增加额外属性让其变成A的实例
+      // 在super之前不能使用this关键字
+      this.xxxx
+      this.xxxxy
+      this.fwefwfe
+
+      // this的原型为A.prototype
+      // A.prototype的原型为B.prototype
+      // B.prototype的原型为Object.prototype
+      // A的原型为B,于是A上可以访问到B上的静态方法
+      // B的原型为Function.prototype
+    }
+  }
+
+
+
+
+
+
+
+  /**
+  // 没有对象
+  // 不需要面向对象
+  // 建立映射
+  // "foo" -> 1
+  // "bar" -> 2
+  // "baz" -> 3
+  // var kv = ["foo", 1, "bar", 2, "baz", 3]
+
+
+  // var k = ["foo", "bar", "baz"]
+  // var v = [1, 2, 3]
+
+  // var k1 = ["aaa", "bbb", "ccc"]
+  // var v2 = [1, 2, 3]
+  // function get(k,v, key) {
+
+    }
+    function set(k,v, key, val) {
+
+    }
+
+
+
+  */
+
+
+
+
+
+
+
+
+
+// 定义一个Map2类
+class Map2 {
+// 声明私有属性，并给默认值为空数组
+#keys = []
+#vals = []
+
+// 构造函数，在实例化时会默认调用
+constructor() {
+  this.#keys = []
+  this.#vals = []
+}
+
+// 定义一个set方法来存储key-value对
+set(key, val) {
+  // 判断key是否已存在，如果存在则更新value
+  if (this.has(key)) {
+    var keyIdx = this.#keys.indexOf(key)
+    this.#vals[keyIdx] = val
+  } else { // 如果key不存在，则在列表末尾添加key-value对
+    this.#keys.push(key)
+    this.#vals.push(val)
+  }
+  return this // 返回当前类实例
+}
+
+// 定义一个get方法，通过key获取对应的value
+get(key) {
+  var keyIdx = this.#keys.indexOf(key)
+  if (keyIdx >= 0) {
+    return this.#vals[keyIdx]
+  }
+}
+
+// 定义一个has方法，判断key是否已存在
+has(key) {
+  if (this.#keys.includes(key)) {
+    return true
+  } else {
+    return false
+  }
+}
+
+// 定义一个delete方法，用于删除指定key-value对
+delete(key) {
+  var keyIdx = this.#keys.indexOf(key)
+  if (keyIdx >= 0) {
+    // 使用splice来删除对应的key-value对
+    this.#keys.splice(keyIdx, 1)
+    this.#vals.splice(keyIdx, 1)
+    return true // 返回true代表删除成功
+  }
+  return false // 返回false代表key不存在，无法删除
+}
+
+// 定义一个getter方法，获取当前实例的size，即存储的key-value对数量
+get size() {
+  return this.#keys.length
+}
+}
+
+
+
+
+
+
+
+// 定义 MyMap 类
+class MyMap {
+  // 初始化实例属性 collection 和 count
+  constructor() {
+    this.collection = {}
+    this.count = 0
+  }
+
+  // 添加一个键值对
+  set(key, value) {
+    this.collection[key] = value
+    this.count++
+  }
+
+  // 返回布尔值，检查键是否存在
+  has(key) {
+    return (key in this.collection)
+  }
+
+  // 返回键对应的值，如果键不存在，则返回null
+  get(key) {
+    return (key in this.collection) ? this.collection[key] : null
+  }
+
+  // 删除指定的键值对
+  delete(key) {
+    if (key in this.collection) {
+      delete this.collection[key] // 删除键值对
+      this.count-- // 维护计数器
+    }
+  }
+
+  // 返回值数组
+  values() {
+    let result = []
+    for (let key of Object.keys(this.collection)) {
+      result.push(this.collection[key])
+    }
+    return (result.length > 0) ? result : null
+  }
+
+  // 清空映射
+  clear() {
+    this.collection = {}
+    this.count = 0
+  }
+}
+
+
+
+// 示例：使用 MyMap 类创建映射
+let myMap = new MyMap()
+myMap.set('apple', 'red') // 添加键值对
+myMap.set('banana', 'yellow')
+myMap.set('grape', 'purple')
+
+console.log(myMap.has('apple')) // true，检查键是否存在
+console.log(myMap.get('banana')) // 'yellow'，获取键对应的值
+console.log(myMap.values()) // [ 'red', 'yellow', 'purple' ]，获取值的数组
+
+myMap.delete('grape') // 删除键值对
+console.log(myMap.values()) // [ 'red', 'yellow' ]
+myMap.clear() // 清空映射
+console.log(myMap.values()) // null
+
+
+
+
+
+
+
+MyMap
+
+
+MySet
+
+Vector
+  plus()
+  minus()
+  length
+
+Complex
+  plus()
+  minus()
+  mul()
+  div()
+
+Stack
+  push()
+  pop()
+  size
+
+Queue
+  add()
+  pop()
+  size
+
+LinkedList
+  append()
+  prepend()
+  at()
+  size
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**
+ * 定义一个Student类，用来创建学生对象
+ */
+ class Student {
+  /**
+   * 构造函数，在使用new操作符创建对象时会自动调用，用来初始化实例对象属性
+   * @param {string} name - 学生名字
+   * @param {number} age - 学生年龄
+   * @param {string} major - 学生专业
+   */
+  constructor(name, age, major) {
+    // 在实例对象上定义name、age和major属性，并赋值为构造函数传入的参数值
+    this.name = name
+    this.age = age
+    this.major = major
+  }
+
+  /**
+   * 在类原型上定义introduce方法，用于向控制台输出学生简介字符串
+   */
+  introduce() {
+    console.log(`Hi, I'm ${this.name}, ${this.age} years old, my major is ${this.major}.`)
+  }
+}
+
+// 使用new操作符创建两个Student实例对象，并传入name、age和major参数
+let student1 = new Student('Tom', 18, 'Computer Science')
+let student2 = new Student('Lucy', 20, 'Medicine')
+
+// 调用student1实例对象上的introduce方法，输出学生简介字符串
+student1.introduce() // 输出：Hi, I'm Tom, 18 years old, my major is Computer Science.
+
+// 调用student2实例对象上的introduce方法，输出学生简介字符串
+student2.introduce() // 输出：Hi, I'm Lucy, 20 years old, my major is Medicine.
+上面代码中，使用注释说明了：
+
+怎样定义构造函数，以及传入的参数含义。
+怎样定义类原型方法，并且展示了方法的具体功能及如何使用。
+怎样使用new操作符根据类在内存中构造一个新对象，创建两个Student实例对象。
+
+</script>
