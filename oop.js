@@ -31,7 +31,7 @@ class Queue {
   }
 
   pop() {
-    if (this.isEmpty()){ return null} // 如果队列为空则返回提示信息
+    if (this.isEmpty()) { return null } // 如果队列为空则返回提示信息
     return this.items.shift() // 返回队列的第一个元素并将其从队列中删除
   }
 
@@ -47,28 +47,28 @@ class Queue {
 
 
 
-class MyMap{
+class MyMap {
 
-  constructor(){
+  constructor() {
     this.collection = {}
     this.count = 0
   }
 
-  set(key,val){
+  set(key, val) {
     this.collection[key] = val
     this.count++
   }
 
-  get(key){
+  get(key) {
     return (key in this.collection) ? this.collection[key] : null
   }
 
-  has(key){
+  has(key) {
     return (key in this.collection)
   }
 
-  delete(key){
-    if(key in this.collection){
+  delete(key) {
+    if (key in this.collection) {
       delete this.collection[key]
       this.count--
     }
@@ -87,6 +87,7 @@ class MyMap{
     this.count = 0
   }
 }
+
 
 
 
