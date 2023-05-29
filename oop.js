@@ -31,7 +31,7 @@ class Queue {
   }
 
   pop() {
-    if (this.isEmpty()){ return "Queue is empty"} // 如果队列为空则返回提示信息
+    if (this.isEmpty()){ return null} // 如果队列为空则返回提示信息
     return this.items.shift() // 返回队列的第一个元素并将其从队列中删除
   }
 
@@ -43,7 +43,6 @@ class Queue {
     return this.items.length === 0 // 判断队列是否为空
   }
 }
-
 
 
 
