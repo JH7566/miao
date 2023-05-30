@@ -106,7 +106,7 @@ class Complex {
   mul(a) {
     const real1 = (this.real * a.real) - (this.imaginary * a.imaginary)
     const imaginary1 = (this.real * a.imaginary) + (this.imaginary * a.real)
-    return new Complex = (real1, imaginary1)
+    return new Complex(real1, imaginary1)
   }
 
   div(a) {
@@ -192,4 +192,93 @@ class LinkedList {
     return this.length
   }
 }
+
+
+
+
+
+class MySet {
+
+  constructor(arr = []) {
+    this.items = {}
+    this.length = 0
+    arr.forEach(item => this.add(item))
+  }
+
+
+  add(value) {
+    if (this.has(value)) {
+      return false
+    } else {
+      this.items[value] = values
+      this.length++
+      return true
+    }
+  }
+
+
+  delete(value) {
+    if (this.has(value)) {
+      delete this.items[value]
+      this.length--
+      return true
+    } else {
+      return false
+    }
+  }
+
+
+  has(value) {
+    return this.items.hasOwnProperty(value)
+  }
+
+  clear() {
+    this.items = {}
+    this.length = 0
+  }
+
+  size() {
+    return this.length
+  }
+
+
+  toArray() {
+    return Object.values(this.items)
+  }
+
+
+  toString() {
+    return this.toArray().join(',')
+  }
+
+
+  union(set) {
+    const result = new MySet()
+    this.toArray().forEach(item => result.add(item))
+    set.toArray().forEach(item => result.add(item))
+    return result
+  }
+
+  intersect(set) {
+    const result = new MySet()
+    this.toArray().forEach(item => {
+      if (set.has(item)) {
+        result.add(item)
+      }
+    })
+    return result
+  }
+
+  difference(set) {
+    const result = new MySet()
+    this.toArray().forEach(item => {
+      if (!set.has(item)) {
+        result.add(item)
+      }
+    })
+    return result
+  }
+}
+
+
 
