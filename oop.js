@@ -87,8 +87,6 @@ class MyMap {
 }
 
 
-
-
 class Complex {
   constructor(real, imaginary) {
     this.real = real
@@ -106,7 +104,7 @@ class Complex {
   mul(a) {
     const real1 = (this.real * a.real) - (this.imaginary * a.imaginary)
     const imaginary1 = (this.real * a.imaginary) + (this.imaginary * a.real)
-    return new Complex = (real1, imaginary1)
+    return new Complex(real1, imaginary1)
   }
 
   div(a) {
@@ -117,6 +115,9 @@ class Complex {
   }
 }
 
+var a = new Complex(1,2)
+var b = new Complex(2,4)
+var c = a.div(b)
 
 
 
