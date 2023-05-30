@@ -86,13 +86,57 @@ class MyMap {
   }
 }
 
-//aaa
+
+
+
+class Complex{
+  constructor(real,imaginary){
+    this.real = real
+    this.imaginary = imaginary
+  }
+
+  plus(a){
+    return new Complex(this.real + a.real,this.imaginary + a.imaginary)
+  }
+
+  minus(a){
+    return new Complex(this.real - a.real , this.imaginary - a.imaginary)
+  }
+
+  mul(a){
+    const real1 = (this.real * a.real) - (this.imaginary * a.imaginary)
+    const imaginary1 = (this.real * a.imaginary) + (this.imaginary * a.real)
+    return new Complex = (real1,imaginary1)
+  }
+
+  div(a){
+    const denominator = (a.real * a.real) + (a.imaginary * a.imaginary)
+    const real1 = ((this.real * a.real) + (this.imaginary * a.imaginary)) / denominator
+    const imaginary1 = ((this.imaginary * a.real) - (this.real * a.imaginary)) / denominator
+    return new Complex(real1,imaginary1)
+  }
+}
 
 
 
 
+class Stack {
+  constructor(){
+    this.items = []
+  }
 
+  push(val){
+    this.items.push(val)
+  }
 
+  pop(){
+    this.items.pop()
+  }
+
+  size(){
+    return this.items.length
+  }
+}
 
 
 
