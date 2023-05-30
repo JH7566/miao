@@ -4276,5 +4276,92 @@ this
 
   class B {}
   class A extends B {
-    
+
   }
+
+
+
+
+  <script>
+
+    // TypeScript
+
+var f: string | number = 2;
+
+f = 'owief'
+
+var g: number[] = [1, 2, 3, 3, 3, 3, 3]
+var h: string[] = ['wfeof', 'wief']
+var i: (number | string)[] = [2, '2']
+
+type Coord = {
+  a: string,
+  b: string,
+}
+
+type Point = {
+  x: number,
+  y: number,
+  z: Coord
+}
+
+interface Point2 {
+  foo(a: number): string;
+  bar: boolean;
+}
+
+var obj3: Point2 = {
+  foo(b) {
+    return 'oweifj'
+  },
+  bar: false,
+}
+
+var j: Point = { x: 2, y: 8, z: {a:'weofi', b:'owief'}}
+var k: Point = { x: 2, y: 8 }
+var k: Point = { x: 2, y: 8 }
+
+var x: undefined = undefined;
+var d: null = null;
+var e: bigint = 8234n;
+
+var a: number = 2;
+var b: string = 'wef';
+
+a.toString(2)
+
+function foo(a: number, b: number): string {
+  return String(a) + String(b)
+}
+
+var c: number = Number(foo(1, 2))
+
+class A {
+  constructor() {
+
+  }
+
+  foo(x: string, y: boolean): number {
+    return 2
+  }
+}
+
+
+var xxx: A[] = []
+
+xxx.push(  2  )
+
+
+
+
+    </script>
+
+
+    静态/动态类型：变量是否有固定的类型
+  静态: c, c++, java, typescript, rust
+  动态: js, python
+
+
+强/弱类型：语言是否支持自动类型转换
+  强类型：python, java
+  弱类型：c, js
