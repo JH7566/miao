@@ -1,4 +1,3 @@
-//maps
 
 class Vector {
 
