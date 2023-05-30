@@ -44,6 +44,15 @@ class Queue {
   }
 }
 
+var s = new Queue()
+s.add(1)
+s.add(2)
+s.add(3)
+assert(s.pop() == 1, '出队的应该为1')
+assert(s.pop() == 2, '出队的应该为2')
+assert(s.size == 1, '队列长度应该为1')
+
+
 
 class MyMap {
 
@@ -115,9 +124,11 @@ class Complex {
   }
 }
 
-var a = new Complex(1, 2)
-var b = new Complex(2, 4)
+var a = new Complex(1,2)
+var b = new Complex(2,4)
 var c = a.div(b)
+assert(c.real == 0.5, 'a/b的实部应该为0.5')
+assert(c.imag == 0, 'a/b的虚部应该为0')
 
 
 
@@ -139,7 +150,14 @@ class Stack {
   }
 }
 
-
+var s = new Stack()
+s.push(1)
+s.push(2)
+s.push(3)
+assert(s.pop() == 3, 'pop出来的应该是3')
+s.push(4)
+assert(s.pop() == 4, 'pop出来的应该是4')
+assert(s.size == 2, 'size应该为2')
 
 
 
@@ -194,7 +212,15 @@ class LinkedList {
   }
 }
 
-
+var s = new LinkedList()
+s.append(1)
+s.append(2)
+s.prepend(3)
+assert(s.size == 3, '链表长度应该为3')
+s.prepend(4)
+assert(s.at(0) == 4, '0号位置应该为4')
+assert(s.at(1) == 3, '1号位应该为3')
+assert(s.at(3) == 2, '3号位应该为2')
 
 
 class MySet {
@@ -275,3 +301,11 @@ class MySet {
   }
 }
 
+var s = new MySet()
+s.add("foo")
+s.add("foo")
+s.add("bar")
+assert(s.size == 2, '不能有重复元素')
+s.delete('foo')
+assert(s.size == 1)
+assert(s.has('foo') == false)
