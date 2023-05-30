@@ -1,0 +1,515 @@
+<head><script>
+
+
+  function Vector(x, y) {
+    this.x = x
+    this.y = y
+  }
+  Vector.prototype.plus = function(vector) {
+    // 'this' is also a vector
+    var x = this.x + vector.x
+    var y = this.y + vector.y
+    return new Vector(x, y)
+  }
+  Vector.prototype.minus = function(vector) {
+    // 'this' is also a vector
+    var x = this.x - vector.x
+    var y = this.y - vector.y
+    return new Vector(x, y)
+  }
+  Object.defineProperty(Vector.prototype, 'length', {
+    get: function() {
+      return Math.sqrt(this.x * this.x + this.y * this.y)
+    }
+  })
+
+  var a = new Vector(2, 3)
+  var b = new Vector(3, -1)
+
+
+
+  function Complex(real, imag) {
+    this.real = real
+    this.imag = imag
+  }
+  Complex.prototype.plus = function(c) {
+    var real = this.real + c.real
+    var imag = this.imag + c.imag
+    return new Complex(real, imag)
+  }
+  Complex.prototype.minus = function(c) {
+    var real = this.real - c.real
+    var imag = this.imag - c.imag
+    return new Complex(real, imag)
+  }
+  Complex.prototype.mul = function(c) {
+    var real = this.real * c.real - this.imag * c.imag
+    var imag = this.real * c.imag + this.imag * c.real
+    return new Complex(real, imag)
+  }
+  Complex.prototype.div = function(c) {
+    var helper = new Complex(c.real, -c.imag)
+    var up = this.mul(helper)
+    var down = c.mul(helper) // down的虚部应该是0
+    var real = up.real / down.real
+    var imag = up.imag / down.real
+    return new Complex(real, imag)
+  }
+
+
+
+
+  function LinkedList(...initVals) {
+    this.head = null
+    this.tail = null
+
+    for (var item of initVals) {
+      this.append(item)
+    }
+  }
+
+  // 往链表的末尾增加一个元素
+  LinkedList.prototype.append = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+      return
+    } else {
+      this.tail.next = node
+      this.tail = node
+      return
+    }
+  }
+  // 往链表的头部增加一个元素
+  LinkedList.prototype.prepend = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+      return
+    } else {
+      node.next = this.head
+      this.head = node
+      return
+    }
+  }
+  // 返回链表第idx个元素
+  LinkedList.prototype.at = function(idx) {
+    var p = this.head
+    var count = 0
+    while (count < idx) {
+      p = p.next
+      count++
+    }
+    return p.val
+  }
+
+  Object.defineProperty(LinkedList.prototype, 'length', {
+    get: function() {
+      var p = this.head
+      var l = 0
+      while(p) {
+        l++
+        p = p.next
+      }
+      return l
+    }
+  })
+
+
+
+  // var l = new LinkedList(1,2,3,4)
+
+  // l.length // 返回链表的长度
+
+
+  // 表示一个队列
+  // 只有两个操作：
+  // 从一端添加元素，从另一端删除元素
+  // 先进先出
+  // 其每一个操作的时间复杂度都为O（1）
+  function Queue() {
+    this.head = null
+    this.tail = null
+    this.nodeCount = 0
+  }
+  // 添加一个元素到队列中
+  Queue.prototype.add = function(val) {
+    var node = {
+      val, next: null
+    }
+    if (this.head == null) {
+      this.head = this.tail = node
+    }
+
+    this.tail.next = node
+    this.tail = node
+    this.nodeCount++
+  }
+  // 从队列中取出一个元素，先添加的是先被取出的
+  // 队列为空时返回undefined
+  Queue.prototype.pop = function() {
+    // 没有结点时
+    if (this.head == null) {
+      return
+    }
+    this.nodeCount--
+    // 只有一个结点时
+    if (this.head == this.tail) {
+      var result = this.head.val
+      this.head = this.tail = null
+      return result
+    }
+
+    var result = this.head.val
+    this.head = this.head.next
+    return result
+  }
+  // // 返回队列的长度
+  // Queue.prototype.size = function() {
+  //   return this.nodeCount
+  // }
+  Object.defineProperty(Queue.prototype, 'size', {
+    get: function() {
+      return this.nodeCount
+    }
+  })
+
+
+
+
+  function Queue2() {
+    this.vals = []
+  }
+  // 添加一个元素到队列中
+  Queue2.prototype.add = function(val) {
+    this.vals.push(val)
+  }
+  // 从队列中取出一个元素，先添加的是先被取出的
+  // 队列为空时返回undefined
+  Queue2.prototype.pop = function() {
+    return this.vals.shift()
+  }
+  // 返回队列的长度
+  Queue2.prototype.size = function() {
+    return this.vals.length
+  }
+
+
+  // 用链表实现一个栈
+  // 只有两个操作：
+  // 进栈，出栈
+  // 后进先出
+  // 其每一个操作的时间复杂度都为O（1）
+  function Stack() {
+    this.head = null
+    this.nodeCount = 0
+  }
+  // 添加一个元素到栈中
+  Stack.prototype.push = function(val) {
+    var node = {
+      val, next: null
+    }
+    this.nodeCount++
+    if (this.head == null) {
+      this.head = node
+    } else {
+      node.next = this.head
+      this.head = node
+    }
+  }
+  // 从栈中取出一个元素，先添加的是后被取出的
+  // 栈为空时返回undefined
+  Stack.prototype.pop = function() {
+    if (this.head == null) {
+      return undefined
+    }
+    this.nodeCount--
+    var result = this.head.val
+    this.head = this.head.next
+    return result
+  }
+  // 返回栈的长度
+  Stack.prototype.size = function() {
+    return this.nodeCount
+    
+  }
+
+
+
+  /**
+   * 实现一个集合，表示若干值的集合
+   * [[[集合中的元素不能重复]]]
+   * 支持两个操作：
+   * 向集合里添加元素
+   * 从集合中删除元素
+   * 判断一个元素是否在集合里
+   * 清空集合中的所有元素
+   * 集合中元素的数量  getter
+   */
+  function Set() {
+    this._elements = [] // 用以存储集合里的元素们
+  }
+  Set.prototype.add = function(val) {
+    if (!this.has(val)) {
+      this._elements.push(val)
+    }
+  }
+  Set.prototype.remove = function(val) {
+    if (this.has(val)) {
+      var idx = this._elements.indexOf(val)
+      this._elements.splice(idx, 1)
+    }
+  }
+  Set.prototype.has = function(val) {
+    return this._elements.includes(val)
+  } // -> boolean
+  Set.prototype.size = function() {
+    return this._elements.length
+  } // number
+
+
+
+
+
+  /**
+   * 实现一个类似java语言中的ArrayList类型
+   * 实现过程中不能使用js中数组长度可变这个特性
+   * 即任何时候不能调用push，pop，shift，unshift，splice
+   * 也不能修改数组的length
+   * 创建数组使用 Array(length) 创建出来之后就再也不能修改其长度了
+   *
+   *
+   *
+   */
+  function ArrayList() {
+
+  }
+
+  ArrayList.prototype.push = function() {}
+  ArrayList.prototype.pop = function() {}
+  ArrayList.prototype.shift = function() {}
+  ArrayList.prototype.unshift = function() {}
+  ArrayList.prototype.at = function() {}
+  ArrayList.prototype.find = function() {}
+  ArrayList.prototype.length   // getter
+
+
+
+
+  /**
+   * 实现一个类型以表达映射
+   *
+   * 实现过程不能使用“将对象做为映射”这个功能
+   *
+   *
+   *
+   */
+
+  function Map() {
+
+  }
+
+  Map.prototype.set = function(key, val) {}
+  // 设置key的映射目标，如果不存在，增加一组映射，如果存在就修改 obj[key] = val
+
+  Map.prototype.get = function(key) {}
+  // 获取key的映射目标 obj[key]
+
+  Map.prototype.has = function(key) {}
+   // 判断是否存在key这个映射   key in obj
+
+  Map.prototype.delete = function(key) {}
+  // 删除key及key的映射  delete obj[key]
+
+  Map.prototype.size
+
+</script>
+</head>
+
+
+
+
+
+
+
+
+
+<script>
+
+
+
+function HashTable(size) {
+  this.size = size                      // 哈希表大小
+  this.storage = []                     // 储存空间，初始化为空数组
+  for (var i = 0; i < this.size; i++) {  // 创建 size 个空数组并储存在 storage 数组中
+    this.storage[i] = []
+  }
+}
+
+// 哈希函数，将字符串转换为索引值
+HashTable.prototype.hash = function(string) {
+  var hash = 0
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i)
+  }
+  return hash % this.size                // 确保索引值不超过哈希表大小
+}
+
+// 添加键值对到哈希表中
+HashTable.prototype.add = function(key, value) {
+  var index = this.hash(key)             // 调用哈希函数获得索引值
+  var bucket = this.storage[index]       // 取出相应的桶 (Bucket)，桶是一个数组，用于储存键值对
+  var override = false                   // 标识是否覆盖已经存在的键值对
+  for (var i = 0; i < bucket.length; i++) {
+    var tuple = bucket[i]
+    if (tuple[0] === key) {              // 判断是否存在已经存在的键值对
+      tuple[1] = value                   // 如果存在，将其值更新为新值
+      override = true
+    }
+  }
+
+  if (!override) {                       // 如果没有覆盖，添加新的键值对到桶中
+    bucket.push([key, value])
+  }
+}
+
+// 删除指定 key 的键值对
+HashTable.prototype.remove = function(key) {
+  var index = this.hash(key)             // 调用哈希函数获得索引值
+  var bucket = this.storage[index]       // 取出相应的桶
+  for (var i = 0; i < bucket.length; i++) {
+    var tuple = bucket[i]
+    if (tuple[0] === key) {              // 如果找到了指定 key 的键值对，删除它
+      bucket.splice(i, 1)
+      return tuple[1]
+    }
+  }
+  return null                            // 如果没找到，返回 null
+}
+
+// 查找指定 key 的值
+HashTable.prototype.find = function(key) {
+  var index = this.hash(key)             // 调用哈希函数获得索引值
+  var bucket = this.storage[index]       // 取出相应的桶
+  for (var i = 0; i < bucket.length; i++) {
+    var tuple = bucket[i]
+    if (tuple[0] === key) {              // 如果找到了指定 key 的键值对，返回其值
+      return tuple[1]
+    }
+  }
+  return null                            // 如果没找到，返回 null
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 声明一个链表节点的构造函数
+function Node(key, value, next) {
+  this.key = key    // 键
+  this.value = value  // 值
+  this.next = next  // 下一个节点的引用
+}
+
+// 声明一个不会被覆盖的哈希表的构造函数
+function ChainingHashTable(size) {
+  this.size = size  // 哈希表大小
+  this.storage = [] // 储存空间，初始化为空数组
+  for (var i = 0; i < this.size; i++) { // 创建 size 个空链表并储存在 storage 数组中
+    this.storage[i] = null
+  }
+}
+
+// 哈希函数，将字符串转换为索引值
+ChainingHashTable.prototype.hash = function(string) {
+  var hash = 0
+  for (var i = 0; i < string.length; i++) {
+    hash += string.charCodeAt(i)
+  }
+  return hash % this.size // 确保索引值不超过哈希表大小
+}
+
+// 添加键值对到哈希表中
+ChainingHashTable.prototype.add = function(key, value) {
+  var index = this.hash(key)  // 调用哈希函数获得索引值
+  var bucket = this.storage[index] // 取出相应的桶
+  if (!bucket) {  // 如果桶不存在，就创建一个新的链表节点，并将其作为桶的头部
+    this.storage[index] = new Node(key, value, null)
+  } else { // 如果桶已经存在，就遍历链表，找到链表的末尾，并将新元素添加到链表的末尾
+    var node = bucket
+    while (node.next) {
+      if (node.key === key) {   // 如果有节点的键与待插入节点键值相等，则更新该节点的值
+        node.value = value
+        return
+      }
+      node = node.next
+    }
+    if (node.key === key) {     // 如果末尾节点的键与待插入节点键值相等，则更新该节点的值
+      node.value = value
+    } else {
+      node.next = new Node(key, value, null) // 将新节点添加到链表末尾
+    }
+  }
+}
+
+// 删除指定 key 的键值对
+ChainingHashTable.prototype.remove = function(key) {
+  var index = this.hash(key)   // 调用哈希函数获得索引值
+  var bucket = this.storage[index]  // 取出相应的桶
+  if (!bucket) {    // 如果桶不存在，返回 null
+    return null
+  }
+  if (bucket.key === key) {  // 如果桶的头部节点就是要删除的节点，直接删除
+    var deletedNode = bucket
+    this.storage[index] = bucket.next
+    return deletedNode.value
+  }
+  var node = bucket           // 否则遍历链表，寻找要删除的节点，如果找到了就删除
+  while (node.next) {
+    if (node.next.key === key) {
+      var deletedNode = node.next
+      node.next = node.next.next
+      return deletedNode.value
+    }
+    node = node.next
+  }
+  return null                  // 如果找不到要删除的节点，就返回 null
+}
+
+// 查找指定 key 的值
+ChainingHashTable.prototype.find = function(key) {
+  var index = this.hash(key)    // 调用哈希函数获得索引值
+  var bucket = this.storage[index]  // 取出相应的桶
+  var node = bucket
+  while (node) {  // 遍历链表，寻找指定的键值对
+    if (node.key === key) {
+      return node.value
+    }
+    node = node.next
+  }
+  return null       // 如果找不到指定的键值对，就返回 null
+}
+</script>
+
+
+
+
+

@@ -842,12 +842,23 @@ console.log(myMap.values()) // null
 MyMap
 
 
-MySet
+
 
 Vector
   plus()
   minus()
   length
+
+
+  Queue
+  add()
+  pop()
+  size
+
+
+
+  MySet
+
 
 Complex
   plus()
@@ -860,10 +871,7 @@ Stack
   pop()
   size
 
-Queue
-  add()
-  pop()
-  size
+
 
 LinkedList
   append()
@@ -929,5 +937,334 @@ student2.introduce() // 输出：Hi, I'm Lucy, 20 years old, my major is Medicin
 怎样定义构造函数，以及传入的参数含义。
 怎样定义类原型方法，并且展示了方法的具体功能及如何使用。
 怎样使用new操作符根据类在内存中构造一个新对象，创建两个Student实例对象。
+
+
+
+
+
+
+
+/**
+ * MySet类
+ */
+ class MySet {
+  /**
+   * 构造函数
+   * @param {Array} arr - 初始集合数组
+   */
+  constructor(arr = []) {
+    this.items = {}; // 用对象存储集合中的元素
+    this.length = 0; // 记录集合中元素的个数
+    arr.forEach(item => this.add(item)); // 初始化集合，将初始数组中的元素一个个添加到集合中
+  }
+
+  /**
+   * 向集合中添加元素
+   * @param {*} value - 要添加的元素
+   * @returns {boolean} - 添加成功返回true，否则返回false
+   */
+  add(value) {
+    if (this.has(value)) { // 如果集合中已经有该元素，则不需要重复添加
+      return false;
+    } else {
+      this.items[value] = value; // 向集合中添加元素
+      this.length++; // 集合元素个数加1
+      return true;
+    }
+  }
+
+  /**
+   * 从集合中删除元素
+   * @param {*} value - 要删除的元素
+   * @returns {boolean} - 删除成功返回true，否则返回false
+   */
+  delete(value) {
+    if (this.has(value)) { // 如果集合中有该元素，则删除并返回true
+      delete this.items[value]; // 从集合中删除元素
+      this.length--; // 集合元素个数减1
+      return true;
+    } else { //否则返回false
+      return false;
+    }
+  }
+
+  /**
+   * 判断元素是否在集合中
+   * @param {*} value - 要判断的元素
+   * @returns {boolean} - 存在则返回true，否则返回false
+   */
+  has(value) {
+    return this.items.hasOwnProperty(value); // 使用对象的hasOwnProperty()方法判断元素是否在集合中
+  }
+
+  /**
+   * 清空集合中所有元素
+   */
+  clear() {
+    this.items = {}; // 用一个新的空对象替换原有的元素对象，从而清空元素
+    this.length = 0; // 元素个数清零
+  }
+
+  /**
+   * 返回集合中所有元素的个数
+   * @returns {number} - 元素个数
+   */
+  size() {
+    return this.length;
+  }
+
+  /**
+   * 返回集合中所有元素的数组形式
+   * @returns {Array} - 元素数组
+   */
+  toArray() {
+    return Object.values(this.items); // 将元素对象的值转换为数组形式
+  }
+
+  /**
+   * 返回集合的字符串表示
+   * @returns {string} - 字符串表示
+   */
+  toString() {
+    return this.toArray().join(','); // 将元素数组转换为字符串，并用逗号分隔
+  }
+
+  /**
+   * 返回一个新的集合，为当前集合和另一个集合之间的并集
+   * @param {MySet} set - 另一个集合
+   * @returns {MySet} - 新的集合
+   */
+  union(set) {
+    const result = new MySet(); // 创建一个新的集合用于存放并集
+    this.toArray().forEach(item => result.add(item)); // 将当前集合中的元素放入新集合中
+    set.toArray().forEach(item => result.add(item)); // 将另一个集合中的元素放入新集合中
+    return result; // 返回新的集合
+  }
+
+  /**
+   * 返回一个新的集合，为当前集合和另一个集合之间的交集
+   * @param {MySet} set - 另一个集合
+   * @returns {MySet} - 新的集合
+   */
+  intersect(set) {
+    const result = new MySet(); // 创建一个新的集合用于存放交集
+    this.toArray().forEach(item => { // 遍历当前集合中的元素
+      if (set.has(item)) { // 如果另一个集合中也有该元素，则放入新集合中
+        result.add(item);
+      }
+    });
+    return result; // 返回新的集合
+  }
+
+  /**
+   * 返回一个新的集合，为当前集合和另一个集合之间的差集
+   * @param {MySet} set - 另一个集合
+   * @returns {MySet} - 新的集合
+   */
+  difference(set) {
+    const result = new MySet(); // 创建一个新的集合用于存放差集
+    this.toArray().forEach(item => { // 遍历当前集合中的元素
+      if (!set.has(item)) { // 如果另一个集合中没有该元素，则放入新集合中
+        result.add(item);
+      }
+    });
+    return result; // 返回新的集合
+  }
+}
+
+
+
+
+
+
+class Complex {
+  /**
+   * @constructor
+   * @param {number} real - 复数的实部
+   * @param {number} imaginary - 复数的虚部
+   */
+  constructor(real, imaginary) {
+    this.real = real;
+    this.imaginary = imaginary;
+  }
+
+  /**
+   * 将两个复数相加
+   * @param {Complex} c - 要相加的另一个复数
+   * @returns {Complex} - 返回相加后的新复数
+   */
+  plus(c) {
+    return new Complex(this.real + c.real, this.imaginary + c.imaginary);
+  }
+
+  /**
+   * 将一个复数从另一个复数中减去
+   * @param {Complex} c - 要减去的复数
+   * @returns {Complex} - 返回相减后的新复数
+   */
+  minus(c) {
+    return new Complex(this.real - c.real, this.imaginary - c.imaginary);
+  }
+
+  /**
+   * 将两个复数相乘
+   * @param {Complex} c - 要相乘的另一个复数
+   * @returns {Complex} - 返回相乘后的新复数
+   */
+  mul(c) {
+    const realPart = (this.real * c.real) - (this.imaginary * c.imaginary);
+    const imaginaryPart = (this.real * c.imaginary) + (this.imaginary * c.real);
+    return new Complex(realPart, imaginaryPart);
+  }
+
+  /**
+   * 将一个复数除以另一个复数
+   * @param {Complex} c - 除数
+   * @returns {Complex} - 返回相除后的新复数
+   */
+  div(c) {
+    const denominator = (c.real * c.real) + (c.imaginary * c.imaginary);
+    const realPart = ((this.real * c.real) + (this.imaginary * c.imaginary)) / denominator;
+    const imaginaryPart = ((this.imaginary * c.real) - (this.real * c.imaginary)) / denominator;
+    return new Complex(realPart, imaginaryPart);
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+class Stack {
+  /**
+   * @constructor
+   */
+  constructor() {
+    this.items = []; // 初始化一个空数组来存储栈元素
+  }
+
+  /**
+   * @description 添加元素到栈顶
+   * @param {*} element - 要添加到栈中的元素
+   */
+  push(element) {
+    this.items.push(element); // 将元素添加到栈顶
+  }
+
+  /**
+   * @description 从栈中移除栈顶元素，并将其返回
+   * @returns {*} - 返回被移除的栈顶元素
+   */
+  pop() {
+    if (this.isEmpty()) { // 如果栈为空，则不能取出元素，返回null
+      return null;
+    }
+    return this.items.pop(); // 否则，从栈顶移除元素并返回它
+  }
+
+  /**
+   * @description 返回栈中元素的个数
+   * @returns {number} - 返回栈中元素的个数
+   */
+  size() {
+    return this.items.length; // 返回栈中元素的个数
+  }
+
+  /**
+   * @description 检查栈是否为空
+   * @returns {boolean} - 如果栈为空，则返回true；否则返回false
+   */
+  isEmpty() {
+    return this.size() === 0; // 如果栈中元素的个数为0，则栈为空
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+class LinkedList {
+  /**
+   * @constructor
+   */
+  constructor() {
+    this.head = null; // 链表的头指针
+    this.tail = null; // 链表的尾指针
+    this.length = 0; // 链表的长度
+  }
+
+  /**
+   * @description 在链表的末尾添加一个新节点
+   * @param {*} value - 新节点的值
+   * @returns {LinkedList} - 返回当前链表
+   */
+  append(value) {
+    const newNode = { value: value, next: null }; // 创建新节点
+    if (this.tail) { // 如果链表不为空
+      this.tail.next = newNode; // 将新节点链接到尾节点的下一个节点
+    }
+    this.tail = newNode; // 将新节点设置为新的尾节点
+    if (!this.head) { // 如果链表为空
+      this.head = newNode; // 将新节点也设置为头节点
+    }
+    this.length++; // 长度加1
+    return this;
+  }
+
+  /**
+   * @description 在链表的开头添加一个新节点
+   * @param {*} value - 新节点的值
+   * @returns {LinkedList} - 返回当前链表
+   */
+  prepend(value) {
+    const newNode = { value: value, next: this.head }; // 创建新节点，并将其下一个节点设置为当前头指针所指的节点
+    this.head = newNode; // 将新节点设置为新的头指针
+    if (!this.tail) { // 如果链表为空
+      this.tail = newNode; // 将新节点也设置为尾指针
+    }
+    this.length++; // 长度加1
+    return this;
+  }
+
+  /**
+   * @description 获取链表中指定位置的节点的值
+   * @param {number} index - 要获取节点的位置，从0开始
+   * @returns {*} - 返回指定位置节点的值；如果节点不存在，则返回null
+   */
+  at(index) {
+    if (index < 0 || index >= this.length) { // 如果索引超出了链表的边界
+      return null; // 返回null
+    }
+    let currentNode = this.head; // 从头指针开始
+    for (let i = 0; i < index; i++) { // 依次遍历每个节点
+      currentNode = currentNode.next; // 将当前节点指向下一个节点
+    }
+    return currentNode.value; // 返回当前节点的值
+  }
+
+  /**
+   * @description 返回链表中节点的个数
+   * @returns {number} - 链表中节点的个数
+   */
+  size() {
+    return this.length; // 返回链表的长度
+  }
+}
 
 </script>

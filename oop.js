@@ -89,31 +89,31 @@ class MyMap {
 
 
 
-class Complex{
-  constructor(real,imaginary){
+class Complex {
+  constructor(real, imaginary) {
     this.real = real
     this.imaginary = imaginary
   }
 
-  plus(a){
-    return new Complex(this.real + a.real,this.imaginary + a.imaginary)
+  plus(a) {
+    return new Complex(this.real + a.real, this.imaginary + a.imaginary)
   }
 
-  minus(a){
-    return new Complex(this.real - a.real , this.imaginary - a.imaginary)
+  minus(a) {
+    return new Complex(this.real - a.real, this.imaginary - a.imaginary)
   }
 
-  mul(a){
+  mul(a) {
     const real1 = (this.real * a.real) - (this.imaginary * a.imaginary)
     const imaginary1 = (this.real * a.imaginary) + (this.imaginary * a.real)
-    return new Complex = (real1,imaginary1)
+    return new Complex = (real1, imaginary1)
   }
 
-  div(a){
+  div(a) {
     const denominator = (a.real * a.real) + (a.imaginary * a.imaginary)
     const real1 = ((this.real * a.real) + (this.imaginary * a.imaginary)) / denominator
     const imaginary1 = ((this.imaginary * a.real) - (this.real * a.imaginary)) / denominator
-    return new Complex(real1,imaginary1)
+    return new Complex(real1, imaginary1)
   }
 }
 
@@ -121,19 +121,19 @@ class Complex{
 
 
 class Stack {
-  constructor(){
+  constructor() {
     this.items = []
   }
 
-  push(val){
+  push(val) {
     this.items.push(val)
   }
 
-  pop(){
+  pop() {
     this.items.pop()
   }
 
-  size(){
+  size() {
     return this.items.length
   }
 }
@@ -142,5 +142,54 @@ class Stack {
 
 
 
+class LinkedList {
+  constructor() {
+    this.head = null
+    this.tail = null
+    this.length = 0
+  }
+  append(val) {
+    const newNode = {
+      val: val,
+      next: null
+    }
+    if (this.tail) {
+      this.tail.next = newNode
+    }
+    thia.tail = newNode
+    if (!this.head) {
+      this.head = newNode
+    }
+    this.length++
+    return this
+  }
 
+  prepend(val) {
+    const newNode = {
+      val: val,
+      next: this.head
+    }
+    this.head = newNode
+    if (!this.tail) {
+      this.tail = newNode
+    }
+    this.length++
+    return this
+  }
+
+  at(index) {
+    if (index < 0 || index >= this.length) {
+      return null
+    }
+    var Node1 = this.head
+    for (var i = 0; i < index; i++) {
+      Node1 = Node1.next
+    }
+    return Node1.value
+  }
+
+  size() {
+    return this.length
+  }
+}
 
