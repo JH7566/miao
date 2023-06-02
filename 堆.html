@@ -1,0 +1,282 @@
+<script>
+  /**
+   * 堆可以用于维护一个动态增删元素的集合
+   * 且关注点是集合的最值
+   *
+   * 优先队列,Heap,PriorityQueue
+   *
+   * "Heap"一词还有另外一个意思,即"堆内存"的堆,即程序运算过程动态分配的内存片段所处的位置
+   * 对应于栈内存,栈内存也是程序运算中需要为维护的一部分内存,用来维护函数调用关系及调用栈中函数的局部变量的
+   *
+   *
+   * 堆是一颗完全二叉树.
+   * 由于是完全二叉树,所以它可以用数组来存储,因为存在数组里也没有一点空间浪费
+   *
+   * 堆中,每个结点都比其两个子结点大或小.
+   * 当每个结点都比子结点大时,为最大堆,大顶堆
+   * 当每个结点都比子结点小时,为最小堆,小顶堆
+   * 堆顶就是完全二叉树的根结点.
+   *
+   * 往堆中增加元素：O(logN)
+   *   增加到堆的末尾（最后一行的最右边），然后向上调整以维护堆的性质
+   * 从堆中删除元素：O(logN)
+   *   只能删除堆顶元素
+   *   然后将堆尾元素放到堆顶位置
+   *   然后从堆顶位置开始向下调整以维护堆的性质
+   *
+   * 就地将乱数组调整成合法的堆：
+   *   从最后一个元素开始，以该元素为堆顶向下调整
+   * 时间复杂度为O(n)
+   *
+   *
+   */
+
+  var heap = [1,4,2,2,45,3,2,2,43,2,4,4,5]
+  // 从堆里删除堆顶元素并维护堆的性质
+  function pop(heap) {
+    if (heap.length == 0) {
+      return undefined
+    }
+    if (heap.length == 1) {
+      return heap.pop()
+    }
+    var result = heap[0]
+    var last = heap.pop()
+    heap[0] = last
+    heapDown(heap, 0)
+    return result
+  }
+
+  // 往堆里增加一个元素并维护堆的性质
+  function push(heap, val) {
+    heap.push(val)
+    heapUp(heap, heap.length - 1)
+    return heap
+  }
+  function heapUp(heap, pos) {
+    if (pos == 0) {
+      return
+    }
+    var parentPos = (pos - 1) >> 1 // 计算pos位置的元素的父结点的位置
+    if (heap[pos] > heap[parentPos]) {
+      swap(heap, pos, parentPos)
+      heapUp(heap, parentPos)
+    }
+  }
+  function heapUp2(heap, pos) {
+    for(;;) {
+      var parentPos = (pos - 1) >> 1 // 计算pos位置的元素的父结点的位置
+      if (heap[pos] > heap[parentPos]) {
+        swap(heap, pos, parentPos)
+        pos = parentPos
+      }
+    }
+  }
+
+  // 从pos位置开始向下调整
+  // pos位置的左右子树都是合法的堆
+  // stop表示只认为数组中小于stop位置的元素是堆中的元素
+  // 用以后面的堆排序代码
+  function heapDown(heap, pos, stop = heap.length) {
+    var leftPos = 2 * pos + 1
+    var rightPos = 2 * pos + 2
+    var maxIdx = pos
+    if (leftPos < stop && heap[leftPos] > heap[maxIdx]) {
+      maxIdx = leftPos
+    }
+    if (rightPos < stop && heap[rightPos] > heap[maxIdx]) {
+      maxIdx = rightPos
+    }
+    if (maxIdx !== pos) {
+      swap(heap, maxIdx, pos)
+      heapDown(heap, maxIdx, stop)
+    }
+  }
+
+  function heapDown2(heap, pos, stop = heap.length) {
+    for(;;) {
+      var leftPos = 2 * pos + 1
+      var rightPos = 2 * pos + 2
+      var maxIdx = pos
+      if (leftPos < stop && heap[leftPos] > heap[maxIdx]) {
+        maxIdx = leftPos
+      }
+      if (rightPos < stop && heap[rightPos] > heap[maxIdx]) {
+        maxIdx = rightPos
+      }
+      if (maxIdx !== pos) {
+        swap(heap, maxIdx, pos)
+        pos = maxIdx
+      } else {
+        break
+      }
+    }
+  }
+
+  function swap(array, i, j) {
+    var t = array[i]
+    array[i] = array[j]
+    array[j] = t
+  }
+
+  class PriorityQueue2 {
+    constructor() {
+      this._elements = []
+    }
+    _swap(i, j) {
+      var t = this._elements[i]
+      this._elements[i] = this._elements[j]
+      this._elements[j] = t
+    }
+    _heapUp(pos) {
+      if (pos == 0) {
+        return
+      }
+      var parentPos = (pos - 1) >> 1 // 计算pos位置的元素的父结点的位置
+      if (this._elements[pos] > this._elements[parentPos]) {
+        this._swap(pos, parentPos)
+        this._heapUp(parentPos)
+      }
+    }
+    _heapDown(pos) {
+      var leftPos = 2 * pos + 1
+      var rightPos = 2 * pos + 2
+      var maxIdx = pos
+      if (leftPos < this._elements.length && this._elements[leftPos] > this._elements[maxIdx]) {
+        maxIdx = leftPos
+      }
+      if (rightPos < this._elements.length && this._elements[rightPos] > this._elements[maxIdx]) {
+        maxIdx = rightPos
+      }
+      if (maxIdx !== pos) {
+        this._swap(maxIdx, pos)
+        this._heapDown(maxIdx)
+      }
+    }
+    push(val) {
+      this._elements.push(val)
+      this._heapUp(this._elements.length - 1)
+      return this
+    }
+    pop() {
+      if (this._elements.length == 0) {
+        return undefined
+      }
+      if (this._elements.length == 1) {
+        return this._elements.pop()
+      }
+      var result = this._elements[0]
+      var last = this._elements.pop()
+      this._elements[0] = last
+      this._heapDown(0)
+      return result
+    }
+  }
+
+  class PriorityQueue {
+    constructor(initials = [], predicate = it => it) {
+      if (typeof predicate !== 'function') {
+        throw new TypeError('predicate must be a function, got: ' + predicate)
+      }
+      this._elements = []
+      this._predicate = predicate
+
+      for (var item of initials) {
+        this.push(item)
+      }
+    }
+    _swap(i, j) {
+      var t = this._elements[i]
+      this._elements[i] = this._elements[j]
+      this._elements[j] = t
+    }
+    _heapUp(pos) {
+      if (pos == 0) {
+        return
+      }
+      var predicate = this._predicate
+      var parentPos = (pos - 1) >> 1 // 计算pos位置的元素的父结点的位置
+      if (predicate(this._elements[pos]) > predicate(this._elements[parentPos])) {
+        this._swap(pos, parentPos)
+        this._heapUp(parentPos)
+      }
+    }
+    _heapDown(pos) {
+      var leftPos = 2 * pos + 1
+      var rightPos = 2 * pos + 2
+      var maxIdx = pos
+      var predicate = this._predicate
+      if (leftPos < this._elements.length && predicate(this._elements[leftPos]) > predicate(this._elements[maxIdx])) {
+        maxIdx = leftPos
+      }
+      if (rightPos < this._elements.length && predicate(this._elements[rightPos]) > predicate(this._elements[maxIdx])) {
+        maxIdx = rightPos
+      }
+      if (maxIdx !== pos) {
+        this._swap(maxIdx, pos)
+        this._heapDown(maxIdx)
+      }
+    }
+    push(val) {
+      this._elements.push(val)
+      this._heapUp(this._elements.length - 1)
+      return this
+    }
+    pop() {
+      if (this._elements.length == 0) {
+        return undefined
+      }
+      if (this._elements.length == 1) {
+        return this._elements.pop()
+      }
+      var result = this._elements[0]
+      var last = this._elements.pop()
+      this._elements[0] = last
+      this._heapDown(0)
+      return result
+    }
+    // 查看堆顶元素但不将它从堆中删除
+    peek() {
+      return this._elements[0]
+    }
+    get size() {
+      return this._elements.length
+    }
+  }
+
+  function heapSort2(array) {
+    var pq = new PriorityQueue()
+    for (var item of array) {
+      pq.push(item)
+    }
+    var result = []
+    while(pq.size > 0) {
+      result.push(pq.pop())
+    }
+    return result
+  }
+
+  function heapify(ary) {
+    var start = (ary.length - 1) >> 1
+    for (var i = start; i >= 0; i--) {
+      heapDown2(ary, i)
+    }
+    return ary
+  }
+
+  /**
+   *
+   * 时间复杂度：O(n * log(n))
+   * 空间复杂度：O(1)
+   */
+  function heapSort(ary) {
+    // 将数组就地堆化
+    heapify(ary)
+
+    for (var i = ary.length - 1; i > 0; i--) {
+      swap(ary, i, 0)
+      heapDown2(ary, 0, i)
+    }
+    return ary
+  }
+</script>

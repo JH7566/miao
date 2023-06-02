@@ -87,8 +87,6 @@ class MyMap {
 }
 
 
-
-
 class Complex {
   constructor(real, imaginary) {
     this.real = real
@@ -119,7 +117,6 @@ class Complex {
 
 
 
-
 class Stack {
   constructor() {
     this.items = []
@@ -137,7 +134,6 @@ class Stack {
     return this.items.length
   }
 }
-
 
 
 
@@ -195,8 +191,6 @@ class LinkedList {
 
 
 
-
-
 class MySet {
 
   constructor(arr = []) {
@@ -216,7 +210,6 @@ class MySet {
     }
   }
 
-
   delete(value) {
     if (this.has(value)) {
       delete this.items[value]
@@ -226,7 +219,6 @@ class MySet {
       return false
     }
   }
-
 
   has(value) {
     return this.items.hasOwnProperty(value)
@@ -241,16 +233,13 @@ class MySet {
     return this.length
   }
 
-
   toArray() {
     return Object.values(this.items)
   }
 
-
   toString() {
     return this.toArray().join(',')
   }
-
 
   union(set) {
     const result = new MySet()
@@ -279,6 +268,3 @@ class MySet {
     return result
   }
 }
-
-
-

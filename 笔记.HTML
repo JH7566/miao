@@ -4365,3 +4365,48 @@ xxx.push(  2  )
 强/弱类型：语言是否支持自动类型转换
   强类型：python, java
   弱类型：c, js
+
+
+
+
+  变态面试题
+  var a = {
+  i: 2,
+  toString() {
+    return this.i++
+  }
+}
+if (a == 2 && a == 3) {
+  console.log(1)
+
+}
+
+
+
+
+var i = 2
+Object.defineProperty(window, 'a', {
+  get: function () {
+    return i++
+  }
+})
+a是对象的情况下添加循环
+如何成立以下代码
+if (a == 2 && a == 3) {
+  console.log(1)
+}
+
+
+如何获取obj本身
+
+function closeObject(obj) {
+  return function(key) {
+    return obj[key]
+  }
+}
+在对象的原型上设置
+Object.defineProperty(Object.prototype, 'self', {get: function(){return this}})
+
+x = closeObject(obj)
+
+x('self')
