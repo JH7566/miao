@@ -1,4 +1,3 @@
-// /miao/lodash/jh7566-lodash.js
 
 var jh7566 = {
   chunk: function (ary, size) {
