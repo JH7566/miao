@@ -27,5 +27,5 @@ var jh7566 = {
       }
     }
     return ary
-  }
+  },
 }
