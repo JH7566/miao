@@ -33,7 +33,7 @@ var jh7566 = {
    * 创建一个新数组，将array与任何数组 或 值连接在一起。
    * @param {*} array  被连接的数组。
    * @param {*} arr 连接的值
-   * @returns
+   * @returns 返回连接后的新数组。
    */
   concat: function (array, ...arr) {
     var result = array
@@ -54,7 +54,7 @@ var jh7566 = {
    * @param {*} value : 填充给 array 的值。
    * @param {*} start(number): 开始位置（默认0）
    * @param {*} end(number): 结束位置（默认array.length）。
-   * @returns
+   * @returns 返回 array。
    */
   fill: function (array, value, start = 0, end = array.length) {
     for (var i = start; i < end; i++) {
@@ -82,7 +82,7 @@ var jh7566 = {
    * 创建一个切片数组，去除array前面的n个元素。（n默认值为1。）
    * @param {*} array 要查询的数组。
    * @param {*} n 要去除的元素个数。
-   * @returns
+   * @returns 返回array剩余切片。
    */
   drop: function (array, n = 1) {
     return array.slice(n)
@@ -91,7 +91,7 @@ var jh7566 = {
   /**
    * 减少一级array嵌套深度。
    * @param {*} array   需要减少嵌套层级的数组。
-   * @returns
+   * @returns 返回减少嵌套层级后的新数组。
    */
   flatten: function (array) {
     return array.flat()
@@ -100,7 +100,7 @@ var jh7566 = {
   /**
    * 将array递归为一维数组。
    * @param {*} array 需要处理的数组。
-   * @returns
+   * @returns 返回一个的新一维数组。
    */
   flattenDeep: function (array) {
     for (var i = 0; i < array.length; i++) {
@@ -109,6 +109,56 @@ var jh7566 = {
       }
     }
     return array
+  },
+
+  /**
+   * 与_.toPairs正好相反；这个方法返回一个由键值对pairs构成的对象。
+   * @param {*} pairs 键值对pairs。
+   * @returns 返回一个新对象。
+   */
+  fromPairs: function (pairs) {
+    var map = {}
+    for (var obj of pairs) {
+      map[obj[0]] = obj[1]
+    }
+    return map
+  },
+
+  /**
+   * 使用SameValueZero 等值比较，返回首次 value 在数组array中被找到的 索引值， 如果 fromIndex 为负值，将从数组array尾端索引进行匹配。
+   * @param {*} array 需要查找的数组。
+   * @param {*} val 需要查找的值
+   * @param {*} fromIndex  开始查询的位置。
+   * @returns  返回 值value在数组中的索引位置, 没有找到为返回-1。
+   */
+  indexOf: function (array, val, fromIndex = 0) {
+    if (fromIndex < 0) {
+      fromIndex = fromIndex + array.length
+    }
+    for (var i = fromIndex; i < array.length; i++) {
+      if (array[i] == val) {
+        return i
+      }
+    }
+    return -1
+  },
+
+  /**
+   * 获取数组 array 的第一个元素。
+   * @param {*} array 要查询的数组。
+   * @returns  返回数组 array的第一个元素。
+   */
+  head: function (array) {
+    var arr = array[0]
+    return arr
+  },
+
+  join: function (array, separator = ',') {
+    var sum = ''
+    for(var i = 0; i < array.length;i++){
+      sum += array[i] + '' + separator
+    }
+    return 
   }
 }
 
