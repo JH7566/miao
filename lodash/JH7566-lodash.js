@@ -52,8 +52,8 @@ var jh7566 = {
 
   fill: function (array, value, start, end) {
     var result = []
-    for(var i = 0;i < array.length;i++){
-      
+    for (var i = 0; i < array.length; i++) {
+      var
     }
   }
 }
