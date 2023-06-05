@@ -35,14 +35,13 @@ var jh7566 = {
    * @param {*} arr 连接的值
    * @returns
    */
-  concat: function (array, arr) {
-    var result = []
-    var length = array.length + arr.length
-    for (var i = 0; i < length; i++) {
-      if (array[i]) {
-        result.push([array[i]])
+  concat: function (array, ...arr) {
+    var result = array
+    for (var i = 0; i < arr.length; i++) {
+      if (array.isarray(arr[i])) {
+        for (var j = 0; j < arr[i].length; j++)
+          result.push([arr[i][j]])
       } else {
-        i = 0
         result.push([arr[i]])
       }
     }
@@ -50,11 +49,11 @@ var jh7566 = {
   },
 
 
-  fill: function (array, value, start, end) {
-    var result = []
-    for (var i = 0; i < array.length; i++) {
-
+  fill: function (array, value, start = 0, end = array.length) {
+    for (var i = start; i < end; i++) {
+      array[i] = value
     }
+    return array
   }
 }
 
