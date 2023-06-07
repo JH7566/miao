@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Regex 101</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 50px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      margin-bottom: 50px;
+    }
+
+    #regex-form {
+      margin-bottom: 50px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-control {
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #495057;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+
+    .form-control:focus {
+      color: #495057;
+      background-color: #fff;
+      border-color: #80bdff;
+      outline: 0;
+      box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background-color: #007bff;
+      border-color: #007bff;
+    }
+
+    #match-result {
+      text-align: center;
+      margin-top: 50px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <div class="container">
+    <h1>Regex 101</h1>
+    <form id="regex-form">
+      <div class="form-group">
+        <label for="regex-input">Regex:</label>
+        <input type="text" class="form-control" id="regex-input" placeholder="Enter regular expression">
+      </div>
+      <div class="form-group">
+        <label for="string-input">String:</label>
+        <input type="text" class="form-control" id="string-input" placeholder="Enter string to match">
+      </div>
+      <button type="submit" class="btn btn-primary">Match</button>
+    </form>
+    <div id="match-result"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+<script>
+  const form = document.getElementById('regex-form');
+  const regexInput = document.getElementById('regex-input');
+  const stringInput = document.getElementById('string-input');
+  const matchResult = document.getElementById('match-result');
+
+  form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const regex = new RegExp(regexInput.value);
+    const string = stringInput.value;
+    const match = string.match(regex);
+
+    if (match) {
+      matchResult.textContent = `Match found: "${match[0]}" at position ${match.index}`;
+      matchResult.style.color = 'green';
+    } else {
+      matchResult.textContent = 'No match found';
+      matchResult.style.color = 'red';
+    }
+  });
+</script>
+
+</html>

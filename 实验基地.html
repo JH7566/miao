@@ -1,5 +1,3 @@
-
-
 https://leetcode.com/problems/number-of-1-bits/
 
 https://leetcode.com/problems/counting-bits/
@@ -38,7 +36,7 @@ https://leetcode.com/problems/simplify-path/
 
 <script>
 
-function quickSort7(array, start = 0, end = array.length - 1) {
+  function quickSort7(array, start = 0, end = array.length - 1) {
     //end和start相等的时候返回上一层
     if (end - start < 1) {
       return array
@@ -76,15 +74,15 @@ function quickSort7(array, start = 0, end = array.length - 1) {
 
 <script>
 
-function insertSort(array){
-  var n = array[n]
-  for(var i = 0;i < array.length;i++){
-    if(n >  array[i]){
+  function insertSort(array) {
+    var n = array[n]
+    for (var i = 0; i < array.length; i++) {
+      if (n > array[i]) {
 
+      }
     }
-  }
 
-}
+  }
 
 </script>
 
@@ -94,7 +92,7 @@ function insertSort(array){
 
 <script>
 
-  function arrayTolist(array){
+  function arrayTolist(array) {
 
 
 
@@ -499,196 +497,122 @@ function insertSort(array){
 
 function recursion(list1,list2)
 {
-    if(!list1)return list2
-    if(!list2)return list1
-    if(list1.val<list2.val)
-    {
-        list1.next=recursion(list1.next,list2)
-        return list1
+if(!list1)return list2
+if(!list2)return list1
+if(list1.val<list2.val) { list1.next=recursion(list1.next,list2) return list1 } else {
+  list2.next=recursion(list1,list2.next) return list2 } } function iteration(list1,list2) { const head=new ListNode(-1)
+  let prev=head while(list1&&list2) { if(list1.val<list2.val) { prev.next=list1 list1=list1.next } else {
+  prev.next=list2 list2=list2.next } prev=prev.next } prev.next=list1?list1:list2 return head.next }
+  https://leetcode.cn/problems/delete-node-in-a-linked-list https://leetcode.cn/problems/reverse-linked-list
+  https://leetcode.cn/problems/merge-two-sorted-lists 归并排序链表版1 https://leetcode.cn/problems/sort-list 归并排序链表版2
+  https://leetcode.cn/problems/remove-duplicates-from-sorted-list
+  https://leetcode.cn/problems/remove-linked-list-elements/
+  https://leetcode.cn/problems/remove-nth-node-from-end-of-list https://leetcode.cn/problems/add-two-numbers
+  https://leetcode.cn/problems/linked-list-cycle https://leetcode.cn/problems/linked-list-cycle-ii
+  https://leetcode.cn/problems/array-of-objects-to-matrix/ https://leetcode.cn/problems/array-reduce-transformation/
+  https://leetcode.cn/problems/create-hello-world-function/ https://leetcode.cn/problems/allow-one-function-call/
+  https://leetcode.cn/problems/apply-transform-over-each-element-in-array/
+  https://leetcode.cn/problems/function-composition/ https://leetcode.cn/problems/json-deep-equal/
+  https://leetcode.cn/problems/array-reduce-transformation/ https://leetcode.cn/problems/counter/ 二叉树
+  https://leetcode.cn/problems/binary-tree-inorder-traversal/
+  https://leetcode.cn/problems/binary-tree-preorder-traversal/
+  https://leetcode.cn/problems/binary-tree-postorder-traversal/ https://leetcode.cn/problems/invert-binary-tree/
+  https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/
+  https://leetcode.cn/problems/merge-two-binary-trees/ / https://leetcode.cn/problems/same-tree/ /
+  https://leetcode.cn/problems/maximum-depth-of-binary-tree/ https://leetcode.cn/problems/minimum-depth-of-binary-tree/
+  / https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
+  https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/ /
+  https://leetcode.cn/problems/binary-tree-level-order-traversal/
+  https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
+  https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
+  https://leetcode.cn/problems/print-binary-tree https://leetcode.cn/problems/validate-binary-search-tree/
+  https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
+  https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/
+  https://leetcode.cn/problems/construct-string-from-binary-tree/
+  https://leetcode.cn/problems/search-in-a-binary-search-tree/
+  https://leetcode.cn/problems/insert-into-a-binary-search-tree/ </script>
+
+  <script>
+
+    const helper = (root, lower, upper) => {
+      if (root === null) {
+        return true;
+      }
+      if (root.val <= lower || root.val >= upper) {
+        return false;
+      }
+      return helper(root.left, lower, root.val) && helper(root.right, root.val, upper);
     }
-    else
-    {
-        list2.next=recursion(list1,list2.next)
-        return list2
-    }
-}
+    var isValidBST = function (root) {
+      return helper(root, -Infinity, Infinity);
+    };
 
 
 
-
-
-function iteration(list1,list2)
-{
-    const head=new ListNode(-1)
-    let prev=head
-    while(list1&&list2)
-    {
-        if(list1.val<list2.val)
-        {
-            prev.next=list1
-            list1=list1.next
-        }
-        else
-        {
-            prev.next=list2
-            list2=list2.next
-        }
-        prev=prev.next
-    }
-    prev.next=list1?list1:list2
-    return head.next
-}
-
-
-
-
-https://leetcode.cn/problems/delete-node-in-a-linked-list
-https://leetcode.cn/problems/reverse-linked-list
-https://leetcode.cn/problems/merge-two-sorted-lists 归并排序链表版1
-https://leetcode.cn/problems/sort-list 归并排序链表版2
-https://leetcode.cn/problems/remove-duplicates-from-sorted-list
-https://leetcode.cn/problems/remove-linked-list-elements/
-https://leetcode.cn/problems/remove-nth-node-from-end-of-list
-https://leetcode.cn/problems/add-two-numbers
-https://leetcode.cn/problems/linked-list-cycle
-https://leetcode.cn/problems/linked-list-cycle-ii
-
-
-https://leetcode.cn/problems/array-of-objects-to-matrix/
-https://leetcode.cn/problems/array-reduce-transformation/
-
-https://leetcode.cn/problems/create-hello-world-function/
-https://leetcode.cn/problems/allow-one-function-call/
-https://leetcode.cn/problems/apply-transform-over-each-element-in-array/
-https://leetcode.cn/problems/function-composition/
-https://leetcode.cn/problems/json-deep-equal/
-https://leetcode.cn/problems/array-reduce-transformation/
-https://leetcode.cn/problems/counter/
-
-
-二叉树
-https://leetcode.cn/problems/binary-tree-inorder-traversal/
-https://leetcode.cn/problems/binary-tree-preorder-traversal/
-https://leetcode.cn/problems/binary-tree-postorder-traversal/
-https://leetcode.cn/problems/invert-binary-tree/
-https://leetcode.cn/problems/serialize-and-deserialize-binary-tree/
-https://leetcode.cn/problems/merge-two-binary-trees/
-/
-https://leetcode.cn/problems/same-tree/
-/
-https://leetcode.cn/problems/maximum-depth-of-binary-tree/
-https://leetcode.cn/problems/minimum-depth-of-binary-tree/
-/
-https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
-https://leetcode.cn/problems/construct-binary-tree-from-inorder-and-postorder-traversal/
-/
-https://leetcode.cn/problems/binary-tree-level-order-traversal/
-https://leetcode.cn/problems/binary-tree-level-order-traversal-ii/
-https://leetcode.cn/problems/construct-binary-tree-from-preorder-and-postorder-traversal/
-
-
-
-
-
-
-
-
-https://leetcode.cn/problems/print-binary-tree
-
-
-https://leetcode.cn/problems/validate-binary-search-tree/
-https://leetcode.cn/problems/convert-sorted-array-to-binary-search-tree/
-https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/
-https://leetcode.cn/problems/construct-string-from-binary-tree/
-https://leetcode.cn/problems/search-in-a-binary-search-tree/
-https://leetcode.cn/problems/insert-into-a-binary-search-tree/
-
-
-
-
-</script>
-
-<script>
-
-const helper = (root, lower, upper) => {
-  if (root === null) {
-      return true;
-  }
-  if (root.val <= lower || root.val >= upper) {
-      return false;
-  }
-  return helper(root.left, lower, root.val) && helper(root.right, root.val, upper);
-}
-var isValidBST = function(root) {
-  return helper(root, -Infinity, Infinity);
-};
-
-
-
-const sortedArrayToBST = nums => {
-    if (!nums.length) return null;
-    // 去中间索引
-    const mid = nums.length >> 1;
-    // 构建二叉树，根节点为中间值，左子树为左侧值继续构建，右子树为右子树继续构建
-    const root = new TreeNode(
+    const sortedArrayToBST = nums => {
+      if (!nums.length) return null;
+      // 去中间索引
+      const mid = nums.length >> 1;
+      // 构建二叉树，根节点为中间值，左子树为左侧值继续构建，右子树为右子树继续构建
+      const root = new TreeNode(
         nums[mid],
         sortedArrayToBST(nums.slice(0, mid)),
         sortedArrayToBST(nums.slice(mid + 1))
-    );
-    return root;
-}
+      );
+      return root;
+    }
 
 
 
 
-const sortedListToBST = (head) => {
-  const arr = [];
-  while (head) { // 将链表节点的值逐个推入数组arr
-    arr.push(head.val);
-    head = head.next;
-  }
-  // 根据索引start到end的子数组构建子树
-  const buildBST = (start, end) => {
-    if (start > end) return null;        // 指针交错，形成不了子序列，返回null节点
-    const mid = (start + end) >>> 1;     // 求中间索引 中间元素是根节点的值
-    const root = new TreeNode(arr[mid]); // 创建根节点
-    root.left = buildBST(start, mid - 1); // 递归构建左子树
-    root.right = buildBST(mid + 1, end);  // 递归构建右子树
-    return root;                          // 返回当前子树
-  };
+    const sortedListToBST = (head) => {
+      const arr = [];
+      while (head) { // 将链表节点的值逐个推入数组arr
+        arr.push(head.val);
+        head = head.next;
+      }
+      // 根据索引start到end的子数组构建子树
+      const buildBST = (start, end) => {
+        if (start > end) return null;        // 指针交错，形成不了子序列，返回null节点
+        const mid = (start + end) >>> 1;     // 求中间索引 中间元素是根节点的值
+        const root = new TreeNode(arr[mid]); // 创建根节点
+        root.left = buildBST(start, mid - 1); // 递归构建左子树
+        root.right = buildBST(mid + 1, end);  // 递归构建右子树
+        return root;                          // 返回当前子树
+      };
 
-  return buildBST(0, arr.length - 1);  // 根据整个arr数组构建
-};
-
-
+      return buildBST(0, arr.length - 1);  // 根据整个arr数组构建
+    };
 
 
-var tree2str = function(root) {
-    if (!root) {
+
+
+    var tree2str = function (root) {
+      if (!root) {
         return "";
-    }
-    if (!root.left && !root.right) {
+      }
+      if (!root.left && !root.right) {
         return '' + root.val;
-    }
-    if (!root.right) {
+      }
+      if (!root.right) {
         return root.val + '(' + tree2str(root.left) + ')';
-    }
-    return root.val + '(' + tree2str(root.left) + ')(' + tree2str(root.right) + ')';
-};
+      }
+      return root.val + '(' + tree2str(root.left) + ')(' + tree2str(root.right) + ')';
+    };
 
 
 
 
 
-var searchBST = function(root, val) {
-    if (!root) {
+    var searchBST = function (root, val) {
+      if (!root) {
         return null;
-    }
-    if (val === root.val) {
+      }
+      if (val === root.val) {
         return root;
-    }
-    return searchBST(val < root.val ? root.left : root.right, val);
-};
+      }
+      return searchBST(val < root.val ? root.left : root.right, val);
+    };
 
 
 
@@ -696,60 +620,60 @@ var searchBST = function(root, val) {
 
 
 
-var insertIntoBST = function(root, val) {
-    if (root === null) {
+    var insertIntoBST = function (root, val) {
+      if (root === null) {
         return new TreeNode(val);
-    }
-    let pos = root;
-    while (pos !== null) {
+      }
+      let pos = root;
+      while (pos !== null) {
         if (val < pos.val) {
-            if (pos.left === null) {
-                pos.left = new TreeNode(val);
-                break;
-            } else {
-                pos = pos.left;
-            }
+          if (pos.left === null) {
+            pos.left = new TreeNode(val);
+            break;
+          } else {
+            pos = pos.left;
+          }
         } else {
-            if (pos.right === null) {
-                pos.right = new TreeNode(val);
-                break;
-            } else {
-                pos = pos.right;
-            }
+          if (pos.right === null) {
+            pos.right = new TreeNode(val);
+            break;
+          } else {
+            pos = pos.right;
+          }
         }
+      }
+      return root;
+    };
+
+
+
+  </script>
+
+
+  <script>
+
+    function forEach(array, action) {
+      for (var i = 0; i < array.length; i++) {
+        action(array[i])
+      }
     }
-    return root;
-};
+
+    var array = []
+    forEach([1, 2, 3, 4], function (i) {
+      array.push(i)
+    })
 
 
 
-</script>
-
-
-<script>
-
-function forEach(array,action){
-  for(var i = 0; i < array.length;i++){
-    action(array[i])
-  }
-}
-
-var array = []
-forEach([1,2,3,4],function (i) {
-  array.push(i)
-})
-
-
-
-</script>
+  </script>
 
 
 
 
-https://leetcode.cn/problems/transpose-matrix/
+  https://leetcode.cn/problems/transpose-matrix/
 
 
-<script>
+  <script>
 
 
 
@@ -757,639 +681,639 @@ https://leetcode.cn/problems/transpose-matrix/
 
 给你一个二维整数数组 matrix， 返回 matrix 的 转置矩阵 。
 矩阵的 转置 是指将矩阵的主对角线翻转，交换矩阵的行索引与列索引。
-function transpose(matrix) {
-  // 获取矩阵的行数和列数
-  const m = matrix.length;
-  const n = matrix[0].length;
-  // 创建一个二维数组，用于存储转置后的矩阵
-  const transposed = new Array(n).fill(0).map(() => new Array(m).fill(0));
-  // 遍历原矩阵，将每个元素对应的转置后位置上的元素互换
-  for (let i = 0; i < m; i++) {
-    for (let j = 0; j < n; j++) {
-      transposed[j][i] = matrix[i][j];
-    }
-  }
-  // 返回转置后的矩阵
-  return transposed;
-}
-
-
-
-
-
-
-</script>
-
-
-
-
-<script>
-
-
-  function Vector(x, y) {
-    this.x = x
-    this.y = y
-  }
-  Vector.prototype.plus = function(vector) {
-    // 'this' is also a vector
-    var x = this.x + vector.x
-    var y = this.y + vector.y
-    return new Vector(x, y)
-  }
-  Vector.prototype.minus = function(vector) {
-    // 'this' is also a vector
-    var x = this.x - vector.x
-    var y = this.y - vector.y
-    return new Vector(x, y)
-  }
-  Object.defineProperty(Vector.prototype, 'length', {
-    get: function() {
-      return Math.sqrt(this.x * this.x + this.y * this.y)
-    }
-  })
-
-  var a = new Vector(2, 3)
-  var b = new Vector(3, -1)
-
-
-
-  function Complex(real, imag) {
-    this.real = real
-    this.imag = imag
-  }
-  Complex.prototype.plus = function(c) {
-    var real = this.real + c.real
-    var imag = this.imag + c.imag
-    return new Complex(real, imag)
-  }
-  Complex.prototype.minus = function(c) {
-    var real = this.real - c.real
-    var imag = this.imag - c.imag
-    return new Complex(real, imag)
-  }
-  Complex.prototype.mul = function(c) {
-    var real = this.real * c.real - this.imag * c.imag
-    var imag = this.real * c.imag + this.imag * c.real
-    return new Complex(real, imag)
-  }
-  Complex.prototype.div = function(c) {
-    var helper = new Complex(c.real, -c.imag)
-    var up = this.mul(helper)
-    var down = c.mul(helper) // down的虚部应该是0
-    var real = up.real / down.real
-    var imag = up.imag / down.real
-    return new Complex(real, imag)
-  }
-
-
-
-
-  function LinkedList(...initVals) {
-    this.head = null
-    this.tail = null
-
-    for (var item of initVals) {
-      this.append(item)
-    }
-  }
-
-  // 往链表的末尾增加一个元素
-  LinkedList.prototype.append = function(val) {
-    var node = {
-      val, next: null
-    }
-    if (this.head == null) {
-      this.head = this.tail = node
-      return
-    } else {
-      this.tail.next = node
-      this.tail = node
-      return
-    }
-  }
-  // 往链表的头部增加一个元素
-  LinkedList.prototype.prepend = function(val) {
-    var node = {
-      val, next: null
-    }
-    if (this.head == null) {
-      this.head = this.tail = node
-      return
-    } else {
-      node.next = this.head
-      this.head = node
-      return
-    }
-  }
-  // 返回链表第idx个元素
-  LinkedList.prototype.at = function(idx) {
-    var p = this.head
-    var count = 0
-    while (count < idx) {
-      p = p.next
-      count++
-    }
-    return p.val
-  }
-
-  Object.defineProperty(LinkedList.prototype, 'length', {
-    get: function() {
-      var p = this.head
-      var l = 0
-      while(p) {
-        l++
-        p = p.next
+    function transpose(matrix) {
+      // 获取矩阵的行数和列数
+      const m = matrix.length;
+      const n = matrix[0].length;
+      // 创建一个二维数组，用于存储转置后的矩阵
+      const transposed = new Array(n).fill(0).map(() => new Array(m).fill(0));
+      // 遍历原矩阵，将每个元素对应的转置后位置上的元素互换
+      for (let i = 0; i < m; i++) {
+        for (let j = 0; j < n; j++) {
+          transposed[j][i] = matrix[i][j];
+        }
       }
-      return l
+      // 返回转置后的矩阵
+      return transposed;
     }
-  })
 
 
-  用以下结构实现
-  // var l = new LinkedList(1,2,3,4)
-
-  // l.length // 返回链表的长度
 
 
-  // 表示一个队列
-  // 只有两个操作：
-  // 从一端添加元素，从另一端删除元素
-  // 先进先出
-  // 其每一个操作的时间复杂度都为O（1）
-  function Queue() {
-     this.vals = []
-  }
-  // 添加一个元素到队列中
-  Queue.prototype.add = function(val) {
-    this.vals.push(val)
-  }
-  // 从队列中取出一个元素，先添加的是先被取出的
-  // 队列为空时返回undefined
-  Queue.prototype.pop = function() {
-    return this.vals.shift()
-  }
-  // 返回队列的长度
-  Queue.prototype.size = function() {
-    return this.vals.length
-  }
 
 
-  // 用链表实现一个栈
-  // 只有两个操作：
-  // 进栈，出栈
-  // 后进先出
-  // 其每一个操作的时间复杂度都为O（1）
-  function Stack() {
+  </script>
+
+
+
+
+  <script>
+
+
+    function Vector(x, y) {
+      this.x = x
+      this.y = y
+    }
+    Vector.prototype.plus = function (vector) {
+      // 'this' is also a vector
+      var x = this.x + vector.x
+      var y = this.y + vector.y
+      return new Vector(x, y)
+    }
+    Vector.prototype.minus = function (vector) {
+      // 'this' is also a vector
+      var x = this.x - vector.x
+      var y = this.y - vector.y
+      return new Vector(x, y)
+    }
+    Object.defineProperty(Vector.prototype, 'length', {
+      get: function () {
+        return Math.sqrt(this.x * this.x + this.y * this.y)
+      }
+    })
+
+    var a = new Vector(2, 3)
+    var b = new Vector(3, -1)
+
+
+
+    function Complex(real, imag) {
+      this.real = real
+      this.imag = imag
+    }
+    Complex.prototype.plus = function (c) {
+      var real = this.real + c.real
+      var imag = this.imag + c.imag
+      return new Complex(real, imag)
+    }
+    Complex.prototype.minus = function (c) {
+      var real = this.real - c.real
+      var imag = this.imag - c.imag
+      return new Complex(real, imag)
+    }
+    Complex.prototype.mul = function (c) {
+      var real = this.real * c.real - this.imag * c.imag
+      var imag = this.real * c.imag + this.imag * c.real
+      return new Complex(real, imag)
+    }
+    Complex.prototype.div = function (c) {
+      var helper = new Complex(c.real, -c.imag)
+      var up = this.mul(helper)
+      var down = c.mul(helper) // down的虚部应该是0
+      var real = up.real / down.real
+      var imag = up.imag / down.real
+      return new Complex(real, imag)
+    }
+
+
+
+
+    function LinkedList(...initVals) {
+      this.head = null
+      this.tail = null
+
+      for (var item of initVals) {
+        this.append(item)
+      }
+    }
+
+    // 往链表的末尾增加一个元素
+    LinkedList.prototype.append = function (val) {
+      var node = {
+        val, next: null
+      }
+      if (this.head == null) {
+        this.head = this.tail = node
+        return
+      } else {
+        this.tail.next = node
+        this.tail = node
+        return
+      }
+    }
+    // 往链表的头部增加一个元素
+    LinkedList.prototype.prepend = function (val) {
+      var node = {
+        val, next: null
+      }
+      if (this.head == null) {
+        this.head = this.tail = node
+        return
+      } else {
+        node.next = this.head
+        this.head = node
+        return
+      }
+    }
+    // 返回链表第idx个元素
+    LinkedList.prototype.at = function (idx) {
+      var p = this.head
+      var count = 0
+      while (count < idx) {
+        p = p.next
+        count++
+      }
+      return p.val
+    }
+
+    Object.defineProperty(LinkedList.prototype, 'length', {
+      get: function () {
+        var p = this.head
+        var l = 0
+        while (p) {
+          l++
+          p = p.next
+        }
+        return l
+      }
+    })
+
+
+    用以下结构实现
+    // var l = new LinkedList(1,2,3,4)
+
+    // l.length // 返回链表的长度
+
+
+    // 表示一个队列
+    // 只有两个操作：
+    // 从一端添加元素，从另一端删除元素
+    // 先进先出
+    // 其每一个操作的时间复杂度都为O（1）
+    function Queue() {
+      this.vals = []
+    }
+    // 添加一个元素到队列中
+    Queue.prototype.add = function (val) {
+      this.vals.push(val)
+    }
+    // 从队列中取出一个元素，先添加的是先被取出的
+    // 队列为空时返回undefined
+    Queue.prototype.pop = function () {
+      return this.vals.shift()
+    }
+    // 返回队列的长度
+    Queue.prototype.size = function () {
+      return this.vals.length
+    }
+
+
+    // 用链表实现一个栈
+    // 只有两个操作：
+    // 进栈，出栈
+    // 后进先出
+    // 其每一个操作的时间复杂度都为O（1）
+    function Stack() {
       this.head = null
       this.nodeCount = 0
-  }
-  // 添加一个元素到栈中
-  Stack.prototype.push = function(val) {
+    }
+    // 添加一个元素到栈中
+    Stack.prototype.push = function (val) {
     val node = {
-      val,next: null
+        val, next: null
+      }
+      this.nodeCount++
+      if (this.head == null) {
+        this.head = node
+      } else {
+        node.next = this.head
+        this.head = node
+      }
     }
-    this.nodeCount++
-    if(this.head == null){
-      this.head = node
-    } else{
-      node.next = this.head
-      this.head = node
+    // 从栈中取出一个元素，先添加的是后被取出的
+    // 栈为空时返回undefined
+    Stack.prototype.pop = function () {
+      if (this.head == null) {
+        return undefined
+      }
+      this.nodeCount--
+      var result = this.head.val
+      this.head = this.head.next
+      return result
     }
-  }
-  // 从栈中取出一个元素，先添加的是后被取出的
-  // 栈为空时返回undefined
-  Stack.prototype.pop = function() {
-    if(this.head == null){
-      return undefined
+    // 返回栈的长度
+    Stack.prototype.size = function () {
+      return this.nodeCount
     }
-    this.nodeCount--
-    var result = this.head.val
-    this.head =this.head.next
-    return result
-  }
-  // 返回栈的长度
-  Stack.prototype.size = function() {
-    return this.nodeCount
-  }
 
 
 
-  /**
-   * 实现一个集合，表示若干值的集合
-   * 支持两个操作：
-   * 向集合里添加元素
-   * 从集合中删除元素
-   * 判断一个元素是否在集合里
-   * 清空集合中的所有元素
-   * 集合中元素的数量  getter
-   */
+    /**
+     * 实现一个集合，表示若干值的集合
+     * 支持两个操作：
+     * 向集合里添加元素
+     * 从集合中删除元素
+     * 判断一个元素是否在集合里
+     * 清空集合中的所有元素
+     * 集合中元素的数量  getter
+     */
 
-  function Set() {
-    this._elements = []
-  }
-
-  Set.prototype.add = function(val) {
-    if(!this.has){
-      this._elements.push(val)
+    function Set() {
+      this._elements = []
     }
-  }
 
-  Set.prototype.remove = function(val) {
-    if(this.has(val)){
-      var idx = this._elements.indexOf(val)
-      this._elements.splice(idx,1)
+    Set.prototype.add = function (val) {
+      if (!this.has) {
+        this._elements.push(val)
+      }
     }
-  }
 
-  Set.prototype.has = function(val) {
-    return this._elements.includes(val)
-  } // -> boolean
-
-  Set.prototype.size = function() {
-    return this._elements.length
-
-  } // number
-
-
-
-
-</script>
-
-
-
-
-
-
-
-
-<script>
-
-复数类型Complex
-
-  // 定义名为 Complex 的构造函数，用于创建实部和虚部为参数所指定的复数对象
-function Complex(real, imag) {
-    // 将实部和虚部存储到该对象的属性中
-    this.real = real;
-    this.imag = imag;
-}
-
-// 向 Complex 的原型中添加加法方法，用于对该复数对象与参数所指定的复数对象进行加法运算
-Complex.prototype.plus = function(c) {
-    // 分别计算出两个复数对象的实部与虚部之和
-    var real = this.real + c.real;
-    var imag = this.imag + c.imag;
-    // 返回一个新的Complex对象作为加法运算后的结果
-    return new Complex(real, imag);
-}
-
-// 向 Complex 的原型中添加减法方法，用于对该复数对象与参数所指定的复数对象进行减法运算
-Complex.prototype.minus = function(c) {
-    // 分别计算出两个复数对象的实部与虚部之差
-    var real = this.real - c.real;
-    var imag = this.imag - c.imag;
-    // 返回一个新的Complex对象作为减法运算后的结果
-    return new Complex(real, imag);
-}
-
-// 向 Complex 的原型中添加乘法方法，用于对该复数对象与参数所指定的复数对象进行乘法运算
-Complex.prototype.mul = function(c) {
-    // 根据复数乘法规则，计算出两个复数对象相乘后的实部与虚部
-    var real = this.real * c.real - this.imag * c.imag;
-    var imag = this.real * c.imag + this.imag * c.real;
-    // 返回一个新的Complex对象作为乘法运算后的结果
-    return new Complex(real, imag);
-}
-
-// 向 Complex 的原型中添加除法方法，用于对该复数对象与参数所指定的复数对象进行除法运算
-Complex.prototype.div = function(c) {
-    // 创建一个辅助的Complex对象，用于存储除数的共轭复数
-    var helper = new Complex(c.real, -c.imag);
-    // 计算出被除数与除数的共轭复数相乘后的结果
-    var up = this.mul(helper);
-    // 计算出除数与除数的共轭复数相乘后的结果（虚部应该为0）
-    var down = c.mul(helper);
-    // 计算出除法运算后的实部和虚部，即实部为(up实部 ÷ down实部)，虚部为(up虚部 ÷ down实部)
-    var real = up.real / down.real;
-    var imag = up.imag / down.real;
-    // 返回一个新的Complex对象作为除法运算后的结果
-    return new Complex(real, imag);
-}
-</script>
-
-
-
-<script>
-
-链表类型LinkedList
-
-  // 定义一个链表类
-function LinkedList(...initVals) {
-  // 链表头
-  this.head = null;
-  // 链表尾
-  this.tail = null;
-
-  // 遍历构造函数的参数数组，将参数依次添加到链表中
-  for (var item of initVals) {
-    this.append(item);
-  }
-}
-
-// 链表类的实例方法：往链表的末尾增加一个元素
-LinkedList.prototype.append = function(val) {
-  // 创建一个节点对象，包含值val和指向下一节点的指针next
-  var node = {
-    val,
-    next: null
-  };
-  // 如果链表为空，则将头指针和尾指针指向当前节点
-  if (this.head == null) {
-    this.head = this.tail = node;
-    return;
-  } else {
-    // 否则，将当前节点挂到尾节点的尾部，并更新尾指针的指向为当前节点
-    this.tail.next = node;
-    this.tail = node;
-    return;
-  }
-};
-
-// 链表类的实例方法：往链表的头部增加一个元素
-LinkedList.prototype.prepend = function(val) {
-  // 创建一个节点对象，包含值val和指向下一节点的指针next
-  var node = {
-    val,
-    next: null
-  };
-  // 如果链表为空，则将头指针和尾指针指向当前节点
-  if (this.head == null) {
-    this.head = this.tail = node;
-    return;
-  } else {
-    // 否则，将当前节点挂到头节点的前面，并更新头指针的指向为当前节点
-    node.next = this.head;
-    this.head = node;
-    return;
-  }
-};
-
-// 链表类的实例方法：返回链表第idx个元素
-LinkedList.prototype.at = function(idx) {
-  var p = this.head;
-  var count = 0;
-  while (count < idx) {
-    // 遍历链表，直到找到第idx个元素为止
-    p = p.next;
-    count++;
-  }
-  return p.val;
-};
-
-// 链表类的长度属性
-Object.defineProperty(LinkedList.prototype, 'length', {
-  get: function() {
-    var p = this.head;
-    var l = 0;
-    // 遍历链表，计算链表长度
-    while (p) {
-      l++;
-      p = p.next;
+    Set.prototype.remove = function (val) {
+      if (this.has(val)) {
+        var idx = this._elements.indexOf(val)
+        this._elements.splice(idx, 1)
+      }
     }
-    return l;
-  }
-});
 
-</script>
+    Set.prototype.has = function (val) {
+      return this._elements.includes(val)
+    } // -> boolean
 
+    Set.prototype.size = function () {
+      return this._elements.length
 
-
-<script>
-
-  集合类型Set
+    } // number
 
 
-function Set() {
-this.set = new Set(); // 使用内置 Set 类型来存储集合元素
-}
 
-Set.prototype.add = function(val) {
-this.set.add(val); // 调用内置 Set 类型的 add 方法来添加元素
-}
 
-Set.prototype.remove = function(val) {
-this.set.delete(val); // 调用内置 Set 类型的 delete 方法来删除元素
-}
-
-Set.prototype.has = function(val) {
-return this.set.has(val); // 调用内置 Set 类型的 has 方法，判断元素是否在集合中
-}
-
-Set.prototype.size = function() {
-return this.set.size; // 调用内置 Set 类型的 size 属性，获取集合大小
-}
-
-</script>
+  </script>
 
 
 
 
 
-<script>
-
-集合类型Set
-
-  // 定义 Set 类
-function Set() {
-  // 初始化空对象和元素数量为 0
-  this.items = {};
-  this.count = 0;
-}
-
-// 向集合中添加元素
-Set.prototype.add = function(val) {
-  // 判断集合中是否已经存在该元素
-  if (!this.has(val)) {
-    // 如果不存在，将元素设为 key 并将值设为 true，同时元素数量加 1
-    this.items[val] = true;
-    this.count++;
-  }
-};
-
-// 从集合中删除元素
-Set.prototype.remove = function(val) {
-  // 判断集合中是否存在要删除的元素
-  if (this.has(val)) {
-    // 如果存在，使用 delete 操作符删除该元素，并将元素数量减 1
-    delete this.items[val];
-    this.count--;
-  }
-};
-
-// 判断一个元素是否在集合中
-Set.prototype.has = function(val) {
-  // 使用 hasOwnProperty 方法判断该元素是否为集合的属性
-  return this.items.hasOwnProperty(val);
-};
-
-// 清空集合中的所有元素
-Set.prototype.clear = function() {
-  // 将集合对象设为空对象，元素数量为 0
-  this.items = {};
-  this.count = 0;
-};
-
-// 返回集合中的元素数量
-Set.prototype.size = function() {
-  return this.count;
-};
-</script>
 
 
-<script>
 
-  // 定义向量 Vector 构造函数，接收两个参数：x 和 y
-function Vector(x, y) {
-    this.x = x;
-    this.y = y;
-}
+  <script>
 
-// 定义向量加法，接收一个向量作为参数
-Vector.prototype.plus = function(vector) {
-    // 'this' 代表当前的向量，即被调用 plus 方法的向量
-    // 求出两个向量的 x 和 y 坐标的和
-    var x = this.x + vector.x;
-    var y = this.y + vector.y;
-    // 返回一个新的向量，其 x 和 y 坐标分别为两个向量的坐标和
-    return new Vector(x, y);
-};
+    复数类型Complex
 
-// 定义向量减法，接收一个向量作为参数
-Vector.prototype.minus = function(vector) {
-    // 'this' 代表当前的向量，即被调用 minus 方法的向量
-    // 求出两个向量的 x 和 y 坐标的差
-    var x = this.x - vector.x;
-    var y = this.y - vector.y;
-    // 返回一个新的向量，其 x 和 y 坐标分别为两个向量的坐标差
-    return new Vector(x, y);
-};
+    // 定义名为 Complex 的构造函数，用于创建实部和虚部为参数所指定的复数对象
+    function Complex(real, imag) {
+      // 将实部和虚部存储到该对象的属性中
+      this.real = real;
+      this.imag = imag;
+    }
 
-// 定义向量长度的访问器属性 'length'，不需传入参数
-Object.defineProperty(Vector.prototype, 'length', {
-    // 声明访问器属性的 get 方法
-    get: function() {
+    // 向 Complex 的原型中添加加法方法，用于对该复数对象与参数所指定的复数对象进行加法运算
+    Complex.prototype.plus = function (c) {
+      // 分别计算出两个复数对象的实部与虚部之和
+      var real = this.real + c.real;
+      var imag = this.imag + c.imag;
+      // 返回一个新的Complex对象作为加法运算后的结果
+      return new Complex(real, imag);
+    }
+
+    // 向 Complex 的原型中添加减法方法，用于对该复数对象与参数所指定的复数对象进行减法运算
+    Complex.prototype.minus = function (c) {
+      // 分别计算出两个复数对象的实部与虚部之差
+      var real = this.real - c.real;
+      var imag = this.imag - c.imag;
+      // 返回一个新的Complex对象作为减法运算后的结果
+      return new Complex(real, imag);
+    }
+
+    // 向 Complex 的原型中添加乘法方法，用于对该复数对象与参数所指定的复数对象进行乘法运算
+    Complex.prototype.mul = function (c) {
+      // 根据复数乘法规则，计算出两个复数对象相乘后的实部与虚部
+      var real = this.real * c.real - this.imag * c.imag;
+      var imag = this.real * c.imag + this.imag * c.real;
+      // 返回一个新的Complex对象作为乘法运算后的结果
+      return new Complex(real, imag);
+    }
+
+    // 向 Complex 的原型中添加除法方法，用于对该复数对象与参数所指定的复数对象进行除法运算
+    Complex.prototype.div = function (c) {
+      // 创建一个辅助的Complex对象，用于存储除数的共轭复数
+      var helper = new Complex(c.real, -c.imag);
+      // 计算出被除数与除数的共轭复数相乘后的结果
+      var up = this.mul(helper);
+      // 计算出除数与除数的共轭复数相乘后的结果（虚部应该为0）
+      var down = c.mul(helper);
+      // 计算出除法运算后的实部和虚部，即实部为(up实部 ÷ down实部)，虚部为(up虚部 ÷ down实部)
+      var real = up.real / down.real;
+      var imag = up.imag / down.real;
+      // 返回一个新的Complex对象作为除法运算后的结果
+      return new Complex(real, imag);
+    }
+  </script>
+
+
+
+  <script>
+
+    链表类型LinkedList
+
+    // 定义一个链表类
+    function LinkedList(...initVals) {
+      // 链表头
+      this.head = null;
+      // 链表尾
+      this.tail = null;
+
+      // 遍历构造函数的参数数组，将参数依次添加到链表中
+      for (var item of initVals) {
+        this.append(item);
+      }
+    }
+
+    // 链表类的实例方法：往链表的末尾增加一个元素
+    LinkedList.prototype.append = function (val) {
+      // 创建一个节点对象，包含值val和指向下一节点的指针next
+      var node = {
+        val,
+        next: null
+      };
+      // 如果链表为空，则将头指针和尾指针指向当前节点
+      if (this.head == null) {
+        this.head = this.tail = node;
+        return;
+      } else {
+        // 否则，将当前节点挂到尾节点的尾部，并更新尾指针的指向为当前节点
+        this.tail.next = node;
+        this.tail = node;
+        return;
+      }
+    };
+
+    // 链表类的实例方法：往链表的头部增加一个元素
+    LinkedList.prototype.prepend = function (val) {
+      // 创建一个节点对象，包含值val和指向下一节点的指针next
+      var node = {
+        val,
+        next: null
+      };
+      // 如果链表为空，则将头指针和尾指针指向当前节点
+      if (this.head == null) {
+        this.head = this.tail = node;
+        return;
+      } else {
+        // 否则，将当前节点挂到头节点的前面，并更新头指针的指向为当前节点
+        node.next = this.head;
+        this.head = node;
+        return;
+      }
+    };
+
+    // 链表类的实例方法：返回链表第idx个元素
+    LinkedList.prototype.at = function (idx) {
+      var p = this.head;
+      var count = 0;
+      while (count < idx) {
+        // 遍历链表，直到找到第idx个元素为止
+        p = p.next;
+        count++;
+      }
+      return p.val;
+    };
+
+    // 链表类的长度属性
+    Object.defineProperty(LinkedList.prototype, 'length', {
+      get: function () {
+        var p = this.head;
+        var l = 0;
+        // 遍历链表，计算链表长度
+        while (p) {
+          l++;
+          p = p.next;
+        }
+        return l;
+      }
+    });
+
+  </script>
+
+
+
+  <script>
+
+    集合类型Set
+
+
+    function Set() {
+      this.set = new Set(); // 使用内置 Set 类型来存储集合元素
+    }
+
+    Set.prototype.add = function (val) {
+      this.set.add(val); // 调用内置 Set 类型的 add 方法来添加元素
+    }
+
+    Set.prototype.remove = function (val) {
+      this.set.delete(val); // 调用内置 Set 类型的 delete 方法来删除元素
+    }
+
+    Set.prototype.has = function (val) {
+      return this.set.has(val); // 调用内置 Set 类型的 has 方法，判断元素是否在集合中
+    }
+
+    Set.prototype.size = function () {
+      return this.set.size; // 调用内置 Set 类型的 size 属性，获取集合大小
+    }
+
+  </script>
+
+
+
+
+
+  <script>
+
+    集合类型Set
+
+    // 定义 Set 类
+    function Set() {
+      // 初始化空对象和元素数量为 0
+      this.items = {};
+      this.count = 0;
+    }
+
+    // 向集合中添加元素
+    Set.prototype.add = function (val) {
+      // 判断集合中是否已经存在该元素
+      if (!this.has(val)) {
+        // 如果不存在，将元素设为 key 并将值设为 true，同时元素数量加 1
+        this.items[val] = true;
+        this.count++;
+      }
+    };
+
+    // 从集合中删除元素
+    Set.prototype.remove = function (val) {
+      // 判断集合中是否存在要删除的元素
+      if (this.has(val)) {
+        // 如果存在，使用 delete 操作符删除该元素，并将元素数量减 1
+        delete this.items[val];
+        this.count--;
+      }
+    };
+
+    // 判断一个元素是否在集合中
+    Set.prototype.has = function (val) {
+      // 使用 hasOwnProperty 方法判断该元素是否为集合的属性
+      return this.items.hasOwnProperty(val);
+    };
+
+    // 清空集合中的所有元素
+    Set.prototype.clear = function () {
+      // 将集合对象设为空对象，元素数量为 0
+      this.items = {};
+      this.count = 0;
+    };
+
+    // 返回集合中的元素数量
+    Set.prototype.size = function () {
+      return this.count;
+    };
+  </script>
+
+
+  <script>
+
+    // 定义向量 Vector 构造函数，接收两个参数：x 和 y
+    function Vector(x, y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    // 定义向量加法，接收一个向量作为参数
+    Vector.prototype.plus = function (vector) {
+      // 'this' 代表当前的向量，即被调用 plus 方法的向量
+      // 求出两个向量的 x 和 y 坐标的和
+      var x = this.x + vector.x;
+      var y = this.y + vector.y;
+      // 返回一个新的向量，其 x 和 y 坐标分别为两个向量的坐标和
+      return new Vector(x, y);
+    };
+
+    // 定义向量减法，接收一个向量作为参数
+    Vector.prototype.minus = function (vector) {
+      // 'this' 代表当前的向量，即被调用 minus 方法的向量
+      // 求出两个向量的 x 和 y 坐标的差
+      var x = this.x - vector.x;
+      var y = this.y - vector.y;
+      // 返回一个新的向量，其 x 和 y 坐标分别为两个向量的坐标差
+      return new Vector(x, y);
+    };
+
+    // 定义向量长度的访问器属性 'length'，不需传入参数
+    Object.defineProperty(Vector.prototype, 'length', {
+      // 声明访问器属性的 get 方法
+      get: function () {
         // 用勾股定理求出向量长度
         return Math.sqrt(this.x * this.x + this.y * this.y);
+      }
+    });
+
+    // 新建两个向量
+    var a = new Vector(2, 3);
+    var b = new Vector(3, -1);
+
+  </script>
+
+
+
+
+  <script>
+
+    // 定义链表节点的构造函数
+    function ListNode(val) {
+      this.val = val;
+      this.next = null;
     }
-});
 
-// 新建两个向量
-var a = new Vector(2, 3);
-var b = new Vector(3, -1);
+    // 定义队列的构造函数
+    function Queue() {
+      this.head = null; // 链表头部节点
+      this.tail = null; // 链表尾部节点
+      this.length = 0; // 队列长度
+    }
 
-</script>
+    // 向队列尾部添加节点 val
+    Queue.prototype.add = function (val) {
+      // 创建新节点
+      const node = new ListNode(val);
+      // 如果链表为空，则将头部和尾部节点都设置为该节点
+      if (!this.head) {
+        this.head = node;
+        this.tail = node;
+      } else {
+        // 否则将节点加入到链表尾部，更新尾部节点
+        this.tail.next = node;
+        this.tail = node;
+      }
+      // 队列长度加1
+      this.length++;
+    }
 
+    // 从队列头部取出一个节点，并返回该节点的值
+    Queue.prototype.pop = function () {
+      // 如果链表为空，则返回 undefined
+      if (!this.head) {
+        return undefined;
+      }
+      // 取出链表头部节点，并将其从链表中删除
+      const node = this.head;
+      this.head = node.next;
+      // 如果链表为空，则更新尾部节点为 null
+      if (!this.head) {
+        this.tail = null;
+      }
+      // 队列长度减1
+      this.length--;
+      // 返回节点的值
+      return node.val;
+    }
 
-
-
-<script>
-
-  // 定义链表节点的构造函数
-function ListNode(val) {
-  this.val = val;
-  this.next = null;
-}
-
-// 定义队列的构造函数
-function Queue() {
-  this.head = null; // 链表头部节点
-  this.tail = null; // 链表尾部节点
-  this.length = 0; // 队列长度
-}
-
-// 向队列尾部添加节点 val
-Queue.prototype.add = function(val) {
-  // 创建新节点
-  const node = new ListNode(val);
-  // 如果链表为空，则将头部和尾部节点都设置为该节点
-  if (!this.head) {
-    this.head = node;
-    this.tail = node;
-  } else {
-    // 否则将节点加入到链表尾部，更新尾部节点
-    this.tail.next = node;
-    this.tail = node;
-  }
-  // 队列长度加1
-  this.length++;
-}
-
-// 从队列头部取出一个节点，并返回该节点的值
-Queue.prototype.pop = function() {
-  // 如果链表为空，则返回 undefined
-  if (!this.head) {
-    return undefined;
-  }
-  // 取出链表头部节点，并将其从链表中删除
-  const node = this.head;
-  this.head = node.next;
-  // 如果链表为空，则更新尾部节点为 null
-  if (!this.head) {
-    this.tail = null;
-  }
-  // 队列长度减1
-  this.length--;
-  // 返回节点的值
-  return node.val;
-}
-
-// 返回队列的长度
-Queue.prototype.size = function() {
-  return this.length;
-}
-</script>
+    // 返回队列的长度
+    Queue.prototype.size = function () {
+      return this.length;
+    }
+  </script>
 
 
 
 
-<script>
+  <script>
 
-function Stack() {
-  this.head = null; // 链表头部节点
-  this.length = 0; // 栈长度
-}
+    function Stack() {
+      this.head = null; // 链表头部节点
+      this.length = 0; // 栈长度
+    }
 
-// 向栈顶添加节点 val
-Stack.prototype.push = function(val) {
-  // 创建新节点
-  const node = new ListNode(val);
-  // 添加到链表头部
-  node.next = this.head;
-  this.head = node;
-  // 栈长度加1
-  this.length++;
-}
+    // 向栈顶添加节点 val
+    Stack.prototype.push = function (val) {
+      // 创建新节点
+      const node = new ListNode(val);
+      // 添加到链表头部
+      node.next = this.head;
+      this.head = node;
+      // 栈长度加1
+      this.length++;
+    }
 
-// 从栈顶取出一个节点，并返回该节点的值
-Stack.prototype.pop = function() {
-  // 如果链表为空，则返回 undefined
-  if (!this.head) {
-    return undefined;
-  }
-  // 取出链表头部节点，并将其从链表中删除
-  const node = this.head;
-  this.head = node.next;
-  node.next = null;
-  // 栈长度减1
-  this.length--;
-  // 返回节点的值
-  return node.val;
-}
+    // 从栈顶取出一个节点，并返回该节点的值
+    Stack.prototype.pop = function () {
+      // 如果链表为空，则返回 undefined
+      if (!this.head) {
+        return undefined;
+      }
+      // 取出链表头部节点，并将其从链表中删除
+      const node = this.head;
+      this.head = node.next;
+      node.next = null;
+      // 栈长度减1
+      this.length--;
+      // 返回节点的值
+      return node.val;
+    }
 
-// 返回栈的长度
-Stack.prototype.size = function() {
-  return this.length;
-}
-</script>
+    // 返回栈的长度
+    Stack.prototype.size = function () {
+      return this.length;
+    }
+  </script>
 
 
 
@@ -1408,7 +1332,7 @@ Stack.prototype.size = function() {
 
 
 
-<script>
+  <script>
     /**
    * 实现一个类似java语言中的ArrayList类型
    * 实现过程中不能使用js中数组长度可变这个特性
@@ -1419,187 +1343,251 @@ Stack.prototype.size = function() {
    *
    *
    */
-   function ArrayList() {
+    function ArrayList() {
 
-}
-
-
-ArrayList.prototype.push = function() {}
-
-ArrayList.prototype.pop = function() {}
-
-ArrayList.prototype.shift = function() {}
-
-ArrayList.prototype.unshift = function() {}
-
-ArrayList.prototype.at = function() {}
-
-ArrayList.prototype.find = function() {}
-
-ArrayList.prototype.length   // getter
-
-
-
-
-/**
- * 实现一个类型以表达映射
- *
- * 实现过程不能使用“将对象做为映射”这个功能
- *
- *
- *
- */
-
-function Map() {
-
-}
-
-Map.prototype.set = function(key, val) {} // 设置key的映射目标，如果不存在，增加一组映射，如果存在就修改 obj[key] = val
-
-Map.prototype.get = function(key) {} // 获取key的映射目标 obj[key]
-
-Map.prototype.has = function(key) {} // 判断是否存在key这个映射   key in obj
-
-Map.prototype.delete = function(key) {} // 删除key及key的映射  delete obj[key]
-
-Map.prototype.size = function() {}
-</script>
-
-
-
-
-
-
-
-
-
-
-
-
-复数类型Complex
-
-<script>
-function Complex(real, imag) {
-  this.real = real
-  this.imag = imag
-}
-
-Complex.prototype.plus = function(c) {
-
-}
-
-Complex.prototype.minus = function(c) {
-
-}
-
-Complex.prototype.mul = function(c) {
-
-}
-
-Complex.prototype.div = function(c) {
-
-}
-
-
-</script>
-
-
-
-
-<script>
-
-  /**
- * 实现一个类型以表达映射
- *
- * 实现过程不能使用“将对象做为映射”这个功能
- */
-
-function Map() {
-  // keys 数组用于存储每个键
-  this.keys = [];
-  // values 数组用于存储每个键对应的值
-  this.values = [];
-}
-
-Map.prototype.set = function(key, val) {
-  // 设置 key 的映射目标，如果不存在则添加一组映射，如果存在则修改
-  for (let i = 0; i < this.keys.length; i++) {
-    if (this.keys[i] === key) {
-      // 如果找到对应的键，则修改对应的值
-      this.values[i] = val;
-      return; // 退出循环
     }
-  }
-  // 如果没有找到对应的键，则添加新的映射
-  this.keys.push(key);
-  this.values.push(val);
-}
 
-Map.prototype.get = function(key) {
-  // 获取 key 的映射目标，如果不存在则返回 undefined
-  for (let i = 0; i < this.keys.length; i++) {
-    if (this.keys[i] === key) {
-      return this.values[i];
+
+    ArrayList.prototype.push = function () { }
+
+    ArrayList.prototype.pop = function () { }
+
+    ArrayList.prototype.shift = function () { }
+
+    ArrayList.prototype.unshift = function () { }
+
+    ArrayList.prototype.at = function () { }
+
+    ArrayList.prototype.find = function () { }
+
+    ArrayList.prototype.length   // getter
+
+
+
+
+    /**
+     * 实现一个类型以表达映射
+     *
+     * 实现过程不能使用“将对象做为映射”这个功能
+     *
+     *
+     *
+     */
+
+    function Map() {
+
     }
-  }
-  return undefined;
-}
 
-Map.prototype.has = function(key) {
-  // 判断是否存在 key 这个映射，如果存在则返回 true，否则返回 false
-  for (let i = 0; i < this.keys.length; i++) {
-    if (this.keys[i] === key) {
-      return true;
+    Map.prototype.set = function (key, val) { } // 设置key的映射目标，如果不存在，增加一组映射，如果存在就修改 obj[key] = val
+
+    Map.prototype.get = function (key) { } // 获取key的映射目标 obj[key]
+
+    Map.prototype.has = function (key) { } // 判断是否存在key这个映射   key in obj
+
+    Map.prototype.delete = function (key) { } // 删除key及key的映射  delete obj[key]
+
+    Map.prototype.size = function () { }
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  复数类型Complex
+
+  <script>
+    function Complex(real, imag) {
+      this.real = real
+      this.imag = imag
     }
-  }
-  return false;
-}
 
-Map.prototype.delete = function(key) {
-  // 删除 key 及其映射，如果不存在对应的键，则不进行任何操作
-  for (let i = 0; i < this.keys.length; i++) {
-    if (this.keys[i] === key) {
-      // 如果找到对应的键，则利用数组的 splice 方法删除对应的键和值
-      this.keys.splice(i, 1);
-      this.values.splice(i, 1);
-      return; // 退出循环
+    Complex.prototype.plus = function (c) {
+
     }
-  }
-}
 
-Map.prototype.size = function() {
-  // 获取当前映射中存在的映射条数
-  return this.keys.length;
-}
-</script>
+    Complex.prototype.minus = function (c) {
 
+    }
 
+    Complex.prototype.mul = function (c) {
 
+    }
 
+    Complex.prototype.div = function (c) {
 
-
+    }
 
 
-
+  </script>
 
 
 
 
+  <script>
+
+    /**
+   * 实现一个类型以表达映射
+   *
+   * 实现过程不能使用“将对象做为映射”这个功能
+   */
+
+    function Map() {
+      // keys 数组用于存储每个键
+      this.keys = [];
+      // values 数组用于存储每个键对应的值
+      this.values = [];
+    }
+
+    Map.prototype.set = function (key, val) {
+      // 设置 key 的映射目标，如果不存在则添加一组映射，如果存在则修改
+      for (let i = 0; i < this.keys.length; i++) {
+        if (this.keys[i] === key) {
+          // 如果找到对应的键，则修改对应的值
+          this.values[i] = val;
+          return; // 退出循环
+        }
+      }
+      // 如果没有找到对应的键，则添加新的映射
+      this.keys.push(key);
+      this.values.push(val);
+    }
+
+    Map.prototype.get = function (key) {
+      // 获取 key 的映射目标，如果不存在则返回 undefined
+      for (let i = 0; i < this.keys.length; i++) {
+        if (this.keys[i] === key) {
+          return this.values[i];
+        }
+      }
+      return undefined;
+    }
+
+    Map.prototype.has = function (key) {
+      // 判断是否存在 key 这个映射，如果存在则返回 true，否则返回 false
+      for (let i = 0; i < this.keys.length; i++) {
+        if (this.keys[i] === key) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    Map.prototype.delete = function (key) {
+      // 删除 key 及其映射，如果不存在对应的键，则不进行任何操作
+      for (let i = 0; i < this.keys.length; i++) {
+        if (this.keys[i] === key) {
+          // 如果找到对应的键，则利用数组的 splice 方法删除对应的键和值
+          this.keys.splice(i, 1);
+          this.values.splice(i, 1);
+          return; // 退出循环
+        }
+      }
+    }
+
+    Map.prototype.size = function () {
+      // 获取当前映射中存在的映射条数
+      return this.keys.length;
+    }
+  </script>
 
 
-https://leetcode.cn/problems/transpose-matrix/
-
-
-
-https://leetcode.cn/problems/min-stack/
-https://leetcode.cn/problems/design-twitter/
-https://leetcode.cn/problems/lru-cache/
-
-https://leetcode.cn/tag/design/
 
 
 
 
-<script>
-  
-</script>
+
+
+
+
+
+
+
+
+
+  https://leetcode.cn/problems/transpose-matrix/
+
+
+
+  https://leetcode.cn/problems/min-stack/
+  https://leetcode.cn/problems/design-twitter/
+  https://leetcode.cn/problems/lru-cache/
+
+  https://leetcode.cn/tag/design/
+
+
+
+
+  <script>
+
+
+
+
+      | 充电大喵 | 17: 19: 07
+    https://www.codewars.com/
+
+| 充电大喵 | 17: 45: 19
+    https://www.codewars.com/kata/regex-validate-pin-code
+
+    https://www.codewars.com/kata/credit-card-mask
+
+    https://www.codewars.com/kata/exclamation-marks-series-number-5-remove-all-exclamation-marks-from-the-end-of-words
+
+    https://www.codewars.com/kata/cancer-cells
+
+    https://www.codewars.com/kata/decipher-this
+
+    https://www.codewars.com/kata/counting-duplicates
+
+    https://www.codewars.com/kata/trim-method
+
+    https://www.codewars.com/kata/kebabize
+
+    https://www.codewars.com/kata/convert-string-to-camel-case
+
+    https://www.codewars.com/kata/a-string-with-bugs
+
+    https://www.codewars.com/kata/valid-phone-number
+
+    https://www.codewars.com/kata/extract-file-name
+
+    https://www.codewars.com/kata/string-incrementer
+
+    https://www.codewars.com/kata/extract-the-domain-name-from-a-url-1
+
+    https://www.codewars.com/kata/mod4-regex
+
+    https://www.codewars.com/kata/regex-tic-tac-toe-win-checker
+
+    https://www.codewars.com/kata/validdate-regex
+
+    https://www.codewars.com/kata/calculating-with-functions
+
+    https://www.codewars.com/kata/basic-markdown-to-html
+
+
+
+  </script>
+
+
+
+
+
+
+  <script>
+    标签模版字符串
+    function raw(strs, ...vals) { // String.raw
+      var result = strs.raw[0]
+      for (i = 0; i < vals.length; i++) {
+        result += vals[i] + strs[i + 1]
+      }
+      return resultdoum
+    }
+
+  </script>
