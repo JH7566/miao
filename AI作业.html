@@ -108,3 +108,207 @@
 </script>
 
 </html>
+
+
+
+
+<head>
+  <style>
+  input, textarea, label, pre {
+    font-family: consolas;
+  }
+  pre > b:nth-child(odd) {
+    background-color: #d5ebff;
+  }
+  pre > b:nth-child(even) {
+    background-color: #9fcfff;
+  }
+
+  .result-wrapper {
+    width: 400px;
+    height: 300px;
+    position: relative;
+    > textarea, > pre {
+      box-sizing: border-box;
+      position: absolute;
+      font-size: 24px;
+      padding: 5px;
+      margin: 0;
+      border: 2px solid;
+      border-radius: 2px;
+      width: 100%;
+      height: 100%;
+      background-color: transparent;
+      word-break: break-all;
+      white-space: break-spaces;
+    }
+  }
+</style>
+
+</head>
+
+<!-- <body>
+  输入正则：<br><input type="text" id="reInput" value="foo" oninput="run()"> <button onclick="run()">Run</button>
+  <br>
+  <label><input onclick="run()" id="flagI" type="checkbox">i</label>
+  <label><input onclick="run()" id="flagG" type="checkbox" checked="">g</label>
+  <label><input onclick="run()" id="flagM" type="checkbox">m</label>
+  <label><input onclick="run()" id="flagS" type="checkbox">s</label>
+  <label><input onclick="run()" id="flagU" type="checkbox">u</label>
+  <label><input onclick="run()" id="flagY" type="checkbox">y</label>
+  <br>
+  输入字符串：<br>
+  <div class="result-wrapper">
+    <pre id="output"><b>foo</b>barbazbaa<b>foo</b>baa<b>foo</b>baa</pre>
+    <textarea id="stringInput" cols="30" rows="10" oninput="run()">foobarbazbaafoobaafoobaa</textarea>
+  </div>
+
+  <script>
+
+    function getFlags() { //获取用户在页面上选择的正则表达式标记（flag）
+      var flags = ''
+      if (flagI.checked) {
+        flags += 'i'
+      }
+      if (flagG.checked) {
+        flags += 'g'
+      }
+      if (flagM.checked) {
+        flags += 'm'
+      }
+      if (flagS.checked) {
+        flags += 's'
+      }
+      if (flagU.checked) {
+        flags += 'u'
+      }
+      if (flagY.checked) {
+        flags += 'y'
+      }
+      return flags
+    }
+    function run() {
+      var reSource = reInput.value //获取输入框中用户输入的正则表达式。
+      var flags = getFlags()
+      var re = new RegExp(reSource, flags) //构造一个正则表达式对象，用于进行匹配操作。
+      var string = stringInput.value //获取输入框中用户输入的字符串。
+      var match
+      var html = '' //用于存储匹配结果。
+      var lastLastIndex = 0 //lastLastIndex存储上一次的匹配索引，在进行while循环时用来截取字符串。
+
+      while (match = re.exec(string)) { //使用正则表达式进行匹配操作，如果匹配成功，则进入循环。
+        html += string.slice(lastLastIndex, match.index)
+        html += `<b>${match[0]}</b>` //将匹配结果高亮显示，并添加到字符串html中。
+        lastLastIndex = re.lastIndex //更新lastLastIndex，将其设为下一次匹配开始的索引
+        if (!re.global) { // 在正则表达式没有g标记的情况下，需要手动更新lastLastIndex以结束循环。
+          lastLastIndex = match.index + match[0].length
+          break
+        }
+      }
+
+      html += string.slice(lastLastIndex) //将匹配完的剩余部分添加到字符串html中。
+      output.innerHTML = html //将高亮显示的字符串添加到页面的输出框中
+    }
+
+    run()
+  </script>
+  </body>
+ -->
+ <body>输入正则：<br><input type="text" id="reInput" value="foo" oninput="run()"> <button onclick="run()">Run</button>
+  <br>
+  <label><input onclick="run()" id="flagI" type="checkbox">i</label>
+  <label><input onclick="run()" id="flagG" type="checkbox" checked="">g</label>
+  <label><input onclick="run()" id="flagM" type="checkbox">m</label>
+  <label><input onclick="run()" id="flagS" type="checkbox">s</label>
+  <label><input onclick="run()" id="flagU" type="checkbox">u</label>
+  <label><input onclick="run()" id="flagY" type="checkbox">y</label>
+  <br>
+  输入字符串：<br>
+  <div class="result-wrapper">
+    <pre id="output"><b>foo</b>barbazbaa<b>foo</b>baa<b>foo</b>baa</pre>
+    <textarea id="stringInput" cols="30" rows="10" oninput="run()">foobarbazbaafoobaafoobaa</textarea>
+  </div>
+
+  <script>
+
+    function getFlags() {
+      var flags = ''
+      if (flagI.checked) {
+        flags += 'i'
+      }
+      if (flagG.checked) {
+        flags += 'g'
+      }
+      if (flagM.checked) {
+        flags += 'm'
+      }
+      if (flagS.checked) {
+        flags += 's'
+      }
+      if (flagU.checked) {
+        flags += 'u'
+      }
+      if (flagY.checked) {
+        flags += 'y'
+      }
+      return flags
+    }
+    function run() {
+      var reSource = reInput.value
+      var flags = getFlags()
+      var re = new RegExp(reSource, flags)
+      var string = stringInput.value
+      var match
+      var html = ''
+      var lastLastIndex = 0
+
+      while (match = re.exec(string)) {
+        html += string.slice(lastLastIndex, match.index)
+        html += `<b>${match[0]}</b>`
+        lastLastIndex = re.lastIndex
+        if (!re.global) { // 因为当正则没有g标记的时候，它不会自动更新其lastIndex属性
+          lastLastIndex = match.index + match[0].length
+          break
+        }
+      }
+
+      html += string.slice(lastLastIndex)
+      output.innerHTML = html
+    }
+
+    run()
+  </script>
+  </body>
+  <head><style>
+    input, textarea, label, pre {
+      font-family: consolas;
+    }
+    pre > b:nth-child(odd) {
+      background-color: #d5ebff;
+    }
+    pre > b:nth-child(even) {
+      background-color: #9fcfff;
+    }
+
+    .result-wrapper {
+      width: 400px;
+      height: 300px;
+      position: relative;
+      > textarea, > pre {
+        box-sizing: border-box;
+        position: absolute;
+        font-size: 24px;
+        padding: 5px;
+        margin: 0;
+        border: 2px solid;
+        border-radius: 2px;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        word-break: break-all;
+        white-space: break-spaces;
+      }
+    }
+  </style>
+
+  </head>

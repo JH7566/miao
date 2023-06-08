@@ -12,37 +12,74 @@
     body {
       width: 100%;
       height: 100%;
-    }
-
-    div {
+      div {
       width: 50%;
       height: 100%;
       margin: auto;
-    }
-
-    h1{
+      h1{
       font-size: 32px;
       text-align: center;
-    }
-    p{
+     }
+      p{
       font-size: 20px;
       text-align: center;
-
-    }
-    .Regex {
-      width: 100%;
-      height: 30px;
+     }
+     input{
+      width: 50%;
+      height: 20px;
       margin: auto;
-    }
-    textarea{
-      width: 100%;
-    }
-    button{
-      font-size: 18px;
-      display: grid;
-      width: 80px;
-      line-height: 25px;
-    }
+      display: flex;
+     }
+     button{
+      width: 50px;
+      margin: auto;
+      display: flex;
+     }
+     label{
+      text-align: center;
+     }
+     .a{
+      position: absolute;
+      margin-left: 15%;
+      width: 20px;
+     }
+     .a1{
+      position: absolute;
+      margin-left: 12%;
+      width: 20px;
+     }
+   }
+ }
+
+
+
+ .result-wrapper {
+   width: 400px;
+   height: 300px;
+   position: relative;
+   > textarea, > pre {
+     box-sizing: border-box;
+     position: absolute;
+     font-size: 24px;
+     padding: 5px;
+     margin: 0;
+     border: 2px solid;
+     border-radius: 2px;
+     width: 100%;
+     height: 100%;
+     background-color: transparent;
+     word-break: break-all;
+     white-space: break-spaces;
+     font-family: consolas;
+   }
+    pre > b:nth-child(odd) {
+      background-color: #d5ebff;
+   }
+    pre > b:nth-child(even) {
+      background-color: #9fcfff;
+  }
+}
+
   </style>
 
 </head>
@@ -52,28 +89,66 @@
     <br>
     <br>
     <br>
+
     <h1>Regex 101</h1>
     <p class="one">输入正则表达式 :</p>
-    <input class="Regex" type="text" id="myInput">
+    <input class="Regex" type="text" id="myInput" value="foo" oninput="run()">
+    <label class="a"><input onclick="run()" type="checkbox" id="inputi">i</label>
+    <label class="a1"><input onclick="run()" type="checkbox" id="inputg" checked>g</label>
     <br>
-    <input type="checkbox" id="inputi">
-    <label for="inputi">i</label>
-    <input type="checkbox" id="inputg">
-    <label for="inputg">g</label>
+    <button onclick="run()">Match</button>
+    <br>
+
+
     <br>
     <br>
-    <p class="two">需要匹配的字符串 :</p>
-    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <p>需要匹配的字符串 :</p>
+
+    <div class="result-wrapper">
+      <pre id="output"><b>foo</b>barbazbaa<b>foo</b>baa</pre>
+      <textarea id="stringInput" cols="30" rows="10" oninput="run()">foobarbazbaafoobaafoobaa</textarea>
+    </div>
+
     <br>
-    <button onclick="myFunction()">Match</button>
+
   </div>
 </body>
 <script>
-  function myFunction() {
-    var input = document.getElementById("myInput");
-    var text = input.value;
-    alert(text);
+  function getFlags() {
+    var flags = ''
+    if (flagI.checked) {
+      flags += 'i'
+    }
+    if (flagG.checked) {
+      flags += 'g'
+    }
+    return flags
   }
+  function run() {
+    var reSource = myInput.value
+    var flags = getFlags()
+    var re = new RegExp(reSource, flags)
+    var string = stringInput.value
+    var match
+    var html = ''
+    var lastLastIndex = 0
+
+    while (match = re.exec(string)) {
+      html += string.slice(lastLastIndex, match.index)
+      html += `<b>${match[0]}</b>`
+      lastLastIndex = re.lastIndex
+      if (!re.global) {
+        lastLastIndex = match.index + match[0].length
+        break
+      }
+    }
+
+    html += string.slice(lastLastIndex)
+    output.innerHTML = html
+  }
+
+  run()
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/less@4"></script>
