@@ -10,8 +10,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      width: 100%;
       height: 100vh;
-      /* 设置容器高度为视口高度，使其铺满整个屏幕 */
     }
 
     .Sun {
@@ -20,14 +20,13 @@
       height: 100px;
       margin: 10px;
       border-radius: 50%;
-      /* 将元素的边框半径设置为宽度和高度的一半，使其呈现圆形 */
     }
 
     .Earth {
       position: relative;
       width: 60px;
       height: 60px;
-      margin: 100px;
+      margin: -80px;
       border-radius: 50%;
     }
 
@@ -35,7 +34,7 @@
       position: relative;
       width: 30px;
       height: 30px;
-      margin: -80px;
+      margin: 35px;
       border-radius: 50%;
     }
 
@@ -66,10 +65,10 @@
     var moon = document.querySelector('.Moon');
 
     var sunRadius = 0; // 太阳的半径，设为0以使其作为旋转中心
-    var earthRadius = 100; // 地球绕太阳的半径
+    var earthRadius = 200; // 地球绕太阳的半径
     var moonRadius = 50; // 月球绕地球的半径
     var earthSpeed = 0.001; // 地球公转速度
-    var moonSpeed = 0.005; // 月球公转速度
+    var moonSpeed = 0.002; // 月球公转速度
 
     function animate() {
       var earthAngle = Date.now() * earthSpeed; // 计算地球的角度，根据当前时间和公转速度
