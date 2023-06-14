@@ -1591,3 +1591,635 @@ if(list1.val<list2.val) { list1.next=recursion(list1.next,list2) return list1 } 
     }
 
   </script>
+
+
+
+  <script>
+
+    function parseJSONString(jsonStr) {
+      var index = 0;  // 当前解析位置
+      var length = jsonStr.length;  // JSON 字符串长度
+
+      // 解析字符串类型的值
+      function parseString() {
+        var value = '';
+        var startQuote = jsonStr[index];
+        index++;  // 跳过起始引号
+
+        while (index < length) {
+          var char = jsonStr[index];
+
+          if (char === startQuote) {
+            index++;  // 跳过结束引号
+            break;
+          } else if (char === '\\') {
+            // 处理转义字符
+            index++;  // 跳过反斜杠
+            var escapeChar = jsonStr[index];
+            if (escapeChar === 'n') {
+              value += '\n';
+            } else if (escapeChar === 'r') {
+              value += '\r';
+            } else if (escapeChar === 't') {
+              value += '\t';
+            } else {
+              value += escapeChar;
+            }
+          } else {
+            value += char;
+          }
+
+          index++;
+        }
+
+        return value;
+      }
+
+      // 解析数字类型的值
+      function parseNumber() {
+        var value = '';
+        var validChars = '+-0123456789.eE';
+        while (index < length) {
+          var char = jsonStr[index];
+          if (validChars.indexOf(char) === -1) {
+            break;
+          }
+          value += char;
+          index++;
+        }
+        return parseFloat(value);
+      }
+
+      // 解析布尔类型的值
+      function parseBoolean() {
+        var substr = jsonStr.substr(index, 4);
+        if (substr === 'true') {
+          index += 4;
+          return true;
+        } else if (substr === 'false') {
+          index += 5;
+          return false;
+        }
+        return null;
+      }
+
+      // 解析 null 值
+      function parseNull() {
+        var substr = jsonStr.substr(index, 4);
+        if (substr === 'null') {
+          index += 4;
+          return null;
+        }
+        return null;
+      }
+
+      // 解析数组类型的值
+      function parseArray() {
+        var arr = [];
+        index++;  // 跳过左括号
+
+        while (index < length) {
+          var char = jsonStr[index];
+
+          if (char === ']') {
+            index++;  // 跳过右括号
+            break;
+          } else if (char === ',') {
+            index++;  // 跳过逗号
+          } else if (char === ' ' || char === '\n' || char === '\r' || char === '\t') {
+            index++;  // 跳过空格、换行符、回车符、制表符
+          } else {
+            var value = parseValue();
+            arr.push(value);
+          }
+        }
+
+        return arr;
+      }
+
+      // 解析对象类型的值
+      function parseObject() {
+        var obj = {};
+        index++;  // 跳过左花括号
+
+        while (index < length) {
+          var char = jsonStr[index];
+
+          if (char === '}') {
+            index++;  // 跳过右花括号
+            break;
+          } else if (char === ',') {
+            index++;  // 跳过逗号
+          } else if (char === ' ' || char === '\n' || char === '\r' || char === '\t') {
+            index++;  // 跳过空格、换行符、回车符、制表符
+          } else {
+            var key = parseString();
+            index++;  // 跳过冒号
+            var value = parseValue();
+            obj[key] = value;
+          }
+        }
+
+        return obj;
+      }
+
+      // 解析值
+      function parseValue() {
+        var char = jsonStr[index];
+
+        if (char === '{') {
+          return parseObject();
+        } else if (char === '[') {
+          return parseArray();
+        } else if (char === '"') {
+          return parseString();
+        } else if (char === '-' || char === '+' || (char >= '0' && char <= '9')) {
+          return parseNumber();
+        } else if (char === 't' || char === 'f') {
+          return parseBoolean();
+        } else if (char === 'n') {
+          return parseNull();
+        }
+
+        return null;
+      }
+
+      // 调用解析值函数开始解析
+      return parseValue();
+    }
+
+    // 测试
+    var jsonStr = '{"a":1,"b":true,"c":[1,[2,2],{"x":3,"y":[1,2,3]}],"d":{"a":{"b":1}}}';
+
+    var parsedData = parseJSONString(jsonStr);
+    console.log(parsedData);
+
+
+  </script>
+
+
+
+
+  手搓JSON.parse函数
+
+  <script>
+
+    function parseJSONString(jsonStr) {
+      var index = 0;
+
+      function parseValue() {
+        var char = jsonStr[index];
+
+        if (char === '{') {
+          return parseObject();
+        } else if (char === '[') {
+          return parseArray();
+        } else if (char === '"') {
+          return parseString();
+        } else if (char === '-' || char === '+' || (char >= '0' && char <= '9')) {
+          return parseNumber();
+        } else if (char === 't' || char === 'f') {
+          return parseBoolean();
+        } else if (char === 'n') {
+          return parseNull();
+        }
+
+        return null;
+      }
+
+      function parseObject() {
+        var obj = {};
+
+        // 跳过左花括号
+        index++;
+
+        while (index < jsonStr.length) {
+          var char = jsonStr[index];
+
+          if (char === '}') {
+            // 跳过右花括号
+            index++;
+            break;
+          } else if (char === ',') {
+            index++;  // 跳过逗号
+          } else if (char === ' ' || char === '\n' || char === '\r' || char === '\t') {
+            index++;  // 跳过空格、换行符、回车符、制表符
+          } else {
+            var key = parseString();
+            index++;  // 跳过冒号
+            var value = parseValue();
+            obj[key] = value;
+          }
+        }
+
+        return obj;
+      }
+
+      function parseArray() {
+        var arr = [];
+
+        // 跳过左方括号
+        index++;
+
+        while (index < jsonStr.length) {
+          var char = jsonStr[index];
+
+          if (char === ']') {
+            // 跳过右方括号
+            index++;
+            break;
+          } else if (char === ',') {
+            index++;  // 跳过逗号
+          } else if (char === ' ' || char === '\n' || char === '\r' || char === '\t') {
+            index++;  // 跳过空格、换行符、回车符、制表符
+          } else {
+            var value = parseValue();
+            arr.push(value);
+          }
+        }
+
+        return arr;
+      }
+
+      function parseString() {
+        var start = index;  // 字符串开始位置
+        var end = start + 1;  // 字符串结束位置
+
+        while (end < jsonStr.length) {
+          var char = jsonStr[end];
+
+          // 如果当前字符是双引号并且上一个字符不是转义符号，则字符串结束
+          if (char === '"' && jsonStr[end - 1] !== '\\') {
+            break;
+          }
+
+          end++;
+        }
+
+        index = end + 1;  // 跳过双引号
+
+        var string = jsonStr.substring(start + 1, end);  // 提取字符串
+        return string;
+      }
+
+      function parseNumber() {
+        var start = index;
+        var end = start + 1;
+
+        while (end < jsonStr.length) {
+          var char = jsonStr[end];
+
+          if (char === ',' || char === ' ' || char === '\n' || char === '\r' || char === '\t' || char === ']' || char === '}') {
+            break;
+          }
+
+          end++;
+        }
+
+        index = end;
+
+        var number = jsonStr.substring(start, end);
+        return parseFloat(number);
+      }
+
+      function parseBoolean() {
+        var bool = '';
+
+        if (jsonStr[index] === 't') {
+          bool = 'true';
+          index += 4;  // 跳过 'true'
+          return true;
+        } else if (jsonStr[index] === 'f') {
+          bool = 'false';
+          index += 5;  // 跳过 'false'
+          return false;
+        }
+
+        return null;
+      }
+
+      function parseNull() {
+        index += 4;  // 跳过 'null'
+        return null;
+      }
+
+      return parseValue();
+    }
+
+    // 测试
+    var jsonStr = '{"a":1,"b":true,"c":[1,[2,2],{"x":3,"y":[1,2,3]}],"d":{"a":{"b":1}}}';
+
+    var parsedData = parseJSONString(jsonStr);
+    console.log(parsedData);
+
+
+  </script>
+
+
+
+
+  <script>
+    var str = '{"a":1,"b":true,"c":[1,2,3],"d":{"a":{"b":1}}}'
+    var str2 = 'true'
+    var str3 = '[1,2,3,{}, {"a":1}]'
+
+    var str = '{"a":1,"bccc":true,"c":[1,[2,2],{"xxxx":3,"y":[1,2,3]}],"d":{"a":{"b":1}}}'
+
+    // 递归下降法实现递归结构的解析
+
+    function parseJSON(str) {
+      var i = 0
+      return parseValue()
+
+      function parseValue() {
+        var char = str[i]
+        if (char == '{') {
+          return parseObject()
+        }
+        if (char == '[') {
+          return parseArray()
+        }
+        if (char == '"') {
+          return parseString()
+        }
+        if (char == 't') {
+          var token = str.slice(i, i + 4)
+          if (token == 'true') {
+            i += 4
+            return true
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+        if (char == 'f') {
+          var token = str.slice(i, i + 5)
+          if (token == 'false') {
+            i += 5
+            return false
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+        if (char == 'n') {
+          var token = str.slice(i, i + 4)
+          if (token == 'null') {
+            i += 4
+            return true
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+
+        return parseNumber()
+      }
+
+      function parseNumber() {
+        var start = i
+        while (str[i] >= '0' && str[i] <= '9') {
+          i++
+        }
+        return Number(str.slice(start, i))
+      }
+
+      // 从i位置解析出一个字符串，此时i指向一个"
+      function parseString() {
+        i++ // 路过开始的"
+        var start = i
+        while (str[i] !== '"' && i < str.length) {
+          i++
+        }
+        if (str[i] !== '"') {
+          throw new SyntaxError('未结束的字符串，它的起点为' + start)
+        }
+        var end = i
+        i++ // 跳过结束的"
+        return str.slice(start, end)
+      }
+
+      // 从i位置开始解析出一个数组，此时i指向'['
+      function parseArray() {
+        var result = []
+        i++ // skip '['
+        if (str[i] == ']') {
+          i++ // skip this ']'
+          return result
+        }
+
+        while (i < str.length) {
+          var value = parseValue() // 从i位置解析出一个值并移动i到这个值的后面
+          result.push(value)
+          if (str[i] === ',') {
+            i++ // skip this ','
+            continue
+          }
+          if (str[i] === ']') {
+            i++ // skip this ']'
+            break
+          }
+        }
+        return result
+      }
+
+      // 从i位置开始解析出一个数组，此时i指向'{'
+      function parseObject() {
+        var result = {}
+        i++ // skip '{'
+        skipSpace()
+        if (str[i] == '}') {
+          i++ // skip this '}'
+          return result
+        }
+
+        while (i < str.length) {
+          var name = parseString()
+          skipSpace()
+          i++ // 跳过':'
+          skipSpace()
+          var value = parseValue() // 从i位置解析出一个值并移动i到这个值的后面
+          result[name] = value
+          if (str[i] === ',') {
+            i++ // skip this ','
+            continue
+          }
+          if (str[i] === '}') {
+            i++ // skip this '}'
+            break
+          }
+        }
+        return result
+      }
+      function skipSpace() {
+        while (str[i] == ' ' || str[i] == '\n' || str[i] == '\t' || str[i] == '\r') {
+          i++
+        }
+        return
+      }
+    }
+    // 测试
+    var jsonStr = '{"a":1,"b":true,"c":[1,[2,2],{"x":3,"y":[1,2,3]}],"d":{"a":{"b":1}}}';
+
+    var parsedData = parseJSON(jsonStr);
+    console.log(parsedData);
+
+
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  <script>
+
+    function parseJSONString(str) {
+
+      var i = 0
+      return parseValue()
+
+      function parseValue() {
+        var char = str[i]
+        if (char == '[') {
+          return parseArray()
+        }
+        if (char == '{') {
+          return parseObject()
+        }
+        if (char == '"') {
+          return parseString()
+        }
+        if (char == 't') {
+          var token = str.slice(i, i + 4)
+          if (token == 'true') {
+            i += 4
+            return true
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+        if (char == 'f') {
+          var token = str.slice(i, i + 5)
+          if (token == 'false') {
+            i += 5
+            return false
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+        if (char == 'n') {
+          var token = str.slice(i, i + 4)
+          if (token == 'null') {
+            i += 4
+            return true
+          } else {
+            throw new SyntaxError(`在${i}位置遇到了错误的token`)
+          }
+        }
+
+        return parseNumber()
+
+      }
+
+      function parseNumber() {
+        var start = i //数字的开始位置
+        while (str[i] >= '0' && str[i] <= '9') {
+          i++
+        }
+        return Number(str.slice(start, i))//返回完整数字
+      }
+
+      function parseArray() {
+        var arr = [] //创建一个新数组
+        i++ //移动到'['的下一位
+        if (str[i] == ']') {  //如果是']'，说明数组为空，就直接返回数组
+          i++  //继续移动到下一位
+          return arr
+        }
+        while (i < str.length) {
+          var value = parseValue()  //数组的第一个值等于i指向的第一个值
+          arr.push(value)  //将数字添加进数组
+          if (str[i] === ',') {
+            i++  //跳过','
+            continue
+          }
+          if (str[i] === ']') {
+            i++  //说明数组结束，跳过']'
+            break  //直接跳出循环
+          }
+        }
+        return arr
+      }
+
+      function parseObject() {
+        var obj = {}  //创建一个新对象
+        i++
+        skipSpace()
+        if (str[i] == '}') {
+          i++ //遇到'}'说明对象结束。i指向下一个
+          return obj
+        }
+        while (i < str.length) {
+          var name = parseString() //对象key的name
+          skipSpace() //跳过空格
+          if (str[i] !== ':') {
+            throw new SyntaxError(`在${i}位置遇到了错误的token期望':'`)
+          }
+          i++ // 跳过':'
+          skipSpace() //跳过空格
+          var value = parseValue()
+          obj[name] = value //给对象key对应的value填值
+          if (str[i] == ',') { //遇到','跳过
+            i++
+            continue
+          }
+          if (str[i] == '}') { //遇到'}'说明对象结束，结束循环
+            i++
+            break
+          }
+        }
+        return obj //返回对象
+      }
+      function parseString() {
+        i++ //跳过字符串开始的'"'
+        var start = i //确定字符串的开始位置
+        while (str[i] !== '"' && i < str.length) {
+          i++
+        }
+        if (str[i] !== '"') { //没有遇到'"'说明字符串没有结束，所以报错
+          throw new SyntaxError(`未结束的字符串，他的起点为` + start)
+        }
+        var end = i
+        i++ //跳过结束的"
+        return str.slice(start, end) //返回完整的字符串
+      }
+
+      function skipSpace() {
+        while (str[i] == ' ' && str[i] == '\n' && str[i] == '\t' && str[i] == '\r') {
+
+          //当i指向的是空格，换行符，制符表以及回车符时直接跳过
+          i++
+        }
+        return
+      }
+    }
+
+    var str = '{"a":1,"b":true,"c":[1,[2,2],{"x":3,"y":[1,2,3]}],"d":{"a":{"b":1}}}';
+    var parsedData = parseJSONString(str);
+    console.log(parsedData);
+
+  </script>
+
+
+
+https://leetcode.cn/problems/parse-lisp-expression/
+https://leetcode.cn/problems/parsing-a-boolean-expression/
+https://leetcode.cn/problems/mini-parser/
+https://leetcode.cn/problems/basic-calculator/
+
+https://leetcode.cn/problems/evaluate-reverse-polish-notation/
+

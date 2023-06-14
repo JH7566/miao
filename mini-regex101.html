@@ -51,8 +51,6 @@
    }
  }
 
-
-
  .result-wrapper {
    width: 400px;
    height: 300px;
@@ -93,10 +91,10 @@
     <h1>Regex 101</h1>
     <p class="one">输入正则表达式 :</p>
     <input class="Regex" type="text" id="myInput" value="foo" oninput="run()">
-    <label class="a"><input onclick="run()" type="checkbox" id="inputi">i</label>
+    <label class="a"><input onclick="run()" type="checkbox"  id="inputi">i</label>
     <label class="a1"><input onclick="run()" type="checkbox" id="inputg" checked>g</label>
     <br>
-    <button onclick="run()">Match</button>
+    <!-- <button onclick="run()">Match</button> -->
     <br>
 
 
@@ -117,10 +115,10 @@
 <script>
   function getFlags() {
     var flags = ''
-    if (flagI.checked) {
+    if (inputi.checked) {
       flags += 'i'
     }
-    if (flagG.checked) {
+    if (inputg.checked) {
       flags += 'g'
     }
     return flags

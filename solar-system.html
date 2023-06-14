@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    section {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      /* 设置容器高度为视口高度，使其铺满整个屏幕 */
+    }
+
+    .Sun {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      margin: 10px;
+      border-radius: 50%;
+      /* 将元素的边框半径设置为宽度和高度的一半，使其呈现圆形 */
+    }
+
+    .Earth {
+      position: relative;
+      width: 60px;
+      height: 60px;
+      margin: 100px;
+      border-radius: 50%;
+    }
+
+    .Moon {
+      position: relative;
+      width: 30px;
+      height: 30px;
+      margin: -80px;
+      border-radius: 50%;
+    }
+
+    .Sun {
+      background-color: yellow;
+    }
+
+    .Earth {
+      background-color: blue;
+    }
+
+    .Moon {
+      background-color: gray;
+    }
+  </style>
+</head>
+
+<body>
+  <section>
+    <div class="Sun"></div>
+    <div class="Earth"></div>
+    <div class="Moon"></div>
+  </section>
+
+  <script>
+    var sun = document.querySelector('.Sun');
+    var earth = document.querySelector('.Earth');
+    var moon = document.querySelector('.Moon');
+
+    var sunRadius = 0; // 太阳的半径，设为0以使其作为旋转中心
+    var earthRadius = 100; // 地球绕太阳的半径
+    var moonRadius = 50; // 月球绕地球的半径
+    var earthSpeed = 0.001; // 地球公转速度
+    var moonSpeed = 0.005; // 月球公转速度
+
+    function animate() {
+      var earthAngle = Date.now() * earthSpeed; // 计算地球的角度，根据当前时间和公转速度
+      var moonAngle = Date.now() * moonSpeed; // 计算月球的角度，根据当前时间和公转速度
+
+      var earthX = Math.cos(earthAngle) * earthRadius + sunRadius; // 计算地球在X轴上的位置，加上太阳的半径偏移量
+      var earthY = Math.sin(earthAngle) * earthRadius + sunRadius; // 计算地球在Y轴上的位置，加上太阳的半径偏移量
+
+      var moonX = Math.cos(moonAngle) * moonRadius + earthX; // 计算月球在X轴上的位置，加上地球的位置偏移量
+      var moonY = Math.sin(moonAngle) * moonRadius + earthY; // 计算月球在Y轴上的位置，加上地球的位置偏移量
+
+      earth.style.left = earthX + 'px'; // 将地球的位置应用到left属性，实现动画效果
+      earth.style.top = earthY + 'px'; // 将地球的位置应用到top属性，实现动画效果
+
+      moon.style.left = moonX + 'px'; // 将月球的位置应用到left属性，实现动画效果
+      moon.style.top = moonY + 'px'; // 将月球的位置应用到top属性，实现动画效果
+
+      requestAnimationFrame(animate); // 循环调用animate函数，实现连续的动画效果
+    }
+
+    animate();
+
+
+  </script>
+
+</body>
+
+</html>

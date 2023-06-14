@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+
+  </style>
+
+</head>
+
+<body>
+
+</body>
+<!-- <script>
+
+  // 创建table元素
+  var table = document.createElement('table');
+
+  // 创建table的thead元素
+  var thead = document.createElement('thead');
+
+  // 创建thead的行（tr）元素
+  var trHead = document.createElement('tr');
+
+  // 创建表头单元格（th）元素
+  var th1 = document.createElement('th');
+  th1.textContent = '列1';
+
+  var th2 = document.createElement('th');
+  th2.textContent = '列2';
+
+  var th3 = document.createElement('th');
+  th3.textContent = '列3';
+
+  var th4 = document.createElement('th');
+  th4.textContent = '列4';
+
+  var th5 = document.createElement('th');
+  th5.textContent = '列5';
+
+  var th6 = document.createElement('th');
+  th6.textContent = '列6';
+
+  // 将表头单元格添加到表头行
+  trHead.appendChild(th1);
+
+  trHead.appendChild(th2);
+
+  trHead.appendChild(th3);
+
+  trHead.appendChild(th4);
+
+  trHead.appendChild(th5);
+
+  trHead.appendChild(th6);
+
+
+  // 将表头行添加到thead元素
+  thead.appendChild(trHead);
+
+  // 创建table的tbody元素
+  var tbody = document.createElement('tbody');
+
+  // 创建tbody的行（tr）元素
+  var tr1 = document.createElement('tr');
+  var tr2 = document.createElement('tr');
+
+  // 创建数据单元格（td）元素
+  var td1 = document.createElement('td');
+  td1.textContent = '数据1';
+
+  var td2 = document.createElement('td');
+  td2.textContent = '数据2';
+
+  var td3 = document.createElement('td');
+  td3.textContent = '数据3';
+
+  var td4 = document.createElement('td');
+  td4.textContent = '数据4';
+
+  var td5 = document.createElement('td');
+  td5.textContent = '数据5';
+
+  var td6 = document.createElement('td');
+  td6.textContent = '数据6';
+  // 将数据单元格添加到行
+  tr1.appendChild(td1);
+  tr1.appendChild(td2);
+  tr1.appendChild(td3);
+  tr1.appendChild(td4);
+  tr1.appendChild(td5);
+  tr1.appendChild(td6);
+
+  // 将行添加到tbody元素
+  tbody.appendChild(tr1);
+
+
+
+  // 将thead和tbody元素添加到table元素
+  table.appendChild(thead);
+  table.appendChild(tbody);
+
+  // 将table元素添加到文档的body中
+  document.body.appendChild(table);
+
+
+
+</script> -->
+
+<br>
+
+<script>
+
+  // 创建table元素
+  var table = document.createElement('table');
+  table.style.borderCollapse = 'collapse'; // 设置表格边框合并
+  table.style.margin = '20%';
+
+
+
+  var thead = document.createElement('thead');
+  thead.innerHTML = '这是雪豹'
+  thead.style.textAlign = 'center'
+  thead.style.border = '2px solid'; // 设置表格边框合并
+
+
+  // 创建table的tbody元素
+  var tbody = document.createElement('tbody');
+
+  // 创建四行五列的表格
+  for (var i = 0; i < 4; i++) {
+    var tr = document.createElement('tr');
+
+    for (var j = 0; j < 5; j++) {
+      var td = document.createElement('td');
+      td.textContent = '行 ' + (i + 1) + ', 列 ' + (j + 1);
+      td.style.border = '2px solid black'; // 设置单元格边框
+      td.style.padding = '10px'; // 设置单元格内边距
+      td.style.color = 'red'
+      td.style.cursor = 'pointer'
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+
+  // 将tbody元素添加到table元素
+  table.appendChild(thead);
+
+  table.appendChild(tbody);
+
+
+  // 将table元素添加到文档的body中
+  document.body.appendChild(table);
+
+</script>
+
+<script>
+
+  function traverse(node, action) {
+    if (node instanceof Node) {
+      if (action(node) === false) {
+        return false
+      }
+      for (var child of node.childNodes) {
+        if (traverse(child, action) === false) {
+          return false
+        }
+      }
+    }
+  }
+
+
+
+function getElementsByClassName(node, className) {
+  var result = []
+  traverse(nod)
+
+}
+
+
+
+
+
+
+
+
+
+</script>
+
+

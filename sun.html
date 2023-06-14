@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>太阳、地球和月球动态效果</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+    }
+  </style>
+</head>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 设置容器高度为视口高度，使其铺满整个屏幕 */
+}
+
+.circle {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-radius: 50%;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+<body>
+  <canvas id="canvas"></canvas>
+
+  <script>
+    // 获取画布元素
+    const canvas = document.getElementById('canvas');
+    const context = canvas.getContext('2d');
+
+    // 设置画布尺寸
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    // 定义太阳、地球和月球的参数
+    const sun = {
+      x: canvas.width / 2, // 太阳的初始横坐标为画布中心
+      y: canvas.height / 2, // 太阳的初始纵坐标为画布中心
+      radius: 50,
+      color: 'yellow',
+      angle: 0 // 太阳的初始角度为0
+    };
+
+    const earth = {
+      orbitRadius: 200, // 地球绕太阳的轨道半径
+      radius: 20,
+      color: 'blue',
+      angle: 0 // 地球的初始角度为0
+    };
+
+    const moon = {
+      orbitRadius: 60, // 月球绕地球的轨道半径
+      radius: 10,
+      color: 'gray',
+      angle: 0 // 月球的初始角度为0
+    };
+
+    // 绘制太阳、地球和月球
+    function draw() {
+      context.clearRect(0, 0, canvas.width, canvas.height); // 清空画布
+
+      // 绘制太阳
+      context.beginPath();
+      context.arc(sun.x, sun.y, sun.radius, 0, Math.PI * 2);
+      context.fillStyle = sun.color;
+      context.fill();
+
+      // 计算地球的位置
+      const earthX = sun.x + earth.orbitRadius * Math.cos(earth.angle);
+      const earthY = sun.y + earth.orbitRadius * Math.sin(earth.angle);
+
+      // 绘制地球
+      context.beginPath();
+      context.arc(earthX, earthY, earth.radius, 0, Math.PI * 2);
+      context.fillStyle = earth.color;
+      context.fill();
+
+      // 计算月球的位置
+      const moonX = earthX + moon.orbitRadius * Math.cos(moon.angle);
+      const moonY = earthY + moon.orbitRadius * Math.sin(moon.angle);
+
+      // 绘制月球
+      context.beginPath();
+      context.arc(moonX, moonY, moon.radius, 0, Math.PI * 2);
+      context.fillStyle = moon.color;
+      context.fill();
+
+      // 更新太阳、地球和月球的角度
+      sun.angle += 0.01;
+      earth.angle += 0.03;
+      moon.angle += 0.05;
+
+      requestAnimationFrame(draw); // 递归调用draw函数，创建动画效果
+    }
+
+    draw(); // 启动绘制函数
+  </script>
+</body>
+
+</html>
