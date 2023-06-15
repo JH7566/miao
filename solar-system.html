@@ -13,8 +13,9 @@
       width: 100%;
       height: 100vh;
     }
-
     .Sun {
+      background-image: url(https://th.bing.com/th/id/OIP.Vm6spWwV_EIElI_ITgytEgHaHa?w=201&h=200&c=7&r=0&o=5&pid=1.7);
+      background-size: 100%;
       position: relative;
       width: 100px;
       height: 100px;
@@ -23,6 +24,8 @@
     }
 
     .Earth {
+      background-image: url(https://th.bing.com/th/id/OIP.hJpeSbV7iJpAP6NWs27e0QHaHP?w=204&h=200&c=7&r=0&o=5&pid=1.7);
+      background-size: 100%;
       position: relative;
       width: 60px;
       height: 60px;
@@ -31,26 +34,13 @@
     }
 
     .Moon {
+      background-image: url(https://th.bing.com/th/id/OIP.Em_J62U1o0J9iR-nOt3TjQHaHa?w=174&h=180&c=7&r=0&o=5&pid=1.7);
+      background-size: 100%;
       position: relative;
-      width: 20px;
-      height: 20px;
+      width: 30px;
+      height: 30px;
       margin: 35px;
       border-radius: 50%;
-    }
-
-    .Sun {
-      background-image: url("https://th.bing.com/th/id/OIP.GkaldACi_eEe3yw-8kzqsAHaHi?w=198&h=202&c=7&r=0&o=5&pid=1.7");
-      background-size: 100%;
-      box-shadow: 0 0 100px 0 red;
-
-    }
-
-    .Earth {
-      background-color: blue;
-    }
-
-    .Moon {
-      background-color: gray;
     }
   </style>
 </head>
@@ -75,7 +65,9 @@
     var moonSpeed = 0.0015; // 月球公转速度
     var sunSpeed = -0.3; // 太阳自转速度
 
-    function animate() {
+    function animate(time) {
+      console.log(time)
+
       var earthAngle = Date.now() * earthSpeed; // 计算地球的角度，根据当前时间和公转速度
       var moonAngle = Date.now() * moonSpeed; // 计算月球的角度，根据当前时间和公转速度
       var sunAngle = Date.now() * sunSpeed; // 计算太阳的角度，根据当前时间和自转速度
@@ -99,7 +91,6 @@
     }
 
     animate();
-
 
   </script>
 
