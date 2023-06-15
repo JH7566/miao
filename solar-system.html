@@ -32,15 +32,17 @@
 
     .Moon {
       position: relative;
-      width: 30px;
-      height: 30px;
+      width: 20px;
+      height: 20px;
       margin: 35px;
       border-radius: 50%;
     }
 
     .Sun {
       background-image: url("https://th.bing.com/th/id/OIP.GkaldACi_eEe3yw-8kzqsAHaHi?w=198&h=202&c=7&r=0&o=5&pid=1.7");
-      background-size:100%;
+      background-size: 100%;
+      box-shadow: 0 0 100px 0 red;
+
     }
 
     .Earth {
@@ -69,8 +71,8 @@
     var sunRadius = 0; // 太阳的半径，设为0以使其作为旋转中心
     var earthRadius = 200; // 地球绕太阳的半径
     var moonRadius = 50; // 月球绕地球的半径
-    var earthSpeed = 0.001; // 地球公转速度
-    var moonSpeed = 0.002; // 月球公转速度
+    var earthSpeed = 0.0005; // 地球公转速度
+    var moonSpeed = 0.0015; // 月球公转速度
     var sunSpeed = -0.3; // 太阳自转速度
 
     function animate() {
