@@ -3175,3 +3175,14 @@ window.scrollX/Y, window.pageX/YOffset 页面在窗口中的滚动位置,不可�
 window.scrollTo/By(x,y) 滚动到x,y位置/基于当前位置滚动x,y距离
 
 window.innerWidth/Height 视口宽度和高度
+
+
+
+事件处理函数在处理哪个元素的事件，其this就是哪个元素
+事件处理函数在处理哪种事件，其唯一参数的type就是哪种事件的事件名称
+e.stopImmediatePropagation() // 当前元素上后续事件都不执行了
+
+e.stopPropagation() // 阻止事件传到下一个元素上，但当前元素上剩余函数还会运行
+
+el.matches(selector)
+判断元素是否匹配一个css选择器
