@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    #dragElement {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: absolute;
+      cursor: move;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="dragElement">1</div>
+
+
+  <script>
+    // 获取拖拽元素
+    var dragElement = document.getElementById("dragElement");
+
+    // 初始化鼠标位置和元素偏移量
+    var offsetX = 0;
+    var offsetY = 0;
+
+    // 监听鼠标按下事件
+    dragElement.addEventListener("mousedown", function (event) {
+      // 计算元素相对于鼠标的偏移量
+      offsetX = event.clientX - dragElement.offsetLeft;
+      offsetY = event.clientY - dragElement.offsetTop;
+
+      // 监听鼠标移动事件
+      document.addEventListener("mousemove", moveElement);
+    });
+
+    // 监听鼠标释放事件
+    document.addEventListener("mouseup", function () {
+      // 停止监听鼠标移动事件
+      document.removeEventListener("mousemove", moveElement);
+    });
+
+    // 移动元素的函数
+    function moveElement(event) {
+      // 计算元素新的位置
+      var x = event.clientX - offsetX;
+      var y = event.clientY - offsetY;
+
+      // 设置元素的新位置
+      dragElement.style.left = x + "px";
+      dragElement.style.top = y + "px";
+    }
+
+    
+  </script>
+</body>
+
+</html>

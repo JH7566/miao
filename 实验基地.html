@@ -2223,3 +2223,51 @@ https://leetcode.cn/problems/basic-calculator/
 
 https://leetcode.cn/problems/evaluate-reverse-polish-notation/
 
+
+
+
+
+
+
+
+https://leetcode.cn/problems/binary-search-tree-iterator/
+https://leetcode.cn/problems/flatten-nested-list-iterator/
+
+
+
+<script>
+
+class BSTIterator {
+  constructor(root) {
+    this.stack = []; // 辅助栈用于模拟中序遍历
+    this.pushLeftNodes(root); // 初始化时将根节点及其左子树节点入栈
+  }
+
+  // 将节点及其左子树节点依次入栈
+  pushLeftNodes(node) {
+    while (node !== null) {
+      this.stack.push(node); // 将节点入栈
+      node = node.left; // 移至左子节点
+    }
+  }
+
+  // 判断是否还有下一个数字
+  hasNext() {
+    return this.stack.length > 0; // 栈非空则存在下一个数字
+  }
+
+  // 返回指针处的数字，并将指针向右移动
+  next() {
+    const node = this.stack.pop(); // 弹出栈顶节点作为当前节点
+    const value = node.val; // 获取当前节点的值
+
+    if (node.right !== null) {
+      // 如果当前节点存在右子树，将右子树及其左子树节点入栈
+      this.pushLeftNodes(node.right);
+    }
+
+    return value; // 返回当前节点的值
+  }
+}
+
+</script>

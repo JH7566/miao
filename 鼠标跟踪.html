@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .fire {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background-color: #ff0000;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    // 当文档加载完成时执行的函数
+    document.addEventListener('DOMContentLoaded', function () {
+      // 绑定鼠标移动事件，当鼠标移动时调用createFire函数
+      document.addEventListener('mousemove', createFire);
+    });
+
+    // 创建火焰效果的函数，接收一个事件对象作为参数
+    function createFire(event) {
+      // 创建一个div元素，并设置其类名为'fire'
+      var fire = document.createElement('div');
+      fire.className = 'fire';
+
+      // 设置火焰元素的位置为鼠标当前的垂直和水平坐标
+      fire.style.top = event.clientY + 'px';
+      fire.style.left = event.clientX + 'px';
+
+      // 将火焰元素添加到文档的body中
+      document.body.appendChild(fire);
+
+      // 使用setTimeout函数设置一个定时器，在100毫秒后移除火焰元素
+      setTimeout(function () {
+        fire.remove();
+      }, 100);
+    }
+
+  </script>
+</body>
+
+</html>

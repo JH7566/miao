@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input, textarea, label, pre {
+      font-family: consolas;
+    }
+    /* 零宽断言的红色条 */
+    pre > em {
+      border-left: 4px dotted violet;
+      margin-left: -2px;
+      margin-right: -2px;
+      filter: blur(0.4px);
+      position: relative;
+      z-index: 2;
+      xdisplay: inline-block;
+      pointer-events: none;
+      height: 1em;
+      vertical-align: bottom;
+      transition: .5s;
+      &:hover {
+        border-color: magenta;
+        box-shadow: 0 0 5px grey;
+      }
+    }
+    pre > b:nth-of-type(odd) {
+      background-color: #d5ebff;
+    }
+    pre > b:nth-of-type(even) {
+      background-color: #9fcfff;
+    }
+
+    /* pre > b  表示一个匹配 */
+    /* pre > b b 表示一个匹配里的一个分组,但分组有可能嵌套,所以不能用 b>b */
+    pre > b {
+      [data-group="1"] {
+        --group-color: #9fcba1;
+      }
+      [data-group="2"] {
+        --group-color: #e0bf8b;
+      }
+      [data-group="3"] {
+        --group-color: #acadfc;
+      }
+      [data-group="4"] {
+        --group-color: #e1abf5;
+      }
+      [data-group="5"] {
+        --group-color: #ef9b95;
+      }
+    }
+
+    pre > b:nth-of-type(odd) b {
+      background-color: color-mix(in srgb, var(--group-color) 60%, white);
+    }
+
+    pre > b:nth-of-type(even) b {
+      background-color: var(--group-color);
+    }
+
+
+    /* 一个元素被hover的同时,其内部没有被hover的元素 */
+    b.hover-target.hover-target {
+      /* border-color: red; */
+      position: relative;
+      box-shadow: 0 0 2px grey,0 0 2px grey,0 0 2px grey,0 0 2px grey,
+                  inset 0 0 2px grey, inset 0 0 2px grey, inset 0 0 2px grey, inset 0 0 2px grey;
+    }
+    b.hover-target.hover-target b {
+      background-color: transparent;
+    }
+
+    .result-wrapper {
+      width: 400px;
+      height: 300px;
+      position: relative;
+      > textarea, > pre {
+        overflow: auto;
+        box-sizing: border-box;
+        xposition: absolute;
+        font-size: 24px;
+        padding: 5px;
+        margin: 0;
+        border: 2px solid;
+        border-radius: 2px;
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        word-break: break-all;
+        white-space: break-spaces;
+      }
+    }
+
+
+    #hoverCard {
+      position: fixed;
+      white-space: pre;
+      background-color: black;
+      border-radius: 5px;
+      color: white;
+      font-size: 12px;
+      padding: 0.5em;
+      font-weight: normal;
+      z-index: 888;
+      transform: translate(-50%, -100%);
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    正则
+    worker
+    selection api
+    dom 事件
+    :has选择器
+  </h1>
+  输入正则：<br><input type="text" id="reInput" value="(f).(.(.(..)(..)).)" oninput="run()"> <button onclick="run()">Run</button> <span id="timing"></span>
+  <br>
+  <p id="reInputError"></p>
+  <label><input onclick="run()" id="flagI" type="checkbox">i</label>
+  <label><input onclick="run()" id="flagG" type="checkbox" checked>g</label>
+  <label><input onclick="run()" id="flagM" type="checkbox">m</label>
+  <label><input onclick="run()" id="flagS" type="checkbox">s</label>
+  <label><input onclick="run()" id="flagU" type="checkbox">u</label>
+  <label><input onclick="run()" id="flagY" type="checkbox">y</label>
+  <br>
+  输入字符串：<br>
+  <div class="result-wrapper">
+    <pre id="output" contenteditable oninput="run()">foobabaz foobaaljfoiw lsjdfoiwe foobarbaaaa</pre>
+    <input type="text" id="replacement" value="#" oninput="run()">
+    <pre id="replaceOutput"></pre>
+  </div>
+
+  <div id="hoverCard"></div>
+  <script>
+
+    function getFlags() {
+      var flags = ''
+      if (flagI.checked) {
+        flags += 'i'
+      }
+      if (flagG.checked) {
+        flags += 'g'
+      }
+      if (flagM.checked) {
+        flags += 'm'
+      }
+      if (flagS.checked) {
+        flags += 's'
+      }
+      if (flagU.checked) {
+        flags += 'u'
+      }
+      if (flagY.checked) {
+        flags += 'y'
+      }
+      return flags
+    }
+    function run() {
+
+      // 保存光标位置
+      var cursorPosition = getCursorPosition(output)
+
+      console.log('光标位置', cursorPosition)
+
+      // output.innerHTML = ''
+      reInputError.innerHTML = ''
+      var reSource = reInput.value
+
+      if (reSource == '') {
+        return
+      }
+      var flags = getFlags()
+      try {
+        var re = new RegExp(reSource, flags + 'd')
+      } catch(e) {
+        timing.textContent = '正则表达式语法错误'
+        reInputError.innerHTML = e
+        return
+      }
+
+      var string = output.textContent
+      var match
+      var html = ''
+      var lastLastIndex = 0
+      var matchIndex = 1
+
+      timing.textContent = '匹配中...'
+
+      var startTime = Date.now()
+      getAllMatch(re, string, (err, matches) => {
+        if (err) {
+          timing.textContent = '匹配超时'
+        } else {
+          timing.textContent = `${matches.length}匹配(${Date.now() - startTime}ms)`
+
+          for (var match of matches) {
+
+            html += string.slice(lastLastIndex, match.index)
+            if (match[0] == '') {
+              html += '<em></em>'
+            } else {
+              html += wrapOneMatch(match, matchIndex++)
+            }
+
+            lastLastIndex = match.index + match[0].length
+          }
+
+          html += string.slice(lastLastIndex)
+          output.innerHTML = html
+
+          // 还原光标位置
+          restoreCursorPosition(output, cursorPosition)
+
+          replaceOutput.innerHTML = string.replace(re, replacement.value)
+        }
+      })
+    }
+
+
+    output.addEventListener('mouseover', e => {
+      if (e.target.matches('[data-group]')) {
+        var target = e.target
+        target.classList.add('hover-target')
+        // var box = target.getBoundingClientRect()
+        var boxes = target.getClientRects() // 获取到元素生成的多个矩形区域
+
+        // 鼠标在视口中的位置
+        var x = e.clientX
+        var y = e.clientY
+        console.log(x, y, boxes)
+
+        // 计算出鼠标在元素生成的哪个盒子里
+        var box = [...boxes].filter(box => {
+          return x >= Math.floor(box.left) && x <= Math.ceil(box.right) && y >= Math.floor(box.top) && y <= Math.ceil(box.bottom)
+        }).at(0)
+
+        // console.log(box)
+
+        hoverCard.style.display = 'block'
+        hoverCard.textContent = target.textContent
+        hoverCard.style.top = box.top + 'px'
+        hoverCard.style.left = box.left + box.width / 2 + 'px'
+      }
+    })
+    output.addEventListener('mouseout', e => {
+      if (e.target.matches('[data-group]')) {
+        var target = e.target
+        target.classList.remove('hover-target')
+        hoverCard.style.display = 'none'
+      }
+    })
+
+    // 还原光标在node结点中的位置
+    function restoreCursorPosition(node, position) {
+      var selection = window.getSelection()
+
+      traverseTextNode(node, textNode => {
+        if (position > textNode.nodeValue.length) {
+          position -= textNode.nodeValue.length
+        } else {
+          selection.setPosition(textNode, position)
+          return false
+        }
+      })
+
+    }
+    function getCursorPosition(pre) {
+      var selection = window.getSelection()
+      var pos = 0
+
+      traverseTextNode(pre, textNode => {
+        if (textNode === selection.anchorNode) {
+          pos += selection.anchorOffset
+          return false
+        } else {
+          pos += textNode.nodeValue.length
+        }
+      })
+
+      return pos
+    }
+
+    // 遍历node中的所有文本结点,如果action函数返回false
+    // 则停止遍历
+    function traverseTextNode(node, action) {
+      if (node.nodeType === document.TEXT_NODE) {
+        if (action(node) === false) {
+          return false
+        }
+      } else if (node.nodeType === document.ELEMENT_NODE) {
+        // 这里不能用node.children,因为它不包含文本结点
+        // 而我们正是要遍历文本结点
+        for (var child of node.childNodes) {
+          if (traverseTextNode(child, action) === false) {
+            return false
+          }
+        }
+      }
+    }
+
+    // 将一个匹配及其内的每个捕获分组都用标签包起来以高亮
+    function wrapOneMatch2(match) {
+      // 先把每个捕获分组的范围转换为相对于这次的匹配的范围
+      var indices = match.indices.map(([start, end]) => {
+        return [start - match.index, end - match.index]
+      })
+      var fullMatch = match[0]
+      var result = ''
+      var prevEnd = 0
+      for (var i = 1; i < indices.length; i++) {
+        var index = indices[i]
+        var [start, end] = index
+        result += fullMatch.slice(prevEnd, start)
+        result += '<i>' + fullMatch.slice(start, end) + '</i>'
+        prevEnd = end
+      }
+      result += fullMatch.slice(prevEnd)
+
+      return '<b>' + result + '</b>'
+    }
+
+
+    // 将一个匹配及其内的每个捕获分组都用标签包起来以高亮
+    function wrapOneMatch(match, matchIndex) {
+      // 先把每个捕获分组的范围转换为相对于这次的匹配的范围
+      var indices = match.indices.map(([start, end]) => {
+        return [start - match.index, end - match.index]
+      })
+      var fullMatch = match[0]
+      var chars = fullMatch.split('')
+      var tags = Array(chars.length + 1).fill('')
+
+      for (var i = 1; i < indices.length; i++) {
+        var [start, end] = indices[i]
+        tags[start] += `<b data-match="${matchIndex}" data-group="${i}" data-group-content="${match[i]}" data-group-start-index="${match.indices[i][0]}" data-group-end-index="${match.indices[i][1]}">`
+        tags[end] += '</b>'
+      }
+
+      var result = ''
+      for (var i = 0; i < chars.length; i++) {
+        result += tags[i] + chars[i]
+      }
+      result += tags[i]
+
+      return `<b data-match="${matchIndex}" data-group="0" data-group-content="${match[0]}" data-group-start-index="${match.indices[0][0]}" data-group-end-index="${match.indices[0][1]}">` + result + '</b>'
+    }
+
+    run()
+
+
+
+
+
+    // 在worker中获取re对string的所有匹配对象
+    // 之所以放到worker里执行是因为,正则的匹配可能花费很久的时间
+    // 如果真的花很久的时间,会造成页面的卡死无响应
+    function getAllMatch(re, string, callback) {
+      var blob = new Blob([`
+
+        addEventListener('message', e => {
+          var {re, string} = e.data
+          var matches = []
+          var match = null
+
+          while(match = re.exec(string)) {
+            matches.push(match)
+            if (re.global == false) {
+              break
+            }
+            if (match[0] == '') {
+              re.lastIndex++
+            }
+          }
+
+          postMessage(matches)
+        })
+
+      `], {type: 'application/javascript'})
+
+      var workerUrl = URL.createObjectURL(blob)
+
+      var worker = new Worker(workerUrl)
+      var ret = false
+
+      worker.addEventListener('message', e => {
+        ret = true
+        var matches = e.data
+        worker.terminate() // 关闭worker
+        callback(null, matches)
+      })
+
+      worker.postMessage({
+        re,string
+      })
+
+      setTimeout(() => {
+        // 说明两秒以后worker还没给出结果
+        if (ret === false) {
+          worker.terminate()
+          callback(new Error('xxxxxxx'), null)
+        }
+      }, 2000)
+    }
+  </script>
+</body>
+</html>

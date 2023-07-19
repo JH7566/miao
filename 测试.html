@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    div {
+      margin: auto;
+      width: 50%;
+      height: 50%;
+    }
+
+    img {
+      margin: auto;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+
+</head>
+
+<body>
+
+  <div>
+
+    <h1></h1>
+
+    <p></p>
+
+    <ul>
+      <li>T</li>
+      <li>T</li>
+      <li>T</li>
+    </ul>
+
+    <p></p>
+
+    <p>这是链接<a href="www.mi.com">mi</a></p>
+
+
+    <img src="1.jpeg" alt="">
+    <br>
+    <br>
+    <br>
+
+    <button>切换用户</button>
+
+  </div>
+
+  <script>
+
+
+    let myImage = document.querySelector('img');
+
+    myImage.onclick = function () {
+      let mySrc = myImage.getAttribute('src');
+      if (mySrc === '1.jpeg') {
+        myImage.setAttribute('src', '2.jpeg');
+      } else {
+        myImage.setAttribute('src', '1.jpeg');
+      }
+    }
+
+    let myButton = document.querySelector('button');
+    let myHeading = document.querySelector('h1');
+
+    function setUserName() {
+      let myName = prompt('请输入你的名字。');
+      if (!myName) {
+        setUserName();
+      } else {
+        localStorage.setItem('name', myName);
+        myHeading.textContent = myName + ',如果你也像我一样的话,那真是泰裤辣，';
+
+      }
+    }
+
+
+
+    if (!localStorage.getItem('name')) {
+      setUserName();
+    } else {
+      let storedName = localStorage.getItem('name');
+      myHeading.textContent = storedName + ',如果你也像我一样的话,那真是泰裤辣';
+    }
+
+    myButton.onclick = function () {
+      setUserName();
+    }
+
+  </script>
+</body>
+
+</html>

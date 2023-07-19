@@ -1,0 +1,309 @@
+<script>
+
+
+  冒泡排序Bubble Sort
+
+
+  function bubbleSort(arr) {
+    const n = arr.length;
+
+    // 遍历数组元素
+    for (let i = 0; i < n - 1; i++) {
+      // 在每一轮遍历中，比较相邻元素并进行交换
+      // 将较大的元素逐步移动到数组末尾
+      for (let j = 0; j < n - i - 1; j++) {
+        if (arr[j] > arr[j + 1]) {
+          // 交换位置
+          [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+        }
+      }
+    }
+
+    return arr;
+  }
+
+
+
+
+  插入排序Insertion Sort
+
+  function insertionSort(arr) {
+    const n = arr.length;
+
+    // 从第二个元素开始，因为第一个元素默认是有序的
+    for (let i = 1; i < n; i++) {
+      // 当前要插入的元素
+      const key = arr[i];
+      let j = i - 1;
+
+      // 将比当前元素大的元素向后移动
+      // 直到找到合适的位置插入当前元素
+      while (j >= 0 && arr[j] > key) {
+        arr[j + 1] = arr[j];
+        j--;
+      }
+
+      // 将当前元素插入到合适的位置
+      arr[j + 1] = key;
+    }
+
+    return arr;
+  }
+
+
+
+
+  选择排序Selection Sort
+
+  function selectionSort(arr) {
+    const n = arr.length;
+
+    // 遍历数组元素
+    for (let i = 0; i < n - 1; i++) {
+      let minIndex = i;
+
+      // 在剩余的元素中找到最小值的索引
+      for (let j = i + 1; j < n; j++) {
+        if (arr[j] < arr[minIndex]) {
+          minIndex = j;
+        }
+      }
+
+      // 将最小值交换到当前位置
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
+    }
+
+    return arr;
+  }
+
+
+
+
+  归并排序Merge Sort
+
+  function mergeSort(arr) {
+    const n = arr.length;
+
+    // 递归基准情况：当数组只有一个元素时，直接返回
+    if (n <= 1) {
+      return arr;
+    }
+
+    // 将数组分成两半
+    const mid = Math.floor(n / 2);
+    const left = arr.slice(0, mid);
+    const right = arr.slice(mid);
+
+    // 递归地对左右两半进行归并排序
+    const sortedLeft = mergeSort(left);
+    const sortedRight = mergeSort(right);
+
+    // 合并左右两个已排序的子数组
+    return merge(sortedLeft, sortedRight);
+  }
+
+  // 合并两个有序数组
+  function merge(left, right) {
+    const merged = [];
+    let i = 0;
+    let j = 0;
+
+    // 按顺序将较小的元素加入到合并后的数组中
+    while (i < left.length && j < right.length) {
+      if (left[i] <= right[j]) {
+        merged.push(left[i]);
+        i++;
+      } else {
+        merged.push(right[j]);
+        j++;
+      }
+    }
+
+    // 将剩余的元素加入到合并后的数组中
+    while (i < left.length) {
+      merged.push(left[i]);
+      i++;
+    }
+
+    while (j < right.length) {
+      merged.push(right[j]);
+      j++;
+    }
+
+    return merged;
+  }
+
+
+
+
+  堆排序
+
+  function heapSort(arr) {
+    const n = arr.length;
+
+    // 构建最大堆
+    buildMaxHeap(arr, n);
+
+    // 逐步将最大元素交换到数组末尾并调整堆
+    for (let i = n - 1; i > 0; i--) {
+      // 将当前最大元素交换到数组末尾
+      [arr[0], arr[i]] = [arr[i], arr[0]];
+
+      // 调整堆，保证交换后的前 i-1 个元素仍构成最大堆
+      heapify(arr, i, 0);
+    }
+
+    return arr;
+  }
+
+  // 构建最大堆
+  function buildMaxHeap(arr, n) {
+    // 从最后一个非叶子节点开始，依次进行堆化操作
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+      heapify(arr, n, i);
+    }
+  }
+
+  // 堆化操作，将指定节点及其子树调整为最大堆
+  function heapify(arr, n, i) {
+    let largest = i; // 初始化最大值为当前节点
+    const left = 2 * i + 1; // 左子节点索引
+    const right = 2 * i + 2; // 右子节点索引
+
+    // 比较左子节点与当前最大值
+    if (left < n && arr[left] > arr[largest]) {
+      largest = left;
+    }
+
+    // 比较右子节点与当前最大值
+    if (right < n && arr[right] > arr[largest]) {
+      largest = right;
+    }
+
+    // 如果最大值不是当前节点，则进行交换并递归调整子树
+    if (largest !== i) {
+      [arr[i], arr[largest]] = [arr[largest], arr[i]];
+      heapify(arr, n, largest);
+    }
+  }
+
+
+
+
+  希尔排序
+
+  function shellSort(arr) {
+    const n = arr.length;
+    let gap = Math.floor(n / 2); // 初始间隔
+
+    // 根据间隔进行分组，逐步缩小间隔直至为1
+    while (gap > 0) {
+      // 对每个分组进行插入排序
+      for (let i = gap; i < n; i++) {
+        const key = arr[i]; // 当前要插入的元素
+        let j = i;
+
+        // 在当前分组内，将比当前元素大的元素向后移动
+        // 直到找到合适的位置插入当前元素
+        while (j >= gap && arr[j - gap] > key) {
+          arr[j] = arr[j - gap];
+          j -= gap;
+        }
+
+        // 将当前元素插入到合适的位置
+        arr[j] = key;
+      }
+
+      gap = Math.floor(gap / 2); // 缩小间隔
+    }
+
+    return arr;
+  }
+
+
+
+
+  排序二叉树（二叉搜索树）
+
+  class TreeNode {
+    constructor(value) {
+      this.value = value;
+      this.left = null; // 左子节点
+      this.right = null; // 右子节点
+    }
+  }
+
+  class BinarySearchTree {
+    constructor() {
+      this.root = null; // 根节点
+    }
+
+    // 插入节点
+    insert(value) {
+      const newNode = new TreeNode(value); // 创建新节点
+
+      if (this.root === null) {
+        // 如果树为空，新节点成为根节点
+        this.root = newNode;
+      } else {
+        this.insertNode(this.root, newNode); // 否则递归地插入节点
+      }
+    }
+
+    // 递归辅助函数，用于插入节点
+    insertNode(node, newNode) {
+      if (newNode.value < node.value) {
+        // 如果新节点的值小于当前节点的值，继续在左子树插入
+        if (node.left === null) {
+          node.left = newNode; // 如果左子节点为空，新节点成为左子节点
+        } else {
+          this.insertNode(node.left, newNode); // 否则递归地插入左子树
+        }
+      } else {
+        // 如果新节点的值大于等于当前节点的值，继续在右子树插入
+        if (node.right === null) {
+          node.right = newNode; // 如果右子节点为空，新节点成为右子节点
+        } else {
+          this.insertNode(node.right, newNode); // 否则递归地插入右子树
+        }
+      }
+    }
+
+    // 中序遍历
+    inorderTraversal(callback) {
+      this.inorderTraversalNode(this.root, callback);
+    }
+
+    // 递归辅助函数，用于中序遍历
+    inorderTraversalNode(node, callback) {
+      if (node !== null) {
+        this.inorderTraversalNode(node.left, callback); // 遍历左子树
+        callback(node.value); // 处理当前节点
+        this.inorderTraversalNode(node.right, callback); // 遍历右子树
+      }
+    }
+  }
+
+
+</script>
+
+
+
+
+<script>
+
+ // 直接输出0~9
+
+  Number.prototype[Symbol.iterator] = function* () {
+    for (var i = 0; i < this; i++) {
+      yield i
+    }
+  }
+
+  for (var x of 10) {
+
+    console.log(x)
+
+  }
+
+</script>

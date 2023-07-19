@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <span style="left: 323.319px; top: 183.373px;"></span>
+  <style>
+    span {
+      background-image: url(https://tse1-mm.cn.bing.net/th/id/OIP-C.ikUp9nFam3sYiqjSn2MJTgAAAA?w=117&h=180&c=7&r=0&o=5&pid=1.7); /**坤坤*/
+      background-size: 100%;
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      position: fixed;
+    }
+  </style>
+  <script>
+    var span = document.querySelector('span')
+
+    var vx = 0
+    var vy = 0 
+
+    var lastTime = null
+
+    requestAnimationFrame(function ani(time) {
+      var timeDiff = 0
+
+      if (lastTime !== null) {
+        timeDiff = time - lastTime
+      }
+
+      lastTime = time
+
+      span.style.left = parseFloat(span.style.left) + vx * timeDiff + 'px'
+      span.style.top = parseFloat(span.style.top) + vy * timeDiff + 'px'
+
+      requestAnimationFrame(ani)
+    })
+
+    // 记录几个方向键的状态
+    var leftKeyDown = false
+    var rightKeyDown = false
+    var upKeyDown = false
+    var downKeyDown = false
+
+    window.addEventListener('keydown', e => {
+      console.log(e.key + 'down')
+      if (e.key == 'ArrowLeft') {
+        vx = -0.2
+        leftKeyDown = true
+      }
+      if (e.key == 'ArrowRight') {
+        vx = 0.2
+        rightKeyDown = true
+      }
+      if (e.key == 'ArrowUp') {
+        vy = -0.2
+        upKeyDown = true
+      }
+      if (e.key == 'ArrowDown') {
+        vy = 0.2
+        downKeyDown = true
+      }
+    })
+    window.addEventListener('keyup', e => {
+      console.log(e.key + 'up')
+      if (e.key == 'ArrowLeft') {
+        leftKeyDown = false
+        if (rightKeyDown) {
+          vx = 0.2
+        } else {
+          vx = 0
+        }
+      }
+      if (e.key == 'ArrowRight') {
+        rightKeyDown = false
+        if (leftKeyDown) {
+          vx = -0.2
+        } else {
+          vx = 0
+        }
+      }
+      if (e.key == 'ArrowUp') {
+        upKeyDown = false
+        if (downKeyDown) {
+          vy = 0.2
+        } else {
+          vy = 0
+        }
+      }
+      if (e.key == 'ArrowDown') {
+        downKeyDown = false
+        if (upKeyDown) {
+          vy = -0.2
+        } else {
+          vy = 0
+        }
+      }
+    })
+  </script>
+
+
+</body>
+
+</html>
