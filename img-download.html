@@ -23,26 +23,23 @@
     })
 
     button.addEventListener("click", () => {
-      // 第二次按按钮,重装
       if (pic.length === 0) {
         pic = picJSON.map((it, idx) => it.fullUrl)
       }
 
-      // 只请求一张图片
-      // 使用shift()方法从数组的开头获取下一张图片
-      const nextCat = pic.shift();
-      if (nextCat) {
-        get(nextCat, callb);
+
+      //从数组的开头获取下一张图片
+      const nextpic = pic.shift();
+      if (nextpic) {
+        get(nextpic, callb);
       }
     })
 
-    // 回调函数
+    // 递归回调函数
     function callb(data) {
-
-      // 使用shift()从数组的开头获取下一张图片
-      const nextCat = pic.shift();
-      if (nextCat) {
-        get(nextCat, callb);
+      const nextpic = pic.shift();
+      if (nextpic) {
+        get(nextpic, callb);
       }
     }
 
