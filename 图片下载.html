@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>图片下载</title>
+</head>
+
+<body>
+  <!-- 创建按钮，分别用于不同下载方式 -->
+  <button onclick="downloadOneSync()">同步一张</button>
+  <button onclick="downloadOneByOne()">异步一张</button>
+  <button onclick="downloadMax3()">同时三张</button>
+  <button onclick="downloadMax()">浏览器自己限制</button>
+
+  <script>
+    // 图片链接JSON的URL
+    var catsUrl = 'https://xieranmaya.github.io/images/cats/cats.json';
+
+    // 发送HTTP GET请求，获取JSON数据
+    function get(url, callback) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+
+      xhr.onload = function () {
+        callback(xhr.responseText);
+      };
+      xhr.send();
+    }
+
+    // 异步下载单张图片
+    function downloadImg(url, callback) {
+      var img = new Image();
+      img.onload = function () {
+        callback();
+      };
+      img.src = url;
+    }
+
+    // 同步下载单张图片
+    function downloadImgSync(url) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url, false);
+      xhr.send();
+    }
+
+    // 下载所有图片，没有限制数量
+    function downloadMax() {
+      get(catsUrl, function (data) {
+        var cats = JSON.parse(data).slice(0, 13);
+
+        for (var cat of cats) {
+          downloadImg(cat.fullUrl, function () { });
+        }
+      });
+    }
+
+    // 同时下载三张图片
+    function downloadMax3() {
+      get(catsUrl, function (data) {
+        var cats = JSON.parse(data).slice(0, 13);
+
+        var i = 0;
+        var complete = 0;
+
+        // 同时下载3张图片
+        download3();
+
+        function download3(x = 3) {
+          for (var n = 0; n < 3; n++) {
+            downloadOne();
+          }
+        }
+
+        function downloadOne() {
+          if (i < cats.length) {
+            // 递归下载图片，每下载完成一张，计数器complete+1
+            downloadImg(cats[i++].fullUrl, function () {
+              complete++;
+              downloadOne();
+              if (complete === cats.length) {
+                console.log('下载完成');
+              }
+            });
+          }
+        }
+      });
+    }
+
+    // 同步下载所有图片
+    function downloadOneSync() {
+      get(catsUrl, function (data) {
+        var cats = JSON.parse(data);
+
+        for (var cat of cats) {
+          // 同步下载图片
+          downloadImgSync(cat.fullUrl);
+        }
+      });
+    }
+
+    // 逐个下载图片
+    function downloadOneByOne() {
+      get(catsUrl, function (data) {
+        var cats = JSON.parse(data);
+
+        cats = cats.slice(0, 5);
+
+        var i = 0;
+
+        downloadOneImg();
+
+        function downloadOneImg() {
+          if (i < cats.length) {
+            // 递归下载图片，每下载完成一张，继续下载下一张
+            downloadImg(cats[i++].fullUrl, function () {
+              downloadOneImg();
+            });
+          } else {
+            console.log('串行下载完成');
+          }
+        }
+      });
+    }
+
+  </script>
+
+</body>
+
+</html>

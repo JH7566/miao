@@ -12,45 +12,45 @@
   <button>下载图片</button>
   <script>
 
-    var button = document.querySelector("button")
-    var pic
-    var picJSON
-
-    //请求json
-    get("https://xieranmaya.github.io/images/cats/cats.json", (data) => {
-      picJSON = JSON.parse(data)
-      pic = picJSON.map((it, idx) => it.fullUrl)
-    })
-
-    button.addEventListener("click", () => {
-      if (pic.length === 0) {
-        pic = picJSON.map((it, idx) => it.fullUrl)
-      }
-
-
-      //从数组的开头获取下一张图片
-      const nextpic = pic.shift();
-      if (nextpic) {
-        get(nextpic, callb);
-      }
-    })
-
-    // 递归回调函数
-    function callb(data) {
-      const nextpic = pic.shift();
-      if (nextpic) {
-        get(nextpic, callb);
-      }
-    }
 
     // get请求
     function get(url, callback) {
-      var request = new XMLHttpRequest();
-      request.open("GET", url, true);
-      request.send();
-      request.addEventListener("load", () => {
-        callback(request.responseText);
-      })
+      var req = new XMLHttpRequest();
+      req.open("GET", url, true);
+      req.send();
+      req.addEventListener("load", () => {
+        callback(req.responseText);
+      });
+    }
+
+    var button = document.querySelector("button");
+    var pic = [];
+    var picJSON;
+
+    // 请求json
+    get("https://xieranmaya.github.io/images/cats/cats.json", (data) => {
+      picJSON = JSON.parse(data);
+      pic = picJSON.map((it, idx) => it.fullUrl);
+    });
+
+    button.addEventListener("click", () => {
+      if (pic.length === 0) {
+        pic = picJSON.map((it, idx) => it.fullUrl);
+      }
+
+      // 从数组的开头获取下一张图片
+      const nextPic = pic.shift();
+      if (nextPic) {
+        get(nextPic, nextOne);
+      }
+    });
+
+    // 递归回调函数
+    function nextOne(data) {
+      const nextPic = pic.shift();
+      if (nextPic) {
+        get(nextPic, nextOne);
+      }
     }
 
 

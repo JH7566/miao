@@ -3756,3 +3756,723 @@ defer 属性：当浏览器遇到带有 defer 属性的 <script> 标签时，它
 
   </script>
 
+
+
+
+
+
+
+  CRUD是指在做计算处理时的增加(Create)、读取查询(Retrieve)、更新(Update)和删除(Delete)几个单词的首字母简写
+
+
+
+
+
+
+
+
+
+
+
+//   http协议总结
+
+// 头部:
+
+// 请求头:
+//   Host: 请求方使用的域名/ip以及端口号
+//   Host: www.baidu.com
+
+//   Referer: 请求方告诉服务端,是哪个页面在请求这个资源
+//   Referer: 谁将引用正在请求的这个资源
+//     现在因为隐私原因,很多时候不会将整个页面的地址发过去(因为地址栏的地址就可能携带隐私信息),而是只发页面的域,即端口及其之前的内容
+//       可以通过referer policy响应头来进行设置
+//     这个头可以用来实现防盗链:
+//       即被请求的服务器根据这个头来决定是否响应，如果服务器根据referer头知道这个资源将被用在并非自己公司的网站上，则它可以不返回数据。即为防盗链
+//   Origin: 类似于Referer，但是一般只在跨域请求中有，而且只有域，没有完整的地址
+
+//   User-Agent: 发出请求的浏览器的ua字符串，其中包含操作系统品牌，版本，浏览器的品牌，版本，设备名称，不同浏览器发出的一般都不一样
+//     如微信内置浏览器，支付内置浏览器发出的ua字符串分别识别出是相应软件里面的
+
+//   Content-Type: 请求体的媒体类型
+//   Content-Length: 请求体的长度，字节为单位
+//   Accept: 请求方能够接受响应体的媒体类型,每种类型用逗号分隔，一个类型内又可以用分号分隔，分号的后面的q表示兴趣度
+//     Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
+
+
+
+    Accept-Language: 请求方能够接受的响应内容的语言，结构类似Accept请求头
+    Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+  Accept-Encoding: 请求方能够接受的响应体压缩算法
+    Accept-Encoding: gzip, deflate, br
+  Encoding: 请求体的压缩算法，不过请求体一般不压缩，因为请求体一般都比较小
+  Connection: 请求方希望承载这个http的tcp连接在http流程结束后应该如何，可以在这个连接上前一个请求与响应结束后，继续使用这个连接发送和接收下一个请求与响应
+    这个一般要用Content-Length一起使用，否则无法区分接收到的数据从哪里断开/隔断
+    Connection: keep-alive
+    Connection: close
+  If-Modified-Since: 告诉服务器如果请求的这个资源自这个时间之后修改过，才返回实质内容，否则返回304 Not Modified
+    跟Last-Modified响应头配合使用
+    属于基于修改时间的“协商缓存”
+
+
+响应头：
+  Date: 服务器告诉客户端服务器的时间
+    Date: Fri, 21 Jul 2023 07:55:27 GMT
+  Content-Length: 响应体的字节长度
+  Content-Type: 响应体的媒体类型
+  Content-Encoding 响应体的压缩编码算法，一般如果压缩的话就是gzip
+  Transfer-Encoding: 响应传输方式，cunked表示没有响应长度，数据将会一段(chunk)一段的发，连接关闭时响应结束
+    一般不能跟Connection: keep-alive
+    Transfer-Encoding: chunked
+  Connection: 同请求头
+  Expires: 表示响应的这个资源的过期时间,在还没过期的时候，浏览器如果要再次使用这个资源，可以不用请求（前提是浏览器对这个资源有缓存）
+    Expires: Fri, 21 Jul 2023 01:41:04 GMT
+  Age: 资源能够被缓存多久，以秒为单位
+  Last-Modified: 资源在服务器上的最后修改时间
+    跟If-Modified-Since请求头配合使用，该头相当于告诉服务器说，请求方有这个资源在这个时间修改过的版本
+      如果服务器的这个资源还是这个时间最后修改的，那就不用给浏览器发送实质数据了，节省流量与时间
+    Last-Modified: Wed, 08 Feb 2023 07:22:00 GMT
+    属于基于修改时间的“协商缓存”
+
+  还有一种基于内容的协商缓存
+    响应头ETag: 资源的hash
+    请求方再次请求这个资源的时候，可以带上一个请求头： If-None-Match： hash
+      意为如果这个资源在服务器上的版本的hash不匹配这个，就给浏览器返回新内容，如果匹配这个哈希，就告诉我304 Not Modified
+
+  什么是“强缓存”？
+    即浏览器在使用一个资源时，直接使用本地缓存，而不发请求了
+
+  Referrer-Policy: 响应给一个页面的，设置这个页面中的请求如何发送Referer
+
+  Cache-Control: 缓存控制，既可以是请求头也可以是响应头
+
+  Content-Security-Policy: 响应给一个页面的(所以在jscss图片的响应没意义)，设置这个页面的“内容安全策略”
+    default-src 'none';
+      所有策略的默认src
+
+    base-uri 'self';
+
+    child-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/;
+      能够启动来哪里的js做为worker
+
+    connect-src 'self' uploads.github.com objects-origin.githubusercontent.com www.githubstatus.com collector.github.com raw.githubusercontent.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events *.actions.githubusercontent.com productionresultssa0.blob.core.windows.net/ productionresultssa1.blob.core.windows.net/ productionresultssa2.blob.core.windows.net/ productionresultssa3.blob.core.windows.net/ productionresultssa4.blob.core.windows.net/ wss://*.actions.githubusercontent.com github-production-repository-image-32fea6.s3.amazonaws.com github-production-release-asset-2e65be.s3.amazonaws.com insights.github.com wss://alive.github.com github.githubassets.com;
+      页面里的js能够连接哪些服务器
+
+    font-src github.githubassets.com;
+      页面能够加载来自哪里的字体文件
+
+    form-action 'self' github.com gist.github.com objects-origin.githubusercontent.com;
+      页面内的表单的action能够是哪些是哪些域名的地址
+      页面内的表单能够提交到哪些域名
+
+    frame-ancestors 'none';
+      有谁能做为当前页面的frame祖先，即这个页面能够嵌套在哪些域的iframe里，none即表示不能，即该页面不能嵌套在任何页面里
+
+    frame-src viewscreen.githubusercontent.com notebooks.githubusercontent.com;
+      谁能嵌套在这个页面里
+
+    img-src 'self' data: github.githubassets.com media.githubusercontent.com camo.githubusercontent.com identicons.github.com avatars.githubusercontent.com github-cloud.s3.amazonaws.com objects.githubusercontent.com objects-origin.githubusercontent.com secured-user-images.githubusercontent.com/ user-images.githubusercontent.com/ private-user-images.githubusercontent.com opengraph.githubassets.com github-production-user-asset-6210df.s3.amazonaws.com customer-stories-feed.github.com spotlights-feed.github.com *.githubusercontent.com;
+      页面能够加载来自哪里的图片
+
+    manifest-src 'self';
+
+    media-src github.com user-images.githubusercontent.com/ secured-user-images.githubusercontent.com/ private-user-images.githubusercontent.com github.githubassets.com;
+      页面能够加载来自哪里的媒体，如音频，视频
+
+    script-src github.githubassets.com;
+      页面能够加载来自哪里的js脚本
+
+    style-src 'unsafe-inline' github.githubassets.com;
+      页面能够使用来自哪里的样式
+
+    worker-src github.com/assets-cdn/worker/ gist.github.com/assets-cdn/worker/
+      页面能够将哪里来的js运行于web worker里
+
+状态码：
+  101 Continue 继续
+
+  200 成功
+
+  301 永久重定向，无法后退回跳转前的地址
+  302 暂时重定向，可以跳转回去
+  304 未更新，对协商缓存成功的响应
+
+  400 Bad Request 错误的请求
+  401 未授权，一般来说是因为未登陆，或当前登陆用户没权限查看这个资源
+  402 Payment Required 这个资源要付钱
+  403 Forbidden 资源对这个请求方是隐藏的
+  404 Not Found 资源未找到
+
+  500 Internal Server Error
+  501 Not Implemented 服务端未实现对这个请求方法的响应
+  502
+
+
+
+
+
+
+
+  websocket
+  双向
+  可以发二进制
+  没有自动重连机制
+server sent event
+  单向（只能服务器向客户端发送）
+  不能发二进制，只能发字符串，因为编码中就用的是data：，回车等字符串进行的
+  有自动重连机制
+长轮询 long polling / comet
+
+
+
+
+
+
+CORS(Cross Origin Resource Sharing)跨域资源共享
+  Access-Control-Allow-Origin: *
+预检请求：
+  CORS要求，当一个跨域请求是非简单请求时，会在这个请求前先发一个预检请求
+  当预检请求不通过时，实际请求根本就不会发出去
+什么是非简单请求？
+  非GET，非POST，或添加了一些额外的请求头，就为非简单请求
+预检请求的请求方法是OPTIONS
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+
+
+预检请求的请求头：
+Access-Control-Request-Headers： 请求中携带了哪些自定义头部
+Access-Control-Request-Method： 该预检请求对应的实际请求的请求方法
+Origin： 发送请求的域
+预检请求的响应头
+Access-Control-Allow-Methods: 跨域请求允许的请求方法
+Access-Control-Allow-Headers: 跨域请求允许的额外头部
+Access-Control-Allow-Origin: 允许这个域发
+Access-Control-Allow-Credentials: true 是否允许请求方自动携带凭据，当这个字段为true时，Access-Control-Allow-Origin不能为*，而必须写明具体的域
+Access-Control-Expose-Headers: 允许请求方获取这些头部的值
+Access-Control-Max-Age: 这个预检请求响应的有效期，在有效期内再次满足以上要求的请求时不用再发预检请求了
+
+
+
+
+
+HTTP/1.1 200 OK
+Content-Type: text/event-stream
+Cache-Control: no-cache
+Access-Control-Allow-Origin: *
+Connection: keep-alive
+
+data: 222
+
+data: 23423423
+
+data: 2lksjfoiwjef
+
+id: 23
+type: news
+data: 23492304234
+
+id: 33
+event: news
+data: 2346534553
+
+id: 44
+event: news
+data: 234
+
+
+
+
+el.innerHTML = el.innerHTML + '<div></div>'
+这个写法将会把元素中原来的dom元素全部删掉（包括上面绑的事件）
+然后赋值上去的html将会被浏览器解析为新的dom结构，并基于这个dom显示页面
+
+ajax请求如果有跳转,浏览器会自动请求这个跳转目标,ajax拿到的responseText也是跳转目标的内容
+
+
+CORS(Cross Origin Resource Sharing)跨域资源共享
+  Access-Control-Allow-Origin: *
+预检请求：
+  CORS要求，当一个跨域请求是非简单请求时，会在这个请求前先发一个预检请求
+  当预检请求不通过时，实际请求根本就不会发出去
+什么是非简单请求？
+  非GET，非POST，或添加了一些额外的请求头，就为非简单请求
+预检请求的请求方法是OPTIONS
+
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS
+
+
+预检请求的请求头：
+Access-Control-Request-Headers： 请求中携带了哪些自定义头部
+Access-Control-Request-Method： 该预检请求对应的实际请求的请求方法
+Origin： 发送请求的域
+预检请求的响应头
+Access-Control-Allow-Methods: 跨域请求允许的请求方法
+Access-Control-Allow-Headers: 跨域请求允许的额外头部
+Access-Control-Allow-Origin: 允许这个域发
+Access-Control-Allow-Credentials: true 是否允许请求方自动携带凭据，当这个字段为true时，Access-Control-Allow-Origin不能为*，而必须写明具体的域
+Access-Control-Expose-Headers: 允许请求方获取这些头部的值
+Access-Control-Max-Age: 这个预检请求响应的有效期，在有效期内再次满足以上要求的请求时不用再发预检请求了
+
+
+
+
+如果不使用CORS，如何实现跨域访问？
+  JSONP
+    利用浏览器不对script标签的跨域js文件进行限制来实现的
+    通过让服务器在特定地址下返回js文件，且js文件的内容里是某个函数的调用，传入的参数是请求的数据
+      http://www.xsdfwoef.com/weather?city=0571&lang=2342&long=28934&callback=fooo
+        foo({天气预报内容})
+    也可以让脚本将要返回的数据放在一固定名字全局变量里，等script标签加载成功之后，页面内的程序去读
+    由于jsonp是通过script标签去加载的，所以只能发get请求
+  iframe嵌套
+  window.name
+    利用window.name在不同域的页面间切换它也能一直保持
+
+  以上所有方案都需要服务器以某种形式配合前端。
+  所以想要纯前端实现跨域是不可行的。
+
+  服务器代理
+    前端告诉服务器要请求哪里，服务器去请求，然后给到前端
+    但服务器如果一直请求某个其它的服务器，有可能被block
+
+
+
+
+
+
+
+  Promise 有三个状态：
+
+    Pending（进行中）：初始状态，表示异步操作正在进行中，还没有完成。
+
+    Fulfilled（已完成）：表示异步操作已成功完成，并且返回了一个结果。
+
+    Rejected（已拒绝）：表示异步操作因某些原因失败，返回一个错误信息。
+
+    Promise 的构造函数接受一个执行器函数作为参数，该函数有两个参数：resolve 和 reject，它们是两个回调函数。
+    当异步操作成功完成时，调用 resolve 并传递结果；当异步操作失败时，调用 reject 并传递错误信息。
+
+
+
+    // 创建一个 Promise，模拟异步操作
+    const promise = new Promise((resolve, reject) => {
+      // 假设这里是一个异步操作，比如发起一个网络请求
+      setTimeout(() => {
+        const data = { message: "Hello, Promise!" };
+        // 异步操作成功，调用 resolve 并传递结果
+        resolve(data);
+        // 如果异步操作失败，调用 reject 并传递错误信息
+        // reject(new Error("Something went wrong."));
+      }, 1000);
+    });
+
+    // 使用 then 方法处理 Promise 的成功情况
+    promise.then((result) => {
+      console.log(result.message); // 输出：Hello, Promise!
+    }).catch((error) => {
+      console.error(error.message); // 如果出现错误，则输出错误信息
+    });
+    在上述代码中，我们创建了一个 Promise 对象，模拟了一个异步操作，使用 setTimeout 延时1秒。
+    在异步操作成功完成时，我们调用了 resolve 并传递了一个包含 message 属性的对象。
+    我们使用 then 方法来处理 Promise 成功的情况，并在回调函数中输出结果。
+    如果异步操作失败，我们可以调用 reject 并传递一个错误对象，然后通过 catch 方法来处理 Promise 失败的情况，并输出错误信息。
+
+
+
+
+
+      function co(generatorFunction) {
+    return new Promise((resolve, reject) => {
+      var generator = generatorFunction() // 生成器对象
+      var generated
+
+      try {
+        generated = generator.next() // 被生成出来的对象
+        tick()
+      } catch(e) {
+        reject(e)
+      }
+
+      function tick() {
+        if (generated.done == false) {
+          generated.value.then(value => {
+            try {
+              generated = generator.next(value) // 每次调用next又会生成出一个新的对象（对象里包含一个promise）
+              tick()
+            } catch(e) {
+              reject(e)
+            }
+          }, reason => {
+            try {
+              generated = generator.throw(reason)
+              tick()
+            } catch(e) {
+              reject(e)
+            }
+          })
+        } else {
+          // 当done为真时，generated.value就是函数的返回值
+          // 它理应成为其对应promise的结果
+          resolve(generated.value)
+        }
+      }
+    })
+  }
+
+
+
+  `response` 是指在进行网络请求后，服务器返回给客户端的响应对象。
+  在前端开发中，当我们使用 JavaScript 发起网络请求（比如通过 `fetch`、`XMLHttpRequest` 等方式），
+  服务器会返回一个包含响应数据、状态码、头部信息等的对象，这个对象就是 `response`。
+
+
+在浏览器环境中，`response` 对象通常包含以下属性和方法：
+
+1. `status`: 响应的状态码，表示服务器对请求的处理结果。常见的状态码有 200（成功）、404（未找到）、500（服务器错误）等。
+
+2. `statusText`: 响应的状态文本，与状态码对应的文本描述。
+
+3. `headers`: 响应头部信息，通常是一个 `Headers` 对象或类似对象，包含了服务器返回的头部字段信息。
+
+4. `url`: 响应的 URL 地址，表示请求的 URL 地址。
+
+5. `ok`: 表示响应是否成功，如果状态码在 200 到 299 的范围内，则为 `true`，否则为 `false`。
+
+6. `clone()`: 克隆当前的 `response` 对象。
+
+7. `text()`: 以文本格式获取响应数据。
+
+8. `json()`: 以 JSON 格式获取响应数据。
+
+9. `blob()`: 以二进制对象（`Blob`）格式获取响应数据。
+
+10. `arrayBuffer()`: 以 `ArrayBuffer` 格式获取响应数据。
+
+
+在使用 JavaScript 进行网络请求时，通常会处理 `fetch` 或 `XMLHttpRequest` 的返回值，
+也就是 `response` 对象。根据需要，可以使用 `response` 的不同方法来获取和处理服务器返回的数据。
+
+
+
+
+
+
+
+function getValue(v, time) {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(v);
+    }, time);
+  });
+}
+
+函数 getValue(v, time) 是一个用于模拟异步操作的函数，它接受两个参数 v 和 time，分别表示要返回的值和延时时间。
+函数返回一个 Promise 对象，该 Promise 在指定的延时时间后解析为传入的值 v。
+
+让我们来逐步解释这个函数：
+
+return new Promise((resolve) => { ... }): 在函数内部，我们通过 new Promise 创建一个 Promise 对象。
+Promise 构造函数接受一个执行器函数作为参数，
+该执行器函数包含两个参数：resolve 和 reject，它们分别用于解析（Fulfilled）和拒绝（Rejected） Promise。
+在这里，我们只使用了 resolve 参数，因为这个函数模拟的是成功解析的情况。
+
+setTimeout(() => { resolve(v); }, time): 在 Promise 的执行器函数中，我们使用 setTimeout 函数来模拟异步操作。
+setTimeout 接受两个参数，第一个是回调函数，第二个是延时时间（毫秒）。在这里，我们将延时时间设置为 time 毫秒。
+在延时结束后，回调函数会被调用。
+
+resolve(v): 在 setTimeout 的回调函数中，我们调用 resolve 参数并传入值 v。这样就会将 Promise 解析为传入的值 v，
+表示异步操作已成功完成。
+
+因此，当我们调用 getValue(v, time) 函数时，它会返回一个 Promise 对象。在指定的延时时间后，Promise 会成功解析为传入的值 v。
+这种模拟的异步操作在实际应用中常用于处理延时操作、异步数据获取等情况。
+在异步操作完成后，我们可以使用 .then() 方法来处理 Promise 解析后的结果。
+
+
+
+
+
+生成器函数
+
+生成器函数（Generator Function）是一种特殊类型的函数，它与普通函数有些不同，可以在函数执行过程中暂停和恢复执行。
+生成器函数使用 function* 语法来声明，并在函数体内使用 yield 关键字来产生值。
+
+生成器函数使用生成器对象（Generator Object）来进行迭代操作，通过 yield 关键字产生的值可以被逐步获取。
+生成器函数和生成器对象一起提供了一种更灵活的方式来处理异步操作、延时计算和大数据集的遍历。
+
+生成器函数的特点：
+
+使用 function* 声明：生成器函数通过 function* 关键字来声明，这告诉 JavaScript 解释器该函数是一个生成器函数。
+
+使用 yield 产生值：在生成器函数内部，使用 yield 关键字可以产生一个值，并将生成器函数的执行暂停在该位置。
+
+生成器对象：生成器函数返回一个生成器对象，这个对象可以通过迭代器协议（Iterator Protocol）进行迭代。
+
+暂停和恢复：每次调用生成器对象的 .next() 方法，生成器函数都会从上一次 yield 的位置恢复执行，直到遇到下一个 yield 或函数结束。
+
+示例代码：
+
+javascript
+Copy code
+function* generateNumbers() {
+  yield 1;
+  yield 2;
+  yield 3;
+}
+
+const generator = generateNumbers();
+
+console.log(generator.next()); // 输出：{ value: 1, done: false }
+console.log(generator.next()); // 输出：{ value: 2, done: false }
+console.log(generator.next()); // 输出：{ value: 3, done: false }
+console.log(generator.next()); // 输出：{ value: undefined, done: true }
+在上述代码中，我们定义了一个生成器函数 generateNumbers()，它使用 yield 关键字产生了三个值：1、2 和 3。
+通过调用生成器函数返回的生成器对象的 .next() 方法，我们可以逐步获取生成器函数产生的值。每次调用 .next() 方法，
+生成器函数会从上次 yield 关键字的位置继续执行，直到遇到下一个 yield 或函数结束。每次执行到一个 yield 语句时，
+生成器函数会产生一个值，并将该值作为生成器对象的 value 属性返回。
+
+生成器函数是异步编程中非常有用的工具，它能够以同步的方式编写异步代码，增加代码的可读性和易于维护性。通过使用生成器函数，
+我们可以更直观地处理异步操作和大数据集的遍历。
+
+
+
+
+
+
+generator = baa() // baa是一个异步生成器函数
+
+generated = generator.next() // next返回的是一个promise
+
+var obj = await generated
+
+while(obj.done === false) {
+  console.log(obj.value)
+  generated = generator.next()
+  obj = await generated
+}
+
+console.log(obj.value)
+
+
+
+
+
+
+
+
+
+
+
+forEach() 是 JavaScript 中数组的一个方法，用于遍历数组的每个元素，并对每个元素执行提供的回调函数。
+
+语法：
+
+array.forEach(callback(currentValue[, index[, array]])[, thisArg]);
+参数：
+
+callback：一个函数，用于在数组的每个元素上调用。它可以接受三个参数：
+currentValue：当前遍历到的元素的值。
+index（可选）：当前遍历到的元素的索引。
+array（可选）：正在遍历的数组。
+thisArg（可选）：在执行回调函数时使用的 this 值。
+forEach() 方法不会改变原数组，而是用于对数组元素进行遍历操作。
+它会按照数组的顺序依次遍历每个元素，并对每个元素执行回调函数。
+
+示例：
+
+const numbers = [1, 2, 3, 4, 5];
+
+// 使用 forEach() 遍历数组，并输出每个元素
+numbers.forEach((num) => {
+  console.log(num);
+});
+
+// 输出：
+// 1
+// 2
+// 3
+// 4
+// 5
+在上面的示例中，我们定义了一个数组 numbers，并使用 forEach() 方法遍历数组的每个元素，然后使用箭头函数输出每个元素的值。
+
+需要注意的是，forEach() 方法没有返回值，它只是对数组元素进行遍历操作。
+如果需要对数组元素进行转换或过滤等操作，可以考虑使用 map() 或 filter() 方法。
+
+
+
+require
+// 如果模块只想导出一个值，则直接给module.exports赋值这一个单一值即可
+// module.exports = 3.14
+// 如果模块想导出多个值，给exports这个对象增加多个属性即可
+// module.exports.f1 = xx, module.exports.f2 = yy
+// exports.f1 = xx,   exports.f2 = yy
+// 不能直接给形参赋值： exports = xxxx, module = yyyy, 直接给形参赋值，外界是完全不知道的
+// 因为形参根本就是函数的局部变量，外界根本就不访问不到
+// 只要最终module.exports指向想导出的内容即可。
+
+// exports = 8888
+
+// module.exports = exports
+
+
+
+es module导入导出规范:
+默认导出只能有一个，其后跟着的是一个值（表达式）
+具名导出可以有多个，其跟着的是一个具名声明(var,let,const,函数声明)
+
+导入其它模块的默认导出时
+import xxxx from 'yyy.js'
+xxxx可以随便自己命令，不跟当前文件内的名字冲突就可以
+
+导出其它模块的具名导出时
+import { foo } from 'zzz.js'
+import { bar } from 'zzz.js'
+只能导入其它模块的具名导出
+
+
+导入一个模块的所有导出
+import * as Mod1 from 'zzz.js'
+Mod1是一个对象，表示一个模块
+Mod1.default 指向该模块的默认导出
+Mod1.nameX 指向该模块的具名导出
+Mod1上的属性是不可变的
+当不熟悉一个模块（不了解它有什么具名导出）时使用
+
+
+通过导入创建的变量相当于是const，不能被赋值
+
+
+import xx  from  后面的字符串必须是静态字符串，不能涉及运算
+
+
+
+
+
+
+
+
+
+/**
+ *
+ *
+ *
+ * require
+ *   以“.”或“/”开头，直接解析路径
+ *   以单词开头，从node_modules文件夹解析路径
+ *     当解析到路径以后，如果路径存在
+ *        路径是文件
+ *          直接加载
+ *        路径是文件夹
+ *          如果文件夹里有package.json
+ *            则按其main字段指向的文件加载
+ *          如果不存在package.json
+ *            加载文件夹内的index.js
+ *     如果路径不存在
+ *      尝试添加.js扩展名，
+ *      尝试添加.json扩展名，
+ *      尝试添加.node扩展名,
+ *     如果在当前文件所在文件夹内的node_modules里找不到路径
+ *        则到当前文件所在文件夹的父文件夹内的node_modules里找
+ *   以“node:”开头，内置模块
+ *   内置模块
+ *
+ *
+ *   /foo/bar/baz/hello.js
+ *   /foo/bar/baz/node_modules/
+ *   /foo/bar/node_modules/
+ */
+
+
+
+
+
+
+
+
+
+
+ import fs from 'node:fs'
+
+const fsp = fs.promises
+
+fsp.readFile('hello.js', 'utf8').then(result => {
+  console.log('fsp',    result)
+})
+
+fs.readFile('aaaa.js',  (err, result) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log(result)
+  }
+})
+
+
+
+fs.writeFile('aaaa.txt', 'aaaa'.repeat(1000000), (err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('write success')
+  }
+})
+
+
+
+fs.readdir('.', (err, names) => {
+  console.log(names)
+})
+
+
+
+fs.stat('debugme.js', (err, info) => {
+  console.log(info)
+  /**
+   *
+   * Stats {
+  dev: 3068142648, // 文件所在设备编号
+  mode: 33206,     // 文件的模式(  读/写/执行   权限)
+  nlink: 1,        // 硬连接数量
+  uid: 0,
+  gid: 0,
+  rdev: 0,
+  blksize: 4096,  // 文件所在硬盘的分块大小
+  ino: 19984723347168090, // 文件的唯一编号
+  size: 757,  // 文件的大小
+  blocks: 8,  //
+
+  atimeMs: 1690964145802.439,
+  mtimeMs: 1690958341573.4314,
+  ctimeMs: 1690958341573.4314,
+  birthtimeMs: 1690948213972.5068,
+  atime: 2023-08-02T08:15:45.802Z,
+  mtime: 2023-08-02T06:39:01.573Z,
+  ctime: 2023-08-02T06:39:01.573Z,
+  birthtime: 2023-08-02T03:50:13.973Z
+}
+   *
+   *
+   */
+})
+
+
+
+
+
+
+
+
+
+// node --inspect debugme.js
+// 这--inspect会启动调试服务，但代码是正常运行的
+
+// node --inspect--brk debugme.js
+// --inspect-brk会启动调试服务，并且代码停在第一行，没执行，等待被用户点击调试器里的按钮执行
+
+// 调试器是用websocket在某个地址监听
+// 浏览器的DevTools连上去
+// 默认端口9229
+// 但如果想同时调试多个nodejs程序，需要换端口
+// 通过给--inspect=portNumber    --inspect-brk=portNumber
+// 但如果用非默认端口，浏览器那边不会扫描到它，因为浏览器默认只扫描默认端口
+// 需要在浏览器那边添加要扫描的地址
+
