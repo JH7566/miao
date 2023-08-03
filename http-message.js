@@ -33,14 +33,15 @@ server.on('request', (req, res) => {
 
     res.write(`
       <!doctype html>
-      <link rel="icon" href="" sizes="16x16">
-      <title>微微微微信</title>
+      <link rel="png" href="https://github.com/JH7566/miao/blob/master/%E5%BE%AE%E4%BF%A1.png?raw=true" sizes="32x32">
+      <title>微微信</title>
       <form method="POST" action="/leave-message">
         名字:<br>
         <input type="text" name="name"><br>
         消息:<br>
         <input type="text" name="message"><br>
-        <button>submit</button>
+        <br>
+        <button>提交</button>
       </form>
       ${result.map(msg => {
       return `<fieldset>
@@ -55,5 +56,5 @@ server.on('request', (req, res) => {
 })
 
 server.listen(端口, () => {
-  console.log('服务器在', 端口, '侦听')
+  console.log('服务器在', 端口, '偷听')
 })
