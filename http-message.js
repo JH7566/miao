@@ -33,7 +33,7 @@ server.on('request', (req, res) => {
 
     res.write(`
       <!doctype html>
-      <link rel="png" href="https://github.com/JH7566/miao/blob/master/%E5%BE%AE%E4%BF%A1.png?raw=true">
+      <link rel="png" href="https://github.com/JH7566/miao/blob/master/QQ.png?raw=true">
       <title>微微信</title>
       <form method="POST" action="/leave-message">
         名字:<br>

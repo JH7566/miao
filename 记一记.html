@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+
+<script>
+
+  decodeURIComponent() //反转译
+
+
+  try {
+    var a = decodeURIComponent("%E0%A4%A");
+  } catch (e) {
+    console.error(e);
+  }
+
+  // URIError: malformed URI sequence
+
+
+  const path = require('node:path')
+
+  path.join()
+  // 函数用于路径拼接文件路径，可以传入多个路径
+  // 如果不存在以’/’开始的参数，则函数会自动加上
+
+
+
+  // 存在以‘’/’’开始的参数，从最后一个以”/”开头的参数开始拼接，之前的参数全部丢弃。
+  path.join('aaa', '/bbb', 'ccc.txt')
+    / bbb\ccc.txt
+
+  // 同时存在以‘’./’与‘’/’’开始的参数，以‘’/’为主，从最后一个以”/”开头的参数开始拼接，之前的参数全部丢弃。
+
+  path.join('/aaa', './bbb', 'ccc.txt')
+    / aaa\./bbb\ccc.txt
+
+  // 只存在以‘’./’开始的参数,会从”./”开头的参数的上一个参数开始拼接。
+  path.join('aaa', './bbb', 'ccc.txt')
+  aaa\./bbb\ccc.txt
+
+
+
+
+
+
+
+
+
+
+
+
+  var c = 0
+  var start = Date.now()
+
+  var ary = [function a() {
+    c++
+    if (Date.now() - start < 1000) {
+
+      ary.push(a)
+    } else {
+      console.log(c)
+    }
+  }]
+
+
+  while (ary.length) {
+    f = ary.shift()
+    f()
+  }
+
+
+  // 模拟nextTick队列的清空
+
+
+
+
+
+
+  async function foo() {
+    console.log(1)
+    await Promise.resolve(2) // .then(f)
+    console.log(3)
+    await Promise.resolve(7) // .then(f2)
+    console.log(8)
+  }
+
+  async function bar() {
+    await Promise.resolve(6) // .then(f3)
+    console.log(5)
+  }
+
+  console.log(4)
+  foo()
+  bar()
+
+
+  微任务在每次调用栈清空时运行, 且要运行到微任务队列为空
+  运行微任务队列的时候如果微任务队列继续变长, 则也要运行到将其清空
+  如果宏任务队列中有多个任务, 当每个任务运行完时, 都要检查微任务队列, 如果非空, 将其执行到空以后才能开始下一个宏任务
+
+
+  setTimeout(() => {
+    console.log(1)
+    queueMicrotask(() => {
+      console.log('a')
+      queueMicrotask(() => {
+        console.log('c')
+      })
+    })
+  })
+
+  setTimeout(() => {
+    console.log(2)
+    queueMicrotask(() => { console.log('b') })
+  })
+
+  var start = Date.now()
+
+  while (Date.now() - start < 300) {
+
+  }
+
+
+
+
+
+
+  var mo = new MutationObserver(() => {
+    console.log('dom changed')
+  })
+  mo.observe($0, {
+    attributes: true,
+    childList: true, subtree: true
+  })
+
+
+
+
+
+  浏览器:
+  宏任务:
+  setTimeout / setInterval
+  事件回调 / 如ajax回调, 元素事件回调
+  微任务:
+  queueMicrotask
+  promise的回调
+  MutationObserver(它可以监控dom元素的变化)的回调
+  任何时候调用栈清空了就要检查有没有攒下来的微任务要运行, 如果有, 就运行直到微任务队列清空为止
+
+  Node中:
+  nextTick队列也是任务时候调用栈清空就要检查, 然后运行直到它空
+  promise回调队列也一样, 但当两个队列都不为空时, 先检查和执行nextTick的队列
+
+
+</script>

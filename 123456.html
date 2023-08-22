@@ -1,0 +1,174 @@
+<!-- 定义文档类型和语言 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- 元信息 -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <!-- 样式定义 -->
+  <style>
+    /* 已完成任务的样式 */
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+
+    /* 输入元素的样式 */
+    input {
+      outline: none;
+      user-select: none;
+      border: 1px solid;
+    }
+
+    /* 只读输入元素的样式 */
+    input:read-only {
+      border-color: white;
+    }
+
+    /* 根据筛选条件隐藏已完成任务 */
+    ul.visible-active li.completed {
+      display: none;
+    }
+
+    /* 根据筛选条件隐藏未完成任务 */
+    ul.visible-completed li:not(.completed) {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 主容器 -->
+  <div class="container">
+    <!-- 标题 -->
+    <h1>todos</h1>
+    <!-- 用于添加新任务的输入部分 -->
+    <div>
+      <input type="checkbox" class="toggle-all" @click="toggleAll()"
+        :checked="todos.length && todos.every(it => it.completed)">
+      <input type="text" @keyup.enter="addTodo($event)" placeholder="需要做什么？">
+    </div>
+    <ul id="todo-list" :class="`visible-${visibleTodos}`">
+      <li :class="todo.completed ? 'completed' : 'active'" v-for="(todo, idx) of 计算出需要显示的(todos)">
+        <input data-index="0" type="checkbox" :checked="todo.completed" @change="changeTodoState(idx)">
+        <span v-show="editIdx !== idx" @dblclick="edit(idx)">{{ todo.content }}</span>
+        <input
+          @keyup.enter="todo.content = $event.target.value.trim();editIdx = -1"
+          @blur="todo.content = $event.target.value.trim();editIdx = -1" @keyup.escape="editIdx = -1"
+          v-show="editIdx == idx" type="text" :value="todo.content">
+        <button @click="deleteTodo(idx)">&times;</button>
+      </li>
+    </ul>
+    <!-- 底部部分 -->
+    <div>
+      <!-- 显示未完成任务的数量 -->
+      <span><em>{{ todos.filter(it => !it.completed).length }}</em> 项任务未完成</span>
+      <!-- 筛选任务的选项 -->
+      <div class="visible-select">
+        <label><input type="radio" @click="visibleTodos = $event.target.value" value="all" name="visible-todos" checked>
+          全部</label>
+        <label><input type="radio" @click="visibleTodos = $event.target.value" value="active" name="visible-todos">
+          未完成</label>
+        <label><input type="radio" @click="visibleTodos = $event.target.value" value="completed" name="visible-todos">
+          已完成</label>
+      </div>
+      <!-- 清除已完成任务的按钮 -->
+      <button @click="clearCompleted()" v-show="todos.some(it => it.completed)">清除已完成任务</button>
+    </div>
+  </div>
+
+  <!-- 用于附加注释或解释的文本区域 -->
+  <textarea cols="100" rows="100">
+    <!-- 代码中使用的语法 -->
+    :attr="expr" - 属性绑定
+    @event="statement" - 事件绑定，事件对象通过$event访问
+    v-for="(val,index) of array" - 循环语句用于重复
+    v-show="expr" - 控制元素的显示与隐藏（表达式为真时显示）
+    @keyup.enter - 事件绑定，附加“enter”键修饰符
+    <input :checked="expr" > - 复选框和单选按钮选中状态绑定
+    <span>{{ expr }}</span> - 内容插值
+  </textarea>
+
+  <!-- 引入Vue.js库 -->
+  <script src="./vue-2.7.14.js"></script>
+  <script>
+    // 初始化Vue.js应用
+    var app = new Vue({
+      el: '.container',
+      data: {
+        // 从localStorage获取初始任务数据，如果没有则使用默认任务
+        todos: JSON.parse(localStorage.getItem('todos')) ?? [
+          { content: '吃饭', completed: true },
+          { content: '喝水', completed: false },
+          { content: '睡觉', completed: true }
+        ],
+        visibleTodos: 'all', // 显示任务的筛选条件
+        editIdx: -1 // 正在编辑的任务的索引
+      },
+      watch: {
+        // 监听todos的变化并保存到localStorage
+        todos: {
+          deep: true,
+          handler: function () {
+            localStorage.setItem('todos', JSON.stringify(this.todos));
+          }
+        }
+      },
+      methods: {
+        // 开始编辑一个任务
+        edit(idx) {
+          this.editIdx = idx;
+        },
+        // 计算并返回基于筛选条件的任务列表
+        计算出需要显示的() {
+          if (this.visibleTodos == 'completed') {
+            return this.todos.filter(it => it.completed);
+          } else if (this.visibleTodos == 'active') {
+            return this.todos.filter(it => !it.completed);
+          }
+          return this.todos;
+        },
+        // 清除已完成任务
+        clearCompleted() {
+          this.todos = this.todos.filter(it => !it.completed);
+        },
+        // 添加新任务
+        addTodo(e) {
+          var text = e.target.value.trim();
+          if (text) {
+            this.todos.push({
+              content: text,
+              completed: false
+            });
+            e.target.value = '';
+          }
+        },
+        // 删除任务
+        deleteTodo(idx) {
+          this.todos.splice(idx, 1);
+        },
+        // 切换任务的完成状态
+        changeTodoState(idx) {
+          this.todos[idx].completed = !this.todos[idx].completed;
+        },
+        // 切换所有任务的完成状态
+        toggleAll() {
+          if (this.todos.every(it => it.completed)) {
+            this.todos.forEach(it => {
+              it.completed = false;
+            });
+          } else {
+            this.todos.forEach(it => {
+              it.completed = true;
+            });
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
