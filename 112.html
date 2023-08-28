@@ -1,0 +1,75 @@
+
+< !DOCTYPE html >
+  <html lang="en">
+
+    <head>
+      <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>提交界面</title>
+          <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+          <script src="lodash.js"></script>
+        </head>
+        <body>
+          <div id="app">
+            <ul >
+              <!-- 遍历json -->
+              <li v-for="(item,idx) of items">
+                <!-- 展示问题 -->
+                <div class="showBox">
+                  {{ item.question }}
+                </div>
+
+                <div class="answerEditor">
+                  <textarea @input="autosave(item)" v-model="item.answer" id="" cols="30" rows="10">
+                </textarea>
+                <!-- 最后修改时间 -->
+                <i>{{ new Date(item.lastModified).toLocaleString() }}</i>
+              </div>
+
+            </li>
+          </ul>
+          <button @click="submit">submit</button>
+      </div>
+      <script>
+        var app = new Vue({
+          el: "#app",
+
+        data: {
+          items: [],
+      },
+
+        methods: {
+          submit() {
+          //提交
+          console.log("submit.......")
+          fetch('http://10.3.3.3:33312/exam/11', {
+          method: 'post',
+        body: JSON.stringify(app.items)
+          })
+        },
+
+        //自动保存
+        autosave: _.debounce((item)=>{
+          console.log("submit.......")
+          item.lastModified = new Date().toJSON()
+        fetch('http://10.3.3.3:33312/exam/11', {
+          method: 'post',
+        body: JSON.stringify(app.items)
+          })
+        },2000)
+      },
+
+        mounted() {
+          //请求数据
+          fetch('http://10.3.3.3:33312/exam/11', {
+            headers: {
+              ck: document.cookie,
+            },
+          }).then(it => it.json())
+            .then(it => this.items = it)
+        }
+    })
+
+      </script>
+    </body>
+  </html>

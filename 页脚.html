@@ -1,0 +1,42 @@
+
+  <template>
+    <div>
+      <ul class="pagination">
+        <li v-if="currentPage > 1" @click="changePage(currentPage - 1)">上一页</li>
+        <li v-for="pageNumber in totalPages" :key="pageNumber" @click="changePage(pageNumber)">
+          {{ pageNumber }}
+        </li>
+        <li v-if="currentPage < totalPages" @click="changePage(currentPage + 1)">下一页</li>
+
+      </ul>
+    </div>
+  </template>
+
+  <script src="vue-2.7.14.js"></script>
+
+  <script>
+    Vue.component('container', {
+      data() {
+        return {
+          currentPage: 1,
+          itemsPerPage: 6,
+          totalItems: 30
+        };
+      },
+      computed: {
+        totalPages() {
+          return Math.ceil(this.totalItems / this.itemsPerPage);
+        }
+      },
+      methods: {
+        changePage(newPage) {
+          if (newPage >= 1 && newPage <= this.totalPages) {
+            this.currentPage = newPage;
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

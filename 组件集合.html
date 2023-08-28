@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 点击查看信息 */
+    .container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 50px;
+    }
+
+    .查看电脑 button {
+      width: 80px;
+      height: 30px;
+    }
+
+    p {
+      margin: auto;
+      border: 1px solid;
+      width: 500px;
+      height: 300px;
+    }
+
+
+
+    /* 上/下一页 */
+    .page {
+      display: flex;
+      justify-content: center;
+    }
+
+    .page button {
+      line-height: 2em;
+      margin: 2px;
+    }
+
+    .selected {
+      background-color: rgb(190, 177, 219);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <counter></counter>
+  </div>
+
+  <div class="nextPage">
+    <counter></counter>
+  </div>
+
+
+  <script src="vue-2.7.14.js"></script>
+  <script>
+
+    Vue.component('counter', {
+      template: `
+      <div class="查看电脑">
+        <button @click="updateCount('MT750S自由掌控着工作与生活，饱满握感曲线，菱格防滑侧翼，大手型人体工学。600-3200DPI四档DPI，一键切换+适应多种介质表面，内置锂电，充电3小时可续航30天左右。拥有无线2.4G/蓝牙3.0/蓝牙4.0三模式，通过设备切换键，最多可在4个设备之间切换（1个2.4G设备+3个蓝牙设备），并且在鼠标的左侧设备指示灯显示鼠标当前所属状态。')">鼠标</button>
+        <button @click="updateCount('爱国者A100键盘不到200元的价格，配置方面却给到了2.4G+有线双模、PBT双色注塑球帽、全键热拔插以及内置的锂电池，简直不要太香。爱国者A100不但有着简约耐看的外观和复古的配色设计，摆在桌上可谓赏心悦目，而且其100键的按键布局设计以及无线双模功能还可以轻松满足游戏与办公需求，加上双色注塑PBT球帽、K黄轴以及全键热拔插的设计，手感和可玩性方面也得到了保障。')">键盘</button>
+        <button @click="updateCount('在整个 RTX 30 系列显卡的生命周期中，拯救者 Y9000P 这套模具都可以说是冠绝群雄。在性能、屏幕、接口、做工等几乎所有维度都无可挑剔。也因此今年以来价格一直都居高不下。相比之下，Y9000P 有个特殊的版本：12 代酷睿 i9-12900H+RTX 3060，在双 11 降到了 9000 元出头的档位，降价幅度不可谓不大。整机三围约 360×264×26.85mm，裸机重量仅 2.58kg，在游戏本中还是比较薄的，但相当沉。A 面依旧是全金属 + 大 Y 灯的设计。分辨率为 2.5K、2560*1600，比例为 16:10，同时它也支持 165Hz 的高刷新率和 OD 加压，在游戏环节占尽先机。左侧是一个雷电 4 接口、一个全功能 Type-C 接口；右侧是一个 USB-A 口、一个 3.5mm 耳机接口和一个摄像头物理开关；后面依次是一个电源接口、两个 USB-A 口、一个 HDMI 2.1 接口、一个全功能 Type-C 接口和一个千兆网口。')">Y9000p</button>
+        <p>{{ count }}</p>
+      </div>
+      `,
+      methods: {
+        updateCount(item) {
+          this.count = `${item}`
+        },
+      },
+      data: function () {
+        return {
+          count: '请点击按钮查看信息',
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '.container',
+
+    })
+
+
+    // 上/下一页
+
+    Vue.component('counter', {
+      props: {
+        total: {
+          type: Number,
+          default: 100,
+        },
+        defaultCurrent: {
+          type: Number,
+          default: 5,
+        }
+      },
+      template: `
+        <div class="page">
+          <button @click="prevPage">上一页</button>
+          <button @click="goPage(page)" :class="{'selected': page === nowPage}" v-for="page of pageCount"> {{ page }} </button>
+          <button @click="nextPage" >下一页</button>
+           <select class="border" v-model="pageSize">
+            <option :value="10">10 条/页</option>
+            <option :value="20">20 条/页</option>
+            <option :value="50">50 条/页</option>
+            <option :value="100">100 条/页</option>
+          </select>
+        </div>
+        `,
+
+      methods: {
+        prevPage() {
+          this.nowPage--
+          if (this.nowPage <= 1) {
+            this.nowPage = 1
+          }
+        },
+        nextPage() {
+          if (this.nowPage < this.pageCount) {
+            this.nowPage++;
+          }
+        },
+        goPage(page) {
+          this.nowPage = page
+        }
+      },
+
+      data() {
+        return {
+          pageSize: 10,
+          nowPage: this.defaultCurrent,
+        }
+      },
+      computed: {
+        pageCount() {
+          with (this) {
+            return Math.ceil(total / pageSize)
+          }
+        }
+      },
+    })
+
+    var app = new Vue({
+      el: '.nextPage',
+
+    })
+  </script>
+
+</body>
+
+</html>

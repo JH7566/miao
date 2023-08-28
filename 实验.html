@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="app">
+    <json-view></json-view>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+
+  <script>
+    Vue.component('json-view', { // 添加逗号
+      template: `
+      <div>
+        <h1>考试</h1>
+        <div v-for="(问题, index) in questions" :key="index">
+          <h2>{{ 问题.question }}</h2>
+          <input v-model="问题.answer" type="text">
+        </div>
+        <button @click="submitAnswers">提交</button>
+      </div>
+    `,
+      data() {
+        return {
+          questions: [], // 存储题目列表
+        }
+      },
+      async created() {
+        this.questions = await this.fetchQuestions() // 在组件创建时获取题目
+      },
+      methods: {
+        async fetchQuestions() {
+          // 获取题目列表的方法
+          const response = await fetch('http://10.3.3.3:33312/exam/11', {
+            headers: {
+              'ck': document.cookie,
+            },
+          })
+          const data = await response.json()
+          return data.questions // 返回题目列表
+        },
+        async submitAnswers() {
+          // 提交回答的方法
+          const answers = this.questions.map(question => question.answer)
+          const response = await fetch('http://10.3.3.3:33312/exam/11', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/fjson',
+            },
+            body: JSON.stringify({ questions: answers }), // 提交回答
+          })
+          if (response.ok) {
+            alert('提交成功')
+          } else {
+            alert('提交失败')
+          }
+        },
+      },
+    })
+
+    new Vue({
+      el: '.app'
+    })
+  </script>
+
+</body>
+
+</html>
