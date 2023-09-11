@@ -1,0 +1,701 @@
+handle
+  句柄,把手
+  就是对某个资源(一般是文件,网络连接,进程,线程)的一个引用
+  在系统最底层往往就是一个整数
+  很多操作相关资源的函数或方法都是要表示该资源的句柄做为参数的
+  扩充之后可以表达对任何稍微复杂的对象的引用
+
+async await 的本质
+  生成器函数
+  按照特定方式执行的生成器函数
+
+生成器函数是如何编译的?
+  是被编译为普通函数
+  里面是一个switch语句
+  原函数中有多少个yield,编译结果的swith语句中就有多少个case
+
+试题:
+  GET  http://10.3.3.3:33312/exam/7
+  POST  http://10.3.3.3:33312/exam/7
+    请求体就是所有问题的回答
+       [
+        {answer,question,lastModified}
+       ]
+循环引用
+  当模块间存在循环引用时,一个模块就会在require stack中再次被引用
+  此时不能重新加载并运行这个模块,否则就会陷入无穷递归
+  而是在它第二次被引用时就不再加载它,而是返回它
+  但如何返回?
+  返回的是第一次加载它时已经为它创建的导出对象
+  只不过此时是空的
+  模块系统在第一次加载每个模块时,在模块运行前就将它的导出对象创建出来了并放到了缓存上
+  这样一来第二次require就可以直接从缓存中返回
+
+  需要注意:
+    不要替换默认导出对象
+        module.exports = xxxx
+只有模块都加载完以后才访问对方的接口
+
+
+
+CORS预检请求
+  在发送非简单请求前先发一个预检请求
+  预检请求的请求方法是OPTIONS
+  预检请求其实是在询问服务器当前客户端能否发送某种请求
+  某种: 特定的请求方法, 特定的请求头, 当前域能否发
+  服务器会响应一个行与不行, 以及还有一些其它的信息, 如这个行不行有效期是多久
+  200    Access - Control - Allow - Origin: *;
+
+常见跨域方案:
+JSONP
+利用script标签加载其它域的脚本不受跨域限制来实现的
+加载的是一个服务生成的函数调用代码, 调用被传入了数据
+
+
+协商缓存
+Etag / If - None - Match
+Last - Modifed / If - Modified - Since
+
+
+排队:
+火车站买票排队
+奶茶店排队
+扫码点餐
+
+
+
+
+3、pnpm/npm install 干了什么？
+  注意不是 npm install xxxx
+  而是 npm  install
+  是读取了package.json文件,安装里面声明的当前项目的所有依赖
+
+
+4、什么是工作目录?如何获取当前进程的工作目录？
+
+1.当前正在运行的进程在文件系统中所处的路径
+2.process.cdw()
+
+
+5、什么是命令行参数?如何获取命令行参数?
+
+  程序在命令行通过命令的方式执行时,在命令后跟的那些文字
+  node  aaa.js -a -d 3
+  process.argv
+
+7、异步相比于多线程的好处是什么？
+  更简单
+    不存在线程中同步,死锁,竞态等问题
+    这些问题比异步的回调更难理解,也更难编程
+  更节省资源
+    异步本身是基于多线程的
+
+8、"异步是有传染性的"这句话是什么意思?
+
+  如果一个函数里面使用了另一个异步函数
+  并且依赖这个异步函数的结果
+  则它自己也只能是异步的
+  同步可以转异步
+  但异步转不了同步
+
+9、如何让调试器进入回调函数内部?
+
+在需要进入的函数中添加断点，在调试器中恢复执行，就会停在断点处。
+
+10、pnpm为什么快?
+
+  1. 它会缓存已经下载过的包
+    不过缓存的方式是重建后通过Content Addressable Store存储
+  2. 它将包安装到项目目录里的时候,几乎都建连接(文件是硬连接,文件夹软连接)
+    创建软硬连接的速度当然是明显快于创建实际文件的速度
+
+11、什么是蟹棒?干啥用的?
+
+脚本程序第一行的
+#!/usr/bin/env node
+#!/usr/bin/env python
+
+node xxx.js
+
+要想shebang语法正确运行,文件还需要有执行权限
+chmod +x xxx.js
+chmod 777 xxx.js
+
+
+12、快捷方式,符号链接,硬链接分别是什么?区别是什么?
+
+快捷方式就是lnk格式的文件,是windows上专为快捷方式创建的文件格式
+软连接/符号连接 都基本上可以当成一个文件来使用
+文件夹只能有软连接
+硬连接是不能跨盘的
+软连接是指向硬连接的
+硬连接就是在文件系统中看到一个个具体的文件,
+硬连接指向inode结点的
+两个硬连接如果指向同一个文件的inode结点
+则改变其中一个文件另一个也会改
+如果将软连接指向的目标删掉,则软连接也会失效
+
+
+13、node的http模块基于什么?它在背后帮我们做了什么?
+
+基于tcp模块,当我们创建http服务器的时候
+它其实在背后创建tcp服务器
+然后当它在接收到tcp连接时,会判断连接上的数据是不是http格式
+通过这个tcp连接及其上收到的数据封装出了req和res对象
+如果是,帮我们解析请求头,如果不是,帮我们关掉这个连接
+以及当我们调用它上面的方法时,它会跟据传入的参数来帮我们按http报文格式发回响应
+
+
+14、说一下你对Buffer和ArrayBuffer的理解,简要说一下ArrayBuffer的使用方式
+这两个东西本质是一样的
+都是表示原始内存片段,速度很快
+buffer直接可以调用上面的一系列函数就可以对这段内存进行各种方式的读写
+而ArrayBuffer则必须为它创建视图,或TypedArray来操作
+而且每种TypedArray只能按一种方式来操作这个段内存
+如果想用各种不同的方式来操作同一段内存,需要针对同一个ab对象创建多个不同的DateView
+
+
+
+15、如何用nodejs读取文件内的任意部分?
+
+  用fs.open打开文件,获取文件的句柄
+  然后调用fs.read()传入相应的参数
+
+
+
+https://nodejs.org/dist/latest-v20.x/docs/api/child_process.html#class-childprocess
+
+
+
+// 接收一个node回调风格的函数
+// 返回功能相同的promise风格的函数
+function promisify(callbackBasedFunc) {
+  return function promiseBasedFunc(...args) {
+    return new Promise((resolve, reject) => {
+      callbackBasedFunc(...args, (err, result) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve(result)
+        }
+      })
+    })
+  }
+}
+
+
+
+// 接收一个promise风格的函数
+// 返回该函数的回调风格版本
+function callbackify(promiseBasedFunc) {
+  return function callbackBasedFunc(...args) {
+    var callback = args.pop()
+    promiseBasedFunc(...args).then(result => {
+      callback(null, result)
+    }, err => {
+      callback(err)
+    })
+  }
+}
+
+
+
+class EventEmitter {
+
+  constructor() {
+    this._events = {
+      // click: [f, f, f],
+    } // 用来保存事件名与该事件处理函数的映射关系
+  }
+
+  on(eventName, handler) {
+    if (this._events[eventName] == null) {
+      this._events[eventName] = []
+    }
+    this._events[eventName].push(handler)
+  }
+
+  off(eventName, handler) {
+
+  }
+
+  once(eventName, handler) {
+
+  }
+
+  emit(eventName, ...args) {
+    var handled = false
+    for (var handler of this._events[eventName] ?? []) {
+      handler.call(this, ...args)
+      handled = true
+    }
+    return handled
+  }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 1、Stream最主要的目的是什么?
+限制内存占用在一个设定范围内
+
+2、可读流的pipe方法的作用是什么?它返回什么?
+将可读流的数据导向到一个可写流，并返回该可写流
+同时会自动协调两者的处理速度
+如果可写流速度较慢，它会自动在可写流缓冲满后暂停可读流
+
+3、做为流的实现者和使用者时,我们分别关心什么?
+
+做为实现者
+  做为可读流的实现者：关心数据从哪来，并放入流的缓冲区（this.push())
+  做为可写流的实现者：关心使用者写入的数据的去向（是发出去？还是写入文件？还是。。。）
+做为使用者
+  做为可读流的使用者：关心里面读出的数据是什么，然后处理它
+  做为可写流的使用者：关心入里面写入什么数据，以及当wrtiable.write()返回false时，暂停写入
+
+4、Stream API的实现者关心的是什么 ?
+  stream api是一个调度系统，所以他们关心数据的调度
+  （即什么时候把数据给到哪里）
+
+5、如何理解双工流 ?
+  即可读又可写
+  即可以当做可读流，也可以当做可写流
+
+6、为什么前端到很晚才有流,而前端以外的的各种语言和编程环境很早就有流的概念了?
+  前端早期只在页面里处理一些非大量数据的逻辑，对流没有需求
+  而其它的编程环境一直都有处理大量数据的需求，同时也有内存占用的限制
+
+7、npm install xxx 与 npm install -g xxx 与 npm install有什么区别?
+npm install xxx 在当前项目文件夹的node_modules里安装模块，一般为了在代码里require/import
+npm install -g xxx 将模块安装到全局，一般是安装一个命令行工具
+npm install 通过package.json/package-lock.json安装项目所有依赖
+
+8、以下代码输出什么?为什么?该代码实际想干什么?如何实现?
+
+var a = [1,2,null,4,null].forEach(it => it == null ? it = 0 : it)
+  a.forEach((it, idx) => {
+    if (it == null) {
+      a[idx] = 0
+    }
+  })
+console.log(a)  // undefined,因为原生数组的forEach方法不返回东西
+var a = [1,2,null,4,null].map(it => it == null ? 0 : it)
+
+
+
+9、实现一个Bookmarket(书签小程序)，点击时能自动在leetcode中英文/nodejs文档中文英之间跳转，在中文版时跳到英文版，反之亦然。
+  需要注意对应的网站是否存在
+
+10、进程和线程有什么区别 ?
+  进程就是任务管理器中能看到那一个个条目
+    不同进程间不能共享数据，但是般是通过其它手段传输数据的
+  线程是进程内可以开启的多个代码的执行序列
+    同一个进程内的多个线程可以共享数据
+
+
+
+11、一句话介绍Node以下几个模块的作用: url, querystring, path, readline, repl, cluster, vm, events, utilities, zlib, dns, udp, net
+url: url编解码
+querystring: 解析querystring字符串
+path: 处理路径
+readline: 从命令行中读取用户的输入
+repl: 基于readline模块的交互式命令行的分装
+cluster: 多个进程之间共享一个端口,以提高机器的利用效率
+vm: 虚拟机,沙盒
+events: 事件处理
+utilities: 工具函数库
+zlib: 压缩解压
+dns: dns服务相关
+udp: 创造和操作udp
+net: 创建和操作tcp
+
+
+12、什么是一个进程的标准输入输出流 ?
+  每个进程都可以接收外部输入的
+  也可以向外输出内容
+  还可以向外输出错误内容
+  而这两者被以流的形式（stdin，stdout，stderr）封装并提供了接口
+
+13、实现一个返回Promise的get(url)函数,请求一个资源,但该资源可能请求失败,这个函数最多尝试5次,5次都尝试失败就放弃并报错.加分项: 失败后的下一次请求多等一会,逐次等待更久的时间.
+
+async function get(url) {
+  for (var i = 0; i < 5; i++) {
+    try {
+      await delay(i * 1000)
+      return await fetch(url).then(it => it.raw())
+    } catch (e) {
+      continue
+    }
+  }
+  throw new Error('尝试了5次都没成功')
+}
+
+14、什么是幂等 ?
+  一次和多次执行没有区别
+
+15、面试被问到算法题的话,应该如何"聪明"的表现?
+  写完以后要给面试管分析算法的复杂度
+
+16、什么是进程树 ?
+  一个进程A可以启动一个进程B，默认情况下，这个被启动的进程B就是A进程的子进程
+  父子关系当然也就形成了树状结构
+  进程之间形成的树状结点叫进程树
+
+17、父子进程间可以怎样通信/数据交换?
+  父子进程间可以通过标准输入输入出流来
+    父进程可以访问子进程的输入输出流（反过来不可以）
+  非父子进程可以通过“信号”
+  进程A可以开一个TCP服务器，进程B可以连接到这个服务器
+
+
+
+
+function 将每个属性都改成gettersetter(obj, onChange = () => {}) {
+
+  for (let key in obj) {
+    let value = obj[key]
+
+    Object.defineProperty(obj, key, {
+      get: function () {
+        return value
+      },
+      set: function (val) {
+        if (val !== value) {
+          value = val
+          onChange()
+        }
+      }
+    })
+
+  }
+  return obj
+
+}
+
+
+
+
+
+function 将每个属性都改成gettersetter(obj, onChange = () => {}) {
+  var 安排了 = false
+  for (let key in obj) {
+    let value = obj[key]
+
+    Object.defineProperty(obj, key, {
+      get: function () {
+        return value
+      },
+      set: function (val) {
+        if (val !== value) {
+          value = val
+          if (!安排了) {
+            queueMicrotask(() => {
+              安排了 = false
+              onChange()
+            })
+            安排了 = true
+          }
+        }
+      }
+    })
+
+  }
+  return obj
+
+}
+
+
+
+
+function observe(obj, onChange = () => {}) {
+  var 安排了 = false
+  for (let key in obj) {
+    let value = obj[key]
+    if (value && Object.prototype.toString.call(value) == '[object Object]') {
+      observe(value)
+    }
+    Object.defineProperty(obj, key, {
+      get: function () {
+        return value
+      },
+      set: function (val) {
+        if (val !== value) {
+          if (val && Object.prototype.toString.call(val) == '[object Object]') {
+            observe(val)
+          }
+          value = val
+          if (!安排了) {
+            queueMicrotask(() => {
+              安排了 = false
+              onChange()
+            })
+            安排了 = true
+          }
+        }
+      }
+    })
+
+  }
+  return obj
+
+}
+
+
+
+
+1、使用vue3的组合式api写法，如何获取元素的ref?
+<div ref="a"></div>
+<script setup>
+var a=ref(null)
+</script>
+
+当页面渲染后 a.value就是元素的ref
+
+2、为什么自定义组合式函数要以use开头?可以不以它开头吗?
+为了表明它是组合式函数，只能用在组件的setup里，用在别处可能会报错或无效
+可以不以use开头。
+
+3、js语言能否监控一个变量的变化?
+除了全局变量以外，其它变量是不能监控的
+为什么呢？因为全局变量可以被设定为window的getter/setter。
+
+4、vue3组合式api相对比选项式api来讲有什么好处?
+更容易做逻辑复用
+即某个逻辑要在多个组件中使用时，用组合式api可以将其抽出来
+然后把抽出来的函数在每个组件里调用就可以了
+
+function useDarkMode() {
+  var isDarkMode = ref(isDarkModeTim())
+
+  watchEffect(() => {
+    if (isDarkMode.value) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  })
+
+  return isDarkMode
+}
+
+5、vue3的响应式系统是基于什么实现的?与vue2的有什么不同?
+基于proxy。
+
+区别：实现不同，v2是基于Object.defineProperty的getter/setter
+性能更好，因为proxy不必把每个属性转换成g/s
+能够对对象进行更全面的监控，对数组的下标直接赋值也可以触发更新
+
+6、Vue中上层组件如何向间隔好几层的下层组件直接传递信息?
+上层组件使用provide（‘属性名’，属性值）选项传递数据，下层组件使用inject（‘属性名’）获取数据
+
+通过 EventBus：不同组件拿到同一个事件触发器的，在上面监听及触发事件，就可以实现相互沟通
+  这种做法跟组件在什么层次是没有关系的，兄弟组件之间可以，父子可以，父孙也可以
+
+
+
+7、组合式api中的watch与watchEffect有什么区别?
+  watch(source, callback)
+  watch(() => getter.value, callback)
+  watch([source, f], callback)
+
+  watchEffect(() => {})
+
+8、只使用<script setup>时如何获取组件的props?
+var props = defineProps({
+  name: String,
+  age: Number,
+}])
+
+
+9、只使用<script setup>时如何获取包裹在组件开始与闭合标签之间的子元素们?
+var slots = useSlots()
+var vnodes = slots.default()
+var nodes = slots.left()
+
+10、只使用<script setup>时如何让组件向外暴露属性或方法?
+  defineExpose({属性和方法})
+
+
+
+11、defineProps,defineEmits,defineExpose,defineOptions,defineSlots都是干嘛的?它们是普通的函数调用吗?
+var props =
+
+12、vuex与pinia有什么主要的区别?
+pinia可以使用类似组合式api的写法
+vuex是不行的
+
+pinia把一些概念简化了
+  pinia可以直接在store.xxx = yyy这样的方式修改数据
+  vuex只能store.commit('mutation function')的方式来修改数据
+  pinia不区分mutations和actions，pinia里只有actions，里面同步异步都可以
+
+
+13、使用<script setup>的写法实现轮播图,翻页器,tabs组件
+
+可以使用以下链接地址在stackblizt网站上创建项目,建议登陆该网站以保存该项目在自己名下以防以后找不到
+
+https://stackblitz.com/fork/github/vitejs/vite/tree/main/packages/create-vite/template-vue?file=index.html&terminal=dev
+
+写好后将项目地址贴过来
+
+
+14、用组合式api的方式实现考试系统,链接及请求等见前一次测试第一题
+
+
+
+
+
+1、用React实现Counter的代码粘贴过来
+
+预览
+2、用React实现Todo的代码粘贴过来
+
+预览
+3、jsx语法的实质是什么?
+
+默认是编译为React.createElement函数的调用，但经过配置也可以让它编译为其它函数的调用
+并且这个函数可以由用户自行实现
+相当于是一个表达式，值
+
+4
+3 4 5 6 7 10 11 12
+1 3 5 6 8 11 12
+
+5、用react实现翻页器的代码，粘贴到此处
+
+预览
+
+
+预览
+7、函数组件里使用的hook函数为什么不能放进if语句里？
+
+因为useState等函数只能通过调用顺序来区分不同的state
+它无法知道这个状态的用处，更不知道这个状态的名字，只知道它的顺序，且是代码中隐含的信息
+如果放进条件执行的语句里，就有可能把第二个状态返回给代码中的第一个状态变量
+
+
+预览
+8、vue中的ref/reactive等组合式函数可以放进if里吗？他们会记录自己在当前组件内的运行顺序/次数吗？
+可以。不会。  但是vue的一些组合式函数（onMounted会，ref,reactive,watch是不会的）是会感知自己在哪个组件里的。
+ref/reactive对象从setup里返回，才会跟组件绑定
+因为vue中setup只运行一次，不会运行第二次，所以记录顺序也就没必要了。
+而react的函数组件在组件每次更新时会再次运行，所以它要跟前一次运行时的顺序一致，且用一致的变量名去接收状态
+
+
+预览
+9、react-dom和react-native这两个包分别是干啥的？与react包的关系是？还有其它类似的包吗？
+react-dom是将react组件树渲染到浏览器的
+react-native是将react组件树渲染到手机app上的
+并且是使用相应平台的原生组件来渲染
+react包是react组件，生命周期等功能的包
+react-canvas将组件树渲染到canvas
+ink可以将组件树渲染到终端
+除了react-dom以外，另外几个在使用时都要从渲染器包中导入它们支持原子组件
+在浏览器里，所有的原生标签是可以直接使用的，而不需要从react-dom中导入
+理论上，react中的div元素跟浏览器中的div元素是不一样的，只是reactdom会用浏览器的div元素来绘制react的div元素
+
+<textarea onDoubleClick></textarea>
+
+预览
+10、什么是不可变数据？什么是结构共享？
+创建出来就不再去修改的数据，如果要修改它，通过创建一个新的对象来映射/表达这种修改
+就是创建新数据时，旧数据没有变化部分可以在新的对象中复用，以节省内存
+
+预览
+11、immer是什么？干啥的？怎么用？它是什么原理？
+是一个用来创建结构共享的不可变数据的第三方库
+它有一个produce函数，可以接收一个对象，以及一个变更函数
+produce(obj, draft => {
+  // do anything with draft
+})
+在函数内对draft进行修改，等函数运行完，produce会跟据在draft上记录的写操作通过原对象创建一个新对象
+新对象上将反应出函数内对draft的修改，而obj是没有变化的
+原理是通过proxy，这个draft参数实际是一由原obj对象创建的一个proxy
+
+预览
+12、useImmer怎样使用?
+var [obj, updateObj] = useImmer({ a: 1, b: [1, 2, 34] })
+
+updateObj(draft => {
+  draft.a++
+  draft.b.push(5)
+})
+
+预览
+13、react组件如何向外触发事件？
+通过接收一个以on开头的prop，是一个函数
+然后组件内部在合适的时机调用它
+所以在组件内部往往还要判断这个prop有没有传，传了是不是函数
+
+预览
+14、列出react中ref的几种用法。在函数组件中，它与class组件的什么有大致的对应关系？
+class组件中
+字符串ref 为子组件起一个ref的名称，就可以在this.refs.xxx访问到这个子组件的实例了
+函数ref   为组件的ref属性传一个函数，该函数会被react调用并传入组件实例，函数内将该实例赋值到任意位置，后续从那个位置去访问，一般是挂this上
+对象ref   通过React.createRef()创建一个ref对象将其传给组件的ref属性，react最终会将组件实例挂到这个ref的current属性上
+
+函数组件中
+对象ref：通过useRef()获取一个在这个组件内一直保持不变的ref对象，将其传给子组件
+
+
+预览
+
+function useCountDown() {
+
+}
+
+预览
+
+
+
+
+预览
+17、用react函数组件实现考试系统前端。粘贴
+
+预览
+18、将TodoApp中的state换为使用Immer来管理以方便对数据进行变更。粘贴
+
+预览
+
+
+
+
+react
+
+
+无障碍        <a aria-xxxx></a> 为了让读屏软件或纯键盘环境可以使用我们的应用
+代码分割      webpack的功能
+Context      跨组件层级传递数据
+错误边界
+Refs 转发
+Fragments    <>xxxx</>    <React.Fragment></React.Fragment>
+高阶组件
+与第三方库协同
+深入 JSX     jsx的语法细节
+性能优化
+Portals      对应与Vue的传送门(Teleport)
+Profiler
+不使用 ES6   如果连class语法都没有，如何写react
+不使用 JSX   只使用React.createElement(xxx)
+协调         虚拟dom的diff/patch算法
+Refs & DOM   ref的使用
+Render Props
+静态类型检查   使用TypeScript或其他类似的工具做类型检查 https://codesandbox.io/s/sleepy-galois-chd8c6?file=/src/Counter.tsx
+严格模式      <React.StrictMode></React.StrictMode>
+使用PropTypes类型检查   在TypeScript没有流行之前，React的组件props的类型检查
+非受控组件
+Web Components   react可以跟web component一起协同工作。不是react可以实现webcomponent
+

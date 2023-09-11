@@ -1,0 +1,87 @@
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  font-weight: normal;
+}
+
+body {
+  width: 100%;
+  min-height: 100%;
+  color: var(--color-text);
+  background: var(--color-background);
+  transition: color 0.5s, background-color 0.5s;
+  line-height: 1.6;
+  font-family: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: 15px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  border: 1px solid white;
+}
+
+div{
+  width: 100%;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+h1 {
+  font-size: 5em;
+  color: #ff66b2;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-top: 100px;
+}
+
+.check{
+  position: relative;
+  top: 22px;
+  left: 10px;
+}
+input {
+  border-style: none;
+  box-shadow: 1px 1px 5px rgb(179, 174, 174);
+  text-align: center;
+  line-height: 2em;
+}
+
+.text{
+  position: relative;
+  left: 32px;
+  width: 250px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 5px rgb(179, 174, 174);
+  list-style: none;
+  padding: 0;
+  width: 320px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 5px;
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+li span {
+  overflow: hidden;
+  white-space: nowrap;
+}

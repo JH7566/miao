@@ -1,6 +1,5 @@
 {
 	"dependencies": {
-		"lodash": "^4.17.21",
-		"mime": "^3.0.0"
+		"eslint": "^8.48.0"
 	}
 }

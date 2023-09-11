@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>一起来打分</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .star-rating {
+        font-size: 2em;
+        display: inline-block;
+      }
+
+      .star-rating i {
+        cursor: pointer;
+      }
+
+      .star-rating i.active {
+        color: gold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <star-rating
+        :max-stars="5"
+        v-model="selectedStars"
+        :preview="hoveredStars"
+        @preview="updatePreview"
+      ></star-rating>
+      <p>你的评价: {{ selectedStars + '分' }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+      Vue.component("star-rating", {
+        props: ["maxStars", "value", "preview"],
+        template: `
+        <div class="star-rating">
+          <i v-for="star in maxStars" :key="star"
+             @click="setRating(star)"
+             @mouseover="hoverRating(star)"
+             @mouseout="resetPreview"
+             :class="{ active: star <= (preview || value) }"
+             class="fas fa-star"></i>
+        </div>
+      `,
+        methods: {
+          setRating(star) {
+            this.$emit("input", star);
+          },
+          hoverRating(star) {
+            this.$emit("preview", star);
+          },
+          resetPreview() {
+            this.$emit("preview", null);
+          },
+        },
+      });
+
+      new Vue({
+        el: "#app",
+        data: {
+          selectedStars: 0,
+          hoveredStars: null,
+        },
+        methods: {
+          updatePreview(star) {
+            this.hoveredStars = star;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
